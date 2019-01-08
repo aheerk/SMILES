@@ -1,6 +1,6 @@
 # SMILES
 
-## Appplication Description 
+## Application Description 
 SMILES is an Android application that will help nursing students achieve work-life balance. Specifically, the application will focus on helping nursing students monitor and achieve adequate levels of the following factors: Sleep, Movement, Imagination, Laughter, Eating, and Speaking (SMILES). The students will use the application to provide SMILES data on a daily/weekly basis which will be stored in a database. Results of the data will then be calculated and viewed graphically in real-time on their SMILES balance. In turn, users will be able to monitor their well-being and work towards achieving a SMILES balance throughout their careers. 
 
 
