@@ -1,6 +1,19 @@
 <resources>
     <string name="app_name">SMILES</string>
-    <string name="title_home">Home</string>
+
     <string name="title_dashboard">Dashboard</string>
-    <string name="title_notifications">Notifications</string>
+    <string name="title_graphs">Graphs</string>
+    <string name="title_information">Information</string>
+
+    <string name="quest_laughter_a">Rate your laughter out of 5</string>
+    <string name="quest_results">Your score is %s!</string>
+    <string name="quest_laughter_title">Laughter</string>
+    <string name="quest_button">Score</string>
+
+    <string name="score_high">high</string>
+    <string name="score_low">low</string>
+    <string name="score_balanced">balanced</string>
+    <string name="score_unbalanced">unbalanced</string>
+
+
 </resources>
