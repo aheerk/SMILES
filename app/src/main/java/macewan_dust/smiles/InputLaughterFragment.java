@@ -10,8 +10,6 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import java.util.Random;
-
 public class InputLaughterFragment extends Fragment {
 
     public static final String TAG = "InputLaughterFragment";
@@ -25,6 +23,8 @@ public class InputLaughterFragment extends Fragment {
     ImageView mIcon5;
     Button mButton;
     TextView mResults;
+
+    int mQuestion_A_index;
 
     ScoreLab mScoreLab;
 
@@ -58,34 +58,80 @@ public class InputLaughterFragment extends Fragment {
         mQuestion_A.setText(R.string.quest_laughter_a);
 
         mButton = v.findViewById(R.id.score_button);
-      //  mButton.setText(R.string.quest_button);       // done in layout
+        //  mButton.setText(R.string.quest_button);       // done in layout
+
+        mIcon1 = v.findViewById(R.id.icon_1a);
+        mIcon2 = v.findViewById(R.id.icon_1b);
+        mIcon3 = v.findViewById(R.id.icon_1c);
+        mIcon4 = v.findViewById(R.id.icon_1d);
+        mIcon5 = v.findViewById(R.id.icon_1e);
+
+        mQuestion_A_index = 0;
 
 
+        mIcon1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                clearSelected();
+                mQuestion_A_index = 1;
+                mIcon1.setBackground(getResources().getDrawable(R.drawable.border_image_selected));
+            }
+        });
+
+        mIcon2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                clearSelected();
+                mQuestion_A_index = 2;
+                mIcon2.setBackground(getResources().getDrawable(R.drawable.border_image_selected));
+            }
+        });
+
+        mIcon3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                clearSelected();
+                mQuestion_A_index = 3;
+                mIcon3.setBackground(getResources().getDrawable(R.drawable.border_image_selected));
+            }
+        });
+
+        mIcon4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                clearSelected();
+                mQuestion_A_index = 4;
+                mIcon4.setBackground(getResources().getDrawable(R.drawable.border_image_selected));
+            }
+        });
+
+        mIcon5.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                clearSelected();
+                mQuestion_A_index = 5;
+                mIcon5.setBackground(getResources().getDrawable(R.drawable.border_image_selected));
+            }
+        });
 
 
         mButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                // 1) implement on click listeners for icons
-                // 2) find the index of the last image clicked
-                // 3) send that index to the scoring algorithm
-                // 4) delete random below
-                rand = new Random().nextInt(5) + 1; // random is default to 0-bound. so 1-5 requires adding 1
-                Log.d(TAG, "random int: " + rand);
-                int score = mScoreLab.scoreLaughter(rand);                 ////           currently hard wired to random int
+                int score = mScoreLab.scoreLaughter(mQuestion_A_index);
 
 
                 int scoreStringID = 1000; // just here to initialize
-
-                switch (score){
+                Log.d(TAG, "Score: " + score);
+                switch (score) {
 
                     case ScoreLab.SCORE_HIGH:
                         scoreStringID = R.string.score_high;
                         mResults.setTextColor(getResources().getColor(R.color.colorHigh));
                         break;
                     case ScoreLab.SCORE_LOW:
-                        scoreStringID = R.string.score_high;
+                        scoreStringID = R.string.score_low;
                         mResults.setTextColor(getResources().getColor(R.color.colorLow));
 
                         break;
@@ -100,26 +146,28 @@ public class InputLaughterFragment extends Fragment {
 
                         break;
                 }
-                mResults.setVisibility(View.VISIBLE);
+
+//                mResults.setVisibility(View.VISIBLE);
                 mResults.setText(getString(R.string.quest_results, getString(scoreStringID)));
-
-
-
-
             }
         });
 
-
-
         mResults = v.findViewById(R.id.text_score); // note this object is invisible
-
-
-
 
         mResults.setVisibility(View.VISIBLE);
 
 
         return v;
+    }
+
+
+    private void clearSelected(){
+        mIcon1.setBackground(getResources().getDrawable(R.drawable.border_image));
+        mIcon2.setBackground(getResources().getDrawable(R.drawable.border_image));
+        mIcon3.setBackground(getResources().getDrawable(R.drawable.border_image));
+        mIcon4.setBackground(getResources().getDrawable(R.drawable.border_image));
+        mIcon5.setBackground(getResources().getDrawable(R.drawable.border_image));
+
     }
 
 };
