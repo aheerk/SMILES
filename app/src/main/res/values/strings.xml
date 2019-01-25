@@ -15,5 +15,7 @@
     <string name="score_balanced">balanced</string>
     <string name="score_unbalanced">unbalanced</string>
 
+    <string name="feedback_unselected">Please select an option first</string>
+
 
 </resources>

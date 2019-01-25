@@ -12,7 +12,8 @@ import android.widget.TextView;
 
 public class InputLaughterFragment extends Fragment {
 
-    public static final String TAG = "InputLaughterFragment";
+    private static final String TAG = "InputLaughterFragment";
+    private static final int NO_SELECTION = 100000;
 
     TextView mTitle;
     TextView mQuestion_A;
@@ -22,34 +23,46 @@ public class InputLaughterFragment extends Fragment {
     ImageView mIcon4;
     ImageView mIcon5;
     Button mButton;
+    ImageView mIconFeedback;
     TextView mResults;
 
     int mQuestion_A_index;
 
     ScoreLab mScoreLab;
 
-
-    // temp
-    int rand;
-
+    /**
+     * new instance constructor
+     * @return InputLaughterFragment
+     */
     public static InputLaughterFragment newInstance() {
         return new InputLaughterFragment();
     }
 
+    /**
+     * Android will call this function when a view is created. If the view is not destroyed, this
+     * remains in effect (not that rotating destroys a view.
+     * @param savedInstanceState
+     */
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setRetainInstance(true); // prevents instance of the fragment from being destroyed on rotation.
 
         mScoreLab = new ScoreLab();
-
     }
 
-
+    /**
+     * Android calls this method whenever the view is created. So if the view was on the back
+     * stack, this code will be called again when it becomes visible again and calls this code again.
+     * @param inflater - infaltes the view (brings it into memory)
+     * @param container - parent view
+     * @param savedInstanceState - holds data
+     * @return view
+     */
     @Override
     public View onCreateView(final LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
-        View v = inflater.inflate(R.layout.fragment_input, container, false);
+        View v = inflater.inflate(R.layout.fragment_daily_laughter, container, false);
 
         mTitle = v.findViewById(R.id.title);    // links the java object to the layout object
         mTitle.setText(R.string.quest_laughter_title); // sets the text as that in the strings file
@@ -66,8 +79,9 @@ public class InputLaughterFragment extends Fragment {
         mIcon4 = v.findViewById(R.id.icon_1d);
         mIcon5 = v.findViewById(R.id.icon_1e);
 
-        mQuestion_A_index = 0;
+        mQuestion_A_index = NO_SELECTION;
 
+        mIconFeedback = v.findViewById(R.id.icon_feedback);
 
         mIcon1.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -119,55 +133,55 @@ public class InputLaughterFragment extends Fragment {
             @Override
             public void onClick(View v) {
 
-                int score = mScoreLab.scoreLaughter(mQuestion_A_index);
+                if (mQuestion_A_index == NO_SELECTION) {
+                    mResults.setText(getString(R.string.feedback_unselected));
 
+                } else {
 
-                int scoreStringID = 1000; // just here to initialize
-                Log.d(TAG, "Score: " + score);
-                switch (score) {
+                    int score = mScoreLab.scoreLaughter(mQuestion_A_index);
 
-                    case ScoreLab.SCORE_HIGH:
-                        scoreStringID = R.string.score_high;
-                        mResults.setTextColor(getResources().getColor(R.color.colorHigh));
-                        break;
-                    case ScoreLab.SCORE_LOW:
-                        scoreStringID = R.string.score_low;
-                        mResults.setTextColor(getResources().getColor(R.color.colorLow));
+                    int scoreStringID = 1000; // just here to initialize
+                    Log.d(TAG, "Score: " + score);
+                    switch (score) {
 
-                        break;
-                    case ScoreLab.SCORE_BALANCED:
-                        scoreStringID = R.string.score_balanced;
-                        mResults.setTextColor(getResources().getColor(R.color.colorBalanced));
+                        case ScoreLab.SCORE_HIGH:
+                            scoreStringID = R.string.score_high;
+                            mIconFeedback.setBackground(getResources().getDrawable(R.drawable.border_image_high));
+                            break;
+                        case ScoreLab.SCORE_LOW:
+                            scoreStringID = R.string.score_low;
+                            mIconFeedback.setBackground(getResources().getDrawable(R.drawable.border_image_low));
+                            break;
+                        case ScoreLab.SCORE_BALANCED:
+                            scoreStringID = R.string.score_balanced;
+                            mIconFeedback.setBackground(getResources().getDrawable(R.drawable.border_image_balanced));
+                            break;
+                        case ScoreLab.SCORE_OFF:
+                            scoreStringID = R.string.score_unbalanced;
+                            mIconFeedback.setBackground(getResources().getDrawable(R.drawable.border_image_unbalanced));
+                            break;
+                    }
 
-                        break;
-                    case ScoreLab.SCORE_OFF:
-                        scoreStringID = R.string.score_unbalanced;
-                        mResults.setTextColor(getResources().getColor(R.color.colorUnbalanced));
-
-                        break;
+                    mResults.setText(getString(R.string.quest_results, getString(scoreStringID)));
                 }
-
-//                mResults.setVisibility(View.VISIBLE);
-                mResults.setText(getString(R.string.quest_results, getString(scoreStringID)));
             }
         });
 
         mResults = v.findViewById(R.id.text_score); // note this object is invisible
-
         mResults.setVisibility(View.VISIBLE);
-
 
         return v;
     }
 
-
+    /**
+     * ideally the icon being selected woudnt need to be cleared, if its id was passed in here              // refactor potential
+     */
     private void clearSelected(){
         mIcon1.setBackground(getResources().getDrawable(R.drawable.border_image));
         mIcon2.setBackground(getResources().getDrawable(R.drawable.border_image));
         mIcon3.setBackground(getResources().getDrawable(R.drawable.border_image));
         mIcon4.setBackground(getResources().getDrawable(R.drawable.border_image));
         mIcon5.setBackground(getResources().getDrawable(R.drawable.border_image));
-
     }
 
 };

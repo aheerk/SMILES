@@ -11,5 +11,7 @@
     <color name="colorNavIcon">#ffffff</color>
     <color name="colorNavText">#ffffff</color>
 
+    <color name="colorBasicText">#000000</color>
+
 
 </resources>

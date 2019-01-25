@@ -7,6 +7,8 @@ import android.util.Log;
  * ScoreLab class includes all methods for converting user input values into score values
  * Please use constants when calling functions to support maintainability
  * WARNING! Changing the text on buttons may require an update to the scoring rules.
+ *
+ * Note: booleans are not checked or reported in range checking
  */
 
 public class ScoreLab {
@@ -39,6 +41,16 @@ public class ScoreLab {
      */
     public int scoreSleep(int sleepInput, int hinderanceCount) {
 
+        // range checking. Note: hinderanceCount should be a max of 5 but could be increased
+        // // without changing the scoring behavior, so has a higher range check
+        if (sleepInput < INPUT_a || sleepInput > INPUT_d
+                || hinderanceCount < 0 || hinderanceCount > 10){
+            Log.e(TAG, "Error: invalid input, sleepInput: " + sleepInput +
+                    " and hinderanceCount: " + hinderanceCount);
+            return SCORE_ERROR;
+        }
+
+        // scoring
         if (sleepInput < INPUT_c || (sleepInput < INPUT_d && hinderanceCount > 1)) {
             return SCORE_LOW;
         } else if (sleepInput == INPUT_c && hinderanceCount < 1) {
@@ -46,7 +58,8 @@ public class ScoreLab {
         } else if (sleepInput < INPUT_c && hinderanceCount > 3) {
             return SCORE_HIGH;
         } else {
-            Log.e(TAG, "Error: score for sleepInput: " + sleepInput + " and hinderanceCount: " + hinderanceCount + " has no rules");
+            Log.e(TAG, "Error: score for sleepInput: " + sleepInput +
+                    " and hinderanceCount: " + hinderanceCount + " has no rules");
             return SCORE_ERROR;
         }
     }
@@ -64,6 +77,14 @@ public class ScoreLab {
         int highCounter = 0;
         int balancedCounter = 0;
         int lowCounter = 0;
+
+        // range checking
+        if (exerciseIndex < INPUT_a || exerciseIndex > INPUT_d
+                || relaxationIndex < INPUT_a || relaxationIndex > INPUT_d){
+            Log.e(TAG, "Error: invalid input, exerciseIndex: " + exerciseIndex +
+                    " and relaxationIndex: " + relaxationIndex);
+            return SCORE_ERROR;
+        }
 
         // count
         switch (exerciseIndex) {
@@ -112,6 +133,16 @@ public class ScoreLab {
         int highCounter = 0;
         int balancedCounter = 0;
         int lowCounter = 0;
+
+        // range checking
+        if (mindfulnessIndex < INPUT_a || mindfulnessIndex > INPUT_c
+                || meditationIndex < INPUT_a || meditationIndex > INPUT_c
+                || imaginationIndex < INPUT_a || imaginationIndex > INPUT_c){
+            Log.e(TAG, "Error: invalid input, mindfulnessIndex: " + mindfulnessIndex +
+                    ", meditationIndex: " + meditationIndex +
+                    " and imaginationIndex: " + imaginationIndex);
+            return SCORE_ERROR;
+        }
 
         // count
         switch (mindfulnessIndex) {
@@ -162,6 +193,12 @@ public class ScoreLab {
      */
     public int scoreLaughter(int laughterInput) {
 
+        // range checking
+        if (laughterInput < 0 || laughterInput > 5){
+            Log.e(TAG, "Error: invalid input, laughterInput: " + laughterInput);
+            return SCORE_ERROR;
+        }
+
         if (laughterInput < 5) {
             return SCORE_LOW;
         } else if (laughterInput == 5) {
@@ -188,6 +225,20 @@ public class ScoreLab {
         int highCounter = 0;
         int balancedCounter = 0;
         int lowCounter = 0;
+
+        // range checking
+        if (vegIndex < INPUT_a || vegIndex > INPUT_d
+                || meatIndex < INPUT_a || meatIndex > INPUT_c
+                || milkIndex < INPUT_a || milkIndex > INPUT_c
+                || grainIndex < INPUT_a || grainIndex > INPUT_d
+                || fatIndex < INPUT_a || fatIndex > INPUT_c){
+            Log.e(TAG, "Error: invalid input, vegIndex: " + vegIndex +
+                    ", meatIndex: " + meatIndex +
+                    " and milkIndex: " + milkIndex +
+                    " and grainIndex: " + grainIndex +
+                    " and fatIndex: " + fatIndex);
+            return SCORE_ERROR;
+        }
 
         // count
         switch (vegIndex) {
@@ -286,6 +337,12 @@ public class ScoreLab {
         int highCounter = 0;
         int balancedCounter = 0;
         int lowCounter = 0;
+
+        // range checking
+        if (speakingRating < 1 || speakingRating > 5){
+            Log.e(TAG, "Error: invalid input, speakingRating: " + speakingRating);
+            return SCORE_ERROR;
+        }
 
         // counting
         if (speakingRating == 5)
