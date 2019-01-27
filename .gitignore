@@ -11,3 +11,4 @@ build.gradle
 .externalNativeBuild
 gradle-wrapper.properties
 vcx.xml
+assetWizardSettings.xml
