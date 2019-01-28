@@ -20,7 +20,7 @@ public class SMILES_CursorWrapper extends CursorWrapper {
      *
      * @return question object
      */
-    public Score getScore() {
+    public Score getScoreFromDB() {
         String uuidString = getString(getColumnIndex(SMILES_DatabaseSchema.ScoreTable.Columns.UUID));
         int sleepScore = getInt(getColumnIndex(SMILES_DatabaseSchema.ScoreTable.Columns.SLEEP));
         int movementScore = getInt(getColumnIndex(SMILES_DatabaseSchema.ScoreTable.Columns.MOVEMENT));

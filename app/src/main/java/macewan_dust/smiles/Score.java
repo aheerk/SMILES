@@ -10,24 +10,38 @@ public class Score {
 
     private Date mDate;
     private UUID mID;
-    private int sleepScore;
-    private int movementScore;
-    private int imaginationScore;
-    private int laughterScore;
-    private int eatingScore;
-    private int speakingScore;
+    private int mSleepScore;
+    private int mMovementScore;
+    private int mImaginationScore;
+    private int mLaughterScore;
+    private int mEatingScore;
+    private int mSpeakingScore;
 
     public Score() {
-        mDate = new Date();                                                 /// check this is the right date option. there are 2 import options
+        mDate = new Date();                                                 /// check this is the right mDate option. there are 2 import options
         mID = UUID.randomUUID();
+        mSleepScore = ScoreLab.SCORE_NONE;
+        mMovementScore = ScoreLab.SCORE_NONE;
+        mImaginationScore = ScoreLab.SCORE_NONE;
+        mLaughterScore = ScoreLab.SCORE_NONE;
+        mEatingScore = ScoreLab.SCORE_NONE;
+        mSpeakingScore = ScoreLab.SCORE_NONE;
     }
 
     /**
-     *                                                                      //Will need to load the rest of the data from the database
+     * //Will need to load the rest of the data from the database
+     *
      * @param id
      */
-    public Score(UUID id){
+    public Score(UUID id) {
+        mDate = new Date();                           // warning. date may be null without this line
         mID = id;
+        mSleepScore = ScoreLab.SCORE_NONE;
+        mMovementScore = ScoreLab.SCORE_NONE;
+        mImaginationScore = ScoreLab.SCORE_NONE;
+        mLaughterScore = ScoreLab.SCORE_NONE;
+        mEatingScore = ScoreLab.SCORE_NONE;
+        mSpeakingScore = ScoreLab.SCORE_NONE;
     }
 
     public Date getDate() {
@@ -39,54 +53,78 @@ public class Score {
     }
 
     public void setDate(Date date) {
-        mDate = date;
+        date = date;
     }
 
     public int getSleepScore() {
-        return sleepScore;
+        return mSleepScore;
     }
 
     public void setSleepScore(int sleepScore) {
-        this.sleepScore = sleepScore;
+        this.mSleepScore = sleepScore;
     }
 
     public int getMovementScore() {
-        return movementScore;
+        return mMovementScore;
     }
 
     public void setMovementScore(int movementScore) {
-        this.movementScore = movementScore;
+        this.mMovementScore = movementScore;
     }
 
     public int getImaginationScore() {
-        return imaginationScore;
+        return mImaginationScore;
     }
 
     public void setImaginationScore(int imaginationScore) {
-        this.imaginationScore = imaginationScore;
+        this.mImaginationScore = imaginationScore;
     }
 
     public int getLaughterScore() {
-        return laughterScore;
+        return mLaughterScore;
     }
 
     public void setLaughterScore(int laughterScore) {
-        this.laughterScore = laughterScore;
+        this.mLaughterScore = laughterScore;
     }
 
     public int getEatingScore() {
-        return eatingScore;
+        return mEatingScore;
     }
 
     public void setEatingScore(int eatingScore) {
-        this.eatingScore = eatingScore;
+        this.mEatingScore = eatingScore;
     }
 
     public int getSpeakingScore() {
-        return speakingScore;
+        return mSpeakingScore;
     }
 
     public void setSpeakingScore(int speakingScore) {
-        this.speakingScore = speakingScore;
+        this.mSpeakingScore = speakingScore;
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+
+        sb.append("mID: " + mID);
+        sb.append("\n");
+        sb.append("Date: " + mDate);
+        sb.append("\n");
+        sb.append("Sleep: " + mSleepScore);
+        sb.append("\n");
+        sb.append("Movement: " + mMovementScore);
+        sb.append("\n");
+        sb.append("Imagination: " + mImaginationScore);
+        sb.append("\n");
+        sb.append("Laughter: " + mLaughterScore);
+        sb.append("\n");
+        sb.append("Eating: " + mEatingScore);
+        sb.append("\n");
+        sb.append("Speaking: " + mSpeakingScore);
+        sb.append("\n");
+
+        return sb.toString();
     }
 }
