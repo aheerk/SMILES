@@ -289,7 +289,7 @@
             android:background="@drawable/border_image_no_data"
             android:cropToPadding="true"
             android:padding="8dp"
-            app:srcCompat="@android:drawable/star_big_on"
+            app:srcCompat="@drawable/icon_movement"
             />
 
         <!-- Score Text -->

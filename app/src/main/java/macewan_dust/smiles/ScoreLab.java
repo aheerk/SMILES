@@ -52,7 +52,7 @@ public class ScoreLab {
      * constructor
      * @param context
      */
-    private ScoreLab(Context context){
+    public ScoreLab(Context context){
         // database
         mContext = context.getApplicationContext();
         mDatabase = new SMILES_DatabaseHelper(mContext)
@@ -227,7 +227,7 @@ public class ScoreLab {
     public int scoreLaughter(int laughterInput) {
 
         // range checking
-        if (laughterInput < 0 || laughterInput > 5){
+        if (laughterInput <= 0 || laughterInput > 5){
             Log.e(TAG, "Error: invalid input, laughterInput: " + laughterInput);
             return SCORE_ERROR;
         }

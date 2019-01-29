@@ -48,7 +48,7 @@ public class InputLaughterFragment extends Fragment {
         super.onCreate(savedInstanceState);
         setRetainInstance(true); // prevents instance of the fragment from being destroyed on rotation.
 
-        mScoreLab = new ScoreLab();
+        mScoreLab = new ScoreLab(getContext());
     }
 
     /**
@@ -62,7 +62,7 @@ public class InputLaughterFragment extends Fragment {
     @Override
     public View onCreateView(final LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
-        View v = inflater.inflate(R.layout.fragment_daily_one_question, container, false);
+        View v = inflater.inflate(R.layout.fragment_daily_laughter_question, container, false);
 
         mTitle = v.findViewById(R.id.title);    // links the java object to the layout object
         mTitle.setText(R.string.quest_laughter_title); // sets the text as that in the strings file
