@@ -84,7 +84,7 @@ public class ScoreLab {
             return SCORE_LOW;
         } else if (sleepInput == INPUT_c && hinderanceCount < 1) {
             return SCORE_BALANCED;
-        } else if (sleepInput < INPUT_c && hinderanceCount > 3) {
+        } else if (sleepInput > INPUT_c) {
             return SCORE_HIGH;
         } else {
             Log.e(TAG, "Error: score for sleepInput: " + sleepInput +
