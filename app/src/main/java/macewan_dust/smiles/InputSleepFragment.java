@@ -12,10 +12,9 @@ import android.widget.TextView;
 
 public class InputSleepFragment extends Fragment {
 
-    private static final String TAG = "InputLaughterFragment";
+    private static final String TAG = "InputSleepFragment";
     private static final int NO_SELECTION = 100000;
 
-    TextView mQuestion_A;
     ImageView mIcon1;
     ImageView mIcon2;
     ImageView mIcon3;
@@ -31,7 +30,7 @@ public class InputSleepFragment extends Fragment {
 
     /**
      * new instance constructor
-     * @return InputLaughterFragment
+     * @return InputSleepFragment
      */
     public static InputSleepFragment newInstance() {
         return new InputSleepFragment();
@@ -61,7 +60,7 @@ public class InputSleepFragment extends Fragment {
     @Override
     public View onCreateView(final LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
-        View v = inflater.inflate(R.layout.fragment_daily_laughter_questions, container, false);
+        View v = inflater.inflate(R.layout.fragment_daily_sleep_questions, container, false);
 
         mButton = v.findViewById(R.id.score_button);
 
@@ -119,7 +118,7 @@ public class InputSleepFragment extends Fragment {
                 mIcon5.setBackground(getResources().getDrawable(R.drawable.border_image_selected));
             }
         });
-        
+
         mButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
