@@ -13,7 +13,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="8dp"
-        android:text="Title filler"
+        android:text="@string/quest_sleep_title"
         android:textSize="32sp" />
 
     <!-- First Question -->
@@ -28,7 +28,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="8dp"
-            android:text="question filler"
+            android:text="@string/quest_sleep_a"
             android:textSize="18dp"
             tools:layout_editor_absoluteX="107dp"
             tools:layout_editor_absoluteY="61dp" />
@@ -116,7 +116,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="8dp"
-            android:text="question filler"
+            android:text="@string/quest_sleep_b"
             android:textSize="18dp"
             tools:layout_editor_absoluteX="107dp"
             tools:layout_editor_absoluteY="61dp" />
