@@ -5,10 +5,35 @@
     <string name="title_graphs">Graphs</string>
     <string name="title_information">Information</string>
 
-    <string name="quest_laughter_a">Rate your laughter out of 5</string>
-    <string name="quest_results">Your score is %s!</string>
+    <string name="quest_sleep_title">Sleep</string>
+    <string name="quest_sleep_a">Hours of sleep per day:</string>
+    <string name="quest_sleep_b">Did any activities hinder your sleep?</string>
+
+    <string name="quest_movement_title">Movement</string>
+    <string name="quest_movement_a">Length of moderate or vigorous intensity aerobic exercise:</string>
+    <string name="quest_movement_b">Did your exercises include bone and muscle strengthening?</string>
+    <string name="quest_movement_c">How long did you engage in relaxation techniques?</string>
+
+    <string name="quest_imagination_title">Imagination</string>
+    <string name="quest_imagination_a">How long did you engage in any mindfulness techniques?</string>
+    <string name="quest_imagination_b">How long did you engage in meditation today?</string>
+    <string name="quest_imagination_c">How long did you practice imagination or creativity today?</string>
+
     <string name="quest_laughter_title">Laughter</string>
+    <string name="quest_laughter_a">Rate your laughter out of 5</string>
+
+    <string name="quest_eating_title">Eating</string>
+    <!-- MISSING EATING QUESTIONS!  -->
+
+    <string name="quest_speaking_title">Speaking</string>
+    <string name="quest_speaking_a">Rate the amount of time spent socializing in person over social media.</string>
+    <string name="quest_speaking_b">Did you seek assistance and/or debrief when needed?</string>
+    <string name="quest_speaking_c">Did anything prevent your ability to share your thoughts?</string>
+    <string name="quest_speaking_d">Did you engage in more social media than face-to-face socializing??</string>
+
+    <string name="quest_results">Your score is %s!</string>
     <string name="quest_button">Score</string>
+
 
     <string name="score_high">high</string>
     <string name="score_low">low</string>
