@@ -59,8 +59,8 @@
             android:background="@drawable/border_image"
             android:cropToPadding="true"
             android:padding="8dp"
-
-            app:srcCompat="@android:drawable/ic_menu_edit" />
+            android:src="@drawable/icon_less"
+            />
 
 
         <ImageView
@@ -100,7 +100,7 @@
             android:cropToPadding="true"
             android:padding="8dp"
 
-            app:srcCompat="@android:drawable/ic_menu_edit" />
+            android:src="@drawable/icon_greater"/>
 
     </LinearLayout>
 

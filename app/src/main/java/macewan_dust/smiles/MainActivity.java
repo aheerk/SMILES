@@ -15,7 +15,7 @@ public class MainActivity extends SingleFragmentActivity implements BottomNaviga
     // The first fragment launched is specified here
     @Override
     protected Fragment createFragment() {
-        return InputLaughterFragment.newInstance();
+        return InputSleepFragment.newInstance();
     }
 
 
