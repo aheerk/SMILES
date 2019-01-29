@@ -6,10 +6,6 @@ import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
 
-import java.util.Date;
-import java.util.UUID;
-
-import macewan_dust.smiles.database.SMILES_DatabaseSchema;
 import macewan_dust.smiles.database.SMILES_DatabaseSchema.ScoreTable;
 import macewan_dust.smiles.database.SMILES_DatabaseHelper;
 
