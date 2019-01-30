@@ -15,11 +15,22 @@ public class InputSleepFragment extends Fragment {
     private static final String TAG = "InputSleepFragment";
     private static final int NO_SELECTION = 100000;
 
-    ImageView mIcon1;
-    ImageView mIcon2;
-    ImageView mIcon3;
-    ImageView mIcon4;
-    ImageView mIcon5;
+    ImageView mIcon1a;
+    ImageView mIcon1b;
+    ImageView mIcon1c;
+    ImageView mIcon1d;
+    ImageView mIcon2a;
+    ImageView mIcon2b;
+    ImageView mIcon2c;
+    ImageView mIcon2d;
+    ImageView mIcon2e;
+
+    Boolean m2aSelected;
+    Boolean m2bSelected;
+    Boolean m2cSelected;
+    Boolean m2dSelected;
+    Boolean m2eSelected;
+
     Button mButton;
     ImageView mIconFeedback;
     TextView mResults;
@@ -30,6 +41,7 @@ public class InputSleepFragment extends Fragment {
 
     /**
      * new instance constructor
+     *
      * @return InputSleepFragment
      */
     public static InputSleepFragment newInstance() {
@@ -39,6 +51,7 @@ public class InputSleepFragment extends Fragment {
     /**
      * Android will call this function when a view is created. If the view is not destroyed, this
      * remains in effect (not that rotating destroys a view.
+     *
      * @param savedInstanceState
      */
     @Override
@@ -52,8 +65,9 @@ public class InputSleepFragment extends Fragment {
     /**
      * Android calls this method whenever the view is created. So if the view was on the back
      * stack, this code will be called again when it becomes visible again and calls this code again.
-     * @param inflater - infaltes the view (brings it into memory)
-     * @param container - parent view
+     *
+     * @param inflater           - infaltes the view (brings it into memory)
+     * @param container          - parent view
      * @param savedInstanceState - holds data
      * @return view
      */
@@ -64,58 +78,114 @@ public class InputSleepFragment extends Fragment {
 
         mButton = v.findViewById(R.id.score_button);
 
-        mIcon1 = v.findViewById(R.id.icon_1a);
-        mIcon2 = v.findViewById(R.id.icon_1b);
-        mIcon3 = v.findViewById(R.id.icon_1c);
-        mIcon4 = v.findViewById(R.id.icon_1d);
-        mIcon5 = v.findViewById(R.id.icon_1e);
+        mIcon1a = v.findViewById(R.id.icon_1a);
+        mIcon1b = v.findViewById(R.id.icon_1b);
+        mIcon1c = v.findViewById(R.id.icon_1c);
+        mIcon1d = v.findViewById(R.id.icon_1d);
+        mIcon2a = v.findViewById(R.id.icon_2a);
+        mIcon2b = v.findViewById(R.id.icon_2b);
+        mIcon2c = v.findViewById(R.id.icon_2c);
+        mIcon2d = v.findViewById(R.id.icon_2d);
+        mIcon2e = v.findViewById(R.id.icon_2e);
+
+        m2aSelected = false;
+        m2bSelected = false;
+        m2cSelected = false;
+        m2dSelected = false;
+        m2eSelected = false;
 
         mQuestion_A_index = NO_SELECTION;
 
         mIconFeedback = v.findViewById(R.id.icon_feedback);
 
-        mIcon1.setOnClickListener(new View.OnClickListener() {
+        mIcon1a.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 clearSelected();
-                mQuestion_A_index = 1;
-                mIcon1.setBackground(getResources().getDrawable(R.drawable.border_image_selected));
+                mQuestion_A_index = mScoreLab.INPUT_a;
+                mIcon1a.setBackground(getResources().getDrawable(R.drawable.border_image_selected));
             }
         });
 
-        mIcon2.setOnClickListener(new View.OnClickListener() {
+        mIcon1b.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 clearSelected();
-                mQuestion_A_index = 2;
-                mIcon2.setBackground(getResources().getDrawable(R.drawable.border_image_selected));
+                mQuestion_A_index = mScoreLab.INPUT_b;
+                mIcon1b.setBackground(getResources().getDrawable(R.drawable.border_image_selected));
             }
         });
 
-        mIcon3.setOnClickListener(new View.OnClickListener() {
+        mIcon1c.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 clearSelected();
-                mQuestion_A_index = 3;
-                mIcon3.setBackground(getResources().getDrawable(R.drawable.border_image_selected));
+                mQuestion_A_index = mScoreLab.INPUT_c;;
+                mIcon1c.setBackground(getResources().getDrawable(R.drawable.border_image_selected));
             }
         });
 
-        mIcon4.setOnClickListener(new View.OnClickListener() {
+        mIcon1d.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 clearSelected();
-                mQuestion_A_index = 4;
-                mIcon4.setBackground(getResources().getDrawable(R.drawable.border_image_selected));
+                mQuestion_A_index = mScoreLab.INPUT_d;
+                mIcon1d.setBackground(getResources().getDrawable(R.drawable.border_image_selected));
             }
         });
 
-        mIcon5.setOnClickListener(new View.OnClickListener() {
+        mIcon2a.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                clearSelected();
-                mQuestion_A_index = 5;
-                mIcon5.setBackground(getResources().getDrawable(R.drawable.border_image_selected));
+                m2aSelected = !m2aSelected;
+                if (m2aSelected)
+                    mIcon2a.setBackground(getResources().getDrawable(R.drawable.border_image_selected));
+                else
+                    mIcon2a.setBackground(getResources().getDrawable(R.drawable.border_image));
+            }
+        });
+
+        mIcon2b.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                m2bSelected = !m2bSelected;
+                if (m2bSelected)
+                    mIcon2b.setBackground(getResources().getDrawable(R.drawable.border_image_selected));
+                else
+                    mIcon2b.setBackground(getResources().getDrawable(R.drawable.border_image));
+            }
+        });
+
+        mIcon2c.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                m2cSelected = !m2cSelected;
+                if (m2cSelected)
+                    mIcon2c.setBackground(getResources().getDrawable(R.drawable.border_image_selected));
+                else
+                    mIcon2c.setBackground(getResources().getDrawable(R.drawable.border_image));
+            }
+        });
+
+        mIcon2d.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                m2dSelected = !m2dSelected;
+                if (m2dSelected)
+                    mIcon2d.setBackground(getResources().getDrawable(R.drawable.border_image_selected));
+                else
+                    mIcon2d.setBackground(getResources().getDrawable(R.drawable.border_image));
+            }
+        });
+
+        mIcon2e.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                m2eSelected = !m2eSelected;
+                if (m2eSelected)
+                    mIcon2e.setBackground(getResources().getDrawable(R.drawable.border_image_selected));
+                else
+                    mIcon2e.setBackground(getResources().getDrawable(R.drawable.border_image));
             }
         });
 
@@ -128,7 +198,21 @@ public class InputSleepFragment extends Fragment {
 
                 } else {
 
-                    int score = mScoreLab.scoreLaughter(mQuestion_A_index);
+                    int counter = 0;
+
+                    if (m2aSelected)
+                        counter ++;
+                    if (m2bSelected)
+                        counter ++;
+                    if (m2cSelected)
+                        counter ++;
+                    if (m2dSelected)
+                        counter ++;
+                    if (m2eSelected)
+                        counter ++;
+                    Log.d(TAG, "Hinderance counter:" + counter );
+
+                    int score = mScoreLab.scoreSleep(mQuestion_A_index, counter);
 
                     int scoreStringID = 1000; // just here to initialize
                     Log.d(TAG, "Score: " + score);
@@ -166,12 +250,11 @@ public class InputSleepFragment extends Fragment {
     /**
      * ideally the icon being selected woudnt need to be cleared, if its id was passed in here              // refactor potential
      */
-    private void clearSelected(){
-        mIcon1.setBackground(getResources().getDrawable(R.drawable.border_image));
-        mIcon2.setBackground(getResources().getDrawable(R.drawable.border_image));
-        mIcon3.setBackground(getResources().getDrawable(R.drawable.border_image));
-        mIcon4.setBackground(getResources().getDrawable(R.drawable.border_image));
-        mIcon5.setBackground(getResources().getDrawable(R.drawable.border_image));
+    private void clearSelected() {
+        mIcon1a.setBackground(getResources().getDrawable(R.drawable.border_image));
+        mIcon1b.setBackground(getResources().getDrawable(R.drawable.border_image));
+        mIcon1c.setBackground(getResources().getDrawable(R.drawable.border_image));
+        mIcon1d.setBackground(getResources().getDrawable(R.drawable.border_image));
     }
 
 };
