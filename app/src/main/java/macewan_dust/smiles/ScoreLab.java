@@ -82,7 +82,7 @@ public class ScoreLab {
         // scoring
         if (sleepInput < INPUT_c || (sleepInput < INPUT_d && hinderanceCount > 1)) {
             return SCORE_LOW;
-        } else if (sleepInput == INPUT_c && hinderanceCount < 1) {
+        } else if (sleepInput == INPUT_c && hinderanceCount <= 1) {
             return SCORE_BALANCED;
         } else if (sleepInput > INPUT_c) {
             return SCORE_HIGH;
