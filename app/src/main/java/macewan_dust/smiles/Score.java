@@ -20,12 +20,12 @@ public class Score {
     public Score() {
         mDate = new Date();                                                 /// check this is the right mDate option. there are 2 import options
         mID = UUID.randomUUID();
-        mSleepScore = ScoreLab.SCORE_NONE;
-        mMovementScore = ScoreLab.SCORE_NONE;
-        mImaginationScore = ScoreLab.SCORE_NONE;
-        mLaughterScore = ScoreLab.SCORE_NONE;
-        mEatingScore = ScoreLab.SCORE_NONE;
-        mSpeakingScore = ScoreLab.SCORE_NONE;
+        mSleepScore = ScoringAlgorithms.SCORE_NONE;
+        mMovementScore = ScoringAlgorithms.SCORE_NONE;
+        mImaginationScore = ScoringAlgorithms.SCORE_NONE;
+        mLaughterScore = ScoringAlgorithms.SCORE_NONE;
+        mEatingScore = ScoringAlgorithms.SCORE_NONE;
+        mSpeakingScore = ScoringAlgorithms.SCORE_NONE;
     }
 
     /**
@@ -36,12 +36,12 @@ public class Score {
     public Score(UUID id) {
         mDate = new Date();                           // warning. date may be null without this line
         mID = id;
-        mSleepScore = ScoreLab.SCORE_NONE;
-        mMovementScore = ScoreLab.SCORE_NONE;
-        mImaginationScore = ScoreLab.SCORE_NONE;
-        mLaughterScore = ScoreLab.SCORE_NONE;
-        mEatingScore = ScoreLab.SCORE_NONE;
-        mSpeakingScore = ScoreLab.SCORE_NONE;
+        mSleepScore = ScoringAlgorithms.SCORE_NONE;
+        mMovementScore = ScoringAlgorithms.SCORE_NONE;
+        mImaginationScore = ScoringAlgorithms.SCORE_NONE;
+        mLaughterScore = ScoringAlgorithms.SCORE_NONE;
+        mEatingScore = ScoringAlgorithms.SCORE_NONE;
+        mSpeakingScore = ScoringAlgorithms.SCORE_NONE;
     }
 
     public Date getDate() {

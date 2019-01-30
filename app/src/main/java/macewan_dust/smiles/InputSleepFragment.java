@@ -37,7 +37,7 @@ public class InputSleepFragment extends Fragment {
 
     int mQuestion_A_index;
 
-    ScoreLab mScoreLab;
+    ScoringAlgorithms mScoringAlgorithms;
 
     /**
      * new instance constructor
@@ -59,7 +59,7 @@ public class InputSleepFragment extends Fragment {
         super.onCreate(savedInstanceState);
         setRetainInstance(true); // prevents instance of the fragment from being destroyed on rotation.
 
-        mScoreLab = new ScoreLab(getContext());
+        mScoringAlgorithms = new ScoringAlgorithms();
     }
 
     /**
@@ -102,7 +102,7 @@ public class InputSleepFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 clearSelected();
-                mQuestion_A_index = mScoreLab.INPUT_a;
+                mQuestion_A_index = mScoringAlgorithms.INPUT_a;
                 mIcon1a.setBackground(getResources().getDrawable(R.drawable.border_image_selected));
             }
         });
@@ -111,7 +111,7 @@ public class InputSleepFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 clearSelected();
-                mQuestion_A_index = mScoreLab.INPUT_b;
+                mQuestion_A_index = mScoringAlgorithms.INPUT_b;
                 mIcon1b.setBackground(getResources().getDrawable(R.drawable.border_image_selected));
             }
         });
@@ -120,7 +120,7 @@ public class InputSleepFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 clearSelected();
-                mQuestion_A_index = mScoreLab.INPUT_c;;
+                mQuestion_A_index = mScoringAlgorithms.INPUT_c;;
                 mIcon1c.setBackground(getResources().getDrawable(R.drawable.border_image_selected));
             }
         });
@@ -129,7 +129,7 @@ public class InputSleepFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 clearSelected();
-                mQuestion_A_index = mScoreLab.INPUT_d;
+                mQuestion_A_index = mScoringAlgorithms.INPUT_d;
                 mIcon1d.setBackground(getResources().getDrawable(R.drawable.border_image_selected));
             }
         });
@@ -212,25 +212,25 @@ public class InputSleepFragment extends Fragment {
                         counter ++;
                     Log.d(TAG, "Hinderance counter:" + counter );
 
-                    int score = mScoreLab.scoreSleep(mQuestion_A_index, counter);
+                    int score = mScoringAlgorithms.scoreSleep(mQuestion_A_index, counter);
 
                     int scoreStringID = 1000; // just here to initialize
                     Log.d(TAG, "Score: " + score);
                     switch (score) {
 
-                        case ScoreLab.SCORE_HIGH:
+                        case ScoringAlgorithms.SCORE_HIGH:
                             scoreStringID = R.string.score_high;
                             mIconFeedback.setBackground(getResources().getDrawable(R.drawable.border_image_high));
                             break;
-                        case ScoreLab.SCORE_LOW:
+                        case ScoringAlgorithms.SCORE_LOW:
                             scoreStringID = R.string.score_low;
                             mIconFeedback.setBackground(getResources().getDrawable(R.drawable.border_image_low));
                             break;
-                        case ScoreLab.SCORE_BALANCED:
+                        case ScoringAlgorithms.SCORE_BALANCED:
                             scoreStringID = R.string.score_balanced;
                             mIconFeedback.setBackground(getResources().getDrawable(R.drawable.border_image_balanced));
                             break;
-                        case ScoreLab.SCORE_OFF:
+                        case ScoringAlgorithms.SCORE_OFF:
                             scoreStringID = R.string.score_unbalanced;
                             mIconFeedback.setBackground(getResources().getDrawable(R.drawable.border_image_unbalanced));
                             break;

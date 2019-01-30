@@ -10,7 +10,7 @@ import macewan_dust.smiles.database.SMILES_DatabaseSchema.ScoreTable;
 import macewan_dust.smiles.database.SMILES_DatabaseHelper;
 
 /**
- * ScoreLab class includes all methods for converting user input values into score values
+ * ScoringAlgorithms class includes all methods for converting user input values into score values
  *
  * Also contains database methods to store and update scores
  *
@@ -23,9 +23,9 @@ import macewan_dust.smiles.database.SMILES_DatabaseHelper;
  * Note: booleans are not checked or reported in range checking
  */
 
-public class ScoreLab {
+public class ScoringAlgorithms {
 
-    public static final String TAG = "ScoreLab";
+    public static final String TAG = "ScoringAlgorithms";
 
     public static final int SCORE_LOW = 0;
     public static final int SCORE_BALANCED = 1;
@@ -39,22 +39,6 @@ public class ScoreLab {
     public static final int INPUT_b = 1;
     public static final int INPUT_c = 2;
     public static final int INPUT_d = 3;
-
-    // for database
-    private Context mContext;
-    private SQLiteDatabase mDatabase;
-
-    /**
-     * constructor
-     * @param context
-     */
-    public ScoreLab(Context context){
-        // database
-        mContext = context.getApplicationContext();
-        mDatabase = new SMILES_DatabaseHelper(mContext)
-                .getWritableDatabase();
-        Log.d(TAG, "database setup");
-    }
 
     /**
      * Question A
@@ -428,55 +412,5 @@ public class ScoreLab {
             Log.e(TAG, errorMessage);
             return SCORE_ERROR;
         }
-    }
-
-    // ------------------------------ Database methods ------------------------------ //
-
-    /**
-     * getContentValues - gets data from an object and packages it for use with a database
-     *
-     * @param score - a score object with data to save
-     * @return values - content values to unpack
-     */
-    private static ContentValues getContentValues(Score score) {
-        ContentValues values = new ContentValues();
-        values.put(ScoreTable.Columns.UUID, score.getID().toString());
-   //     values.put(ScoreTable.Columns.DATE, score.getDate());                                 //// --- date is not implemented yet
-        values.put(ScoreTable.Columns.SLEEP, score.getSleepScore());
-        values.put(ScoreTable.Columns.MOVEMENT, score.getMovementScore());
-        values.put(ScoreTable.Columns.IMAGINATION, score.getImaginationScore());
-        values.put(ScoreTable.Columns.LAUGHTER, score.getLaughterScore());
-        values.put(ScoreTable.Columns.EATING, score.getEatingScore());
-        values.put(ScoreTable.Columns.SPEAKING, score.getSpeakingScore());
-        Log.d(TAG, "getContentValues put score: " + score);
-        return values;
-    }
-
-    /**
-     * addScore - adds score to the database
-     *
-     * @param score - question object
-     */
-    public void addScore(Score score) {
-        ContentValues values = getContentValues(score);
-        long temp = mDatabase.insert(ScoreTable.NAME, null, values);
-        Log.i(TAG, "number of rows inserted: " + temp);
-    }
-
-    /**
-     * updateScore
-     *
-     * @param score - question object
-     */
-    public void updateScore(Score score) {
-        String uuidString = score.getID().toString();
-        ContentValues values = getContentValues(score);
-
-        Log.d(TAG, "ScoreLab updating score: " + score);
-
-        int temp = mDatabase.update(ScoreTable.NAME, values,
-                ScoreTable.Columns.UUID + " = ? ",
-                new String[]{uuidString});
-        Log.i(TAG, "number of rows updated: " + temp);
     }
 }
