@@ -1,13 +1,6 @@
 package macewan_dust.smiles;
 
-
-import android.content.ContentValues;
-import android.content.Context;
-import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
-
-import macewan_dust.smiles.database.SMILES_DatabaseSchema.ScoreTable;
-import macewan_dust.smiles.database.SMILES_DatabaseHelper;
 
 /**
  * ScoringAlgorithms class includes all methods for converting user input values into score values
@@ -52,14 +45,14 @@ public class ScoringAlgorithms {
      * @param hinderanceCount integer corresponding to number of sleep interuptions as above
      * @return score integer corresponding to score constant
      */
-    public int scoreSleep(int sleepInput, int hinderanceCount) {
+    public static int scoreSleep(int sleepInput, int hinderanceCount) {
 
         // range checking. Note: hinderanceCount should be a max of 5 but could be increased
         // // without changing the scoring behavior, so has a higher range check
         if (sleepInput < INPUT_a || sleepInput > INPUT_d
                 || hinderanceCount < 0 || hinderanceCount > 10){
-            Log.e(TAG, "Error: invalid input, sleepInput: " + sleepInput +
-                    " and hinderanceCount: " + hinderanceCount);
+//            Log.e(TAG, "Error: invalid input, sleepInput: " + sleepInput +
+  //                  " and hinderanceCount: " + hinderanceCount);
             return SCORE_ERROR;
         }
 
@@ -71,8 +64,8 @@ public class ScoringAlgorithms {
         } else if (sleepInput > INPUT_c) {
             return SCORE_HIGH;
         } else {
-            Log.e(TAG, "Error: score for sleepInput: " + sleepInput +
-                    " and hinderanceCount: " + hinderanceCount + " has no rules");
+  //          Log.e(TAG, "Error: score for sleepInput: " + sleepInput +
+    //                " and hinderanceCount: " + hinderanceCount + " has no rules");
             return SCORE_ERROR;
         }
     }
@@ -84,7 +77,7 @@ public class ScoringAlgorithms {
      * @param relaxationIndex 0 is low, 3 is high. all else are balanced
      * @return
      */
-    public int scoreMovement(int exerciseIndex, boolean boneAndMuscle, int relaxationIndex) {
+    public static int scoreMovement(int exerciseIndex, boolean boneAndMuscle, int relaxationIndex) {
 
         int balancedRule = 3; // the number of questions that must be balanced for an overall balanced score.
         int highCounter = 0;
@@ -94,8 +87,8 @@ public class ScoringAlgorithms {
         // range checking
         if (exerciseIndex < INPUT_a || exerciseIndex > INPUT_d
                 || relaxationIndex < INPUT_a || relaxationIndex > INPUT_d){
-            Log.e(TAG, "Error: invalid input, exerciseIndex: " + exerciseIndex +
-                    " and relaxationIndex: " + relaxationIndex);
+ //           Log.e(TAG, "Error: invalid input, exerciseIndex: " + exerciseIndex +
+   //                 " and relaxationIndex: " + relaxationIndex);
             return SCORE_ERROR;
         }
 
@@ -140,7 +133,7 @@ public class ScoringAlgorithms {
      * @param imaginationIndex index of button pushed
      * @return score
      */
-    public int scoreImagination(int mindfulnessIndex, int meditationIndex, int imaginationIndex) {
+    public static int scoreImagination(int mindfulnessIndex, int meditationIndex, int imaginationIndex) {
 
         int balancedRule = 3; // the number of questions that must be balanced for an overall balanced score.
         int highCounter = 0;
@@ -151,9 +144,9 @@ public class ScoringAlgorithms {
         if (mindfulnessIndex < INPUT_a || mindfulnessIndex > INPUT_c
                 || meditationIndex < INPUT_a || meditationIndex > INPUT_c
                 || imaginationIndex < INPUT_a || imaginationIndex > INPUT_c){
-            Log.e(TAG, "Error: invalid input, mindfulnessIndex: " + mindfulnessIndex +
-                    ", meditationIndex: " + meditationIndex +
-                    " and imaginationIndex: " + imaginationIndex);
+//            Log.e(TAG, "Error: invalid input, mindfulnessIndex: " + mindfulnessIndex +
+ //                   ", meditationIndex: " + meditationIndex +
+  //                  " and imaginationIndex: " + imaginationIndex);
             return SCORE_ERROR;
         }
 
@@ -204,11 +197,11 @@ public class ScoringAlgorithms {
      * @param laughterInput is the same number as the user inputs from 1 - 5
      * @return balanced or low score constant
      */
-    public int scoreLaughter(int laughterInput) {
+    public static int scoreLaughter(int laughterInput) {
 
         // range checking
         if (laughterInput <= 0 || laughterInput > 5){
-            Log.e(TAG, "Error: invalid input, laughterInput: " + laughterInput);
+//            Log.e(TAG, "Error: invalid input, laughterInput: " + laughterInput);
             return SCORE_ERROR;
         }
 
@@ -217,7 +210,7 @@ public class ScoringAlgorithms {
         } else if (laughterInput == 5) {
             return SCORE_BALANCED;
         } else {
-            Log.e(TAG, "Error: score for laughterInput: " + laughterInput + "  has no rule");
+  //          Log.e(TAG, "Error: score for laughterInput: " + laughterInput + "  has no rule");
             return SCORE_ERROR;
         }
     }
@@ -231,7 +224,7 @@ public class ScoringAlgorithms {
      * @param unsaturated boolean
      * @return integer code for eating score
      */
-    public int scoreEating(int vegIndex, int meatIndex, int milkIndex, int grainIndex,
+    public static int scoreEating(int vegIndex, int meatIndex, int milkIndex, int grainIndex,
                            int fatIndex, boolean unsaturated) {
 
         int balancedRule = 6; // the number of questions that must be balanced for an overall balanced score.
@@ -343,7 +336,7 @@ public class ScoringAlgorithms {
      * @param impactHealth   true or false
      * @return high, low, balanced or unbalanced score constant
      */
-    public int scoreSpeaking(int speakingRating, boolean debrief, boolean prevented, boolean socialMedia, boolean impactHealth) {
+    public static int scoreSpeaking(int speakingRating, boolean debrief, boolean prevented, boolean socialMedia, boolean impactHealth) {
 
         int balancedRule = 5; // the number of questions that must be balanced for an overall balanced score.
 
@@ -353,7 +346,7 @@ public class ScoringAlgorithms {
 
         // range checking
         if (speakingRating < 1 || speakingRating > 5){
-            Log.e(TAG, "Error: invalid input, speakingRating: " + speakingRating);
+//            Log.e(TAG, "Error: invalid input, speakingRating: " + speakingRating);
             return SCORE_ERROR;
         }
 
@@ -396,7 +389,7 @@ public class ScoringAlgorithms {
      * @param errorMessage text to customize error message.
      * @return score
      */
-    private int scoreHelper(int balancedRule, int highCounter,
+    private static int scoreHelper(int balancedRule, int highCounter,
                             int balancedCounter,int lowCounter, String errorMessage) {
 
         // returning score based on rules

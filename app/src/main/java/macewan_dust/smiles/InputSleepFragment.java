@@ -37,8 +37,6 @@ public class InputSleepFragment extends Fragment {
 
     int mQuestion_A_index;
 
-    ScoringAlgorithms mScoringAlgorithms;
-
     /**
      * new instance constructor
      *
@@ -58,8 +56,6 @@ public class InputSleepFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setRetainInstance(true); // prevents instance of the fragment from being destroyed on rotation.
-
-        mScoringAlgorithms = new ScoringAlgorithms();
     }
 
     /**
@@ -102,7 +98,7 @@ public class InputSleepFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 clearSelected();
-                mQuestion_A_index = mScoringAlgorithms.INPUT_a;
+                mQuestion_A_index = ScoringAlgorithms.INPUT_a;
                 mIcon1a.setBackground(getResources().getDrawable(R.drawable.border_image_selected));
             }
         });
@@ -111,7 +107,7 @@ public class InputSleepFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 clearSelected();
-                mQuestion_A_index = mScoringAlgorithms.INPUT_b;
+                mQuestion_A_index = ScoringAlgorithms.INPUT_b;
                 mIcon1b.setBackground(getResources().getDrawable(R.drawable.border_image_selected));
             }
         });
@@ -120,7 +116,7 @@ public class InputSleepFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 clearSelected();
-                mQuestion_A_index = mScoringAlgorithms.INPUT_c;;
+                mQuestion_A_index = ScoringAlgorithms.INPUT_c;;
                 mIcon1c.setBackground(getResources().getDrawable(R.drawable.border_image_selected));
             }
         });
@@ -129,7 +125,7 @@ public class InputSleepFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 clearSelected();
-                mQuestion_A_index = mScoringAlgorithms.INPUT_d;
+                mQuestion_A_index = ScoringAlgorithms.INPUT_d;
                 mIcon1d.setBackground(getResources().getDrawable(R.drawable.border_image_selected));
             }
         });
@@ -212,7 +208,7 @@ public class InputSleepFragment extends Fragment {
                         counter ++;
                     Log.d(TAG, "Hinderance counter:" + counter );
 
-                    int score = mScoringAlgorithms.scoreSleep(mQuestion_A_index, counter);
+                    int score = ScoringAlgorithms.scoreSleep(mQuestion_A_index, counter);
 
                     int scoreStringID = 1000; // just here to initialize
                     Log.d(TAG, "Score: " + score);

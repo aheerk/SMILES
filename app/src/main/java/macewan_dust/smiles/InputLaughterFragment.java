@@ -26,7 +26,6 @@ public class InputLaughterFragment extends Fragment {
 
     int mQuestion_A_index;
 
-    ScoringAlgorithms mScoringAlgorithms;
 
     /**
      * new instance constructor
@@ -45,8 +44,6 @@ public class InputLaughterFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setRetainInstance(true); // prevents instance of the fragment from being destroyed on rotation.
-
-        mScoringAlgorithms = new ScoringAlgorithms();
     }
 
     /**
@@ -128,7 +125,7 @@ public class InputLaughterFragment extends Fragment {
 
                 } else {
 
-                    int score = mScoringAlgorithms.scoreLaughter(mQuestion_A_index);
+                    int score = ScoringAlgorithms.scoreLaughter(mQuestion_A_index);
 
                     int scoreStringID = 1000; // just here to initialize
                     Log.d(TAG, "Score: " + score);

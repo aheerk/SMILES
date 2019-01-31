@@ -26,8 +26,6 @@ public class InputMovementFragment extends Fragment {
 
     int mQuestion_A_index;
 
-    ScoringAlgorithms mScoringAlgorithms;
-
     /**
      * new instance constructor
      * @return InputSleepFragment
@@ -46,7 +44,6 @@ public class InputMovementFragment extends Fragment {
         super.onCreate(savedInstanceState);
         setRetainInstance(true); // prevents instance of the fragment from being destroyed on rotation.
 
-        mScoringAlgorithms = new ScoringAlgorithms();
     }
 
     /**
@@ -128,7 +125,7 @@ public class InputMovementFragment extends Fragment {
 
                 } else {
 
-                    int score = mScoringAlgorithms.scoreLaughter(mQuestion_A_index);                                 ////// update score method
+                    int score = ScoringAlgorithms.scoreLaughter(mQuestion_A_index);                                 ////// update score method
 
                     int scoreStringID = 1000; // just here to initialize
                     Log.d(TAG, "Score: " + score);
