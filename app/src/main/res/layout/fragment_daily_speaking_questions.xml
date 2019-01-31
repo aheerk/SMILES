@@ -164,7 +164,7 @@
                 android:cropToPadding="true"
                 android:padding="8dp"
 
-                app:srcCompat="@android:drawable/ic_menu_edit" />
+                android:src="@drawable/icon_yes" />
 
 
             <ImageView
@@ -178,7 +178,7 @@
                 android:cropToPadding="true"
                 android:padding="8dp"
 
-                app:srcCompat="@android:drawable/ic_menu_edit" />
+                android:src="@drawable/icon_no" />
 
 
         </LinearLayout>
@@ -226,7 +226,7 @@
                 android:cropToPadding="true"
                 android:padding="8dp"
 
-                app:srcCompat="@android:drawable/ic_menu_edit" />
+                android:src="@drawable/icon_yes" />
 
 
             <ImageView
@@ -240,7 +240,7 @@
                 android:cropToPadding="true"
                 android:padding="8dp"
 
-                app:srcCompat="@android:drawable/ic_menu_edit" />
+                android:src="@drawable/icon_no" />
 
 
         </LinearLayout>
@@ -288,7 +288,7 @@
                 android:cropToPadding="true"
                 android:padding="8dp"
 
-                app:srcCompat="@android:drawable/ic_menu_edit" />
+                android:src="@drawable/icon_yes" />
 
 
             <ImageView
@@ -302,7 +302,7 @@
                 android:cropToPadding="true"
                 android:padding="8dp"
 
-                app:srcCompat="@android:drawable/ic_menu_edit" />
+                android:src="@drawable/icon_no" />
 
 
         </LinearLayout>
@@ -350,7 +350,7 @@
                 android:cropToPadding="true"
                 android:padding="8dp"
 
-                app:srcCompat="@android:drawable/ic_menu_edit" />
+                android:src="@drawable/icon_yes" />
 
 
             <ImageView
@@ -364,7 +364,7 @@
                 android:cropToPadding="true"
                 android:padding="8dp"
 
-                app:srcCompat="@android:drawable/ic_menu_edit" />
+                android:src="@drawable/icon_no" />
 
 
         </LinearLayout>
