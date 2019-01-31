@@ -29,7 +29,8 @@
     <string name="quest_speaking_a">Rate the amount of time spent socializing in person over social media.</string>
     <string name="quest_speaking_b">Did you seek assistance and/or debrief when needed?</string>
     <string name="quest_speaking_c">Did anything prevent your ability to share your thoughts?</string>
-    <string name="quest_speaking_d">Did you engage in more social media than face-to-face socializing??</string>
+    <string name="quest_speaking_d">Did you engage in more social media than face-to-face socializing?</string>
+    <string name="quest_speaking_e">Did your socializing impact your health or take away from your life balance? </string>
 
     <string name="quest_results">Your score is %s!</string>
     <string name="quest_button">Score</string>
