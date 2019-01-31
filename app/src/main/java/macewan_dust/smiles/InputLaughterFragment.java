@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class InputLaughterFragment extends Fragment {
 
@@ -29,6 +30,7 @@ public class InputLaughterFragment extends Fragment {
 
     /**
      * new instance constructor
+     *
      * @return InputSleepFragment
      */
     public static InputLaughterFragment newInstance() {
@@ -38,6 +40,7 @@ public class InputLaughterFragment extends Fragment {
     /**
      * Android will call this function when a view is created. If the view is not destroyed, this
      * remains in effect (not that rotating destroys a view.
+     *
      * @param savedInstanceState
      */
     @Override
@@ -49,8 +52,9 @@ public class InputLaughterFragment extends Fragment {
     /**
      * Android calls this method whenever the view is created. So if the view was on the back
      * stack, this code will be called again when it becomes visible again and calls this code again.
-     * @param inflater - infaltes the view (brings it into memory)
-     * @param container - parent view
+     *
+     * @param inflater           - infaltes the view (brings it into memory)
+     * @param container          - parent view
      * @param savedInstanceState - holds data
      * @return view
      */
@@ -147,6 +151,15 @@ public class InputLaughterFragment extends Fragment {
                             scoreStringID = R.string.score_unbalanced;
                             mIconFeedback.setBackground(getResources().getDrawable(R.drawable.border_image_unbalanced));
                             break;
+                        case ScoringAlgorithms.SCORE_ERROR:
+                            Toast t1 = new Toast(getContext());
+                            t1.setText("Error returned from scoring algorithm");
+                            t1.show();
+                            break;
+                        default:
+                            Toast t2 = new Toast(getContext());
+                            t2.setText("Error in scoring");
+                            t2.show();
                     }
 
                     mResults.setText(getString(R.string.quest_results, getString(scoreStringID)));
@@ -163,7 +176,7 @@ public class InputLaughterFragment extends Fragment {
     /**
      * ideally the icon being selected woudnt need to be cleared, if its id was passed in here              // refactor potential
      */
-    private void clearSelected(){
+    private void clearSelected() {
         mIcon1.setBackground(getResources().getDrawable(R.drawable.border_image));
         mIcon2.setBackground(getResources().getDrawable(R.drawable.border_image));
         mIcon3.setBackground(getResources().getDrawable(R.drawable.border_image));
