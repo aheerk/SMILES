@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class InputSpeakingFragment extends Fragment {
 
@@ -286,6 +287,15 @@ public class InputSpeakingFragment extends Fragment {
                             scoreStringID = R.string.score_unbalanced;
                             mIconFeedback.setBackground(getResources().getDrawable(R.drawable.border_image_unbalanced));
                             break;
+                        case ScoringAlgorithms.SCORE_ERROR:
+                            Toast t1 = new Toast(getContext());
+                            t1.setText("Error returned from scoring algorithm");
+                            t1.show();
+                            break;
+                        default:
+                            Toast t2 = new Toast(getContext());
+                            t2.setText("Error in scoring");
+                            t2.show();
                     }
 
                     mResults.setText(getString(R.string.quest_results, getString(scoreStringID)));
