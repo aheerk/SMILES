@@ -20,7 +20,7 @@
     <string name="quest_imagination_c">How long did you practice imagination or creativity today?</string>
 
     <string name="quest_laughter_title">Laughter</string>
-    <string name="quest_laughter_a">Rate your laughter out of 5</string>
+    <string name="quest_laughter_a">Rate your laughter out of 5:</string>
 
     <string name="quest_eating_title">Eating</string>
     <!-- MISSING EATING QUESTIONS!  -->
@@ -41,7 +41,7 @@
     <string name="score_balanced">balanced</string>
     <string name="score_unbalanced">unbalanced</string>
 
-    <string name="feedback_unselected">Please select an option first</string>
+    <string name="feedback_unselected">Please answer all of the questions first. </string>
 
 
 </resources>

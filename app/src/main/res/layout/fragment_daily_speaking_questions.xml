@@ -319,7 +319,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:padding="8dp"
-                android:text="speaking"
+                android:text="@string/quest_speaking_e"
                 android:textSize="18dp"
                 tools:layout_editor_absoluteX="107dp"
                 tools:layout_editor_absoluteY="61dp" />
