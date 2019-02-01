@@ -2,11 +2,11 @@
 .gradle
 /build.gradle
 /local.properties
-/.idea/libraries
-/.idea/modules.xml
-/.idea/workspace.xml
-/.idea/vcx.xml
-/.idea/assetWizardSettings.xml
+.idea/libraries
+.idea/modules.xml
+.idea/workspace.xml
+.idea/vcx.xml
+.idea/assetWizardSettings.xml
 .DS_Store
 /build
 /captures
