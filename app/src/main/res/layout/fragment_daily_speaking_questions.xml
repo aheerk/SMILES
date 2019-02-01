@@ -18,7 +18,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="8dp"
-            android:text="Title filler"
+            android:text="@string/quest_speaking_title"
             android:textSize="32sp" />
 
         <!-- First Question -->
@@ -33,7 +33,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:padding="8dp"
-                android:text="question filler"
+                android:text="@string/quest_speaking_a"
                 android:textSize="18dp"
                 tools:layout_editor_absoluteX="107dp"
                 tools:layout_editor_absoluteY="61dp" />
@@ -55,8 +55,8 @@
 
             <ImageView
                 android:id="@+id/icon_1a"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="50dp"
+                android:layout_height="70dp"
                 android:layout_margin="2dp"
                 android:layout_weight="1"
 
@@ -69,8 +69,8 @@
 
             <ImageView
                 android:id="@+id/icon_1b"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="50dp"
+                android:layout_height="70dp"
                 android:layout_margin="2dp"
                 android:layout_weight="1"
 
@@ -82,8 +82,8 @@
 
             <ImageView
                 android:id="@+id/icon_1c"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="50dp"
+                android:layout_height="70dp"
                 android:layout_margin="2dp"
                 android:layout_weight="1"
 
@@ -95,8 +95,8 @@
 
             <ImageView
                 android:id="@+id/icon_1d"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="50dp"
+                android:layout_height="70dp"
                 android:layout_margin="2dp"
                 android:layout_weight="1"
 
@@ -108,8 +108,8 @@
 
             <ImageView
                 android:id="@+id/icon_1e"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="50dp"
+                android:layout_height="70dp"
                 android:layout_margin="2dp"
                 android:layout_weight="1"
 
@@ -133,7 +133,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:padding="8dp"
-                android:text="question filler"
+                android:text="@string/quest_speaking_b"
                 android:textSize="18dp"
                 tools:layout_editor_absoluteX="107dp"
                 tools:layout_editor_absoluteY="61dp" />
@@ -155,8 +155,8 @@
 
             <ImageView
                 android:id="@+id/icon_2a"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="50dp"
+                android:layout_height="70dp"
                 android:layout_margin="2dp"
                 android:layout_weight="1"
 
@@ -164,13 +164,13 @@
                 android:cropToPadding="true"
                 android:padding="8dp"
 
-                app:srcCompat="@android:drawable/ic_menu_edit" />
+                android:src="@drawable/icon_yes" />
 
 
             <ImageView
                 android:id="@+id/icon_2b"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="50dp"
+                android:layout_height="70dp"
                 android:layout_margin="2dp"
                 android:layout_weight="1"
 
@@ -178,7 +178,7 @@
                 android:cropToPadding="true"
                 android:padding="8dp"
 
-                app:srcCompat="@android:drawable/ic_menu_edit" />
+                android:src="@drawable/icon_no" />
 
 
         </LinearLayout>
@@ -195,7 +195,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:padding="8dp"
-                android:text="question filler"
+                android:text="@string/quest_speaking_c"
                 android:textSize="18dp"
                 tools:layout_editor_absoluteX="107dp"
                 tools:layout_editor_absoluteY="61dp" />
@@ -217,8 +217,8 @@
 
             <ImageView
                 android:id="@+id/icon_3a"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="50dp"
+                android:layout_height="70dp"
                 android:layout_margin="2dp"
                 android:layout_weight="1"
 
@@ -226,13 +226,13 @@
                 android:cropToPadding="true"
                 android:padding="8dp"
 
-                app:srcCompat="@android:drawable/ic_menu_edit" />
+                android:src="@drawable/icon_yes" />
 
 
             <ImageView
                 android:id="@+id/icon_3b"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="50dp"
+                android:layout_height="70dp"
                 android:layout_margin="2dp"
                 android:layout_weight="1"
 
@@ -240,7 +240,7 @@
                 android:cropToPadding="true"
                 android:padding="8dp"
 
-                app:srcCompat="@android:drawable/ic_menu_edit" />
+                android:src="@drawable/icon_no" />
 
 
         </LinearLayout>
@@ -257,7 +257,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:padding="8dp"
-                android:text="question filler"
+                android:text="@string/quest_speaking_d"
                 android:textSize="18dp"
                 tools:layout_editor_absoluteX="107dp"
                 tools:layout_editor_absoluteY="61dp" />
@@ -279,8 +279,8 @@
 
             <ImageView
                 android:id="@+id/icon_4a"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="50dp"
+                android:layout_height="70dp"
                 android:layout_margin="2dp"
                 android:layout_weight="1"
 
@@ -288,13 +288,13 @@
                 android:cropToPadding="true"
                 android:padding="8dp"
 
-                app:srcCompat="@android:drawable/ic_menu_edit" />
+                android:src="@drawable/icon_yes" />
 
 
             <ImageView
                 android:id="@+id/icon_4b"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="50dp"
+                android:layout_height="70dp"
                 android:layout_margin="2dp"
                 android:layout_weight="1"
 
@@ -302,7 +302,7 @@
                 android:cropToPadding="true"
                 android:padding="8dp"
 
-                app:srcCompat="@android:drawable/ic_menu_edit" />
+                android:src="@drawable/icon_no" />
 
 
         </LinearLayout>
@@ -319,7 +319,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:padding="8dp"
-                android:text="question filler"
+                android:text="@string/quest_speaking_e"
                 android:textSize="18dp"
                 tools:layout_editor_absoluteX="107dp"
                 tools:layout_editor_absoluteY="61dp" />
@@ -341,8 +341,8 @@
 
             <ImageView
                 android:id="@+id/icon_5a"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="50dp"
+                android:layout_height="70dp"
                 android:layout_margin="2dp"
                 android:layout_weight="1"
 
@@ -350,13 +350,13 @@
                 android:cropToPadding="true"
                 android:padding="8dp"
 
-                app:srcCompat="@android:drawable/ic_menu_edit" />
+                android:src="@drawable/icon_yes" />
 
 
             <ImageView
                 android:id="@+id/icon_5b"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="50dp"
+                android:layout_height="70dp"
                 android:layout_margin="2dp"
                 android:layout_weight="1"
 
@@ -364,7 +364,7 @@
                 android:cropToPadding="true"
                 android:padding="8dp"
 
-                app:srcCompat="@android:drawable/ic_menu_edit" />
+                android:src="@drawable/icon_no" />
 
 
         </LinearLayout>
