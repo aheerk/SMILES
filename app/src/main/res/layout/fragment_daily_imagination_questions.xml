@@ -273,7 +273,7 @@
             android:background="@drawable/border_image_no_data"
             android:cropToPadding="true"
             android:padding="8dp"
-            app:srcCompat="@drawable/imagination_icon_imagination"
+            app:srcCompat="@drawable/icon_imagination"
             />
 
         <!-- Score Text -->
