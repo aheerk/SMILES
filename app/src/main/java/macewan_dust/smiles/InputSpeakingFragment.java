@@ -43,7 +43,10 @@ public class InputSpeakingFragment extends Fragment {
     TextView mResults;
 
     int mQuestion_A_index;
-    //For each boolean, true = yes and false = no
+    //The following are indices instead of booleans, as there is no way to indicate
+    //that there is no selection with a boolean. Having these as ints allows for us to
+    //use the NO_SELECTION constant.
+    //The scoring algorithm takes the result of the expression mQuestion_X_index == 1
     int mQuestion_B_index;
     int mQuestion_C_index;
     int mQuestion_D_index;
@@ -74,7 +77,7 @@ public class InputSpeakingFragment extends Fragment {
      * Android calls this method whenever the view is created. So if the view was on the back
      * stack, this code will be called again when it becomes visible again and calls this code again.
      *
-     * @param inflater           - infaltes the view (brings it into memory)
+     * @param inflater           - inflates the view (brings it into memory)
      * @param container          - parent view
      * @param savedInstanceState - holds data
      * @return view
