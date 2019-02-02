@@ -127,4 +127,24 @@ public class Score {
 
         return sb.toString();
     }
+
+    public static int getBackgroundID(int score){
+
+        switch (score) {
+            case ScoringAlgorithms.SCORE_LOW:
+                return R.drawable.border_image_low;
+            case ScoringAlgorithms.SCORE_HIGH:
+                return R.drawable.border_image_high;
+            case ScoringAlgorithms.SCORE_BALANCED:
+                return R.drawable.border_image_balanced;
+            case ScoringAlgorithms.SCORE_OFF:
+                return R.drawable.border_image_unbalanced;
+            default:
+                return R.drawable.border_image_no_data;
+        }
+
+
+
+    }
+
 }

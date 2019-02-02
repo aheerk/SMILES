@@ -15,7 +15,7 @@ public class MainActivity extends SingleFragmentActivity implements BottomNaviga
     // The first fragment launched is specified here
     @Override
     protected Fragment createFragment() {
-        return DashboardFragment.newInstance();
+        return DashboardListFragment.newInstance();
     }
 
 
@@ -24,10 +24,25 @@ public class MainActivity extends SingleFragmentActivity implements BottomNaviga
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_fragment);
 
-        // load default fragment
-        //   loadFragment(new DashboardFragment());                                // this is already done in the createFragment function above.
+        // bottom navigation
         BottomNavigationView navigation = findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(this);
+
+        /*
+        // toolbar
+        // reference: https://stackoverflow.com/questions/26651602/display-back-arrow-on-toolbar
+        Toolbar toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
+*/
     }
 
     /**
@@ -63,7 +78,7 @@ public class MainActivity extends SingleFragmentActivity implements BottomNaviga
 
         switch (item.getItemId()) {
             case R.id.navigation_dashboard:
-                fragment = new DashboardFragment();
+                fragment = new DashboardListFragment();
                 break;
             case R.id.navigation_graph:
                 fragment = new GraphFragment();

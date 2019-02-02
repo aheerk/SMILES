@@ -30,6 +30,8 @@ public class InfoListFragment extends Fragment {
         super.onCreate(savedInstanceState);
 
 // generating some items for testing                                                                    /////-------- refactor this
+        InfoItem temp4 = new InfoItem(R.drawable.icon_one,
+                "Introduction", "subtitle", new IntroductionFragment());
         InfoItem temp1 = new InfoItem(R.drawable.icon_one,
                 "SMILES", "subtitle", new SmilesInfo());
         InfoItem temp2 = new InfoItem(R.drawable.icon_one,
@@ -37,10 +39,10 @@ public class InfoListFragment extends Fragment {
         InfoItem temp3 = new InfoItem(R.drawable.icon_one,
                 "Credit", "subtitle", new CreditInfoFragment());
 
+        mInfoData.add(temp4);
         mInfoData.add(temp1);
         mInfoData.add(temp2);
         mInfoData.add(temp3);
-
     }
 
     @Nullable
