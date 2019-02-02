@@ -15,7 +15,7 @@ public class MainActivity extends SingleFragmentActivity implements BottomNaviga
     // The first fragment launched is specified here
     @Override
     protected Fragment createFragment() {
-        return InputSleepFragment.newInstance();
+        return DashboardFragment.newInstance();
     }
 
 
@@ -69,7 +69,7 @@ public class MainActivity extends SingleFragmentActivity implements BottomNaviga
                 fragment = new GraphFragment();
                 break;
             case R.id.navigation_info:
-                fragment = new InfoFragment();
+                fragment = new InfoListFragment();
                 break;
         }
 

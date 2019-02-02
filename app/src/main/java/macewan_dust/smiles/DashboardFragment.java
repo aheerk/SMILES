@@ -16,6 +16,16 @@ public class DashboardFragment extends Fragment {
     FloatingActionButton mButtonStartDailyQuestions;
     private static final String TAG = "Dashboard";
 
+    /**
+     * new instance constructor
+     *
+     * @return InputSleepFragment
+     */
+    public static DashboardFragment newInstance() {
+        return new DashboardFragment();
+    }
+
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
@@ -25,22 +35,18 @@ public class DashboardFragment extends Fragment {
 
 
         mButtonStartDailyQuestions = v.findViewById(R.id.button_start_daily_questions);
-
         mButtonStartDailyQuestions.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v){
-
-                DailyFragment fragment = new DailyFragment();
+                DailyListFragment fragment = new DailyListFragment();
                 replaceFragment(fragment);
             }
         });
 
         return v;
-
-
-
     }
+
     /**
      * replaceFragment - performs fragment transactions.
      * @param newFragment
@@ -52,6 +58,4 @@ public class DashboardFragment extends Fragment {
         transaction.commit();
         Log.d(TAG, "replacing fragment");
     }
-
-
 }
