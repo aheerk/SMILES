@@ -19,7 +19,6 @@ public class InputMovementFragment extends Fragment {
     ImageView mIcon2;
     ImageView mIcon3;
     ImageView mIcon4;
-    ImageView mIcon5;
     Button mButton;
     ImageView mIconFeedback;
     TextView mResults;
@@ -65,7 +64,6 @@ public class InputMovementFragment extends Fragment {
         mIcon2 = v.findViewById(R.id.icon_1b);
         mIcon3 = v.findViewById(R.id.icon_1c);
         mIcon4 = v.findViewById(R.id.icon_1d);
-        mIcon5 = v.findViewById(R.id.icon_1e);
 
         mQuestion_A_index = NO_SELECTION;
 
@@ -104,15 +102,6 @@ public class InputMovementFragment extends Fragment {
                 clearSelected();
                 mQuestion_A_index = 4;
                 mIcon4.setBackground(getResources().getDrawable(R.drawable.border_image_selected));
-            }
-        });
-
-        mIcon5.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                clearSelected();
-                mQuestion_A_index = 5;
-                mIcon5.setBackground(getResources().getDrawable(R.drawable.border_image_selected));
             }
         });
 
@@ -168,7 +157,6 @@ public class InputMovementFragment extends Fragment {
         mIcon2.setBackground(getResources().getDrawable(R.drawable.border_image));
         mIcon3.setBackground(getResources().getDrawable(R.drawable.border_image));
         mIcon4.setBackground(getResources().getDrawable(R.drawable.border_image));
-        mIcon5.setBackground(getResources().getDrawable(R.drawable.border_image));
     }
 
 };
