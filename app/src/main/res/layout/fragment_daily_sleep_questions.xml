@@ -74,7 +74,7 @@
             android:background="@drawable/border_image"
             android:cropToPadding="true"
 
-            app:srcCompat="@android:drawable/ic_menu_edit" />
+            android:src="@drawable/icon_4_to_5" />
 
         <ImageView
             android:id="@+id/icon_1c"
@@ -87,7 +87,7 @@
             android:background="@drawable/border_image"
             android:cropToPadding="true"
 
-            app:srcCompat="@android:drawable/ic_menu_edit" />
+            android:src="@drawable/icon_6_to_9" />
 
         <ImageView
             android:id="@+id/icon_1d"
@@ -148,7 +148,7 @@
             android:background="@drawable/border_image"
             android:cropToPadding="true"
 
-            app:srcCompat="@android:drawable/ic_menu_edit" />
+            app:srcCompat="@drawable/icon_sleep_anxiety" />
 
 
         <ImageView
@@ -162,7 +162,7 @@
             android:background="@drawable/border_image"
             android:cropToPadding="true"
 
-            app:srcCompat="@android:drawable/ic_menu_edit" />
+            app:srcCompat="@drawable/icon_sleep_restlessness" />
 
         <ImageView
             android:id="@+id/icon_2c"
@@ -175,7 +175,7 @@
             android:background="@drawable/border_image"
             android:cropToPadding="true"
 
-            app:srcCompat="@android:drawable/ic_menu_edit" />
+            app:srcCompat="@drawable/icon_sleep_shift_work" />
 
         <ImageView
             android:id="@+id/icon_2d"
@@ -188,7 +188,7 @@
             android:background="@drawable/border_image"
             android:cropToPadding="true"
 
-            app:srcCompat="@android:drawable/ic_menu_edit" />
+            app:srcCompat="@drawable/icon_sleep_school" />
 
         <ImageView
             android:id="@+id/icon_2e"
@@ -201,7 +201,7 @@
             android:background="@drawable/border_image"
             android:cropToPadding="true"
 
-            app:srcCompat="@android:drawable/ic_menu_edit" />
+            app:srcCompat="@drawable/icon_sleep_other" />
     </LinearLayout>
 
     <!-- Score Button -->
