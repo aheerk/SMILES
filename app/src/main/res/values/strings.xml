@@ -42,6 +42,7 @@
     <string name="score_unbalanced">unbalanced</string>
 
     <string name="feedback_unselected">Please answer all of the questions first. </string>
+    <string name="score_error">Error</string>
 
 
 </resources>
