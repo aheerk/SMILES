@@ -5,6 +5,8 @@
 
     <dimen name="input_icons_width">60dp</dimen>
     <dimen name="input_icons_height">60dp</dimen>
+    <dimen name="input_icons_padding">8dp</dimen>
+    <dimen name="input_icons_margin">0dp</dimen>
 
     <dimen name="quest_padding">8dp</dimen>
 
