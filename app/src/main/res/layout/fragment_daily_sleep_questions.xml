@@ -59,8 +59,7 @@
             android:background="@drawable/border_image"
             android:cropToPadding="true"
             android:padding="8dp"
-            android:src="@drawable/icon_less"
-            />
+            android:src="@drawable/icon_less" />
 
 
         <ImageView
@@ -74,7 +73,7 @@
             android:cropToPadding="true"
             android:padding="8dp"
 
-            app:srcCompat="@android:drawable/ic_menu_edit" />
+            android:src="@drawable/icon_4_to_5" />
 
         <ImageView
             android:id="@+id/icon_1c"
@@ -87,7 +86,7 @@
             android:cropToPadding="true"
             android:padding="8dp"
 
-            app:srcCompat="@android:drawable/ic_menu_edit" />
+            android:src="@drawable/icon_6_to_9" />
 
         <ImageView
             android:id="@+id/icon_1d"
@@ -148,7 +147,7 @@
             android:cropToPadding="true"
             android:padding="8dp"
 
-            app:srcCompat="@android:drawable/ic_menu_edit" />
+            app:srcCompat="@drawable/icon_sleep_anxiety" />
 
 
         <ImageView
@@ -162,7 +161,7 @@
             android:cropToPadding="true"
             android:padding="8dp"
 
-            app:srcCompat="@android:drawable/ic_menu_edit" />
+            app:srcCompat="@drawable/icon_sleep_restlessness" />
 
         <ImageView
             android:id="@+id/icon_2c"
@@ -175,7 +174,7 @@
             android:cropToPadding="true"
             android:padding="8dp"
 
-            app:srcCompat="@android:drawable/ic_menu_edit" />
+            app:srcCompat="@drawable/icon_sleep_shift_work" />
 
         <ImageView
             android:id="@+id/icon_2d"
@@ -188,7 +187,7 @@
             android:cropToPadding="true"
             android:padding="8dp"
 
-            app:srcCompat="@android:drawable/ic_menu_edit" />
+            app:srcCompat="@drawable/icon_sleep_school" />
 
         <ImageView
             android:id="@+id/icon_2e"
@@ -201,7 +200,7 @@
             android:cropToPadding="true"
             android:padding="8dp"
 
-            app:srcCompat="@android:drawable/ic_menu_edit" />
+            app:srcCompat="@drawable/icon_sleep_other" />
     </LinearLayout>
 
     <!-- Score Button -->
