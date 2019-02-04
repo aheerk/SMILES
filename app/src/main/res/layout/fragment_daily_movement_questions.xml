@@ -64,7 +64,7 @@
                 android:cropToPadding="true"
                 android:padding="@dimen/input_icons_padding"
 
-                app:srcCompat="@drawable/icon_less_than_10" />
+                app:srcCompat="@drawable/icon_less" />
 
 
             <ImageView
@@ -78,7 +78,7 @@
                 android:cropToPadding="true"
                 android:padding="@dimen/input_icons_padding"
 
-                app:srcCompat="@drawable/icon_10_to_20" />
+                app:srcCompat="@drawable/ic_10_20" />
 
             <ImageView
                 android:id="@+id/icon_1c"
@@ -91,7 +91,7 @@
                 android:cropToPadding="true"
                 android:padding="@dimen/input_icons_padding"
 
-                app:srcCompat="@drawable/icon_20_to_45" />
+                app:srcCompat="@drawable/ic_20_45" />
 
             <ImageView
                 android:id="@+id/icon_1d"
@@ -104,7 +104,7 @@
                 android:cropToPadding="true"
                 android:padding="@dimen/input_icons_padding"
 
-                app:srcCompat="@drawable/icon_greater_than_45" />
+                app:srcCompat="@drawable/icon_greater" />
 
         </LinearLayout>
 
@@ -213,7 +213,7 @@
                 android:cropToPadding="true"
                 android:padding="@dimen/input_icons_padding"
 
-                app:srcCompat="@drawable/icon_less_than_10" />
+                app:srcCompat="@drawable/icon_less" />
 
 
             <ImageView
@@ -227,7 +227,7 @@
                 android:cropToPadding="true"
                 android:padding="@dimen/input_icons_padding"
 
-                app:srcCompat="@drawable/icon_10_to_20" />
+                app:srcCompat="@drawable/ic_10_20" />
 
             <ImageView
                 android:id="@+id/icon_3c"
@@ -240,7 +240,7 @@
                 android:cropToPadding="true"
                 android:padding="@dimen/input_icons_padding"
 
-                app:srcCompat="@drawable/icon_20_to_45" />
+                app:srcCompat="@drawable/ic_20_45" />
 
             <ImageView
                 android:id="@+id/icon_3d"
@@ -253,7 +253,7 @@
                 android:cropToPadding="true"
                 android:padding="@dimen/input_icons_padding"
 
-                app:srcCompat="@drawable/icon_greater_than_45" />
+                app:srcCompat="@drawable/icon_greater" />
 
         </LinearLayout>
 

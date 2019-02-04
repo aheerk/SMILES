@@ -68,26 +68,26 @@
             android:layout_width="@dimen/input_icons_width"
             android:layout_height="@dimen/input_icons_height"
             android:layout_margin="@dimen/input_icons_margin"
-            android:padding="@dimen/input_icons_padding"
             android:layout_weight="1"
-
             android:background="@drawable/border_image"
-            android:cropToPadding="true"
 
-            android:src="@drawable/icon_4_to_5" />
+            android:cropToPadding="true"
+            android:padding="@dimen/input_icons_padding"
+
+            android:src="@drawable/ic_4_5" />
 
         <ImageView
             android:id="@+id/icon_1c"
             android:layout_width="@dimen/input_icons_width"
             android:layout_height="@dimen/input_icons_height"
             android:layout_margin="@dimen/input_icons_margin"
-            android:padding="@dimen/input_icons_padding"
             android:layout_weight="1"
-
             android:background="@drawable/border_image"
-            android:cropToPadding="true"
 
-            android:src="@drawable/icon_6_to_9" />
+            android:cropToPadding="true"
+            android:padding="@dimen/input_icons_padding"
+
+            android:src="@drawable/ic_6_9" />
 
         <ImageView
             android:id="@+id/icon_1d"
