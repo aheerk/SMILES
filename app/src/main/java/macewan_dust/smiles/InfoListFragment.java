@@ -30,14 +30,10 @@ public class InfoListFragment extends Fragment {
         super.onCreate(savedInstanceState);
 
 // generating some items for testing                                                                    /////-------- refactor this
-        InfoItem temp4 = new InfoItem(R.drawable.icon_one,
-                "Introduction", "subtitle", new IntroductionFragment());
-        InfoItem temp1 = new InfoItem(R.drawable.icon_one,
-                "SMILES", "subtitle", new SmilesInfo());
-        InfoItem temp2 = new InfoItem(R.drawable.icon_one,
-                "Web links", "subtitle", new WebInfoFragment());
-        InfoItem temp3 = new InfoItem(R.drawable.icon_one,
-                "Credit", "subtitle", new CreditInfoFragment());
+        InfoItem temp4 = new InfoItem("Introduction", "subtitle", new IntroductionFragment());
+        InfoItem temp1 = new InfoItem("SMILES", "subtitle", new SmilesInfo());
+        InfoItem temp2 = new InfoItem("Web links", "subtitle", new WebInfoFragment());
+        InfoItem temp3 = new InfoItem("Credit", "subtitle", new CreditInfoFragment());
 
         mInfoData.add(temp4);
         mInfoData.add(temp1);
@@ -70,13 +66,11 @@ public class InfoListFragment extends Fragment {
          * Optional: implementing on click listener and onClick method
          */
         public class InfoViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
-            public ImageView mIcon;
             public TextView mTitle;
             public TextView mSubtitle;
 
             public InfoViewHolder(View itemView) {
                 super(itemView);
-                mIcon = itemView.findViewById(R.id.list_item_info_image);
                 mTitle = itemView.findViewById(R.id.list_item_info_title);
                 mSubtitle = itemView.findViewById(R.id.list_item_info_subtitle);
                 itemView.setOnClickListener(this);
@@ -123,7 +117,6 @@ public class InfoListFragment extends Fragment {
          */
         @Override
         public void onBindViewHolder(@NonNull InfoListFragment.InfoAdapter.InfoViewHolder holder, int position) {
-            holder.mIcon.setImageResource(mInfoListData.get(position).getIconID());
             holder.mTitle.setText(mInfoListData.get(position).getTitle());
             holder.mSubtitle.setText(mInfoListData.get(position).getSubtitle());
         }

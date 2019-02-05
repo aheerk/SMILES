@@ -64,8 +64,8 @@ public class ScoringAlgorithms {
         } else if (sleepInput > INPUT_c) {
             return SCORE_HIGH;
         } else {
-  //          Log.e(TAG, "Error: score for sleepInput: " + sleepInput +
-    //                " and hinderanceCount: " + hinderanceCount + " has no rules");
+            Log.e(TAG, "Error: score for sleepInput: " + sleepInput +
+                    " and hinderanceCount: " + hinderanceCount + " has no rules");
             return SCORE_ERROR;
         }
     }
@@ -144,9 +144,9 @@ public class ScoringAlgorithms {
         if (mindfulnessIndex < INPUT_a || mindfulnessIndex > INPUT_c
                 || meditationIndex < INPUT_a || meditationIndex > INPUT_c
                 || imaginationIndex < INPUT_a || imaginationIndex > INPUT_c){
-//            Log.e(TAG, "Error: invalid input, mindfulnessIndex: " + mindfulnessIndex +
- //                   ", meditationIndex: " + meditationIndex +
-  //                  " and imaginationIndex: " + imaginationIndex);
+//           Log.e(TAG, "Error: invalid input, mindfulnessIndex: " + mindfulnessIndex +
+//                    ", meditationIndex: " + meditationIndex +
+//                    " and imaginationIndex: " + imaginationIndex);
             return SCORE_ERROR;
         }
 

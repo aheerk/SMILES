@@ -7,6 +7,7 @@
     android:gravity="top"
     android:orientation="vertical">
 
+    <!-- Title -->
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -14,11 +15,13 @@
         android:text="@string/quest_laughter_title"
         android:textSize="32sp" />
 
+    <!-- Question 1 -->
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
 
+        <!-- Question -->
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -28,6 +31,7 @@
             tools:layout_editor_absoluteX="107dp"
             tools:layout_editor_absoluteY="61dp" />
 
+        <!-- Info Icon -->
         <ImageView
             android:id="@+id/icon_info"
             android:layout_width="match_parent"
@@ -35,6 +39,7 @@
             app:srcCompat="@android:drawable/ic_menu_info_details" />
     </LinearLayout>
 
+    <!-- Input Buttons -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -43,62 +48,63 @@
 
         <ImageView
             android:id="@+id/icon_1a"
-            android:layout_width="50dp"
-            android:layout_height="70dp"
-            android:layout_margin="2dp"
+            android:layout_width="@dimen/input_icons_width"
+            android:layout_height="@dimen/input_icons_height"
+            android:layout_margin="@dimen/input_icons_margin"
+            android:padding="@dimen/input_icons_padding"
             android:layout_weight="1"
             android:background="@drawable/border_image"
             android:cropToPadding="true"
-            android:padding="8dp"
             android:src="@drawable/icon_one" />
 
 
         <ImageView
             android:id="@+id/icon_1b"
-            android:layout_width="50dp"
-            android:layout_height="70dp"
-            android:layout_margin="2dp"
+            android:layout_width="@dimen/input_icons_width"
+            android:layout_height="@dimen/input_icons_height"
+            android:layout_margin="@dimen/input_icons_margin"
+            android:padding="@dimen/input_icons_padding"
             android:layout_weight="1"
             android:background="@drawable/border_image"
             android:cropToPadding="true"
-            android:padding="8dp"
             android:src="@drawable/icon_two" />
 
         <ImageView
             android:id="@+id/icon_1c"
-            android:layout_width="50dp"
-            android:layout_height="70dp"
-            android:layout_margin="2dp"
+            android:layout_width="@dimen/input_icons_width"
+            android:layout_height="@dimen/input_icons_height"
+            android:layout_margin="@dimen/input_icons_margin"
+            android:padding="@dimen/input_icons_padding"
             android:layout_weight="1"
             android:background="@drawable/border_image"
             android:cropToPadding="true"
-            android:padding="8dp"
             android:src="@drawable/icon_three" />
 
         <ImageView
             android:id="@+id/icon_1d"
-            android:layout_width="50dp"
-            android:layout_height="70dp"
-            android:layout_margin="2dp"
+            android:layout_width="@dimen/input_icons_width"
+            android:layout_height="@dimen/input_icons_height"
+            android:layout_margin="@dimen/input_icons_margin"
+            android:padding="@dimen/input_icons_padding"
             android:layout_weight="1"
             android:background="@drawable/border_image"
             android:cropToPadding="true"
-            android:padding="8dp"
             android:src="@drawable/icon_four" />
 
         <ImageView
             android:id="@+id/icon_1e"
-            android:layout_width="50dp"
-            android:layout_height="70dp"
-            android:layout_margin="2dp"
+            android:layout_width="@dimen/input_icons_width"
+            android:layout_height="@dimen/input_icons_height"
+            android:layout_margin="@dimen/input_icons_margin"
+            android:padding="@dimen/input_icons_padding"
             android:layout_weight="1"
             android:background="@drawable/border_image"
             android:cropToPadding="true"
-            android:padding="8dp"
             android:src="@drawable/icon_five" />
 
     </LinearLayout>
 
+    <!-- Score Button -->
     <Button
         android:id="@+id/score_button"
         style="@style/Widget.AppCompat.Button.Colored"
@@ -109,6 +115,7 @@
         android:text="@string/quest_button"
         android:textAlignment="center" />
 
+    <!-- Result Icon -->
     <LinearLayout
         android:layout_width="300dp"
         android:layout_height="wrap_content"

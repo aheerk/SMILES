@@ -12,8 +12,6 @@ import static org.junit.Assert.*;
 
 public class ScoringAlgorithmsTest {
 
-
-
     @Before
     public void setUp() throws Exception {
 
