@@ -63,7 +63,7 @@ public class InputMovementFragment extends Fragment {
     /**
      * Android calls this method whenever the view is created. So if the view was on the back
      * stack, this code will be called again when it becomes visible again and calls this code again.
-     * @param inflater - infaltes the view (brings it into memory)
+     * @param inflater - inflates the view (brings it into memory)
      * @param container - parent view
      * @param savedInstanceState - holds data
      * @return view
@@ -227,9 +227,9 @@ public class InputMovementFragment extends Fragment {
 
                             break;
                         default:
-                            //Toast t2 = new Toast(getContext());
-                            //t/2.setText("Error in scoring");
-                            //t2.show();
+                            Toast t2 = new Toast(getContext());
+                            t2.setText("Error in scoring");
+                            t2.show();
                     }
 
                     mResults.setText(getString(R.string.quest_results, getString(scoreStringID)));
@@ -244,7 +244,7 @@ public class InputMovementFragment extends Fragment {
     }
 
     /**
-     * ideally the icon being selected woudnt need to be cleared, if its id was passed in here              // refactor potential
+     * ideally the icon being selected wouldn't need to be cleared, if its id was passed in here              // refactor potential
      */
     private void clearQ1Selected(){
         mIcon1_a.setBackground(getResources().getDrawable(R.drawable.border_image));
