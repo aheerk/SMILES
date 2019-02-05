@@ -13,7 +13,7 @@ import android.widget.Toast;
 
 public class InputSpeakingFragment extends Fragment {
 
-    private static final String TAG = "InputSleepFragment";
+    private static final String TAG = "InputSpeakingFragment";
     private static final int NO_SELECTION = 100000;
 
     // 5 Questions total

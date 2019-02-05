@@ -64,7 +64,7 @@
                 android:background="@drawable/border_image"
                 android:cropToPadding="true"
                 android:padding="@dimen/input_icons_padding"
-                app:srcCompat="@android:drawable/ic_menu_edit" />
+                app:srcCompat="@drawable/icon_one" />
 
 
             <ImageView
@@ -78,46 +78,46 @@
                 android:cropToPadding="true"
                 android:padding="@dimen/input_icons_padding"
 
-                app:srcCompat="@android:drawable/ic_menu_edit" />
+                app:srcCompat="@drawable/icon_two" />
 
             <ImageView
                 android:id="@+id/icon_1c"
                 android:layout_width="@dimen/input_icons_width"
                 android:layout_height="@dimen/input_icons_height"
                 android:layout_margin="@dimen/input_icons_margin"
-                android:padding="@dimen/input_icons_padding"
                 android:layout_weight="1"
-
                 android:background="@drawable/border_image"
-                android:cropToPadding="true"
 
-                app:srcCompat="@android:drawable/ic_menu_edit" />
+                android:cropToPadding="true"
+                android:padding="@dimen/input_icons_padding"
+
+                app:srcCompat="@drawable/icon_three" />
 
             <ImageView
                 android:id="@+id/icon_1d"
                 android:layout_width="@dimen/input_icons_width"
                 android:layout_height="@dimen/input_icons_height"
                 android:layout_margin="@dimen/input_icons_margin"
-                android:padding="@dimen/input_icons_padding"
                 android:layout_weight="1"
-
                 android:background="@drawable/border_image"
-                android:cropToPadding="true"
 
-                app:srcCompat="@android:drawable/ic_menu_edit" />
+                android:cropToPadding="true"
+                android:padding="@dimen/input_icons_padding"
+
+                app:srcCompat="@drawable/icon_four" />
 
             <ImageView
                 android:id="@+id/icon_1e"
                 android:layout_width="@dimen/input_icons_width"
                 android:layout_height="@dimen/input_icons_height"
                 android:layout_margin="@dimen/input_icons_margin"
-                android:padding="@dimen/input_icons_padding"
                 android:layout_weight="1"
-
                 android:background="@drawable/border_image"
-                android:cropToPadding="true"
 
-                app:srcCompat="@android:drawable/ic_menu_edit" />
+                android:cropToPadding="true"
+                android:padding="@dimen/input_icons_padding"
+
+                app:srcCompat="@drawable/icon_five" />
 
         </LinearLayout>
 
