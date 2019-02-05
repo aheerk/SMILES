@@ -45,7 +45,7 @@
     <string name="score_error">Error</string>
 
     <!--INTRODUCTIONS -->
-    <string name="intoduction_title_smiles">SMILES</string>
+    <string name="introduction_title_smiles">SMILES</string>
     <string name="introduction_subtitle_smiles">The Acronym for Nurses\' Self Care </string>
     <string name="introduction_explanation_smiles">SMILES is a self care tool providing a framework that is realistic,
         applicable, and easily utilized. To support the diversity of the nursing profession. Encouraging a variety of
