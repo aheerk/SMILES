@@ -9,7 +9,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:gravity="top"
+        android:gravity="top|center"
         android:orientation="vertical">
 
         <TextView
@@ -21,35 +21,30 @@
             android:textSize="32sp" />
 
         <!-- First Question -->
+
         <LinearLayout
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
 
             <!-- Question -->
             <TextView
                 android:id="@+id/question_text_1"
+                style="@style/BodyText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:padding="8dp"
                 android:text="@string/quest_imagination_a"
-                android:textSize="18dp"
                 tools:layout_editor_absoluteX="107dp"
                 tools:layout_editor_absoluteY="61dp" />
 
             <!-- Info Icon -->
-            <ImageView
-                android:id="@+id/icon_info_1"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:srcCompat="@android:drawable/ic_menu_info_details" />
+
         </LinearLayout>
 
         <!-- Input Buttons -->
         <LinearLayout
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="8dp"
             android:orientation="horizontal">
 
             <ImageView
@@ -63,7 +58,7 @@
                 android:cropToPadding="true"
                 android:padding="@dimen/input_icons_padding"
 
-                app:srcCompat="@drawable/icon_less_than_10" />
+                app:srcCompat="@drawable/icon_less" />
 
 
             <ImageView
@@ -77,7 +72,7 @@
                 android:cropToPadding="true"
                 android:padding="@dimen/input_icons_padding"
 
-                app:srcCompat="@drawable/icon_10_to_30" />
+                app:srcCompat="@drawable/ic_10_30" />
 
             <ImageView
                 android:id="@+id/icon_1c"
@@ -90,7 +85,7 @@
                 android:cropToPadding="true"
                 android:padding="@dimen/input_icons_padding"
 
-                app:srcCompat="@drawable/icon_greater_than_30" />
+                app:srcCompat="@drawable/icon_greater" />
 
         </LinearLayout>
 
@@ -103,27 +98,20 @@
             <!-- Question -->
             <TextView
                 android:id="@+id/question_text_2"
+                style="@style/BodyText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:padding="8dp"
                 android:text="@string/quest_imagination_b"
-                android:textSize="18dp"
                 tools:layout_editor_absoluteX="107dp"
                 tools:layout_editor_absoluteY="61dp" />
 
             <!-- Info Icon -->
-            <ImageView
-                android:id="@+id/icon_info_2"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:srcCompat="@android:drawable/ic_menu_info_details" />
         </LinearLayout>
 
         <!-- Input Buttons -->
         <LinearLayout
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="8dp"
             android:orientation="horizontal">
 
             <ImageView
@@ -137,7 +125,7 @@
                 android:cropToPadding="true"
                 android:padding="@dimen/input_icons_padding"
 
-                app:srcCompat="@drawable/icon_less_than_10" />
+                app:srcCompat="@drawable/icon_less" />
 
 
             <ImageView
@@ -151,7 +139,7 @@
                 android:cropToPadding="true"
                 android:padding="@dimen/input_icons_padding"
 
-                app:srcCompat="@drawable/icon_10_to_30" />
+                app:srcCompat="@drawable/ic_10_30" />
 
             <ImageView
                 android:id="@+id/icon_2c"
@@ -164,7 +152,7 @@
                 android:cropToPadding="true"
                 android:padding="@dimen/input_icons_padding"
 
-                app:srcCompat="@drawable/icon_greater_than_30" />
+                app:srcCompat="@drawable/icon_greater" />
 
 
         </LinearLayout>
@@ -178,11 +166,10 @@
             <!-- Question -->
             <TextView
                 android:id="@+id/question_text_3"
+                style="@style/BodyText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:padding="8dp"
                 android:text="@string/quest_imagination_c"
-                android:textSize="18dp"
                 tools:layout_editor_absoluteX="107dp"
                 tools:layout_editor_absoluteY="61dp" />
 
@@ -196,9 +183,8 @@
 
         <!-- Input Buttons -->
         <LinearLayout
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="8dp"
             android:orientation="horizontal">
 
             <ImageView
@@ -212,7 +198,7 @@
                 android:cropToPadding="true"
                 android:padding="@dimen/input_icons_padding"
 
-                app:srcCompat="@drawable/icon_less_than_10" />
+                app:srcCompat="@drawable/icon_less" />
 
 
             <ImageView
@@ -225,7 +211,7 @@
 
                 android:cropToPadding="true"
                 android:padding="@dimen/input_icons_padding"
-                app:srcCompat="@drawable/icon_10_to_30" />
+                app:srcCompat="@drawable/ic_10_30" />
 
             <ImageView
                 android:id="@+id/icon_3c"
@@ -238,7 +224,7 @@
                 android:cropToPadding="true"
                 android:padding="@dimen/input_icons_padding"
 
-                app:srcCompat="@drawable/icon_greater_than_30" />
+                app:srcCompat="@drawable/icon_greater" />
 
 
         </LinearLayout>

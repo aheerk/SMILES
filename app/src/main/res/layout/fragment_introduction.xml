@@ -37,12 +37,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:padding="20dp"
         android:text="@string/introduction_explanation_smiles"
-        android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textview_introduction_subtitle" />
+        app:layout_constraintTop_toBottomOf="@+id/textview_introduction_subtitle"
+        style="@style/BodyText" />
 
     <Button
         android:id="@+id/button_introduction_next"

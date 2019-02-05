@@ -10,4 +10,6 @@
 
     <dimen name="quest_padding">8dp</dimen>
 
+    <dimen name="text_body_size">16dp</dimen>
+
 </resources>

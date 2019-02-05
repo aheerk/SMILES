@@ -5,12 +5,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:gravity="top">
+    android:gravity="top|center">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:gravity="top"
+        android:gravity="top|center"
         android:orientation="vertical">
 
         <TextView
@@ -32,9 +32,8 @@
                 android:id="@+id/question_text_1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:padding="8dp"
                 android:text="@string/quest_movement_a"
-                android:textSize="18dp"
+                style="@style/BodyText"
                 tools:layout_editor_absoluteX="107dp"
                 tools:layout_editor_absoluteY="61dp" />
 
@@ -44,13 +43,13 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:srcCompat="@android:drawable/ic_menu_info_details" />
+
         </LinearLayout>
 
         <!-- Input Buttons -->
         <LinearLayout
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="8dp"
             android:orientation="horizontal">
 
             <ImageView
@@ -119,9 +118,8 @@
                 android:id="@+id/question_text_2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:padding="8dp"
                 android:text="@string/quest_movement_b"
-                android:textSize="18dp"
+                style="@style/BodyText"
                 tools:layout_editor_absoluteX="107dp"
                 tools:layout_editor_absoluteY="61dp" />
 
@@ -135,9 +133,8 @@
 
         <!-- Input Buttons -->
         <LinearLayout
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="8dp"
             android:orientation="horizontal">
 
             <ImageView
@@ -181,9 +178,8 @@
                 android:id="@+id/question_text_3"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:padding="8dp"
                 android:text="@string/quest_movement_c"
-                android:textSize="18dp"
+                style="@style/BodyText"
                 tools:layout_editor_absoluteX="107dp"
                 tools:layout_editor_absoluteY="61dp" />
 
@@ -197,9 +193,8 @@
 
         <!-- Input Buttons -->
         <LinearLayout
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="8dp"
             android:orientation="horizontal">
 
             <ImageView

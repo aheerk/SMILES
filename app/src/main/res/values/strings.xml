@@ -15,9 +15,9 @@
     <string name="quest_movement_c">How long did you engage in relaxation techniques?</string>
 
     <string name="quest_imagination_title">Imagination</string>
-    <string name="quest_imagination_a">How long did you engage in any mindfulness techniques?</string>
-    <string name="quest_imagination_b">How long did you engage in meditation today?</string>
-    <string name="quest_imagination_c">How long did you practice imagination or creativity today?</string>
+    <string name="quest_imagination_a">For how many hours did you engage in any mindfulness techniques?</string>
+    <string name="quest_imagination_b">For how many hours did you engage in meditation today?</string>
+    <string name="quest_imagination_c">For how many hours did you practice imagination or creativity today?</string>
 
     <string name="quest_laughter_title">Laughter</string>
     <string name="quest_laughter_a">Rate your laughter out of 5:</string>

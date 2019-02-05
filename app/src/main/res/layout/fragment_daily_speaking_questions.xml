@@ -29,12 +29,10 @@
             <!-- Question -->
             <TextView
                 android:id="@+id/question_text_1"
+                style="@style/BodyText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:paddingLeft="@dimen/quest_padding"
-                android:paddingRight="@dimen/quest_padding"
                 android:text="@string/quest_speaking_a"
-                android:textSize="18dp"
                 tools:layout_editor_absoluteX="107dp"
                 tools:layout_editor_absoluteY="61dp" />
 
@@ -132,12 +130,10 @@
             <!-- Question -->
             <TextView
                 android:id="@+id/question_text_2"
+                style="@style/BodyText"
                 android:layout_width="270dp"
                 android:layout_height="wrap_content"
-                android:paddingLeft="@dimen/quest_padding"
-                android:paddingRight="@dimen/quest_padding"
                 android:text="@string/quest_speaking_b"
-                android:textSize="18dp"
                 tools:layout_editor_absoluteX="107dp"
                 tools:layout_editor_absoluteY="61dp" />
 
@@ -153,11 +149,11 @@
                     android:layout_width="@dimen/input_icons_width"
                     android:layout_height="@dimen/input_icons_height"
                     android:layout_margin="@dimen/input_icons_margin"
-                    android:padding="@dimen/input_icons_padding"
                     android:layout_weight="1"
-
                     android:background="@drawable/border_image"
+
                     android:cropToPadding="true"
+                    android:padding="@dimen/input_icons_padding"
 
                     android:src="@drawable/icon_yes" />
 
@@ -167,11 +163,11 @@
                     android:layout_width="@dimen/input_icons_width"
                     android:layout_height="@dimen/input_icons_height"
                     android:layout_margin="@dimen/input_icons_margin"
-                    android:padding="@dimen/input_icons_padding"
                     android:layout_weight="1"
-
                     android:background="@drawable/border_image"
+
                     android:cropToPadding="true"
+                    android:padding="@dimen/input_icons_padding"
 
                     android:src="@drawable/icon_no" />
 
@@ -188,12 +184,10 @@
             <!-- Question -->
             <TextView
                 android:id="@+id/question_text_3"
+                style="@style/BodyText"
                 android:layout_width="270dp"
                 android:layout_height="wrap_content"
-                android:paddingLeft="@dimen/quest_padding"
-                android:paddingRight="@dimen/quest_padding"
                 android:text="@string/quest_speaking_c"
-                android:textSize="18dp"
                 tools:layout_editor_absoluteX="107dp"
                 tools:layout_editor_absoluteY="61dp" />
 
@@ -211,11 +205,11 @@
                     android:layout_width="@dimen/input_icons_width"
                     android:layout_height="@dimen/input_icons_height"
                     android:layout_margin="@dimen/input_icons_margin"
-                    android:padding="@dimen/input_icons_padding"
                     android:layout_weight="1"
-
                     android:background="@drawable/border_image"
+
                     android:cropToPadding="true"
+                    android:padding="@dimen/input_icons_padding"
 
                     android:src="@drawable/icon_yes" />
 
@@ -225,11 +219,11 @@
                     android:layout_width="@dimen/input_icons_width"
                     android:layout_height="@dimen/input_icons_height"
                     android:layout_margin="@dimen/input_icons_margin"
-                    android:padding="@dimen/input_icons_padding"
                     android:layout_weight="1"
-
                     android:background="@drawable/border_image"
+
                     android:cropToPadding="true"
+                    android:padding="@dimen/input_icons_padding"
 
                     android:src="@drawable/icon_no" />
 
@@ -247,12 +241,10 @@
             <!-- Question -->
             <TextView
                 android:id="@+id/question_text_4"
+                style="@style/BodyText"
                 android:layout_width="270dp"
                 android:layout_height="wrap_content"
-                android:paddingLeft="@dimen/quest_padding"
-                android:paddingRight="@dimen/quest_padding"
                 android:text="@string/quest_speaking_d"
-                android:textSize="18dp"
                 tools:layout_editor_absoluteX="107dp"
                 tools:layout_editor_absoluteY="61dp" />
 
@@ -271,11 +263,11 @@
                     android:layout_width="@dimen/input_icons_width"
                     android:layout_height="@dimen/input_icons_height"
                     android:layout_margin="@dimen/input_icons_margin"
-                    android:padding="@dimen/input_icons_padding"
                     android:layout_weight="1"
-
                     android:background="@drawable/border_image"
+
                     android:cropToPadding="true"
+                    android:padding="@dimen/input_icons_padding"
 
                     android:src="@drawable/icon_yes" />
 
@@ -285,11 +277,11 @@
                     android:layout_width="@dimen/input_icons_width"
                     android:layout_height="@dimen/input_icons_height"
                     android:layout_margin="@dimen/input_icons_margin"
-                    android:padding="@dimen/input_icons_padding"
                     android:layout_weight="1"
-
                     android:background="@drawable/border_image"
+
                     android:cropToPadding="true"
+                    android:padding="@dimen/input_icons_padding"
 
                     android:src="@drawable/icon_no" />
 
@@ -308,12 +300,11 @@
             <!-- Question -->
             <TextView
                 android:id="@+id/question_text_5"
+                style="@style/BodyText"
                 android:layout_width="270dp"
+
                 android:layout_height="wrap_content"
-                android:paddingLeft="@dimen/quest_padding"
-                android:paddingRight="@dimen/quest_padding"
                 android:text="@string/quest_speaking_e"
-                android:textSize="18dp"
                 tools:layout_editor_absoluteX="107dp"
                 tools:layout_editor_absoluteY="61dp" />
 
@@ -332,11 +323,11 @@
                     android:layout_width="@dimen/input_icons_width"
                     android:layout_height="@dimen/input_icons_height"
                     android:layout_margin="@dimen/input_icons_margin"
-                    android:padding="@dimen/input_icons_padding"
                     android:layout_weight="1"
-
                     android:background="@drawable/border_image"
+
                     android:cropToPadding="true"
+                    android:padding="@dimen/input_icons_padding"
 
                     android:src="@drawable/icon_yes" />
 
@@ -346,11 +337,11 @@
                     android:layout_width="@dimen/input_icons_width"
                     android:layout_height="@dimen/input_icons_height"
                     android:layout_margin="@dimen/input_icons_margin"
-                    android:padding="@dimen/input_icons_padding"
                     android:layout_weight="1"
-
                     android:background="@drawable/border_image"
+
                     android:cropToPadding="true"
+                    android:padding="@dimen/input_icons_padding"
 
                     android:src="@drawable/icon_no" />
 
