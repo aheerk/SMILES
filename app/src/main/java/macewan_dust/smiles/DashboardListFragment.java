@@ -83,6 +83,9 @@ public class DashboardListFragment extends Fragment {
             }
         });
 
+        getActivity().setTitle(R.string.title_dashboard);
+
+
         return v;
     }
 

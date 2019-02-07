@@ -87,6 +87,8 @@ public class InputSpeakingFragment extends Fragment {
 
         View v = inflater.inflate(R.layout.fragment_daily_speaking_questions, container, false);
 
+        getActivity().setTitle(R.string.quest_speaking_title);
+
         mButton = v.findViewById(R.id.score_button);
 
         mIcon1a = v.findViewById(R.id.icon_1a);

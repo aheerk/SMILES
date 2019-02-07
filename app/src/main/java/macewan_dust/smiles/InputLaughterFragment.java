@@ -63,6 +63,8 @@ public class InputLaughterFragment extends Fragment {
 
         View v = inflater.inflate(R.layout.fragment_daily_laughter_questions, container, false);
 
+        getActivity().setTitle(R.string.quest_laughter_title);
+
         mButton = v.findViewById(R.id.score_button);
 
         mIcon1 = v.findViewById(R.id.icon_1a);

@@ -22,7 +22,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="0dp"
-                android:textSize="30dp" />
+                android:textSize="30dp"
+                android:textColor="@color/colorPrimary"
+                />
 
             <TextView
                 android:id="@+id/list_item_info_subtitle"
@@ -30,7 +32,9 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="0dp"
                 android:paddingBottom="8dp"
-                android:textSize="16dp" />
+                android:textSize="16dp"
+                android:textColor="@color/colorPrimaryDark"
+                />
         </LinearLayout>
 
     </LinearLayout>

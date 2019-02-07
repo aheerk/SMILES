@@ -10,6 +10,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.widget.Toolbar;
 
 public class InputImaginationFragment extends Fragment {
 
@@ -68,6 +69,9 @@ public class InputImaginationFragment extends Fragment {
     public View onCreateView(final LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
         View v = inflater.inflate(R.layout.fragment_daily_imagination_questions, container, false);
+
+        getActivity().setTitle(R.string.quest_imagination_title);
+
 
         mButton = v.findViewById(R.id.score_button);
 

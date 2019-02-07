@@ -73,6 +73,8 @@ public class InputMovementFragment extends Fragment {
 
         View v = inflater.inflate(R.layout.fragment_daily_movement_questions, container, false);
 
+        getActivity().setTitle(R.string.quest_movement_title);
+
         mButton = v.findViewById(R.id.score_button);
 
         mIcon1_a = v.findViewById(R.id.icon_1a);

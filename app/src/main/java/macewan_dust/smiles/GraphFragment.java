@@ -14,6 +14,8 @@ public class GraphFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
+        getActivity().setTitle(R.string.title_graphs);
+
         return inflater.inflate(R.layout.fragment_graph, null);
     }
 }

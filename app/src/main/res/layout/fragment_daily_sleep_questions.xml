@@ -8,27 +8,20 @@
     android:gravity="top"
     android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/title"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:padding="8dp"
-        android:text="@string/quest_sleep_title"
-        android:textSize="32sp" />
-
     <!-- First Question -->
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
         android:orientation="horizontal">
 
         <!-- Question -->
         <TextView
             android:id="@+id/question_text_1"
+            style="@style/BodyText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/quest_sleep_a"
-            style="@style/BodyText"
             tools:layout_editor_absoluteX="107dp"
             tools:layout_editor_absoluteY="61dp" />
 

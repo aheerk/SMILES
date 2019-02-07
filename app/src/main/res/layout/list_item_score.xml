@@ -22,7 +22,9 @@
             android:layout_marginBottom="0dp"
             android:paddingBottom="0dp"
             android:text="Date filler"
-            android:textSize="16dp" />
+            android:textSize="16dp"
+            android:textColor="@color/colorPrimaryDark"
+            />
 
         <LinearLayout
             android:layout_width="match_parent"

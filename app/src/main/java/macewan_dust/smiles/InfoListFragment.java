@@ -52,8 +52,12 @@ public class InfoListFragment extends Fragment {
         mInfoRecyclerViewAdapter = new InfoListFragment.InfoAdapter(mInfoData);
         mInfoRecyclerView.setAdapter(mInfoRecyclerViewAdapter);
         mInfoRecyclerView.setHasFixedSize(true);
+
+        getActivity().setTitle("title filler");
+
         return v;
     }
+
 
     public class InfoAdapter extends RecyclerView.Adapter<InfoListFragment.InfoAdapter.InfoViewHolder> {
 

@@ -73,6 +73,9 @@ public class InputSleepFragment extends Fragment {
 
         View v = inflater.inflate(R.layout.fragment_daily_sleep_questions, container, false);
 
+
+        getActivity().setTitle(R.string.quest_sleep_title);
+
         mButton = v.findViewById(R.id.score_button);
 
         mIcon1a = v.findViewById(R.id.icon_1a);

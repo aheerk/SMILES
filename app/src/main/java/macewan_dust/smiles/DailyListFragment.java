@@ -70,6 +70,9 @@ public class DailyListFragment extends Fragment {
         mDailyAdapter = new DailyAdapter(mDailyData);
         mDailyRecyclerView.setAdapter(mDailyAdapter);
         mDailyRecyclerView.setHasFixedSize(true);
+
+        getActivity().setTitle("filler: Daily Questions");
+
         return v;
 
     }

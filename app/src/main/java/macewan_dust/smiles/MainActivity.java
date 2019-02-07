@@ -5,6 +5,7 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 
 /**
@@ -28,21 +29,21 @@ public class MainActivity extends SingleFragmentActivity implements BottomNaviga
         BottomNavigationView navigation = findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(this);
 
-        /*
         // toolbar
         // reference: https://stackoverflow.com/questions/26651602/display-back-arrow-on-toolbar
+        // https://developer.android.com/training/appbar/setting-up#java
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setDisplayShowHomeEnabled(true);
-
+      //  getSupportActionBar().setDisplayShowHomeEnabled(true);
+/*
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 finish();
             }
-        });
-*/
+        });*/
+
     }
 
     /**

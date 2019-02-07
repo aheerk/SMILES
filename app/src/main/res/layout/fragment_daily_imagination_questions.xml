@@ -9,16 +9,9 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_marginTop="8dp"
         android:gravity="top|center"
         android:orientation="vertical">
-
-        <TextView
-            android:id="@+id/title"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:padding="8dp"
-            android:text="@string/quest_imagination_title"
-            android:textSize="32sp" />
 
         <!-- First Question -->
 
