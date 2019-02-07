@@ -18,8 +18,7 @@ public class WebInfoFragment extends Fragment {
     public View onCreateView(final LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_weblinks, container, false);
 
-        getActivity().setTitle("filler title");
-
+        getActivity().setTitle(R.string.title_web_links);
 
         return v;
     }

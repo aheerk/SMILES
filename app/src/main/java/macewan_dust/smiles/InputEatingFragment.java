@@ -18,7 +18,7 @@ public class InputEatingFragment extends Fragment {
     public View onCreateView(final LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_daily_eating_questions, container, false);
 
-        getActivity().setTitle(R.string.quest_eating_title);
+        getActivity().setTitle(R.string.title_quest_eating);
 
         return v;
     }

@@ -18,8 +18,7 @@ public class CreditInfoFragment extends Fragment {
     public View onCreateView(final LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_credit, container, false);
 
-        getActivity().setTitle(R.string.title_information);
-
+        getActivity().setTitle(R.string.title_credits);
 
         return v;
     }

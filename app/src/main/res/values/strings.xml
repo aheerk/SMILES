@@ -1,31 +1,37 @@
 <resources>
     <string name="app_name">SMILES</string>
 
+
+    <!--Toolbar Titles-->
+    <string name="title_daily_questions">Daily Questions</string>
     <string name="title_dashboard">Dashboard</string>
     <string name="title_graphs">Graphs</string>
     <string name="title_information">Information</string>
+    <string name="title_quest_movement">Movement</string>
+    <string name="title_quest_sleep">Sleep</string>
+    <string name="title_quest_imagination">Imagination</string>
+    <string name="title_quest_laughter">Laughter</string>
+    <string name="title_quest_eating">Eating</string>
+    <string name="title_quest_speaking">Speaking</string>
+    <string name="title_introduction">Introduction</string>
+    <string name="title_web_links">Web Links</string>
+    <string name="title_credits">Credits</string>
 
-    <string name="quest_sleep_title">Sleep</string>
     <string name="quest_sleep_a">Hours of sleep per day:</string>
     <string name="quest_sleep_b">Did any activities hinder your sleep?</string>
 
-    <string name="quest_movement_title">Movement</string>
     <string name="quest_movement_a">Length of moderate or vigorous intensity aerobic exercise:</string>
     <string name="quest_movement_b">Did your exercises include bone and muscle strengthening?</string>
     <string name="quest_movement_c">How long did you engage in relaxation techniques?</string>
 
-    <string name="quest_imagination_title">Imagination</string>
     <string name="quest_imagination_a">For how many hours did you engage in any mindfulness techniques?</string>
     <string name="quest_imagination_b">For how many hours did you engage in meditation today?</string>
     <string name="quest_imagination_c">For how many hours did you practice imagination or creativity today?</string>
 
-    <string name="quest_laughter_title">Laughter</string>
     <string name="quest_laughter_a">Rate your laughter out of 5:</string>
 
-    <string name="quest_eating_title">Eating</string>
     <!-- MISSING EATING QUESTIONS!  -->
 
-    <string name="quest_speaking_title">Speaking</string>
     <string name="quest_speaking_a">Rate the amount of time spent socializing in person over social media.</string>
     <string name="quest_speaking_b">Did you seek assistance and/or debrief when needed?</string>
     <string name="quest_speaking_c">Did anything prevent your ability to share your thoughts?</string>
@@ -51,5 +57,6 @@
         applicable, and easily utilized. To support the diversity of the nursing profession. Encouraging a variety of
         selfenhancing methods to support work/life balance to inspire a continual journey towards a healthy lifestyle. </string>
     <string name="introduction_next">Next</string>
+
 
 </resources>

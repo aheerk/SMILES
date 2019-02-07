@@ -30,10 +30,10 @@ public class InfoListFragment extends Fragment {
         super.onCreate(savedInstanceState);
 
 // generating some items for testing                                                                    /////-------- refactor this
-        InfoItem temp4 = new InfoItem("Introduction", "subtitle", new IntroductionFragment());
-        InfoItem temp1 = new InfoItem("SMILES", "subtitle", new SmilesInfo());
-        InfoItem temp2 = new InfoItem("Web links", "subtitle", new WebInfoFragment());
-        InfoItem temp3 = new InfoItem("Credit", "subtitle", new CreditInfoFragment());
+        InfoItem temp4 = new InfoItem(getString(R.string.title_introduction), "subtitle", new IntroductionFragment());
+        InfoItem temp1 = new InfoItem(getString(R.string.introduction_title_smiles), "subtitle", new SmilesInfo());
+        InfoItem temp2 = new InfoItem(getString(R.string.title_web_links), "subtitle", new WebInfoFragment());
+        InfoItem temp3 = new InfoItem(getString(R.string.title_credits), "subtitle", new CreditInfoFragment());
 
         mInfoData.add(temp4);
         mInfoData.add(temp1);
@@ -53,11 +53,16 @@ public class InfoListFragment extends Fragment {
         mInfoRecyclerView.setAdapter(mInfoRecyclerViewAdapter);
         mInfoRecyclerView.setHasFixedSize(true);
 
-        getActivity().setTitle("title filler");
+        getActivity().setTitle(R.string.title_information);
 
         return v;
     }
+    @Override
+    public void onResume() {
+        super.onResume();
+        getActivity().setTitle(R.string.title_information);
 
+    }
 
     public class InfoAdapter extends RecyclerView.Adapter<InfoListFragment.InfoAdapter.InfoViewHolder> {
 

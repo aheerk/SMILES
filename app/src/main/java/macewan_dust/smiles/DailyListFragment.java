@@ -38,17 +38,17 @@ public class DailyListFragment extends Fragment {
 
 // generating some items for testing                                                                    /////-------- refactor this
         DailyItem temp1 = new DailyItem(R.drawable.icon_sleep, R.drawable.border_image,
-                getString(R.string.quest_sleep_title), "Score your sleep", new InputSleepFragment());
+                getString(R.string.title_quest_sleep), "Score your sleep", new InputSleepFragment());
         DailyItem temp2 = new DailyItem(R.drawable.icon_movement, R.drawable.border_image_balanced,
-                getString(R.string.quest_movement_title), "Measure your movement", new InputMovementFragment());
+                getString(R.string.title_quest_movement), "Measure your movement", new InputMovementFragment());
         DailyItem temp3 = new DailyItem(R.drawable.icon_imagination, R.drawable.border_image_low,
-                getString(R.string.quest_imagination_title), "Rate your imagination", new InputImaginationFragment());
+                getString(R.string.title_quest_imagination), "Rate your imagination", new InputImaginationFragment());
         DailyItem temp4 = new DailyItem(R.drawable.icon_laughter, R.drawable.border_image_high,
-                getString(R.string.quest_laughter_title), "Rank your laughter", new InputLaughterFragment());
+                getString(R.string.title_quest_laughter), "Rank your laughter", new InputLaughterFragment());
         DailyItem temp5 = new DailyItem(R.drawable.icon_eating, R.drawable.border_image,
-                getString(R.string.quest_eating_title), "Balance your eating", new InputEatingFragment());
+                getString(R.string.title_quest_eating), "Balance your eating", new InputEatingFragment());
         DailyItem temp6 = new DailyItem(R.drawable.icon_speaking, R.drawable.border_image_balanced,
-                getString(R.string.quest_speaking_title), "Score your speaking", new InputSpeakingFragment());
+                getString(R.string.title_quest_speaking), "Score your speaking", new InputSpeakingFragment());
 
         mDailyData.add(temp1);
         mDailyData.add(temp2);
@@ -71,9 +71,17 @@ public class DailyListFragment extends Fragment {
         mDailyRecyclerView.setAdapter(mDailyAdapter);
         mDailyRecyclerView.setHasFixedSize(true);
 
-        getActivity().setTitle("filler: Daily Questions");
+        getActivity().setTitle(R.string.title_daily_questions);
+
 
         return v;
+
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        getActivity().setTitle(R.string.title_daily_questions);
 
     }
 
