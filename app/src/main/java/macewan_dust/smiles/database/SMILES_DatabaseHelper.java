@@ -14,6 +14,10 @@ public class SMILES_DatabaseHelper extends SQLiteOpenHelper {
         super(context, DATABASE_NAME, null, VERSION);
     }
 
+    /**
+     * Creates tables
+     * @param db
+     */
     @Override
     public void onCreate(SQLiteDatabase db) {
         db.execSQL("create table " + SMILES_DatabaseSchema.ScoreTable.NAME + " ( " +

@@ -39,7 +39,10 @@ public class ScoringLab {
     private static ContentValues getContentValues(Score score) {
         ContentValues values = new ContentValues();
         values.put(SMILES_DatabaseSchema.ScoreTable.Columns.UUID, score.getID().toString());
-        //     values.put(ScoreTable.Columns.DATE, score.getDate());                                 //// --- date is not implemented yet
+
+        String tempDate = score.getDate().toString();
+        values.put(SMILES_DatabaseSchema.ScoreTable.Columns.DATE, tempDate);
+
         values.put(SMILES_DatabaseSchema.ScoreTable.Columns.SLEEP, score.getSleepScore());
         values.put(SMILES_DatabaseSchema.ScoreTable.Columns.MOVEMENT, score.getMovementScore());
         values.put(SMILES_DatabaseSchema.ScoreTable.Columns.IMAGINATION, score.getImaginationScore());

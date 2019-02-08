@@ -142,7 +142,7 @@
                 android:layout_marginRight="12dp"
                 android:layout_marginBottom="2dp"
                 android:layout_weight="1"
-                android:text="Feb 4th, 2019"
+                android:text="Feb 16th, 2019"
                 android:textColor="@color/colorPrimaryDark" />
 
             <LinearLayout
@@ -218,7 +218,7 @@
                 android:layout_marginRight="12dp"
                 android:layout_marginBottom="2dp"
                 android:layout_weight="1"
-                android:text="Feb 5th, 2019"
+                android:text="Feb 15th, 2019"
                 android:textColor="@color/colorPrimaryDark" />
 
             <LinearLayout
@@ -296,7 +296,7 @@
                 android:layout_marginRight="12dp"
                 android:layout_marginBottom="2dp"
                 android:layout_weight="1"
-                android:text="Feb 6th, 2019"
+                android:text="Feb 14th, 2019"
                 android:textColor="@color/colorPrimaryDark" />
 
             <LinearLayout
@@ -374,7 +374,7 @@
                 android:layout_marginRight="12dp"
                 android:layout_marginBottom="2dp"
                 android:layout_weight="1"
-                android:text="Feb 7th, 2019"
+                android:text="Feb 13th, 2019"
                 android:textColor="@color/colorPrimaryDark" />
 
             <LinearLayout
@@ -452,7 +452,7 @@
                 android:layout_marginRight="12dp"
                 android:layout_marginBottom="2dp"
                 android:layout_weight="1"
-                android:text="Feb 8th, 2019"
+                android:text="Feb 12th, 2019"
                 android:textColor="@color/colorPrimaryDark" />
 
             <LinearLayout
@@ -530,7 +530,7 @@
                 android:layout_marginRight="12dp"
                 android:layout_marginBottom="2dp"
                 android:layout_weight="1"
-                android:text="Feb 9th, 2019"
+                android:text="Feb 11th, 2019"
                 android:textColor="@color/colorPrimaryDark" />
 
             <LinearLayout

@@ -5,10 +5,14 @@ import android.database.CursorWrapper;
 
 import macewan_dust.smiles.Score;
 
+import java.text.DateFormat;
 import java.util.Date;
 import java.util.UUID;
 
-
+/**
+ * Reference: https://developer.android.com/reference/java/util/Date
+ *
+ */
 public class SMILES_CursorWrapper extends CursorWrapper {
 
     public SMILES_CursorWrapper(Cursor cursor) {
@@ -28,10 +32,12 @@ public class SMILES_CursorWrapper extends CursorWrapper {
         int laughterScore = getInt(getColumnIndex(SMILES_DatabaseSchema.ScoreTable.Columns.LAUGHTER));
         int eatingScore = getInt(getColumnIndex(SMILES_DatabaseSchema.ScoreTable.Columns.EATING));
         int speakingScore = getInt(getColumnIndex(SMILES_DatabaseSchema.ScoreTable.Columns.SPEAKING));
-      //              Date date = (Date)getString(getColumnIndex(SMILES_DatabaseSchema.ScoreTable.Columns.DATE));               // find code
+
+  //      String tempDate = getString(getColumnIndex(SMILES_DatabaseSchema.ScoreTable.Columns.DATE));
+  //      Date date = DateFormat.parse(tempDate);
 
         Score scoreFromDB = new Score(UUID.fromString(uuidString));
-    //          scoreFromDB.setDate(date);
+   //     scoreFromDB.setDate(date);
         scoreFromDB.setSleepScore(sleepScore);
         scoreFromDB.setMovementScore(movementScore);
         scoreFromDB.setImaginationScore(imaginationScore);
