@@ -56,7 +56,7 @@
 
                 android:cropToPadding="true"
                 android:padding="@dimen/input_icons_padding"
-                android:src="@drawable/icon_less" />
+                android:src="@drawable/ic_less" />
 
 
             <ImageView
@@ -96,7 +96,7 @@
                 android:cropToPadding="true"
                 android:padding="@dimen/input_icons_padding"
 
-                android:src="@drawable/icon_greater" />
+                android:src="@drawable/ic_more" />
 
         </LinearLayout>
     </LinearLayout>
