@@ -78,8 +78,9 @@ public class IntroductionFragment extends Fragment {
                 mBodyText.setText(R.string.introduction_explanation_stress1);
                 break;
             case 2:
-                mTitle.setText(R.string.introduction_title_stress2);
+                mTitle.setText(R.string.introduction_title_stress1);
                 mSubtitleTitle.setVisibility(View.INVISIBLE);
+              //  mSubtitleTitle.setText("");
                 mBodyText.setText(R.string.introduction_explanation_stress2);
                 break;
             case 3:
