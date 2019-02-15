@@ -172,6 +172,11 @@ public class ScoringLab {
     }
 
 
+    /**
+     * checks to see if a score exists for today
+     * @param date - date excluding time
+     * @return - true if score exists
+     */
     public boolean isScore(Date date) {
         boolean dateFound = false;
 
@@ -182,12 +187,38 @@ public class ScoringLab {
 
         try {
             if (cursor.getCount() == 1) {
-                dateFound =  true;
+                dateFound = true;
             }
 
         } finally {
             cursor.close();
         }
         return dateFound;
+    }
+
+    /**
+     * get score by id by its date
+     * @param date - date excluding time
+     * @return UUID unique identiefier for scores
+     */
+    public UUID getScoreID(Date date) {
+        boolean dateFound = false;
+
+        SMILES_CursorWrapper cursor = queryScores(
+                SMILES_DatabaseSchema.ScoreTable.Columns.DATE + " = ?",
+                new String[]{date.toString()}
+        );
+
+        try {
+            if (cursor.getCount() == 0) {
+                return null;
+            }
+
+            cursor.moveToFirst(); // first item in results
+            return cursor.getScoreFromDB().getID();
+
+        } finally {
+            cursor.close();
+        }
     }
 }

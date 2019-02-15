@@ -11,6 +11,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 import java.util.Date;
+import java.util.UUID;
 
 public class InputLaughterFragment extends Fragment {
 
@@ -50,18 +51,6 @@ public class InputLaughterFragment extends Fragment {
         super.onCreate(savedInstanceState);
         setRetainInstance(true); // prevents instance of the fragment from being destroyed on rotation.
 
-
-        // ------------------------------------------------------------ check if a score exists first. or better yet, do it in the previous fragment and pass it or id
-        if (ScoringLab.get(getActivity()).isScore(new Date())){ //----------------------- this method should work once the time is removed from date.
-            //
-
-            // get score object.
-            // careful to update rather than save a new one? UUID?
-
-            //
-        } else {
-            mScore = new Score();
-        }
     }
 
     /**
@@ -180,9 +169,22 @@ public class InputLaughterFragment extends Fragment {
                             t2.show();
                     }
 
-                    mScore.setLaughterScore(score);
-                    ScoringLab.get(getActivity()).addScore(mScore); // save score object in database. ------------------- should be an update -------
-
+                    // if score exists, update it, else make a new one and save it
+                    if (ScoringLab.get(getActivity()).isScore(new Date())){ //----------------------- this method should work once the time is removed from date.
+                        // get UUID of score with today's date
+                        UUID tempID = ScoringLab.get(getActivity()).getScoreID(new Date()); // ------ consider making a get score by id instead of two separate functions
+                        // get score object to use its data
+                        mScore = ScoringLab.get(getActivity()).getScore(tempID);
+                        // set new score for this category
+                        mScore.setLaughterScore(score);
+                        // save score to database
+                        ScoringLab.get(getActivity()).updateScore(mScore);
+                        //
+                    } else {
+                        mScore = new Score();
+                        mScore.setLaughterScore(score);
+                        ScoringLab.get(getActivity()).addScore(mScore);
+                    }
                     mResults.setText(getString(R.string.quest_results, getString(scoreStringID)));
                 }
             }
