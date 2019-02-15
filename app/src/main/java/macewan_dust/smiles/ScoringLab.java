@@ -2,11 +2,20 @@ package macewan_dust.smiles;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
 
 import macewan_dust.smiles.database.SMILES_DatabaseHelper;
 import macewan_dust.smiles.database.SMILES_DatabaseSchema;
+import macewan_dust.smiles.database.SMILES_CursorWrapper;
+
+
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+import java.util.UUID;
+
 
 public class ScoringLab {
 
@@ -20,9 +29,10 @@ public class ScoringLab {
 
     /**
      * constructor
+     *
      * @param context
      */
-    public ScoringLab(Context context){
+    public ScoringLab(Context context) {
         // database
         mContext = context.getApplicationContext();
         mDatabase = new SMILES_DatabaseHelper(mContext)
@@ -31,17 +41,82 @@ public class ScoringLab {
     }
 
     // creates one and only one scoring lab
-    public static ScoringLab get(Context context){
-        if  (sScoringLab == null) {
+    public static ScoringLab get(Context context) {
+        if (sScoringLab == null) {
             sScoringLab = new ScoringLab(context);
         }
         return sScoringLab;
     }
 
 
-
-
     // ------------------------------ Database methods ------------------------------ //
+
+    public List<Score> getScores() {
+        List<Score> Scores = new ArrayList<>();
+
+        SMILES_CursorWrapper cursor = queryScores(null, null); // gets all of the database
+
+        try {
+            cursor.moveToFirst();
+            while (!cursor.isAfterLast()) {
+                Scores.add(cursor.getScoreFromDB());
+                cursor.moveToNext();
+            }
+        } finally {
+            cursor.close();
+        }
+        return Scores;
+    }
+
+    /**
+     * gets one score from the Score Table database by UUID
+     *
+     * @param id - UUID of score object
+     * @return Score - Score object
+     */
+    public Score getScore(UUID id) {
+
+        SMILES_CursorWrapper cursor = queryScores(
+                SMILES_DatabaseSchema.ScoreTable.Columns.UUID + " = ?",
+                new String[]{id.toString()}
+        );
+
+        try {
+            if (cursor.getCount() == 0) {
+                return null;
+            }
+
+            cursor.moveToFirst();
+            return cursor.getScoreFromDB();
+
+        } finally {
+            cursor.close();
+        }
+    }
+
+    /**
+     * queryScore - does queries to the score table, customized by the where clause and args
+     * <p>
+     * a cursor gives raw column values. it should be passed to a cursor wrapper to unpack it.
+     * The wrapper around it converts those values.
+     *
+     * @param whereClause - where part of sql statement
+     * @param whereArgs   - arguments passed into where statement
+     * @return SMILES_CursorWrapper - raw table data
+     */
+    private SMILES_CursorWrapper queryScores(String whereClause, String[] whereArgs) {
+        Cursor cursor = mDatabase.query(
+                SMILES_DatabaseSchema.ScoreTable.NAME,
+                null,
+                whereClause,
+                whereArgs,
+                null,
+                null,
+                null
+        );
+        return new SMILES_CursorWrapper(cursor);
+    }
+
 
     /**
      * getContentValues - gets data from an object and packages it for use with a database
@@ -96,4 +171,23 @@ public class ScoringLab {
         Log.i(TAG, "number of rows updated: " + temp);
     }
 
+
+    public boolean isScore(Date date) {
+        boolean dateFound = false;
+
+        SMILES_CursorWrapper cursor = queryScores(
+                SMILES_DatabaseSchema.ScoreTable.Columns.DATE + " = ?",
+                new String[]{date.toString()}
+        );
+
+        try {
+            if (cursor.getCount() == 1) {
+                dateFound =  true;
+            }
+
+        } finally {
+            cursor.close();
+        }
+        return dateFound;
+    }
 }

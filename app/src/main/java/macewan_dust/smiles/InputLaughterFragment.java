@@ -10,6 +10,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+import java.util.Date;
 
 public class InputLaughterFragment extends Fragment {
 
@@ -24,12 +25,10 @@ public class InputLaughterFragment extends Fragment {
     Button mButton;
     ImageView mIconFeedback;
     TextView mResults;
-   // ScoringLab mScoringLab = new ScoringLab(getContext()); // this should be initialized once in another place -----------------
 
     int mQuestion_A_index;
 
     Score mScore;
-
 
     /**
      * new instance constructor
@@ -52,9 +51,17 @@ public class InputLaughterFragment extends Fragment {
         setRetainInstance(true); // prevents instance of the fragment from being destroyed on rotation.
 
 
-        mScore = new Score(); // ------------------------------------------------------------ check if a score exists first. or better yet, do it in the previous fragment and pass it or id
+        // ------------------------------------------------------------ check if a score exists first. or better yet, do it in the previous fragment and pass it or id
+        if (ScoringLab.get(getActivity()).isScore(new Date())){ //----------------------- this method should work once the time is removed from date.
+            //
 
+            // get score object.
+            // careful to update rather than save a new one? UUID?
 
+            //
+        } else {
+            mScore = new Score();
+        }
     }
 
     /**

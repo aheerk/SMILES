@@ -40,7 +40,11 @@ public class DashboardListFragment extends Fragment {
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-// generating some items for testing
+
+        // scores from database
+        mDashboardData = ScoringLab.get(getContext()).getScores();
+/*
+        // generating some items for testing
         Score temp = new Score();
         temp.setSpeakingScore(ScoringAlgorithms.SCORE_BALANCED);
         temp.setLaughterScore(ScoringAlgorithms.SCORE_BALANCED);
@@ -51,13 +55,8 @@ public class DashboardListFragment extends Fragment {
         temp2.setLaughterScore(ScoringAlgorithms.SCORE_LOW);
         temp2.setMovementScore(ScoringAlgorithms.SCORE_BALANCED);
         mDashboardData.add(temp2);
-
-
-
-
+        */
     }
-
-
 
     @Nullable
     @Override
@@ -88,10 +87,6 @@ public class DashboardListFragment extends Fragment {
 
         return v;
     }
-
-
-
-
 
     /**
      * replaceFragment - performs fragment transactions.
@@ -182,12 +177,6 @@ public class DashboardListFragment extends Fragment {
         @Override
         public void onBindViewHolder(@NonNull DashboardListFragment.DashboardAdapter.DashboardViewHolder holder, int position) {
 
-
-
-
-
-
-
             // ------ implement set date                                                                -----
 
             holder.mIconSleep.setBackground(getResources().getDrawable(
@@ -202,8 +191,7 @@ public class DashboardListFragment extends Fragment {
                     Score.getBackgroundID(mDashboardListData.get(position).getEatingScore())));
             holder.mIconSpeaking.setBackground(getResources().getDrawable(
                     Score.getBackgroundID(mDashboardListData.get(position).getSpeakingScore())));
-
-
+            holder.mDate.setText(mDashboardListData.get(position).getDate().toString());
         }
 
         /**

@@ -36,7 +36,7 @@ public class SMILES_CursorWrapper extends CursorWrapper {
 
         Score scoreFromDB = new Score(UUID.fromString(uuidString)); // new score object with old UUID
 
-        scoreFromDB.setDate(new Date(dateScore)); // must change date long to a date Date
+        scoreFromDB.setDate(new Date(dateScore)); // must change date long to a date Date ------------------- check this ------
         scoreFromDB.setSleepScore(sleepScore);
         scoreFromDB.setMovementScore(movementScore);
         scoreFromDB.setImaginationScore(imaginationScore);

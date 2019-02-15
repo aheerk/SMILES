@@ -13,7 +13,7 @@ import android.widget.Toast;
 
 public class InputImaginationFragment extends Fragment {
 
-    private static final String TAG = "InputImaginationFragment";
+    private static final String TAG = "InputImagFragment";
     private static final int NO_SELECTION = 100000;
 
     ImageView mIcon1_a;
