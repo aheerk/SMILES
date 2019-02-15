@@ -120,7 +120,6 @@ public class InputImaginationFragment extends Fragment {
             }
         });
 
-
         // QUESTION 2 Listeners
         mIcon2_a.setOnClickListener(new View.OnClickListener() {
             @Override

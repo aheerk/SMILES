@@ -24,8 +24,11 @@ public class InputLaughterFragment extends Fragment {
     Button mButton;
     ImageView mIconFeedback;
     TextView mResults;
+   // ScoringLab mScoringLab = new ScoringLab(getContext()); // this should be initialized once in another place -----------------
 
     int mQuestion_A_index;
+
+    Score mScore;
 
 
     /**
@@ -47,6 +50,11 @@ public class InputLaughterFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setRetainInstance(true); // prevents instance of the fragment from being destroyed on rotation.
+
+
+        mScore = new Score(); // ------------------------------------------------------------ check if a score exists first. or better yet, do it in the previous fragment and pass it or id
+
+
     }
 
     /**
@@ -144,6 +152,7 @@ public class InputLaughterFragment extends Fragment {
                         case ScoringAlgorithms.SCORE_LOW:
                             scoreStringID = R.string.score_low;
                             mIconFeedback.setBackground(getResources().getDrawable(R.drawable.border_image_low));
+
                             break;
                         case ScoringAlgorithms.SCORE_BALANCED:
                             scoreStringID = R.string.score_balanced;
@@ -163,6 +172,9 @@ public class InputLaughterFragment extends Fragment {
                             t2.setText("Error in scoring");
                             t2.show();
                     }
+
+                    mScore.setLaughterScore(score);
+                    ScoringLab.get(getActivity()).addScore(mScore); // save score object in database. ------------------- should be an update -------
 
                     mResults.setText(getString(R.string.quest_results, getString(scoreStringID)));
                 }

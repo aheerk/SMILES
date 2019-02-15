@@ -12,6 +12,8 @@ public class ScoringLab {
 
     public static final String TAG = "ScoringLab";
 
+    private static ScoringLab sScoringLab;
+
     // for database
     private Context mContext;
     private SQLiteDatabase mDatabase;
@@ -28,6 +30,17 @@ public class ScoringLab {
         Log.d(TAG, "database setup");
     }
 
+    // creates one and only one scoring lab
+    public static ScoringLab get(Context context){
+        if  (sScoringLab == null) {
+            sScoringLab = new ScoringLab(context);
+        }
+        return sScoringLab;
+    }
+
+
+
+
     // ------------------------------ Database methods ------------------------------ //
 
     /**
@@ -40,7 +53,9 @@ public class ScoringLab {
         ContentValues values = new ContentValues();
         values.put(SMILES_DatabaseSchema.ScoreTable.Columns.UUID, score.getID().toString());
 
-        String tempDate = score.getDate().toString();
+
+        // convert to long to be compatible with database which has no Date type
+        long tempDate = score.getDate().getTime(); // converts data to long
         values.put(SMILES_DatabaseSchema.ScoreTable.Columns.DATE, tempDate);
 
         values.put(SMILES_DatabaseSchema.ScoreTable.Columns.SLEEP, score.getSleepScore());

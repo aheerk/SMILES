@@ -125,7 +125,6 @@ public class DashboardListFragment extends Fragment {
             public ImageView mIconLaughter;
             public ImageView mIconEating;
             public ImageView mIconSpeaking;
-
             public TextView mDate;
 
             public DashboardViewHolder(View itemView) {
@@ -136,6 +135,7 @@ public class DashboardListFragment extends Fragment {
                 mIconLaughter = itemView.findViewById(R.id.list_item_score_laughter);
                 mIconEating = itemView.findViewById(R.id.list_item_score_eating);
                 mIconSpeaking = itemView.findViewById(R.id.list_item_score_speaking);
+                mDate = itemView.findViewById(R.id.list_item_score_date);
 
                 itemView.setOnClickListener(this);
             }
