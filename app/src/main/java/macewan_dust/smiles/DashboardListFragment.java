@@ -15,6 +15,8 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import java.text.DateFormat;
+import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -177,8 +179,6 @@ public class DashboardListFragment extends Fragment {
         @Override
         public void onBindViewHolder(@NonNull DashboardListFragment.DashboardAdapter.DashboardViewHolder holder, int position) {
 
-            // ------ implement set date                                                                -----
-
             holder.mIconSleep.setBackground(getResources().getDrawable(
                     Score.getBackgroundID(mDashboardListData.get(position).getSleepScore())));
             holder.mIconMovement.setBackground(getResources().getDrawable(
@@ -191,7 +191,11 @@ public class DashboardListFragment extends Fragment {
                     Score.getBackgroundID(mDashboardListData.get(position).getEatingScore())));
             holder.mIconSpeaking.setBackground(getResources().getDrawable(
                     Score.getBackgroundID(mDashboardListData.get(position).getSpeakingScore())));
-            holder.mDate.setText(mDashboardListData.get(position).getDate().toString());
+
+            // format date to exclude time
+            Date tempDate = mDashboardListData.get(position).getDate();
+            String tempStringDate = DateFormat.getDateInstance(DateFormat.MEDIUM).format(tempDate);
+            holder.mDate.setText(tempStringDate);
         }
 
         /**

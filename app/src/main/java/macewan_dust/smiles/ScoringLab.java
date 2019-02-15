@@ -59,7 +59,11 @@ public class ScoringLab {
         try {
             cursor.moveToFirst();
             while (!cursor.isAfterLast()) {
-                Scores.add(cursor.getScoreFromDB());
+                Score tempScore = cursor.getScoreFromDB();
+                Scores.add(tempScore);
+
+                Log.d(TAG, "Date: " + tempScore.getDate());
+
                 cursor.moveToNext();
             }
         } finally {

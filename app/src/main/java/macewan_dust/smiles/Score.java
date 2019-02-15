@@ -53,7 +53,7 @@ public class Score {
     }
 
     public void setDate(Date date) {
-        date = date;
+        mDate = date;
     }
 
     public int getSleepScore() {

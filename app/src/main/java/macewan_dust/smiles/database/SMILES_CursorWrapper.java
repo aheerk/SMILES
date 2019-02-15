@@ -2,6 +2,7 @@ package macewan_dust.smiles.database;
 
 import android.database.Cursor;
 import android.database.CursorWrapper;
+import android.util.Log;
 
 import macewan_dust.smiles.Score;
 
@@ -11,9 +12,10 @@ import java.util.UUID;
 
 /**
  * Reference: https://developer.android.com/reference/java/util/Date
- *
  */
 public class SMILES_CursorWrapper extends CursorWrapper {
+
+    private static final String TAG = "Dabase CursorWrapper";
 
     public SMILES_CursorWrapper(Cursor cursor) {
         super(cursor);
@@ -35,8 +37,10 @@ public class SMILES_CursorWrapper extends CursorWrapper {
         long dateScore = getLong(getColumnIndex(SMILES_DatabaseSchema.ScoreTable.Columns.DATE));
 
         Score scoreFromDB = new Score(UUID.fromString(uuidString)); // new score object with old UUID
+  //      Log.d(TAG, "Date Long: " + dateScore);
+        scoreFromDB.setDate(new Date(dateScore));
+  //      Log.d(TAG, "Date Date: " + scoreFromDB.getDate());
 
-        scoreFromDB.setDate(new Date(dateScore)); // must change date long to a date Date ------------------- check this ------
         scoreFromDB.setSleepScore(sleepScore);
         scoreFromDB.setMovementScore(movementScore);
         scoreFromDB.setImaginationScore(imaginationScore);
