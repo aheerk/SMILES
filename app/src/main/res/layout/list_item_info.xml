@@ -22,7 +22,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="0dp"
-                android:textSize="30dp"
+                style="@style/TitleText"
                 android:textColor="@color/colorPrimary"
                 />
 
@@ -32,7 +32,7 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="0dp"
                 android:paddingBottom="8dp"
-                android:textSize="16dp"
+                style="@style/SubtitleText"
                 android:textColor="@color/colorPrimaryDark"
                 />
         </LinearLayout>

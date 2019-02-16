@@ -59,4 +59,8 @@
     <string name="introduction_next">Next</string>
 
 
+
+    <!-- Web Links -->
+    <string name="weblinks_link1_title">Normal Sleep</string>
+    <string name="weblinks_link1_subtitle">Canadian Sleep Society</string>
 </resources>
