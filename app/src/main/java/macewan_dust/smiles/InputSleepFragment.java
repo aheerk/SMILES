@@ -11,6 +11,9 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.util.Date;
+import java.util.UUID;
+
 public class InputSleepFragment extends Fragment {
 
     private static final String TAG = "InputSleepFragment";
@@ -37,6 +40,8 @@ public class InputSleepFragment extends Fragment {
     TextView mResults;
 
     int mQuestion_A_index;
+
+    Score mScore;
 
     /**
      * new instance constructor
@@ -243,6 +248,23 @@ public class InputSleepFragment extends Fragment {
                             Toast t2 = new Toast(getContext());
                             t2.setText("Error in scoring");
                             t2.show();
+                    }
+
+                    // if score exists, update it, else make a new one and save it
+                    if (ScoringLab.get(getActivity()).isScore(new Date())){ //----------------------- this method should work once the time is removed from date.
+                        // get UUID of score with today's date
+                        UUID tempID = ScoringLab.get(getActivity()).getScoreID(new Date()); // ------ consider making a get score by id instead of two separate functions
+                        // get score object to use its data
+                        mScore = ScoringLab.get(getActivity()).getScore(tempID);
+                        // set new score for this category
+                        mScore.setSleepScore(score);
+                        // save score to database
+                        ScoringLab.get(getActivity()).updateScore(mScore);
+                        //
+                    } else {
+                        mScore = new Score();
+                        mScore.setSleepScore(score);
+                        ScoringLab.get(getActivity()).addScore(mScore);
                     }
 
                     mResults.setText(getString(R.string.quest_results, getString(scoreStringID)));

@@ -11,9 +11,12 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.util.Date;
+import java.util.UUID;
+
 public class InputImaginationFragment extends Fragment {
 
-    private static final String TAG = "InputImaginationFragment";
+    private static final String TAG = "InputImagFragment";
     private static final int NO_SELECTION = 100000;
 
     ImageView mIcon1_a;
@@ -35,6 +38,8 @@ public class InputImaginationFragment extends Fragment {
     int mQuestion_A_index;
     int mQuestion_B_index;
     int mQuestion_C_index;
+
+    Score mScore;
 
     /**
      * new instance constructor
@@ -119,7 +124,6 @@ public class InputImaginationFragment extends Fragment {
                 mIcon1_c.setBackground(getResources().getDrawable(R.drawable.border_image_selected));
             }
         });
-
 
         // QUESTION 2 Listeners
         mIcon2_a.setOnClickListener(new View.OnClickListener() {
@@ -217,6 +221,23 @@ public class InputImaginationFragment extends Fragment {
                             Toast t2 = new Toast(getContext());
                             t2.setText("Error in scoring");
                             t2.show();
+                    }
+
+                    // if score exists, update it, else make a new one and save it
+                    if (ScoringLab.get(getActivity()).isScore(new Date())){ //----------------------- this method should work once the time is removed from date.
+                        // get UUID of score with today's date
+                        UUID tempID = ScoringLab.get(getActivity()).getScoreID(new Date()); // ------ consider making a get score by id instead of two separate functions
+                        // get score object to use its data
+                        mScore = ScoringLab.get(getActivity()).getScore(tempID);
+                        // set new score for this category
+                        mScore.setImaginationScore(score);
+                        // save score to database
+                        ScoringLab.get(getActivity()).updateScore(mScore);
+                        //
+                    } else {
+                        mScore = new Score();
+                        mScore.setImaginationScore(score);
+                        ScoringLab.get(getActivity()).addScore(mScore);
                     }
 
                     mResults.setText(getString(R.string.quest_results, getString(scoreStringID)));

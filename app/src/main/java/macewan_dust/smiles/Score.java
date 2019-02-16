@@ -18,7 +18,7 @@ public class Score {
     private int mSpeakingScore;
 
     public Score() {
-        mDate = new Date();                                                 /// check this is the right mDate option. there are 2 import options
+        mDate = new Date();
         mID = UUID.randomUUID();
         mSleepScore = ScoringAlgorithms.SCORE_NONE;
         mMovementScore = ScoringAlgorithms.SCORE_NONE;
@@ -53,7 +53,7 @@ public class Score {
     }
 
     public void setDate(Date date) {
-        date = date;
+        mDate = date;
     }
 
     public int getSleepScore() {

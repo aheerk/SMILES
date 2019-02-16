@@ -15,6 +15,8 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import java.text.DateFormat;
+import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -40,7 +42,11 @@ public class DashboardListFragment extends Fragment {
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-// generating some items for testing
+
+        // scores from database
+        mDashboardData = ScoringLab.get(getContext()).getScores();
+/*
+        // generating some items for testing
         Score temp = new Score();
         temp.setSpeakingScore(ScoringAlgorithms.SCORE_BALANCED);
         temp.setLaughterScore(ScoringAlgorithms.SCORE_BALANCED);
@@ -51,13 +57,8 @@ public class DashboardListFragment extends Fragment {
         temp2.setLaughterScore(ScoringAlgorithms.SCORE_LOW);
         temp2.setMovementScore(ScoringAlgorithms.SCORE_BALANCED);
         mDashboardData.add(temp2);
-
-
-
-
+        */
     }
-
-
 
     @Nullable
     @Override
@@ -88,10 +89,6 @@ public class DashboardListFragment extends Fragment {
 
         return v;
     }
-
-
-
-
 
     /**
      * replaceFragment - performs fragment transactions.
@@ -125,7 +122,6 @@ public class DashboardListFragment extends Fragment {
             public ImageView mIconLaughter;
             public ImageView mIconEating;
             public ImageView mIconSpeaking;
-
             public TextView mDate;
 
             public DashboardViewHolder(View itemView) {
@@ -136,6 +132,7 @@ public class DashboardListFragment extends Fragment {
                 mIconLaughter = itemView.findViewById(R.id.list_item_score_laughter);
                 mIconEating = itemView.findViewById(R.id.list_item_score_eating);
                 mIconSpeaking = itemView.findViewById(R.id.list_item_score_speaking);
+                mDate = itemView.findViewById(R.id.list_item_score_date);
 
                 itemView.setOnClickListener(this);
             }
@@ -182,14 +179,6 @@ public class DashboardListFragment extends Fragment {
         @Override
         public void onBindViewHolder(@NonNull DashboardListFragment.DashboardAdapter.DashboardViewHolder holder, int position) {
 
-
-
-
-
-
-
-            // ------ implement set date                                                                -----
-
             holder.mIconSleep.setBackground(getResources().getDrawable(
                     Score.getBackgroundID(mDashboardListData.get(position).getSleepScore())));
             holder.mIconMovement.setBackground(getResources().getDrawable(
@@ -203,7 +192,10 @@ public class DashboardListFragment extends Fragment {
             holder.mIconSpeaking.setBackground(getResources().getDrawable(
                     Score.getBackgroundID(mDashboardListData.get(position).getSpeakingScore())));
 
-
+            // format date to exclude time
+            Date tempDate = mDashboardListData.get(position).getDate();
+            String tempStringDate = DateFormat.getDateInstance(DateFormat.MEDIUM).format(tempDate);
+            holder.mDate.setText(tempStringDate);
         }
 
         /**

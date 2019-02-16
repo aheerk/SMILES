@@ -5,7 +5,9 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import macewan_dust.smiles.database.SMILES_DatabaseSchema.ScoreTable;
 
-
+/**
+ * create and update table methods
+ */
 public class SMILES_DatabaseHelper extends SQLiteOpenHelper {
     private static final int VERSION = 1;
     private static final String DATABASE_NAME = "SMILES_Database.db";

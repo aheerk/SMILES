@@ -57,7 +57,20 @@
         applicable, and easily utilized. To support the diversity of the nursing profession. Encouraging a variety of
         selfenhancing methods to support work/life balance to inspire a continual journey towards a healthy lifestyle. </string>
     <string name="introduction_next">Next</string>
+    <string name="introduction_back">Back</string>
 
+    <string name="introduction_title_stress1">Stress</string>
+    <string name="introduction_explanation_stress1">Stress an inevitable part of nursing, deficits lie regarding the practice
+        of positive stress relieving methods. Despite nurses having knowledge to aspire and teach self –care, it is a subject
+        that is often neglected in the nursing profession.</string>
+
+    <string name="introduction_explanation_stress2">Challenges of lack of self-care causes caregiver burnout, errors in practice,
+        a decrease in the quality of care provided and reduced workplace satisfaction. </string>
+
+    <string name="introduction_title_balance">Balance</string>
+    <string name="introduction_explanation_balance">This framework will assist in utilizing the importance of life balance,
+        an emphasis on personal enjoyment and on improving overall health. SMILES includes individuality and encourages
+        holism of health including mind, body and spirit. </string>
 
 
     <!-- Web Links -->
