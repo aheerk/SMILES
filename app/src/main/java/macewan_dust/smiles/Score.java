@@ -1,5 +1,8 @@
 package macewan_dust.smiles;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.UUID;
 
@@ -8,7 +11,7 @@ import java.util.UUID;
  */
 public class Score {
 
-    private Date mDate;
+    private String mDate;
     private UUID mID;
     private int mSleepScore;
     private int mMovementScore;
@@ -18,7 +21,14 @@ public class Score {
     private int mSpeakingScore;
 
     public Score() {
-        mDate = new Date();
+        Date tempDate = new Date();
+    //    mDate = timelessDate(mDate);
+
+   //     mDate.setHours(); // gives the wrong date
+
+        mDate = DateFormat.getDateInstance(DateFormat.MEDIUM).format(tempDate);
+  //      mDate = new Date(tempStringDate);
+
         mID = UUID.randomUUID();
         mSleepScore = ScoringAlgorithms.SCORE_NONE;
         mMovementScore = ScoringAlgorithms.SCORE_NONE;
@@ -34,7 +44,6 @@ public class Score {
      * @param id
      */
     public Score(UUID id) {
-        mDate = new Date();                           // warning. date may be null without this line
         mID = id;
         mSleepScore = ScoringAlgorithms.SCORE_NONE;
         mMovementScore = ScoringAlgorithms.SCORE_NONE;
@@ -44,7 +53,7 @@ public class Score {
         mSpeakingScore = ScoringAlgorithms.SCORE_NONE;
     }
 
-    public Date getDate() {
+    public String getDate() {
         return mDate;
     }
 
@@ -52,7 +61,7 @@ public class Score {
         return mID;
     }
 
-    public void setDate(Date date) {
+    public void setDate(String date) {
         mDate = date;
     }
 
@@ -142,9 +151,20 @@ public class Score {
             default:
                 return R.drawable.border_image_no_data;
         }
-
-
-
     }
 
+    public static String timelessDate(Date dateIn){
+        return DateFormat.getDateInstance(DateFormat.MEDIUM).format(dateIn);
+    }
+/*
+    public static Date timelessDate(Date dateIn){
+        // removing time from date.
+        DateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
+        try {
+            dateIn = formatter.parse(formatter.format(dateIn));
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        return dateIn;
+    }*/
 }

@@ -170,9 +170,10 @@ public class InputLaughterFragment extends Fragment {
                     }
 
                     // if score exists, update it, else make a new one and save it
-                    if (ScoringLab.get(getActivity()).isScore(new Date())){ //----------------------- this method should work once the time is removed from date.
+                    if (ScoringLab.get(getActivity()).isScore(Score.timelessDate(new Date()))){ //----------------------- this method should work once the time is removed from date.
                         // get UUID of score with today's date
-                        UUID tempID = ScoringLab.get(getActivity()).getScoreID(new Date()); // ------ consider making a get score by id instead of two separate functions
+                        Log.d(TAG, "score found by date: " + Score.timelessDate(new Date()));
+                        UUID tempID = ScoringLab.get(getActivity()).getScoreID(Score.timelessDate(new Date())); // ------ consider making a get score by id instead of two separate functions
                         // get score object to use its data
                         mScore = ScoringLab.get(getActivity()).getScore(tempID);
                         // set new score for this category
@@ -181,6 +182,8 @@ public class InputLaughterFragment extends Fragment {
                         ScoringLab.get(getActivity()).updateScore(mScore);
                         //
                     } else {
+                        Log.d(TAG, "score NOT found by date: " + Score.timelessDate(new Date()));
+
                         mScore = new Score();
                         mScore.setLaughterScore(score);
                         ScoringLab.get(getActivity()).addScore(mScore);

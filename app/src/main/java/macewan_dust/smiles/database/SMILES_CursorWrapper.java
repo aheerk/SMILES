@@ -34,12 +34,14 @@ public class SMILES_CursorWrapper extends CursorWrapper {
         int laughterScore = getInt(getColumnIndex(SMILES_DatabaseSchema.ScoreTable.Columns.LAUGHTER));
         int eatingScore = getInt(getColumnIndex(SMILES_DatabaseSchema.ScoreTable.Columns.EATING));
         int speakingScore = getInt(getColumnIndex(SMILES_DatabaseSchema.ScoreTable.Columns.SPEAKING));
-        long dateScore = getLong(getColumnIndex(SMILES_DatabaseSchema.ScoreTable.Columns.DATE));
+        String dateScore = getString(getColumnIndex(SMILES_DatabaseSchema.ScoreTable.Columns.DATE));
 
         Score scoreFromDB = new Score(UUID.fromString(uuidString)); // new score object with old UUID
   //      Log.d(TAG, "Date Long: " + dateScore);
-        scoreFromDB.setDate(new Date(dateScore));
-  //      Log.d(TAG, "Date Date: " + scoreFromDB.getDate());
+       // scoreFromDB.setDate(new Date(dateScore));
+        scoreFromDB.setDate(dateScore);
+
+        //      Log.d(TAG, "Date Date: " + scoreFromDB.getDate());
 
         scoreFromDB.setSleepScore(sleepScore);
         scoreFromDB.setMovementScore(movementScore);

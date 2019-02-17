@@ -134,9 +134,9 @@ public class ScoringLab {
 
 
         // convert to long to be compatible with database which has no Date type
-        long tempDate = score.getDate().getTime(); // converts data to long
-        values.put(SMILES_DatabaseSchema.ScoreTable.Columns.DATE, tempDate);
+     //   long tempDate = score.getDate().getTime(); // converts data to long
 
+        values.put(SMILES_DatabaseSchema.ScoreTable.Columns.DATE, score.getDate());
         values.put(SMILES_DatabaseSchema.ScoreTable.Columns.SLEEP, score.getSleepScore());
         values.put(SMILES_DatabaseSchema.ScoreTable.Columns.MOVEMENT, score.getMovementScore());
         values.put(SMILES_DatabaseSchema.ScoreTable.Columns.IMAGINATION, score.getImaginationScore());
@@ -181,17 +181,18 @@ public class ScoringLab {
      * @param date - date excluding time
      * @return - true if score exists
      */
-    public boolean isScore(Date date) {
+    public boolean isScore(String date) {
         boolean dateFound = false;
 
         SMILES_CursorWrapper cursor = queryScores(
                 SMILES_DatabaseSchema.ScoreTable.Columns.DATE + " = ?",
-                new String[]{date.toString()}
+                new String[]{date}
         );
 
         try {
-            if (cursor.getCount() == 1) {
+            if (cursor.getCount() > 0) {
                 dateFound = true;
+                Log.d(TAG, "date: " + date + " in database: " + dateFound);
             }
 
         } finally {
@@ -205,12 +206,12 @@ public class ScoringLab {
      * @param date - date excluding time
      * @return UUID unique identiefier for scores
      */
-    public UUID getScoreID(Date date) {
+    public UUID getScoreID(String date) {
         boolean dateFound = false;
 
         SMILES_CursorWrapper cursor = queryScores(
                 SMILES_DatabaseSchema.ScoreTable.Columns.DATE + " = ?",
-                new String[]{date.toString()}
+                new String[]{date}
         );
 
         try {
@@ -219,7 +220,10 @@ public class ScoringLab {
             }
 
             cursor.moveToFirst(); // first item in results
+            Log.d(TAG, "date: " + date + " has ID: " + cursor.getScoreFromDB().getID());
+
             return cursor.getScoreFromDB().getID();
+
 
         } finally {
             cursor.close();

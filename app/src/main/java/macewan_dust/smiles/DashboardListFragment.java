@@ -193,9 +193,9 @@ public class DashboardListFragment extends Fragment {
                     Score.getBackgroundID(mDashboardListData.get(position).getSpeakingScore())));
 
             // format date to exclude time
-            Date tempDate = mDashboardListData.get(position).getDate();
-            String tempStringDate = DateFormat.getDateInstance(DateFormat.MEDIUM).format(tempDate);
-            holder.mDate.setText(tempStringDate);
+            String tempDate = mDashboardListData.get(position).getDate();
+           // String tempStringDate = DateFormat.getDateInstance(DateFormat.MEDIUM).format(tempDate);
+            holder.mDate.setText(tempDate);
         }
 
         /**
