@@ -72,4 +72,8 @@
         an emphasis on personal enjoyment and on improving overall health. SMILES includes individuality and encourages
         holism of health including mind, body and spirit. </string>
 
+
+    <!-- Web Links -->
+    <string name="weblinks_link1_title">Normal Sleep</string>
+    <string name="weblinks_link1_subtitle">Canadian Sleep Society</string>
 </resources>
