@@ -1,9 +1,5 @@
 package macewan_dust.smiles;
 
-import android.support.v4.app.Fragment;
-
-import java.net.URL;
-
 /*
 *  WebItem is used to store information in a single item
 *  in the Web Links list.
@@ -13,18 +9,18 @@ public class WebItem {
     // Icon for later?
     private String mTitle;
     private String mSubtitle;
-    private URL mUrl;
+    private String mUri;
 
     /**
      * WebItem Constructor
      * @param mTitle
      * @param mSubtitle
-     * @param mUrl
+     * @param mUri
      */
-    public WebItem(String mTitle, String mSubtitle, URL mUrl) {
+    public WebItem(String mTitle, String mSubtitle, String mUri) {
         this.mTitle = mTitle;
         this.mSubtitle = mSubtitle;
-        this.mUrl = mUrl;
+        this.mUri = mUri;
     }
 
     public String getTitle() {
@@ -35,8 +31,8 @@ public class WebItem {
         return mSubtitle;
     }
 
-    public URL getUrl() {
-        return mUrl;
+    public String getUri() {
+        return mUri;
     }
 
 

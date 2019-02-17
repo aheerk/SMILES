@@ -1,5 +1,7 @@
 package macewan_dust.smiles;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
@@ -13,15 +15,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import java.io.IOException;
-import java.net.URL;
 import java.util.LinkedList;
 import java.util.List;
-
-
-import android.content.res.Resources;
-
-import static android.support.v7.widget.RecyclerView.HORIZONTAL;
 // FIX COMMENTS
 
 public class WebListFragment extends Fragment {
@@ -44,14 +39,9 @@ public class WebListFragment extends Fragment {
         for (int i = 0; i < weblinks.length; i = i + 3) {
             String title = weblinks[i];
             String subtitle = weblinks[i + 1];
-            String url = weblinks[i + 2];
+            String uri = weblinks[i + 2];
 
-            try {
-                URL newURL = new URL(url);
-                mWebItems.add(new WebItem(title, subtitle, newURL));
-            } catch (IOException e){
-                Log.d(TAG, "Unable to add a link.");
-            }
+                mWebItems.add(new WebItem(title, subtitle, uri));
 
         }
 
@@ -106,10 +96,12 @@ public class WebListFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 Log.d(TAG, "onClick called");
-              //open website
-                //  int position = getAdapterPosition(); // find out where this view is in the list
-                // gets info item at views position, then gets the fragment out of it and loads it
-               // replaceFragment(mWebData.get(position).getFragment());
+
+                // Open the link of the selected item
+                int position = getAdapterPosition();
+                String uri = mWebListData.get(position).getUri();
+                Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(uri));
+                startActivity(browserIntent);
             }
         }
 
