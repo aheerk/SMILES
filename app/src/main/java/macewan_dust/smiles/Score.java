@@ -11,7 +11,7 @@ import java.util.UUID;
  */
 public class Score {
 
-    private String mDate;
+    private String mDate; // using a string date due to all the date issues. deprecated, etc.
     private UUID mID;
     private int mSleepScore;
     private int mMovementScore;
