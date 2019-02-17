@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -17,6 +18,10 @@ import java.net.URL;
 import java.util.LinkedList;
 import java.util.List;
 
+
+import android.content.res.Resources;
+
+import static android.support.v7.widget.RecyclerView.HORIZONTAL;
 // FIX COMMENTS
 
 public class WebListFragment extends Fragment {
@@ -32,17 +37,23 @@ public class WebListFragment extends Fragment {
         super.onCreate(savedInstanceState);
         setRetainInstance(true); // prevents instance of the fragment from being destroyed on rotation.
 
-        // LOOP
+        String[] weblinks = getResources().getStringArray(R.array.weblinks_array);
 
-        // Just for initialization
-        try {
-            URL url = new URL("https://css-scs.ca/resources/brochures/normal-sleep");
-            mWebItems.add(new WebItem(getString(R.string.weblinks_link1_title),
-                    getString(R.string.weblinks_link1_subtitle), url));
-        } catch (IOException e){
-            Log.d(TAG, "Unable to add a link.");
+        // Loop through the web links and add a new web item to the
+        // linked list
+        for (int i = 0; i < weblinks.length; i = i + 3) {
+            String title = weblinks[i];
+            String subtitle = weblinks[i + 1];
+            String url = weblinks[i + 2];
+
+            try {
+                URL newURL = new URL(url);
+                mWebItems.add(new WebItem(title, subtitle, newURL));
+            } catch (IOException e){
+                Log.d(TAG, "Unable to add a link.");
+            }
+
         }
-
 
     }
 
@@ -58,6 +69,10 @@ public class WebListFragment extends Fragment {
         mWebRecyclerView.setHasFixedSize(true);
 
         getActivity().setTitle(R.string.title_web_links);
+
+        DividerItemDecoration itemDecor = new DividerItemDecoration(mWebRecyclerView.getContext(),
+                DividerItemDecoration.VERTICAL);
+        mWebRecyclerView.addItemDecoration(itemDecor);
 
         return v;
     }
