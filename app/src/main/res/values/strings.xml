@@ -72,8 +72,90 @@
         an emphasis on personal enjoyment and on improving overall health. SMILES includes individuality and encourages
         holism of health including mind, body and spirit. </string>
 
-
     <!-- Web Links -->
-    <string name="weblinks_link1_title">Normal Sleep</string>
-    <string name="weblinks_link1_subtitle">Canadian Sleep Society</string>
+    <!-- Note, the links are in order of appearance in Sherri's slides. -->
+    <!-- Doesn't work: http://creativityinhealthcare.com/2010/01/20/art-by-nurses-by-lynda-mcleod/ -->
+    <string-array name="weblinks_array">
+
+        <!-- Link 1 -->
+        <item>Normal Sleep</item>
+        <item>Article</item>
+        <item>https://css-scs.ca/resources/brochures/normal-sleep</item>
+
+        <!-- Link 2 -->
+        <item>Self-Help Tips</item>
+        <item>Article</item>
+        <item>https://www.albertahealthservices.ca/news/Page13125.aspx</item>
+
+        <!-- Link 3 -->
+        <item>Physical Activity Tips for Adults</item>
+        <item>Article</item>
+        <item>https://www.canada.ca/en/public-health/services/publications/healthy-living/physical-activity-tips-adults-18-64-years.html</item>
+
+        <!-- Link 4 -->
+        <item>Progressive Muscle Relaxation</item>
+        <item>Article</item>
+        <item>https://myhealth.alberta.ca/health/pages/conditions.aspx?Hwid=ta4146</item>
+
+        <!-- Link 5 -->
+        <item>Progressive Muscle Relaxation Audio Track</item>
+        <item>Media</item>
+        <item>https://myhealth.alberta.ca/Alberta/Pages/Progressive-Muscle-Relaxation-Audio-Track.aspx</item>
+
+        <!-- Link 6 -->
+        <item>Stress Relief &amp; Relaxation</item>
+        <item>Article</item>
+        <item>https://myhealth.alberta.ca/health/pages/conditions.aspx?Hwid=af1003spec</item>
+
+        <!-- Link 7 -->
+        <item>Guided Meditation</item>
+        <item>Media</item>
+        <item>http://mindfulnessforhealth.ca/mindfulness-for-health-meditations/</item>
+
+        <!-- Link 8 -->
+        <item>Breathing Exercises</item>
+        <item>Article</item>
+        <item>https://myhealth.alberta.ca/health/pages/conditions.aspx?Hwid=ug1812</item>
+
+        <!-- Link 9 -->
+        <item>10 Benefits of Expressing Your Creativity</item>
+        <item>Article</item>
+        <item>http://www.selfgrowth.com/articles/Morris4.html</item>
+
+        <!-- Link 10 -->
+        <item>Promoting Postitive Mental Health</item>
+        <item>Article</item>
+        <item>https://www.canada.ca/en/public-health/services/promoting-positive-mental-health.html</item>
+
+        <!-- Link 11 -->
+        <item>Work/Life Balance Quiz</item>
+        <item>Quiz</item>
+        <item>https://cmha.ca/work-life-balance-quiz</item>
+
+        <!-- Link 12 -->
+        <item>Stress Index</item>
+        <item>Quiz</item>
+        <item>https://cmha.ca/whats-your-stress-index</item>
+
+        <!-- Link 13 -->
+        <item>Practicing Gratitude</item>
+        <item>Article</item>
+        <item>https://myhealth.alberta.ca/health/pages/conditions.aspx?hwid=abl0225&amp;#abl0226</item>
+
+        <!-- Link 14 -->
+        <item>Humor an Antidote for Stress</item>
+        <item>Article</item>
+        <item>http://pattywooten.com/images/HumorStressAntidote.pdf</item>
+
+        <!-- Link 15 -->
+        <item>Canadian Food Guide</item>
+        <item>Article</item>
+        <item>https://food-guide.canada.ca/en/</item>
+
+        <!-- Link 16 -->
+        <item>Social Connections</item>
+        <item>Article</item>
+        <item>https://myhealth.alberta.ca/health/pages/conditions.aspx?Hwid=abl0295</item>
+
+    </string-array>
 </resources>
