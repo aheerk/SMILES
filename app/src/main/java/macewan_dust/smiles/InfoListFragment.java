@@ -30,7 +30,7 @@ public class InfoListFragment extends Fragment {
 
 // generating some items for testing                                                                    /////-------- refactor this
         InfoItem temp4 = new InfoItem(getString(R.string.title_introduction), "subtitle", new IntroductionFragment());
-        InfoItem temp1 = new InfoItem(getString(R.string.introduction_title_smiles), "subtitle", new SmilesInfo());
+        InfoItem temp1 = new InfoItem(getString(R.string.introduction_title_smiles), "subtitle", new SmilesListFragment());
         InfoItem temp2 = new InfoItem(getString(R.string.title_web_links), "subtitle", new WebListFragment());
         InfoItem temp3 = new InfoItem(getString(R.string.title_credits), "subtitle", new CreditInfoFragment());
 
