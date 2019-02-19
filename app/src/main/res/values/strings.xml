@@ -17,6 +17,8 @@
     <string name="title_web_links">Web Links</string>
     <string name="title_credits">Credits</string>
 
+    <string name="button_start_daily">Daily Questions</string>
+
     <string name="quest_sleep_a">Hours of sleep per day:</string>
     <string name="quest_sleep_b">Did any activities hinder your sleep?</string>
 
