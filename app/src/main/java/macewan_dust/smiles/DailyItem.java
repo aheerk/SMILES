@@ -6,7 +6,7 @@ public class DailyItem {
 
     private int mIconID;
     private String mTitle;
-    private String mSubtitle;
+    private int mSubtitleID;
     private int mBackgroundID;
     private Fragment mFragment;
 
@@ -14,14 +14,13 @@ public class DailyItem {
      * constructor
      * @param iconID
      * @param title
-     * @param subtitle
      * @param fragment
      */
-    public DailyItem(int iconID, int backgroundID, String title, String subtitle, Fragment fragment) {
+    public DailyItem(int iconID, String title, Fragment fragment) {
         mIconID = iconID;
         mTitle = title;
-        mSubtitle = subtitle;
-        mBackgroundID = backgroundID;
+        mBackgroundID = R.drawable.border_image;
+        updateSubtitle();
         mFragment = fragment;
     }
 
@@ -33,8 +32,8 @@ public class DailyItem {
         return mTitle;
     }
 
-    public String getSubtitle() {
-        return mSubtitle;
+    public int getSubtitleID() {
+        return mSubtitleID;
     }
 
     public int getBackgroundID() {
@@ -43,5 +42,31 @@ public class DailyItem {
 
     public Fragment getFragment() {
         return mFragment;
+    }
+
+    public void setBackgroundID(int backgroundID) {
+        mBackgroundID = backgroundID;
+        updateSubtitle();
+    }
+
+    public void updateSubtitle(){
+        switch (mBackgroundID){
+            case R.drawable.border_image_low:
+                mSubtitleID = R.string.subtitle_score_low;
+                break;
+
+            case R.drawable.border_image_high:
+                mSubtitleID = R.string.subtitle_score_high;
+                break;
+            case R.drawable.border_image_balanced:
+                mSubtitleID = R.string.subtitle_score_balanced;
+                break;
+            case R.drawable.border_image_unbalanced:
+                mSubtitleID = R.string.subtitle_score_unbalanced;
+                break;
+
+            default:
+                mSubtitleID = R.string.subtitle_score_no_data;
+        }
     }
 }

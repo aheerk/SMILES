@@ -19,6 +19,18 @@
 
     <string name="button_start_daily">Daily Questions</string>
 
+    <!-- DAILY QUESTION INTERFACE -->
+    <string name="subtitle_score_low">Low score: Can you do more?</string>
+    <string name="subtitle_score_high">High score: Less is more</string>
+    <string name="subtitle_score_balanced">Balanced: A perfect day!</string>
+    <string name="subtitle_score_unbalanced">Unbalanced: Too much and too little</string>
+    <string name="subtitle_score_no_data">Score your activities</string>
+
+
+
+
+
+
     <string name="quest_sleep_a">Hours of sleep per day:</string>
     <string name="quest_sleep_b">Did any activities hinder your sleep?</string>
 
