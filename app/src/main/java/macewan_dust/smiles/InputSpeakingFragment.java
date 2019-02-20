@@ -309,7 +309,7 @@ public class InputSpeakingFragment extends Fragment {
                     }
 
                     // if score exists, update it, else make a new one and save it
-                    if (ScoringLab.get(getActivity()).isScore(Score.timelessDate(new Date()))){ //----------------------- this method should work once the time is removed from date.
+                    if (ScoringLab.get(getActivity()).isScore(new Date())){
                         // get UUID of score with today's date
                         UUID tempID = ScoringLab.get(getActivity()).getScoreID(Score.timelessDate(new Date())); // ------ consider making a get score by id instead of two separate functions
                         // get score object to use its data
