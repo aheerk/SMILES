@@ -15,8 +15,10 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.UUID;
 
 /**
  * Reference pages:
@@ -36,19 +38,19 @@ public class DailyListFragment extends Fragment {
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-// generating some items for testing                                                                    /////-------- refactor this
-        DailyItem temp1 = new DailyItem(R.drawable.icon_sleep, R.drawable.border_image,
-                getString(R.string.title_quest_sleep), "Score your sleep", new InputSleepFragment());
-        DailyItem temp2 = new DailyItem(R.drawable.icon_movement, R.drawable.border_image_balanced,
-                getString(R.string.title_quest_movement), "Measure your movement", new InputMovementFragment());
-        DailyItem temp3 = new DailyItem(R.drawable.icon_imagination, R.drawable.border_image_low,
-                getString(R.string.title_quest_imagination), "Rate your imagination", new InputImaginationFragment());
-        DailyItem temp4 = new DailyItem(R.drawable.icon_laughter, R.drawable.border_image_high,
-                getString(R.string.title_quest_laughter), "Rank your laughter", new InputLaughterFragment());
-        DailyItem temp5 = new DailyItem(R.drawable.icon_eating, R.drawable.border_image,
-                getString(R.string.title_quest_eating), "Balance your eating", new InputEatingFragment());
-        DailyItem temp6 = new DailyItem(R.drawable.icon_speaking, R.drawable.border_image_balanced,
-                getString(R.string.title_quest_speaking), "Score your speaking", new InputSpeakingFragment());
+// generating some items for testing                                                                    /////-------- refactor this fragment
+        DailyItem temp1 = new DailyItem(R.drawable.icon_sleep,
+                getString(R.string.title_quest_sleep), new InputSleepFragment());
+        DailyItem temp2 = new DailyItem(R.drawable.icon_movement,
+                getString(R.string.title_quest_movement), new InputMovementFragment());
+        DailyItem temp3 = new DailyItem(R.drawable.icon_imagination,
+                getString(R.string.title_quest_imagination), new InputImaginationFragment());
+        DailyItem temp4 = new DailyItem(R.drawable.icon_laughter,
+                getString(R.string.title_quest_laughter), new InputLaughterFragment());
+        DailyItem temp5 = new DailyItem(R.drawable.icon_eating,
+                getString(R.string.title_quest_eating), new InputEatingFragment());
+        DailyItem temp6 = new DailyItem(R.drawable.icon_speaking,
+                getString(R.string.title_quest_speaking), new InputSpeakingFragment());
 
         mDailyData.add(temp1);
         mDailyData.add(temp2);
@@ -73,16 +75,33 @@ public class DailyListFragment extends Fragment {
 
         getActivity().setTitle(R.string.title_daily_questions);
 
-
+        setBorders();
         return v;
-
     }
 
     @Override
     public void onResume() {
         super.onResume();
         getActivity().setTitle(R.string.title_daily_questions);
+        setBorders();
+    }
 
+    private void setBorders() {
+        if (ScoringLab.get(getActivity()).isScore(new Date())) {
+            // get UUID of score with today's date
+            UUID tempID = ScoringLab.get(getActivity()).getScoreID(Score.timelessDate(new Date())); // ------ consider making a get score by id instead of two separate functions
+            // get score object to use its data
+            Score tempScore = ScoringLab.get(getActivity()).getScore(tempID);
+            // set new score for this category
+
+            // set border based on todays score. subtitle is update automatically based on background.
+            mDailyData.get(0).setBackgroundID(Score.getBackgroundID(tempScore.getSleepScore()));
+            mDailyData.get(1).setBackgroundID(Score.getBackgroundID(tempScore.getMovementScore()));
+            mDailyData.get(2).setBackgroundID(Score.getBackgroundID(tempScore.getImaginationScore()));
+            mDailyData.get(3).setBackgroundID(Score.getBackgroundID(tempScore.getLaughterScore()));
+            mDailyData.get(4).setBackgroundID(Score.getBackgroundID(tempScore.getEatingScore()));
+            mDailyData.get(5).setBackgroundID(Score.getBackgroundID(tempScore.getSpeakingScore()));
+        }
     }
 
     public class DailyAdapter extends RecyclerView.Adapter<DailyAdapter.DailyViewHolder> {
@@ -113,6 +132,7 @@ public class DailyListFragment extends Fragment {
                 Log.d(TAG, "onClick called");
                 int position = getAdapterPosition(); // find out where this view is in the list
                 // gets daily item at views position, then gets the fragment out of it and loads it
+
                 replaceFragment(mDailyData.get(position).getFragment());
             }
         }
@@ -153,7 +173,7 @@ public class DailyListFragment extends Fragment {
             holder.mIcon.setImageResource(mDailyListData.get(position).getIconID());
             holder.mIcon.setBackground(getResources().getDrawable(mDailyListData.get(position).getBackgroundID()));
             holder.mTitle.setText(mDailyListData.get(position).getTitle());
-            holder.mSubtitle.setText(mDailyListData.get(position).getSubtitle());
+            holder.mSubtitle.setText(mDailyListData.get(position).getSubtitleID());
         }
 
         /**

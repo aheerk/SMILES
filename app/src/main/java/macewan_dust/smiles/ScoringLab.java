@@ -181,12 +181,14 @@ public class ScoringLab {
      * @param date - date excluding time
      * @return - true if score exists
      */
-    public boolean isScore(String date) {
+    public boolean isScore(Date date) {
+
+        String tempDate = Score.timelessDate(date);
         boolean dateFound = false;
 
         SMILES_CursorWrapper cursor = queryScores(
                 SMILES_DatabaseSchema.ScoreTable.Columns.DATE + " = ?",
-                new String[]{date}
+                new String[]{tempDate}
         );
 
         try {

@@ -20,11 +20,14 @@ import java.util.List;
 public class SmilesListFragment extends Fragment {
 
     private static final String TAG = "SmilesListFragment";
+    public static final String ARG_OPERATION_ID_ICON = "pass_smiles_icon";
+    public static final String ARG_OPERATION_ID_TEXT = "pass_smiles_text";
 
     private RecyclerView mSmilesRecyclerView;
     private RecyclerView.Adapter mSmilesRecyclerViewAdapter;
     private RecyclerView.LayoutManager mSmilesRecyclerViewLayoutManager;
     private List<SmilesItem> mSmilesData = new LinkedList<>();
+
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -85,11 +88,14 @@ public class SmilesListFragment extends Fragment {
             public ImageView mIcon;
             public TextView mTitleCapitalLetter;
             public TextView mTitle;
+            SmilesItem mSmilesItem; // for bundle information
 
 
 
             public SmilesViewHolder(View itemView) {
                 super(itemView);
+
+
                 mIcon = itemView.findViewById(R.id.icon_smiles_list);
                 mTitle = itemView.findViewById(R.id.text_smiles_capital_letter);
                 mTitleCapitalLetter = itemView.findViewById(R.id.text_smiles_lower_case_letter);
@@ -102,7 +108,15 @@ public class SmilesListFragment extends Fragment {
                 Log.d(TAG, "onClick called");
                // int position = getAdapterPosition(); // find out where this view is in the list
                 // gets Smiles item at views position, then gets the fragment out of it and loads it
-              //  replaceFragment(mSmilesData.get(position).getFragment());
+
+                Fragment newFrag = new SmilesInfoFragment();
+                Bundle opBundle = new Bundle();
+                opBundle.putInt(ARG_OPERATION_ID_ICON, mSmilesItem.getIconID());
+                opBundle.putInt(ARG_OPERATION_ID_TEXT, mSmilesItem.getTextID());
+                newFrag.setArguments(opBundle);
+
+                replaceFragment(new SmilesInfoFragment());
+
             }
         }
 
@@ -141,6 +155,7 @@ public class SmilesListFragment extends Fragment {
             holder.mIcon.setImageResource(mSmilesListData.get(position).getIconID());
             holder.mTitleCapitalLetter.setText(mSmilesListData.get(position).getTitle());
             holder.mTitle.setText(mSmilesListData.get(position).getTitle());
+            holder.mSmilesItem = mSmilesListData.get(position);
         }
 
         /**

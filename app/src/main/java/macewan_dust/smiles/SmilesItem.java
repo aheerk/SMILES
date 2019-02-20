@@ -10,6 +10,7 @@ public class SmilesItem {
     private int mIconID;
     private String mTitleCapitalLetter;
     private String mTitle;
+    private int mTextID;
 
     //private Fragment mFragment;
 
@@ -36,5 +37,13 @@ public class SmilesItem {
 
     public String getTitle() {
         return mTitle;
+    }
+
+    public int getTextID() {
+        return mTextID;
+    }
+
+    public void setTextID(int textID) {
+        mTextID = textID;
     }
 }
