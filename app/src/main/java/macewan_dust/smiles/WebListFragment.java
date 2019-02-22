@@ -15,36 +15,25 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import java.util.LinkedList;
 import java.util.List;
-// FIX COMMENTS
 
+/**
+ * This class is used to display the list of web links in the Information section
+ */
 public class WebListFragment extends Fragment {
 
     public static final String TAG = "Weblinks";
     private RecyclerView mWebRecyclerView;
     private RecyclerView.Adapter mWebRecyclerViewAdapter;
     private RecyclerView.LayoutManager mWebRecyclerViewLayoutManager;
-    private LinkedList<WebItem> mWebItems = new LinkedList<>();
+    private List<WebItem> mWebItems;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setRetainInstance(true); // prevents instance of the fragment from being destroyed on rotation.
 
-        String[] weblinks = getResources().getStringArray(R.array.weblinks_array);
-
-        // Loop through the web links and add a new web item to the
-        // linked list
-        for (int i = 0; i < weblinks.length; i = i + 3) {
-            String title = weblinks[i];
-            String subtitle = weblinks[i + 1];
-            String uri = weblinks[i + 2];
-
-                mWebItems.add(new WebItem(title, subtitle, uri));
-
-        }
-
+        mWebItems = WebLab.getWebList(this.getContext());
     }
 
     @Override
@@ -116,7 +105,6 @@ public class WebListFragment extends Fragment {
          * Creates new views for each list item.
          * Specify what view layout is used here.
          */
-
         public WebListFragment.WebAdapter.WebViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {              // ----- what is the role of viewType here?
 
             // create one new view
