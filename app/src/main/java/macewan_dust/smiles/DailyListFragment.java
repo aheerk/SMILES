@@ -77,7 +77,7 @@ public class DailyListFragment extends Fragment {
         super.onResume();
         getActivity().setTitle(R.string.title_daily_questions);
         setBorders();
-    }
+        }
 
     private void setBorders() {
         if (ScoringLab.get(getActivity()).isScore(new Date())) {

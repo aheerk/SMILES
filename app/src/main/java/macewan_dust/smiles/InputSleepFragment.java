@@ -36,7 +36,7 @@ public class InputSleepFragment extends Fragment {
     Boolean m2eSelected;
 
     Button mButton;
-    ImageView mIconFeedback;
+  //  ImageView mIconFeedback;
     TextView mResults;
 
     int mQuestion_A_index;
@@ -101,7 +101,7 @@ public class InputSleepFragment extends Fragment {
 
         mQuestion_A_index = NO_SELECTION;
 
-        mIconFeedback = v.findViewById(R.id.icon_feedback);
+    //    mIconFeedback = v.findViewById(R.id.icon_feedback);
 
         mIcon1a.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -225,19 +225,19 @@ public class InputSleepFragment extends Fragment {
 
                         case ScoringAlgorithms.SCORE_HIGH:
                             scoreStringID = R.string.score_high;
-                            mIconFeedback.setBackground(getResources().getDrawable(R.drawable.border_image_high));
+               //             mIconFeedback.setBackground(getResources().getDrawable(R.drawable.border_image_high));
                             break;
                         case ScoringAlgorithms.SCORE_LOW:
                             scoreStringID = R.string.score_low;
-                            mIconFeedback.setBackground(getResources().getDrawable(R.drawable.border_image_low));
+              //              mIconFeedback.setBackground(getResources().getDrawable(R.drawable.border_image_low));
                             break;
                         case ScoringAlgorithms.SCORE_BALANCED:
                             scoreStringID = R.string.score_balanced;
-                            mIconFeedback.setBackground(getResources().getDrawable(R.drawable.border_image_balanced));
+               //             mIconFeedback.setBackground(getResources().getDrawable(R.drawable.border_image_balanced));
                             break;
                         case ScoringAlgorithms.SCORE_OFF:
                             scoreStringID = R.string.score_unbalanced;
-                            mIconFeedback.setBackground(getResources().getDrawable(R.drawable.border_image_unbalanced));
+               //             mIconFeedback.setBackground(getResources().getDrawable(R.drawable.border_image_unbalanced));
                             break;
                         case ScoringAlgorithms.SCORE_ERROR:
                             Toast t1 = new Toast(getContext());
