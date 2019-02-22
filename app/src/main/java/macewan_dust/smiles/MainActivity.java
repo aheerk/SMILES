@@ -35,7 +35,7 @@ public class MainActivity extends SingleFragmentActivity implements BottomNaviga
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-      //  getSupportActionBar().setDisplayShowHomeEnabled(true);
+       // getSupportActionBar().setDisplayShowHomeEnabled(true);
 /*
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
@@ -44,6 +44,19 @@ public class MainActivity extends SingleFragmentActivity implements BottomNaviga
             }
         });*/
 
+    }
+
+    /**
+     * when navigation back button is pressed, do the same as pressing the phone back button.
+     * @return
+     */
+    @Override
+    public boolean onSupportNavigateUp() {
+
+       // if (getFragmentManager().getBackStackEntryCount() > 0) {
+            onBackPressed();
+        //}
+        return true;
     }
 
     /**
