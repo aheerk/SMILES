@@ -6,7 +6,6 @@ package macewan_dust.smiles;
 * */
 public class WebItem {
 
-    // Icon for later?
     private String mTitle;
     private String mSubtitle;
     private String mUri;
@@ -23,14 +22,26 @@ public class WebItem {
         this.mUri = mUri;
     }
 
+    /**
+     * Retrieves the link title of the webItem
+     * @return String title
+     */
     public String getTitle() {
         return mTitle;
     }
 
+    /**
+     * Retrieves the link subtitle of the webItem
+     * @return String subtitle
+     */
     public String getSubtitle() {
         return mSubtitle;
     }
 
+    /**
+     * Retrieves the URI of the item
+     * @return String URI
+     */
     public String getUri() {
         return mUri;
     }
