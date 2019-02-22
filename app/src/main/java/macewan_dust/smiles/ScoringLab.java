@@ -177,6 +177,21 @@ public class ScoringLab {
 
 
     /**
+     * delete score from score table database
+     * @param score - score to delete
+     */
+    public void deleteScore(Score score) {
+        String uuidString = score.getID().toString();
+
+        Log.d(TAG, "ScoringAlgorithms deleting score: " + score);
+
+        int temp = mDatabase.delete(SMILES_DatabaseSchema.ScoreTable.NAME,
+                SMILES_DatabaseSchema.ScoreTable.Columns.UUID + " = ? ",
+                new String[]{uuidString});
+        Log.i(TAG, "number of rows deleted: " + temp);
+    }
+
+    /**
      * checks to see if a score exists for today
      * @param date - date excluding time
      * @return - true if score exists

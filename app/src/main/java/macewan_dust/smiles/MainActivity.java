@@ -53,9 +53,8 @@ public class MainActivity extends SingleFragmentActivity implements BottomNaviga
     @Override
     public boolean onSupportNavigateUp() {
 
-       // if (getFragmentManager().getBackStackEntryCount() > 0) {
-            onBackPressed();
-        //}
+     //   if (getFragmentManager().getBackStackEntryCount() > 0) {
+        onBackPressed();
         return true;
     }
 

@@ -32,7 +32,7 @@ public class InputImaginationFragment extends Fragment {
     ImageView mIcon3_c;
 
     Button mButton;
-    ImageView mIconFeedback;
+ //   ImageView mIconFeedback;
     TextView mResults;
 
     int mQuestion_A_index;
@@ -95,7 +95,7 @@ public class InputImaginationFragment extends Fragment {
         mQuestion_B_index = NO_SELECTION;
         mQuestion_C_index = NO_SELECTION;
 
-        mIconFeedback = v.findViewById(R.id.icon_feedback);
+   //     mIconFeedback = v.findViewById(R.id.icon_feedback);
 
         // QUESTION 1 Listeners
         mIcon1_a.setOnClickListener(new View.OnClickListener() {
@@ -199,19 +199,19 @@ public class InputImaginationFragment extends Fragment {
 
                         case ScoringAlgorithms.SCORE_HIGH:
                             scoreStringID = R.string.score_high;
-                            mIconFeedback.setBackground(getResources().getDrawable(R.drawable.border_image_high));
+        //                    mIconFeedback.setBackground(getResources().getDrawable(R.drawable.border_image_high));
                             break;
                         case ScoringAlgorithms.SCORE_LOW:
                             scoreStringID = R.string.score_low;
-                            mIconFeedback.setBackground(getResources().getDrawable(R.drawable.border_image_low));
+        //                    mIconFeedback.setBackground(getResources().getDrawable(R.drawable.border_image_low));
                             break;
                         case ScoringAlgorithms.SCORE_BALANCED:
                             scoreStringID = R.string.score_balanced;
-                            mIconFeedback.setBackground(getResources().getDrawable(R.drawable.border_image_balanced));
+         //                   mIconFeedback.setBackground(getResources().getDrawable(R.drawable.border_image_balanced));
                             break;
                         case ScoringAlgorithms.SCORE_OFF:
                             scoreStringID = R.string.score_unbalanced;
-                            mIconFeedback.setBackground(getResources().getDrawable(R.drawable.border_image_unbalanced));
+          //                  mIconFeedback.setBackground(getResources().getDrawable(R.drawable.border_image_unbalanced));
                             break;
                         case ScoringAlgorithms.SCORE_ERROR:
                             scoreStringID = R.string.score_error;

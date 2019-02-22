@@ -63,6 +63,16 @@ public class DashboardListFragment extends Fragment {
 
     }
 
+    @Override
+    public void onResume() {                                                                 ////////// not working
+        super.onResume();
+        // redraw the screen when coming back from a question page
+       // mDashboardData = ScoringLab.get(getContext()).getScores(); // refresh list on resume
+      //  mRecyclerView.invalidate();
+     //   this.getView().invalidate();
+
+    }
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,

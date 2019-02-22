@@ -257,7 +257,7 @@
             android:layout_margin="8dp"
             android:orientation="horizontal">
 
-            <!-- Icon  -->
+            <!-- Icon
             <ImageView
                 android:id="@+id/icon_feedback"
                 android:layout_width="100dp"
@@ -268,11 +268,11 @@
                 android:cropToPadding="true"
                 android:padding="8dp"
                 app:srcCompat="@drawable/icon_speaking" />
-
+-->
             <!-- Score Text -->
             <TextView
                 android:id="@+id/text_score"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="right|center_vertical"
                 android:layout_margin="8dp"
