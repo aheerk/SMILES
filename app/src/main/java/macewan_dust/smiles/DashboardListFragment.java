@@ -60,6 +60,7 @@ public class DashboardListFragment extends Fragment {
         temp2.setMovementScore(ScoringAlgorithms.SCORE_BALANCED);
         mDashboardData.add(temp2);
         */
+
     }
 
     @Nullable
@@ -110,7 +111,7 @@ public class DashboardListFragment extends Fragment {
     private void replaceFragment(Fragment newFragment) {
         FragmentTransaction transaction = getFragmentManager().beginTransaction();
         transaction.replace(R.id.fragment_container, newFragment);
-     //   transaction.addToBackStack(null);
+        transaction.addToBackStack("dashboard");
         transaction.commit();
         Log.d(TAG, "replacing fragment");
     }

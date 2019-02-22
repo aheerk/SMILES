@@ -242,6 +242,7 @@ public class InputImaginationFragment extends Fragment {
 
                     mResults.setText(getString(R.string.quest_results, getString(scoreStringID)));
                 }
+
             }
         });
 

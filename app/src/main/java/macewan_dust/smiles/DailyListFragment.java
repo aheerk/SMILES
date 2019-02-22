@@ -8,6 +8,7 @@ import android.support.v4.app.FragmentTransaction;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.helper.ItemTouchHelper;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -38,28 +39,20 @@ public class DailyListFragment extends Fragment {
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-// generating some items for testing                                                                    /////-------- refactor this fragment
-        DailyItem temp1 = new DailyItem(R.drawable.icon_sleep,
-                getString(R.string.title_quest_sleep), new InputSleepFragment());
-        DailyItem temp2 = new DailyItem(R.drawable.icon_movement,
-                getString(R.string.title_quest_movement), new InputMovementFragment());
-        DailyItem temp3 = new DailyItem(R.drawable.icon_imagination,
-                getString(R.string.title_quest_imagination), new InputImaginationFragment());
-        DailyItem temp4 = new DailyItem(R.drawable.icon_laughter,
-                getString(R.string.title_quest_laughter), new InputLaughterFragment());
-        DailyItem temp5 = new DailyItem(R.drawable.icon_eating,
-                getString(R.string.title_quest_eating), new InputEatingFragment());
-        DailyItem temp6 = new DailyItem(R.drawable.icon_speaking,
-                getString(R.string.title_quest_speaking), new InputSpeakingFragment());
-
-        mDailyData.add(temp1);
-        mDailyData.add(temp2);
-        mDailyData.add(temp3);
-        mDailyData.add(temp4);
-        mDailyData.add(temp5);
-        mDailyData.add(temp6);
+        // generating category items. items will be updated based on input later
+        mDailyData.add(new DailyItem(R.drawable.icon_sleep,
+                getString(R.string.title_quest_sleep), new InputSleepFragment()));
+        mDailyData.add(new DailyItem(R.drawable.icon_movement,
+                getString(R.string.title_quest_movement), new InputMovementFragment()));
+        mDailyData.add(new DailyItem(R.drawable.icon_imagination,
+                getString(R.string.title_quest_imagination), new InputImaginationFragment()));
+        mDailyData.add(new DailyItem(R.drawable.icon_laughter,
+                getString(R.string.title_quest_laughter), new InputLaughterFragment()));
+        mDailyData.add(new DailyItem(R.drawable.icon_eating,
+                getString(R.string.title_quest_eating), new InputEatingFragment()));
+        mDailyData.add(new DailyItem(R.drawable.icon_speaking,
+                getString(R.string.title_quest_speaking), new InputSpeakingFragment()));
     }
-
 
     @Nullable
     @Override
@@ -132,7 +125,6 @@ public class DailyListFragment extends Fragment {
                 Log.d(TAG, "onClick called");
                 int position = getAdapterPosition(); // find out where this view is in the list
                 // gets daily item at views position, then gets the fragment out of it and loads it
-
                 replaceFragment(mDailyData.get(position).getFragment());
             }
         }
@@ -198,6 +190,52 @@ public class DailyListFragment extends Fragment {
         transaction.addToBackStack("dailyList");
         transaction.commit();
         Log.d(TAG, "replacing fragment");
+    }
+
+    /**
+     * This class detects swipes on recycler view items and is customized for deleting items.
+     * Reference: https://medium.com/@zackcosborn/step-by-step-recyclerview-swipe-to-delete-and-undo-7bbae1fce27e
+     */
+    public class SwipeToDeleteCallback extends ItemTouchHelper.SimpleCallback {
+
+        private DailyAdapter mSwipeAdapter;
+
+        /**
+         * constructor
+         * @param swipeAdapter - recycler view's adapter
+         */
+        public SwipeToDeleteCallback(DailyAdapter swipeAdapter) {
+            super(0, ItemTouchHelper.LEFT | ItemTouchHelper.RIGHT);
+            mSwipeAdapter = swipeAdapter;
+        }
+
+        /**
+         * required but not being used
+         * @param recyclerView
+         * @param viewHolder
+         * @param target
+         * @return
+         */
+        @Override
+        public boolean onMove(RecyclerView recyclerView, RecyclerView.ViewHolder viewHolder, RecyclerView.ViewHolder target) {
+            return false;
+        }
+
+        @Override
+        public void onSwiped(RecyclerView.ViewHolder viewHolder, int direction) {
+
+
+
+
+
+        }
+
+
+
+        //  more to implement
+
+
+
     }
 
 }
