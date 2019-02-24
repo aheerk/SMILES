@@ -35,11 +35,11 @@ public class SmilesListFragment extends Fragment {
 
 // generating some items for testing                                                                    /////-------- refactor this
         SmilesItem temp1 = new SmilesItem(R.drawable.icon_sleep,"S","leep");
-        SmilesItem temp2 = new SmilesItem(R.drawable.icon_sleep,"M","ovement");
-        SmilesItem temp3 = new SmilesItem(R.drawable.icon_sleep,"I","magination");
-        SmilesItem temp4 = new SmilesItem(R.drawable.icon_sleep,"L","aughter");
-        SmilesItem temp5 = new SmilesItem(R.drawable.icon_sleep,"E","ating");
-        SmilesItem temp6 = new SmilesItem(R.drawable.icon_sleep,"S","peaking");
+        SmilesItem temp2 = new SmilesItem(R.drawable.icon_movement,"M","ovement");
+        SmilesItem temp3 = new SmilesItem(R.drawable.icon_imagination,"I","magination");
+        SmilesItem temp4 = new SmilesItem(R.drawable.icon_laughter,"L","aughter");
+        SmilesItem temp5 = new SmilesItem(R.drawable.icon_eating,"E","ating");
+        SmilesItem temp6 = new SmilesItem(R.drawable.icon_speaking,"S","peaking");
 
 
         mSmilesData.add(temp1);
@@ -153,7 +153,7 @@ public class SmilesListFragment extends Fragment {
         @Override
         public void onBindViewHolder(@NonNull SmilesListFragment.SmilesAdapter.SmilesViewHolder holder, int position) {
             holder.mIcon.setImageResource(mSmilesListData.get(position).getIconID());
-            holder.mTitleCapitalLetter.setText(mSmilesListData.get(position).getTitle());
+            holder.mTitleCapitalLetter.setText(mSmilesListData.get(position).getTitleCapitalLetter());
             holder.mTitle.setText(mSmilesListData.get(position).getTitle());
             holder.mSmilesItem = mSmilesListData.get(position);
         }
