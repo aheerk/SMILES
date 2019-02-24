@@ -6,12 +6,16 @@ import android.support.annotation.Nullable;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.MenuItem;
 
 /**
  * This activity exists to hold a fragment.
  */
 public class MainActivity extends SingleFragmentActivity implements BottomNavigationView.OnNavigationItemSelectedListener {
+
+    private static final String TAG = "MainActivity";
+
 
     // The first fragment launched is specified here
     @Override
@@ -52,9 +56,14 @@ public class MainActivity extends SingleFragmentActivity implements BottomNaviga
      */
     @Override
     public boolean onSupportNavigateUp() {
+        // note: FragmentManager is not used in this program Instead, SupportFragmentManager is used.
 
-     //   if (getFragmentManager().getBackStackEntryCount() > 0) {
-        onBackPressed();
+        // back button only works within the app and does not close the base pages.
+        if (getSupportFragmentManager().getBackStackEntryCount() > 0) {
+
+            Log.d(TAG, "backstack count: " + getSupportFragmentManager().getBackStackEntryCount());
+            onBackPressed();
+        }
         return true;
     }
 

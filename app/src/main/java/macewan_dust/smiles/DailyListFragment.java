@@ -192,51 +192,7 @@ public class DailyListFragment extends Fragment {
         Log.d(TAG, "replacing fragment");
     }
 
-    /**
-     * This class detects swipes on recycler view items and is customized for deleting items.
-     * Reference: https://medium.com/@zackcosborn/step-by-step-recyclerview-swipe-to-delete-and-undo-7bbae1fce27e
-     */
-    public class SwipeToDeleteCallback extends ItemTouchHelper.SimpleCallback {
 
-        private DailyAdapter mSwipeAdapter;
-
-        /**
-         * constructor
-         * @param swipeAdapter - recycler view's adapter
-         */
-        public SwipeToDeleteCallback(DailyAdapter swipeAdapter) {
-            super(0, ItemTouchHelper.LEFT | ItemTouchHelper.RIGHT);
-            mSwipeAdapter = swipeAdapter;
-        }
-
-        /**
-         * required but not being used
-         * @param recyclerView
-         * @param viewHolder
-         * @param target
-         * @return
-         */
-        @Override
-        public boolean onMove(RecyclerView recyclerView, RecyclerView.ViewHolder viewHolder, RecyclerView.ViewHolder target) {
-            return false;
-        }
-
-        @Override
-        public void onSwiped(RecyclerView.ViewHolder viewHolder, int direction) {
-
-
-
-
-
-        }
-
-
-
-        //  more to implement
-
-
-
-    }
 
 }
 
