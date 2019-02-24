@@ -97,8 +97,8 @@ public class SmilesListFragment extends Fragment {
 
 
                 mIcon = itemView.findViewById(R.id.icon_smiles_list);
-                mTitle = itemView.findViewById(R.id.text_smiles_capital_letter);
-                mTitleCapitalLetter = itemView.findViewById(R.id.text_smiles_lower_case_letter);
+                mTitle = itemView.findViewById(R.id.text_smiles_lower_case_letter);
+                mTitleCapitalLetter = itemView.findViewById(R.id.text_smiles_capital_letter);
 
                 itemView.setOnClickListener(this);
             }
