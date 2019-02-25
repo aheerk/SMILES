@@ -16,8 +16,8 @@ public class SmilesInfoFragment extends Fragment {
         super.onCreate(savedInstanceState);
         setRetainInstance(true); // prevents instance of the fragment from being destroyed on rotation.
 
-        mIconID = this.getArguments().getInt(SmilesListFragment.ARG_OPERATION_ID_ICON);
-        mTextID = this.getArguments().getInt(SmilesListFragment.ARG_OPERATION_ID_TEXT);
+       // mIconID = this.getArguments().getInt(SmilesListFragment.ARG_OPERATION_ID_ICON);
+       // mTextID = this.getArguments().getInt(SmilesListFragment.ARG_OPERATION_ID_TEXT);
     }
 
     @Override

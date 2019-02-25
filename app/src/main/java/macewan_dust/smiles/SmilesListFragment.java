@@ -95,7 +95,6 @@ public class SmilesListFragment extends Fragment {
             public SmilesViewHolder(View itemView) {
                 super(itemView);
 
-
                 mIcon = itemView.findViewById(R.id.icon_smiles_list);
                 mTitle = itemView.findViewById(R.id.text_smiles_lower_case_letter);
                 mTitleCapitalLetter = itemView.findViewById(R.id.text_smiles_capital_letter);
