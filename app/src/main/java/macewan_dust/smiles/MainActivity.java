@@ -88,8 +88,7 @@ public class MainActivity extends SingleFragmentActivity implements BottomNaviga
     /**
      * Loads fragments when navigation icons are selected
      * <p>
-     * Credit:
-     * https://www.simplifiedcoding.net/bottom-navigation-android-example/
+     * Reference: https://www.simplifiedcoding.net/bottom-navigation-android-example/
      *
      * @param item - navigation item
      * @return - fragment to load

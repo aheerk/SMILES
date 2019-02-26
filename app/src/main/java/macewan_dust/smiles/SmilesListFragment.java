@@ -20,8 +20,7 @@ import java.util.List;
 public class SmilesListFragment extends Fragment {
 
     private static final String TAG = "SmilesListFragment";
-    public static final String ARG_OPERATION_ID_ICON = "pass_smiles_icon";
-    public static final String ARG_OPERATION_ID_TEXT = "pass_smiles_text";
+    public static final String ARG_OPERATION_INDEX = "pass_smiles_index";
 
     private RecyclerView mSmilesRecyclerView;
     private RecyclerView.Adapter mSmilesRecyclerViewAdapter;
@@ -110,11 +109,11 @@ public class SmilesListFragment extends Fragment {
 
                 Fragment newFrag = new SmilesInfoFragment();
                 Bundle opBundle = new Bundle();
-                opBundle.putInt(ARG_OPERATION_ID_ICON, mSmilesItem.getIconID());
-                opBundle.putInt(ARG_OPERATION_ID_TEXT, mSmilesItem.getTextID());
+                opBundle.putInt(ARG_OPERATION_INDEX, this.getAdapterPosition());
                 newFrag.setArguments(opBundle);
 
-                replaceFragment(new SmilesInfoFragment());
+                replaceFragment(newFrag);
+
 
             }
         }
