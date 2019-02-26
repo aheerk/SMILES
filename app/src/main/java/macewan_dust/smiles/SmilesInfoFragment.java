@@ -33,7 +33,7 @@ public class SmilesInfoFragment extends Fragment {
 
 
 
-        getActivity().setTitle(R.string.introduction_title_smiles); // UPDATE TITLE
+        getActivity().setTitle(R.string.introduction_title_smiles); // UPDATE TITLE --------------------
 
 
 

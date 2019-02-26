@@ -16,6 +16,6 @@ public class GraphFragment extends Fragment {
                              @Nullable Bundle savedInstanceState) {
         getActivity().setTitle(R.string.title_graphs);
 
-        return inflater.inflate(R.layout.fragment_graph, null);
+        return inflater.inflate(R.layout.fragment_weekly_graph, null);
     }
 }
