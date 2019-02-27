@@ -216,33 +216,27 @@ public class ScoringAlgorithms {
     }
 
     /**
-     * @param vegIndex 0-3, 2 is balanced
-     * @param meatIndex 0-2, 1 is balanced
-     * @param milkIndex 0-2, 1 is balanced
-     * @param grainIndex 0-3, 2 is balanced
-     * @param fatIndex 0-2, 1 is balanced
-     * @param unsaturated boolean
-     * @return integer code for eating score
+     * scoreEating - score eating algorithm
+     * veg, protein, grain are all balanced at INPUT_b, low at INPUT_a, high is INPUT_c
+     * @param vegIndex - INPUT_a to INPUT_c
+     * @param proteinIndex - INPUT_a to INPUT_c
+     * @param grainIndex - INPUT_a to INPUT_c
+     * @param lessSodium - boolean
+     * @param mindfulEating - boolean
+     * @return
      */
-    public static int scoreEating(int vegIndex, int meatIndex, int milkIndex, int grainIndex,
-                           int fatIndex, boolean unsaturated) {
+    public static int scoreEating(int vegIndex, int proteinIndex, int grainIndex,
+                           boolean lessSodium, boolean mindfulEating) {
 
-        int balancedRule = 6; // the number of questions that must be balanced for an overall balanced score.
+        int balancedRule = 5; // the number of questions that must be balanced for an overall balanced score.
         int highCounter = 0;
         int balancedCounter = 0;
         int lowCounter = 0;
 
         // range checking
-        if (vegIndex < INPUT_a || vegIndex > INPUT_d
-                || meatIndex < INPUT_a || meatIndex > INPUT_c
-                || milkIndex < INPUT_a || milkIndex > INPUT_c
-                || grainIndex < INPUT_a || grainIndex > INPUT_d
-                || fatIndex < INPUT_a || fatIndex > INPUT_c){
-            Log.e(TAG, "Error: invalid input, vegIndex: " + vegIndex +
-                    ", meatIndex: " + meatIndex +
-                    " and milkIndex: " + milkIndex +
-                    " and grainIndex: " + grainIndex +
-                    " and fatIndex: " + fatIndex);
+        if (vegIndex < INPUT_a || vegIndex > INPUT_c
+                || proteinIndex < INPUT_a || proteinIndex > INPUT_c
+                || grainIndex < INPUT_a || grainIndex > INPUT_c){
             return SCORE_ERROR;
         }
 
@@ -252,21 +246,6 @@ public class ScoringAlgorithms {
                 lowCounter++;
                 break;
             case INPUT_b:
-                lowCounter++;
-                break;
-            case INPUT_c:
-                balancedCounter++;
-                break;
-            case INPUT_d:
-                highCounter++;
-                break;
-        }
-
-        switch (meatIndex) {
-            case INPUT_a:
-                lowCounter++;
-                break;
-            case INPUT_b:
                 balancedCounter++;
                 break;
             case INPUT_c:
@@ -274,7 +253,7 @@ public class ScoringAlgorithms {
                 break;
         }
 
-        switch (milkIndex) {
+        switch (proteinIndex) {
             case INPUT_a:
                 lowCounter++;
                 break;
@@ -291,21 +270,6 @@ public class ScoringAlgorithms {
                 lowCounter++;
                 break;
             case INPUT_b:
-                lowCounter++;
-                break;
-            case INPUT_c:
-                balancedCounter++;
-                break;
-            case INPUT_d:
-                highCounter++;
-                break;
-        }
-
-        switch (fatIndex) {
-            case INPUT_a:
-                lowCounter++;
-                break;
-            case INPUT_b:
                 balancedCounter++;
                 break;
             case INPUT_c:
@@ -313,16 +277,20 @@ public class ScoringAlgorithms {
                 break;
         }
 
-        // unsaturated count as balanced only if the fat amount is balanced.
-        if (fatIndex == 1 && unsaturated)
+        // sodium: true is balanced. false is high
+        if (lessSodium)
             balancedCounter++;
-
-        // if fat amount is not low, then eating the right amount of the wrong fat is high
-        if (fatIndex >= 1 && !unsaturated)
+        else
             highCounter++;
 
+        // mindful eating: true is balanced, false is low
+        if (mindfulEating)
+            balancedCounter++;
+        else
+            lowCounter++;
+
         return scoreHelper(balancedRule, highCounter, balancedCounter, lowCounter,
-                "Error: score for speaking has no rule");
+                "Error: score for eating has no rule");
     }
 
     /**
