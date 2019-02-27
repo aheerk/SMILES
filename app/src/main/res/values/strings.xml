@@ -44,7 +44,14 @@
 
     <string name="quest_laughter_a">Rate your laughter out of 5:</string>
 
-    <!-- MISSING EATING QUESTIONS!  -->
+    <!-- Eating Questions -->
+    <string name="quest_eating_123">What percentage of that food you ate today consist of:</string>
+    <string name="quest_eating_1">Vegetables &amp; Fruit</string>
+    <string name="quest_eating_2">Whole Grains</string>
+    <string name="quest_eating_3">Proteins</string>
+
+    <string name="quest_eating_4">I consumed less than or equal to 2300mg of sodium today.</string>
+    <string name="quest_eating_5">I was mindful of my eating habits today.</string>
 
     <string name="quest_speaking_a">Rate the amount of time spent socializing in person over social media.</string>
     <string name="quest_speaking_b">Did you seek assistance and/or debrief when needed?</string>
