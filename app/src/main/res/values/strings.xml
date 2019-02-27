@@ -69,7 +69,7 @@
     <string name="introduction_subtitle_smiles">The Acronym for Nurses\' Self Care </string>
     <string name="introduction_explanation_smiles">SMILES is a self care tool providing a framework that is realistic,
         applicable, and easily utilized. To support the diversity of the nursing profession. Encouraging a variety of
-        selfenhancing methods to support work/life balance to inspire a continual journey towards a healthy lifestyle. </string>
+        self-enhancing methods to support work/life balance to inspire a continual journey towards a healthy lifestyle. </string>
     <string name="introduction_next">Next</string>
     <string name="introduction_back">Back</string>
 
@@ -79,12 +79,14 @@
         that is often neglected in the nursing profession.</string>
 
     <string name="introduction_explanation_stress2">Challenges of lack of self-care causes caregiver burnout, errors in practice,
-        a decrease in the quality of care provided and reduced workplace satisfaction. </string>
+        a decrease in the quality of care provided and reduced workplace satisfaction.</string>
 
     <string name="introduction_title_balance">Balance</string>
     <string name="introduction_explanation_balance">This framework will assist in utilizing the importance of life balance,
         an emphasis on personal enjoyment and on improving overall health. SMILES includes individuality and encourages
-        holism of health including mind, body and spirit. </string>
+        holism of health including mind, body and spirit.</string>
+    <string name="introduction_title_goals">SMILES Goals</string>
+    <string name="introduction_explanation_goals">Implementing the SMILES framework provides encouragement and guidance to create a pattern of behaviour in supporting self care in hopes to reduce caregiver burnout, absenteeism along with enhancing workplace morale, personal health and improvement in workplace and client safety.</string>
 
     <!-- Web Links -->
     <!-- Note, the links are in order of appearance in Sherri's slides. -->

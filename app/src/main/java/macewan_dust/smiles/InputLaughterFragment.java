@@ -16,7 +16,7 @@ import java.util.UUID;
 public class InputLaughterFragment extends Fragment {
 
     private static final String TAG = "InputLaughterFragment";
-    private static final int NO_SELECTION = 100000;
+    private static final int NO_SELECTION = 104000;
 
     ImageView mIcon1;
     ImageView mIcon2;
@@ -24,7 +24,6 @@ public class InputLaughterFragment extends Fragment {
     ImageView mIcon4;
     ImageView mIcon5;
     Button mButton;
-  //  ImageView mIconFeedback;
     TextView mResults;
 
     int mQuestion_A_index;
@@ -78,8 +77,6 @@ public class InputLaughterFragment extends Fragment {
         mIcon5 = v.findViewById(R.id.icon_1e);
 
         mQuestion_A_index = NO_SELECTION;
-
-   //     mIconFeedback = v.findViewById(R.id.icon_feedback);
 
         mIcon1.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -143,20 +140,15 @@ public class InputLaughterFragment extends Fragment {
 
                         case ScoringAlgorithms.SCORE_HIGH:
                             scoreStringID = R.string.score_high;
-            //                mIconFeedback.setBackground(getResources().getDrawable(R.drawable.border_image_high));
                             break;
                         case ScoringAlgorithms.SCORE_LOW:
                             scoreStringID = R.string.score_low;
-           //                 mIconFeedback.setBackground(getResources().getDrawable(R.drawable.border_image_low));
-
                             break;
                         case ScoringAlgorithms.SCORE_BALANCED:
                             scoreStringID = R.string.score_balanced;
-           //                 mIconFeedback.setBackground(getResources().getDrawable(R.drawable.border_image_balanced));
                             break;
                         case ScoringAlgorithms.SCORE_OFF:
                             scoreStringID = R.string.score_unbalanced;
-            //                mIconFeedback.setBackground(getResources().getDrawable(R.drawable.border_image_unbalanced));
                             break;
                         case ScoringAlgorithms.SCORE_ERROR:
                             Toast t1 = new Toast(getContext());
@@ -183,7 +175,6 @@ public class InputLaughterFragment extends Fragment {
                         //
                     } else {
                         Log.d(TAG, "score NOT found by date: " + Score.timelessDate(new Date()));
-
                         mScore = new Score();
                         mScore.setLaughterScore(score);
                         ScoringLab.get(getActivity()).addScore(mScore);
@@ -199,9 +190,6 @@ public class InputLaughterFragment extends Fragment {
         return v;
     }
 
-    /**
-     * ideally the icon being selected woudnt need to be cleared, if its id was passed in here              // refactor potential
-     */
     private void clearSelected() {
         mIcon1.setBackground(getResources().getDrawable(R.drawable.border_image));
         mIcon2.setBackground(getResources().getDrawable(R.drawable.border_image));
@@ -209,5 +197,4 @@ public class InputLaughterFragment extends Fragment {
         mIcon4.setBackground(getResources().getDrawable(R.drawable.border_image));
         mIcon5.setBackground(getResources().getDrawable(R.drawable.border_image));
     }
-
 };

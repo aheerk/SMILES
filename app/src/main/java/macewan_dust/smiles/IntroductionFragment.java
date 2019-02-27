@@ -41,7 +41,7 @@ public class IntroductionFragment extends Fragment {
         mNextButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (i<3){
+                if (i<4){
                     i++;
                 }
                 updateScreen();
@@ -88,9 +88,11 @@ public class IntroductionFragment extends Fragment {
                 mSubtitleTitle.setVisibility(View.INVISIBLE);
                 mBodyText.setText(R.string.introduction_explanation_balance);
                 break;
+            case 4:
+                mTitle.setText(R.string.introduction_title_goals);
+                mSubtitleTitle.setVisibility(View.INVISIBLE);
+                mBodyText.setText(R.string.introduction_explanation_goals);
+                break;
         }
-
     }
-
-
 }
