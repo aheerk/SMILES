@@ -21,19 +21,14 @@
                 android:id="@+id/list_item_info_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_margin="0dp"
                 style="@style/TitleText"
-                android:textColor="@color/colorPrimary"
                 />
 
             <TextView
                 android:id="@+id/list_item_info_subtitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_margin="0dp"
-                android:paddingBottom="8dp"
                 style="@style/SubtitleText"
-                android:textColor="@color/colorPrimaryDark"
                 />
         </LinearLayout>
 

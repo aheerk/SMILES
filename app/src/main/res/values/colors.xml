@@ -11,7 +11,10 @@
     <color name="colorNavIcon">#ffffff</color>
     <color name="colorNavText">#ffffff</color>
 
-    <color name="colorBasicText">#000000</color>
+    <color name="colorBodyText">#000000</color>
+    <color name="colorSubtitleText">#7B4AD1</color>
+    <color name="colorTitleText">#000000</color>
+
     <color name="colorWhite">#FFFFFF</color>
 
 

@@ -247,12 +247,8 @@
             android:id="@+id/text_score"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="right|center_vertical"
-            android:layout_margin="8dp"
             android:text=""
-            android:textAlignment="center"
-            android:textSize="24dp"
-            android:textStyle="bold"
+            style="@style/NotificationText"
             android:visibility="invisible" />
 
 
