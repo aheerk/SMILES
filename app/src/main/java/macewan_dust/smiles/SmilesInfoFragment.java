@@ -49,7 +49,7 @@ public class SmilesInfoFragment extends Fragment {
                 break;
             case 1:
                 getActivity().setTitle("Movement");
-                mIconSmilesInfo.setImageResource(R.drawable.icon_speaking);
+                mIconSmilesInfo.setImageResource(R.drawable.icon_movement);
                 mIconSmilesList.setText(R.string.introduction_explanation_movement);
                 break;
             case 2:
