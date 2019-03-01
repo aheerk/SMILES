@@ -29,9 +29,9 @@ public class InfoListFragment extends Fragment {
         super.onCreate(savedInstanceState);
 
 // generating some items for testing                                                                    /////-------- refactor this
-        InfoItem temp4 = new InfoItem(getString(R.string.title_introduction), "subtitle", new IntroductionFragment());
-        InfoItem temp1 = new InfoItem(getString(R.string.title_smiles), "subtitle", new SmilesListFragment());
-        InfoItem temp2 = new InfoItem(getString(R.string.title_web_links), "subtitle", new WebListFragment());
+        InfoItem temp4 = new InfoItem(getString(R.string.title_introduction), "Getting started information", new IntroductionFragment());
+        InfoItem temp1 = new InfoItem(getString(R.string.title_smiles), "Categories", new SmilesListFragment());
+        InfoItem temp2 = new InfoItem(getString(R.string.title_web_links), "Useful information", new WebListFragment());
         InfoItem temp3 = new InfoItem(getString(R.string.title_credits), "subtitle", new CreditInfoFragment());
 
         mInfoData.add(temp4);

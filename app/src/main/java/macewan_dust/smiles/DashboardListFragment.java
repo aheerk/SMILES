@@ -174,8 +174,6 @@ public class DashboardListFragment extends Fragment {
     }
 
     // ----------- recycler view methods
-
-
     public class DashboardAdapter extends RecyclerView.Adapter<DashboardListFragment.DashboardAdapter.DashboardViewHolder> {
 
         private List<Score> mDashboardListData;

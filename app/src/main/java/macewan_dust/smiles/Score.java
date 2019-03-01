@@ -153,6 +153,22 @@ public class Score {
         }
     }
 
+    public static int getDotID(int score){
+
+        switch (score) {
+            case ScoringAlgorithms.SCORE_LOW:
+                return R.drawable.dot_image_low;
+            case ScoringAlgorithms.SCORE_HIGH:
+                return R.drawable.dot_image_high;
+            case ScoringAlgorithms.SCORE_BALANCED:
+                return R.drawable.dot_image_balanced;
+            case ScoringAlgorithms.SCORE_OFF:
+                return R.drawable.dot_image_unbalanced;
+            default:
+                return R.drawable.dot_image;
+        }
+    }
+
     public static String timelessDate(Date dateIn){
         return DateFormat.getDateInstance(DateFormat.MEDIUM).format(dateIn);
     }

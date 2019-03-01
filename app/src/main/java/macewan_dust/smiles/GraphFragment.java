@@ -3,19 +3,147 @@ package macewan_dust.smiles;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
+
+import java.util.LinkedList;
+import java.util.List;
 
 public class GraphFragment extends Fragment {
+
+    private static final String TAG = "WeeklyGraph";
+
+    private RecyclerView mRecyclerView;
+    private RecyclerView.Adapter mRecyclerViewAdapter;
+    private RecyclerView.LayoutManager mRecyclerViewLayoutManager;
+    private List<Score> mWeeklyData = new LinkedList<>();
+
+    /**
+     * new instance constructor
+     * @return GraphFragment
+     */
+    public static GraphFragment newInstance() {
+        return new GraphFragment();
+    }
+
+
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+
+        mWeeklyData = ScoringLab.get(getContext()).getScores();
+
+    }
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
+        View v = inflater.inflate(R.layout.fragment_weekly_graph, null);
+
+
         getActivity().setTitle(R.string.title_graphs);
 
-        return inflater.inflate(R.layout.fragment_weekly_graph, null);
+        mRecyclerView = v.findViewById(R.id.recycler_view_weekly_graph);
+        mRecyclerViewLayoutManager = new LinearLayoutManager(this.getActivity());
+        mRecyclerView.setLayoutManager(mRecyclerViewLayoutManager);
+        mRecyclerViewAdapter = new GraphFragment.Adapter(mWeeklyData);
+        mRecyclerView.setAdapter(mRecyclerViewAdapter);
+        mRecyclerView.setHasFixedSize(true);
+
+        return v;
     }
+
+
+    // ----------- recycler view methods
+    public class Adapter extends RecyclerView.Adapter<GraphFragment.Adapter.WeeklyViewHolder> {
+
+        private List<Score> mAdapterData;
+
+        /**
+         * Reference for views for each data item.
+         * Set the image and text for the recycler view list here.
+         * <p>
+         * Optional: implementing on click listener and onClick method
+         */
+        public class WeeklyViewHolder extends RecyclerView.ViewHolder {
+            public TextView mTextDate;
+            public ImageView mIconA;
+            public ImageView mIconB;
+            public ImageView mIconC;
+            public ImageView mIconD;
+            public ImageView mIconE;
+            public ImageView mIconF;
+
+            public WeeklyViewHolder(View itemView) {
+                super(itemView);
+                mTextDate = itemView.findViewById(R.id.graph_weekly_score_date);
+                mIconA = itemView.findViewById(R.id.graph_weekly_score_a);
+                mIconB = itemView.findViewById(R.id.graph_weekly_score_b);
+                mIconC = itemView.findViewById(R.id.graph_weekly_score_c);
+                mIconD = itemView.findViewById(R.id.graph_weekly_score_d);
+                mIconE = itemView.findViewById(R.id.graph_weekly_score_e);
+                mIconF = itemView.findViewById(R.id.graph_weekly_score_f);
+            }
+        }
+
+        /*
+         * Passes the list data for use by the system
+         */
+        public Adapter(List<Score> weeklyListData) {
+            mAdapterData = weeklyListData;
+        }
+
+        /**
+         * Creates new views for each list item.
+         * Specify what view layout is used here.
+         */
+        public GraphFragment.Adapter.WeeklyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {              // ----- what is the role of viewType here?
+
+            // create one new view
+            View v = LayoutInflater.from(parent.getContext())
+                    .inflate(R.layout.list_item_weekly, parent, false);
+
+            GraphFragment.Adapter.WeeklyViewHolder vh = new GraphFragment.Adapter.WeeklyViewHolder(v);
+            return vh;
+        }
+
+        /**
+         * Called by the system
+         * Sets the contents of a view that has already been created.
+         *
+         * @param holder   - the individual list objects
+         * @param position - index location in the list of data
+         */
+        @Override
+        public void onBindViewHolder(@NonNull GraphFragment.Adapter.WeeklyViewHolder holder, int position) {
+
+            holder.mIconA.setImageDrawable(getResources().getDrawable(Score.getDotID(mAdapterData.get(position).getSleepScore())));
+            holder.mIconB.setImageDrawable(getResources().getDrawable(Score.getDotID(mAdapterData.get(position).getMovementScore())));
+            holder.mIconC.setImageDrawable(getResources().getDrawable(Score.getDotID(mAdapterData.get(position).getImaginationScore())));
+            holder.mIconD.setImageDrawable(getResources().getDrawable(Score.getDotID(mAdapterData.get(position).getLaughterScore())));
+            holder.mIconE.setImageDrawable(getResources().getDrawable(Score.getDotID(mAdapterData.get(position).getEatingScore())));
+            holder.mIconF.setImageDrawable(getResources().getDrawable(Score.getDotID(mAdapterData.get(position).getSpeakingScore())));
+            holder.mTextDate.setText(mAdapterData.get(position).getDate());
+        }
+
+        /**
+         * Required by recycler view
+         * * returns size of dataset
+         */
+        @Override
+        public int getItemCount() {
+            return mWeeklyData.size();
+        }
+    }
+
+
 }
