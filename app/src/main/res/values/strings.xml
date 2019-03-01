@@ -52,7 +52,7 @@
     <string name="quest_laughter_a">Rate your laughter out of 5:</string>
 
     <!-- Eating Questions -->
-    <string name="quest_eating_123">What percentage of that food you ate today consist of:</string>
+    <string name="quest_eating_123">What percentage of the food you ate today consisted of:</string>
     <string name="quest_eating_1">Vegetables &amp; Fruit</string>
     <string name="quest_eating_2">Whole Grains</string>
     <string name="quest_eating_3">Proteins</string>
