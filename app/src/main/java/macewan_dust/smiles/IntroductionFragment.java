@@ -11,7 +11,6 @@ import android.widget.TextView;
 public class IntroductionFragment extends Fragment {
 
     TextView mTitle;
-    TextView mSubtitleTitle;
     TextView mBodyText;
     Button mNextButton;
     Button mBackButton;
@@ -33,7 +32,6 @@ public class IntroductionFragment extends Fragment {
         getActivity().setTitle(R.string.title_introduction);
 
         mTitle = v.findViewById(R.id.introduction_title);
-        mSubtitleTitle = v.findViewById(R.id.introduction_subtitle);
         mBodyText = v.findViewById(R.id.introduction_explanation);
         mNextButton = v.findViewById(R.id.button_introduction_next);
         mBackButton = v.findViewById(R.id.button_introduction_back);
@@ -71,32 +69,22 @@ public class IntroductionFragment extends Fragment {
         switch(i){
             case 0:
                 mTitle.setText(R.string.introduction_title_smiles);
-                mSubtitleTitle.setVisibility(View.VISIBLE);
-                mSubtitleTitle.setText(R.string.introduction_subtitle_smiles);
                 mBodyText.setText(R.string.introduction_explanation_smiles);
                 break;
             case 1:
                 mTitle.setText(R.string.introduction_title_stress1);
-                mSubtitleTitle.setVisibility(View.INVISIBLE);
-       //         mSubtitleTitle.setHeight(0);
                 mBodyText.setText(R.string.introduction_explanation_stress1);
                 break;
             case 2:
                 mTitle.setText(R.string.introduction_title_stress1);
-                mSubtitleTitle.setVisibility(View.INVISIBLE);
-     //           mSubtitleTitle.setHeight(0);
                 mBodyText.setText(R.string.introduction_explanation_stress2);
                 break;
             case 3:
                 mTitle.setText(R.string.introduction_title_balance);
-                mSubtitleTitle.setVisibility(View.INVISIBLE);
-        //        mSubtitleTitle.setHeight(0);
                 mBodyText.setText(R.string.introduction_explanation_balance);
                 break;
             case 4:
                 mTitle.setText(R.string.introduction_title_goals);
-                mSubtitleTitle.setVisibility(View.INVISIBLE);
-       //         mSubtitleTitle.setHeight(0);
                 mBodyText.setText(R.string.introduction_explanation_goals);
                 break;
         }
