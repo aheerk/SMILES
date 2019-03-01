@@ -32,18 +32,17 @@
                 android:id="@+id/list_item_daily_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_margin="0dp"
-                android:text="Laughter"
-                android:textSize="30dp" />
+                android:text=""
+                style="@style/TitleText"
+                />
 
             <TextView
                 android:id="@+id/list_item_daily_subtitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_margin="0dp"
-                android:paddingBottom="8dp"
-                android:text="Score your daily laughter"
-                android:textSize="16dp" />
+                style="@style/SubtitleText"
+                android:text=""
+                />
         </LinearLayout>
 
     </LinearLayout>

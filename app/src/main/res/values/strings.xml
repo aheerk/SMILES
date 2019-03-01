@@ -62,13 +62,12 @@
     <string name="quest_results">Your score is %s!</string>
     <string name="quest_button">Score</string>
 
-
     <string name="score_high">high</string>
     <string name="score_low">low</string>
     <string name="score_balanced">balanced</string>
     <string name="score_unbalanced">unbalanced</string>
 
-    <string name="feedback_unselected">Please answer all of the questions first. </string>
+    <string name="feedback_unselected">Please answer all of the questions before scoring. </string>
     <string name="score_error">Error</string>
 
     <!--INTRODUCTIONS -->

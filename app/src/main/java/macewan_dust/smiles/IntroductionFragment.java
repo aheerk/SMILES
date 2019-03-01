@@ -15,6 +15,7 @@ public class IntroductionFragment extends Fragment {
     TextView mBodyText;
     Button mNextButton;
     Button mBackButton;
+    int mSaveHeight; // save text height on specific phone. corresponding to layout file
 
     int i;
 
@@ -36,6 +37,8 @@ public class IntroductionFragment extends Fragment {
         mBodyText = v.findViewById(R.id.introduction_explanation);
         mNextButton = v.findViewById(R.id.button_introduction_next);
         mBackButton = v.findViewById(R.id.button_introduction_back);
+
+   //     mSaveHeight = mSubtitleTitle.getHeight();
 
         i = 0;
         mNextButton.setOnClickListener(new View.OnClickListener() {
@@ -75,22 +78,25 @@ public class IntroductionFragment extends Fragment {
             case 1:
                 mTitle.setText(R.string.introduction_title_stress1);
                 mSubtitleTitle.setVisibility(View.INVISIBLE);
+       //         mSubtitleTitle.setHeight(0);
                 mBodyText.setText(R.string.introduction_explanation_stress1);
                 break;
             case 2:
                 mTitle.setText(R.string.introduction_title_stress1);
                 mSubtitleTitle.setVisibility(View.INVISIBLE);
-              //  mSubtitleTitle.setText("");
+     //           mSubtitleTitle.setHeight(0);
                 mBodyText.setText(R.string.introduction_explanation_stress2);
                 break;
             case 3:
                 mTitle.setText(R.string.introduction_title_balance);
                 mSubtitleTitle.setVisibility(View.INVISIBLE);
+        //        mSubtitleTitle.setHeight(0);
                 mBodyText.setText(R.string.introduction_explanation_balance);
                 break;
             case 4:
                 mTitle.setText(R.string.introduction_title_goals);
                 mSubtitleTitle.setVisibility(View.INVISIBLE);
+       //         mSubtitleTitle.setHeight(0);
                 mBodyText.setText(R.string.introduction_explanation_goals);
                 break;
         }
