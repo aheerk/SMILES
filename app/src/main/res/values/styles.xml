@@ -15,6 +15,7 @@
         <item name="android:padding">8dp</item>
     </style>
 
+    <!-- For List Items -->
     <style name="TitleText" parent="TextAppearance.AppCompat">
         <item name="android:textSize">20dp</item>
         <item name="android:color">@color/colorPrimaryDark</item>
