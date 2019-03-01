@@ -157,7 +157,7 @@ public class DashboardListFragment extends Fragment {
                 replaceFragment(fragment);
             }
         });
-        
+
         return v;
     }
 
