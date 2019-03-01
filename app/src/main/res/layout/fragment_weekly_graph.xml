@@ -683,7 +683,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="4dp"
-                    android:text="Balanced" />
+                    android:text="@string/balanced" />
             </LinearLayout>
 
             <LinearLayout
@@ -704,7 +704,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="4dp"
-                    android:text="Unbalanced" />
+                    android:text="@string/unbalanced" />
             </LinearLayout>
         </LinearLayout>
 
@@ -732,7 +732,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="4dp"
-                    android:text="High" />
+                    android:text="@string/over" />
             </LinearLayout>
 
             <LinearLayout
@@ -753,7 +753,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="4dp"
-                    android:text="Low" />
+                    android:text="@string/under" />
             </LinearLayout>
         </LinearLayout>
 
@@ -776,7 +776,7 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="4dp"
 
-                android:text="No data" />
+                android:text="@string/no_data" />
         </LinearLayout>
     </LinearLayout>
 </LinearLayout>

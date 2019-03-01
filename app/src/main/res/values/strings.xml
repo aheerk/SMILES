@@ -22,11 +22,18 @@
     <string name="button_start_daily">Daily Questions</string>
 
     <!-- DAILY QUESTION INTERFACE -->
-    <string name="subtitle_score_low">Low score: Can you do more?</string>
-    <string name="subtitle_score_high">High score: Less is more</string>
+    <string name="subtitle_score_low">Under: Can you do more?</string>
+    <string name="subtitle_score_high">Over: Less is more</string>
     <string name="subtitle_score_balanced">Balanced: A perfect day!</string>
-    <string name="subtitle_score_unbalanced">Unbalanced: Too much and too little</string>
+    <string name="subtitle_score_unbalanced">Unbalanced: Over and Under</string>
     <string name="subtitle_score_no_data">Score your activities</string>
+
+    <!-- Legend text -->
+    <string name="over">Over</string>
+    <string name="under">Under</string>
+    <string name="balanced">Balanced</string>
+    <string name="unbalanced">Unbalanced</string>
+    <string name="no_data">No data</string>
 
     <!-- swipe to delete strings -->
     <string name="undo_text">Score deleted</string>
@@ -63,8 +70,8 @@
     <string name="quest_results">Your score is %s!</string>
     <string name="quest_button">Score</string>
 
-    <string name="score_high">high</string>
-    <string name="score_low">low</string>
+    <string name="score_high">over</string>
+    <string name="score_low">under</string>
     <string name="score_balanced">balanced</string>
     <string name="score_unbalanced">unbalanced</string>
 
