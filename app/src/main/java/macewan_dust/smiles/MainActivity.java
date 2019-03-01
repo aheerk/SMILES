@@ -23,7 +23,6 @@ public class MainActivity extends SingleFragmentActivity implements BottomNaviga
         return DashboardListFragment.newInstance();
     }
 
-
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

@@ -1,5 +1,6 @@
 package macewan_dust.smiles;
 
+import android.content.Intent;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
@@ -153,8 +154,15 @@ public class DashboardListFragment extends Fragment {
 
             @Override
             public void onClick(View v){
-                NewUserFragment fragment = new NewUserFragment();
-                replaceFragment(fragment);
+
+
+                Intent newActivity = new Intent(getContext(), NewUserActivity.class);
+                getContext().startActivity(newActivity);
+
+
+
+             //   SplashFragment fragment = new SplashFragment();
+              //  replaceFragment(fragment);
             }
         });
 
