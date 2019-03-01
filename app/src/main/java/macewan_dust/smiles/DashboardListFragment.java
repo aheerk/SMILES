@@ -38,6 +38,8 @@ public class DashboardListFragment extends Fragment {
     private RecyclerView.LayoutManager mRecyclerViewLayoutManager;
     private List<Score> mDashboardData = new LinkedList<>();
     private Button mButtonStartQuestions;
+    private Button mButtonNewUserTest;
+
 
     /**
      * new instance constructor
@@ -146,6 +148,16 @@ public class DashboardListFragment extends Fragment {
         getActivity().setTitle(R.string.title_dashboard);
 
 
+        mButtonNewUserTest = v.findViewById(R.id.button_new_user_test);
+        mButtonNewUserTest.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v){
+                NewUserFragment fragment = new NewUserFragment();
+                replaceFragment(fragment);
+            }
+        });
+        
         return v;
     }
 
