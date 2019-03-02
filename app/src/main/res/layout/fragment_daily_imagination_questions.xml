@@ -42,42 +42,21 @@
 
             <ImageView
                 android:id="@+id/icon_1a"
-                android:layout_width="@dimen/input_icons_width"
-                android:layout_height="@dimen/input_icons_height"
-                android:layout_margin="@dimen/input_icons_margin"
-                android:layout_weight="1"
+                style="@style/InputIcons"
                 android:background="@drawable/border_image"
-
-                android:cropToPadding="true"
-                android:padding="@dimen/input_icons_padding"
-
                 app:srcCompat="@drawable/ic_less" />
 
 
             <ImageView
                 android:id="@+id/icon_1b"
-                android:layout_width="@dimen/input_icons_width"
-                android:layout_height="@dimen/input_icons_height"
-                android:layout_margin="@dimen/input_icons_margin"
-                android:layout_weight="1"
+                style="@style/InputIcons"
                 android:background="@drawable/border_image"
-
-                android:cropToPadding="true"
-                android:padding="@dimen/input_icons_padding"
-
                 app:srcCompat="@drawable/ic_10_30" />
 
             <ImageView
                 android:id="@+id/icon_1c"
-                android:layout_width="@dimen/input_icons_width"
-                android:layout_height="@dimen/input_icons_height"
-                android:layout_margin="@dimen/input_icons_margin"
-                android:layout_weight="1"
+                style="@style/InputIcons"
                 android:background="@drawable/border_image"
-
-                android:cropToPadding="true"
-                android:padding="@dimen/input_icons_padding"
-
                 app:srcCompat="@drawable/ic_more" />
 
         </LinearLayout>
@@ -109,42 +88,21 @@
 
             <ImageView
                 android:id="@+id/icon_2a"
-                android:layout_width="@dimen/input_icons_width"
-                android:layout_height="@dimen/input_icons_height"
-                android:layout_margin="@dimen/input_icons_margin"
-                android:layout_weight="1"
+                style="@style/InputIcons"
                 android:background="@drawable/border_image"
-
-                android:cropToPadding="true"
-                android:padding="@dimen/input_icons_padding"
-
                 app:srcCompat="@drawable/ic_less" />
 
 
             <ImageView
                 android:id="@+id/icon_2b"
-                android:layout_width="@dimen/input_icons_width"
-                android:layout_height="@dimen/input_icons_height"
-                android:layout_margin="@dimen/input_icons_margin"
-                android:layout_weight="1"
+                style="@style/InputIcons"
                 android:background="@drawable/border_image"
-
-                android:cropToPadding="true"
-                android:padding="@dimen/input_icons_padding"
-
                 app:srcCompat="@drawable/ic_10_30" />
 
             <ImageView
                 android:id="@+id/icon_2c"
-                android:layout_width="@dimen/input_icons_width"
-                android:layout_height="@dimen/input_icons_height"
-                android:layout_margin="@dimen/input_icons_margin"
-                android:layout_weight="1"
+                style="@style/InputIcons"
                 android:background="@drawable/border_image"
-
-                android:cropToPadding="true"
-                android:padding="@dimen/input_icons_padding"
-
                 app:srcCompat="@drawable/ic_more" />
 
 
@@ -182,41 +140,21 @@
 
             <ImageView
                 android:id="@+id/icon_3a"
-                android:layout_width="@dimen/input_icons_width"
-                android:layout_height="@dimen/input_icons_height"
-                android:layout_margin="@dimen/input_icons_margin"
-                android:layout_weight="1"
+                style="@style/InputIcons"
                 android:background="@drawable/border_image"
-
-                android:cropToPadding="true"
-                android:padding="@dimen/input_icons_padding"
-
                 app:srcCompat="@drawable/ic_less" />
 
 
             <ImageView
                 android:id="@+id/icon_3b"
-                android:layout_width="@dimen/input_icons_width"
-                android:layout_height="@dimen/input_icons_height"
-                android:layout_margin="@dimen/input_icons_margin"
-                android:layout_weight="1"
+                style="@style/InputIcons"
                 android:background="@drawable/border_image"
-
-                android:cropToPadding="true"
-                android:padding="@dimen/input_icons_padding"
                 app:srcCompat="@drawable/ic_10_30" />
 
             <ImageView
                 android:id="@+id/icon_3c"
-                android:layout_width="@dimen/input_icons_width"
-                android:layout_height="@dimen/input_icons_height"
-                android:layout_margin="@dimen/input_icons_margin"
-                android:layout_weight="1"
+                style="@style/InputIcons"
                 android:background="@drawable/border_image"
-
-                android:cropToPadding="true"
-                android:padding="@dimen/input_icons_padding"
-
                 app:srcCompat="@drawable/ic_more" />
 
 

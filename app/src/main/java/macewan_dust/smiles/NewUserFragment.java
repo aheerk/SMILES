@@ -16,6 +16,7 @@ public class NewUserFragment extends Fragment {
     private static final String TAG = "NewUserFragment";
 
     TextView mTitle;
+    TextView mSubtitle;
     ImageView mImageView;
     TextView mBodyText;
     Button mNextButton;
@@ -38,11 +39,13 @@ public class NewUserFragment extends Fragment {
         View v = inflater.inflate(R.layout.fragment_introduction, container, false);
 
         mTitle = v.findViewById(R.id.introduction_title);
+        mSubtitle = v.findViewById(R.id.introduction_subtitle);
         mImageView = v.findViewById(R.id.introduction_image);
         mBodyText = v.findViewById(R.id.introduction_explanation);
         mNextButton = v.findViewById(R.id.button_introduction_next);
         mBackButton = v.findViewById(R.id.button_introduction_back);
         mBackButton.setVisibility(View.GONE);
+        updateScreen ();
 
         i = 0;
         mNextButton.setOnClickListener(new View.OnClickListener() {
@@ -74,13 +77,16 @@ public class NewUserFragment extends Fragment {
         switch(i){
             case 0:
                 mTitle.setText(R.string.introduction_title_smiles);
+                mSubtitle.setText(R.string.introduction_subtitle_smiles);
+                mSubtitle.setVisibility(View.VISIBLE);
                 mBodyText.setText(R.string.introduction_explanation_smiles);
                 mBackButton.setVisibility(View.GONE);
                 break;
             case 1:
                 mTitle.setText(R.string.introduction_title_stress1);
                 mBodyText.setText(R.string.introduction_explanation_stress1);
-
+                mImageView.setImageResource(R.drawable.photo_stress);
+                mSubtitle.setVisibility(View.GONE);
                 mBackButton.setVisibility(View.VISIBLE);
 
                 break;

@@ -44,7 +44,15 @@
         <item name="android:textAlignment">center</item>
         <item name="android:layout_margin">8dp</item>
         <item name="android:textStyle">bold</item>
+    </style>
 
+    <style name="InputIcons">
+        <item name="android:layout_width">@dimen/input_icons_width</item>
+        <item name="android:layout_height">@dimen/input_icons_height</item>
+        <item name="android:layout_marginLeft">4dp</item>
+        <item name="android:layout_marginRight">4dp</item>
+        <item name="android:padding">@dimen/input_icons_padding</item>
+        <item name="android:cropToPadding">true</item>
     </style>
 
 </resources>

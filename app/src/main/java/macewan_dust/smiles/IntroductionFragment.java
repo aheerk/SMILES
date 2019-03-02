@@ -11,6 +11,7 @@ import android.widget.TextView;
 public class IntroductionFragment extends Fragment {
 
     TextView mTitle;
+    TextView mSubtitle;
     TextView mBodyText;
     Button mNextButton;
     Button mBackButton;
@@ -32,6 +33,7 @@ public class IntroductionFragment extends Fragment {
 
         mTitle = v.findViewById(R.id.introduction_title);
         mBodyText = v.findViewById(R.id.introduction_explanation);
+        mSubtitle = v.findViewById(R.id.introduction_subtitle);
         mNextButton = v.findViewById(R.id.button_introduction_next);
         mBackButton = v.findViewById(R.id.button_introduction_back);
         mBackButton.setVisibility(View.GONE);
@@ -61,11 +63,12 @@ public class IntroductionFragment extends Fragment {
         return v;
     }
 
-
     private void updateScreen (){
         switch(i){
             case 0:
                 mTitle.setText(R.string.introduction_title_smiles);
+                mSubtitle.setText(R.string.introduction_subtitle_smiles);
+                mSubtitle.setVisibility(View.VISIBLE);
                 mBodyText.setText(R.string.introduction_explanation_smiles);
                 mBackButton.setVisibility(View.GONE);
                 break;
@@ -73,6 +76,7 @@ public class IntroductionFragment extends Fragment {
                 mTitle.setText(R.string.introduction_title_stress1);
                 mBodyText.setText(R.string.introduction_explanation_stress1);
                 mBackButton.setVisibility(View.VISIBLE);
+                mSubtitle.setVisibility(View.GONE);
                 break;
             case 2:
                 mTitle.setText(R.string.introduction_title_stress1);
