@@ -27,19 +27,17 @@ public class SmilesListFragment extends Fragment {
     private RecyclerView.LayoutManager mSmilesRecyclerViewLayoutManager;
     private List<SmilesItem> mSmilesData = new LinkedList<>();
 
-
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-// generating some items for testing                                                                    /////-------- refactor this
+        mSmilesData = new LinkedList<>();
         SmilesItem temp1 = new SmilesItem(R.drawable.icon_sleep,"S","leep");
         SmilesItem temp2 = new SmilesItem(R.drawable.icon_movement,"M","ovement");
         SmilesItem temp3 = new SmilesItem(R.drawable.icon_imagination,"I","magination");
         SmilesItem temp4 = new SmilesItem(R.drawable.icon_laughter,"L","aughter");
         SmilesItem temp5 = new SmilesItem(R.drawable.icon_eating,"E","ating");
         SmilesItem temp6 = new SmilesItem(R.drawable.icon_speaking,"S","peaking");
-
 
         mSmilesData.add(temp1);
         mSmilesData.add(temp2);
@@ -107,7 +105,7 @@ public class SmilesListFragment extends Fragment {
                // int position = getAdapterPosition(); // find out where this view is in the list
                 // gets Smiles item at views position, then gets the fragment out of it and loads it
 
-                Fragment newFrag = new SmilesInfoFragment();
+                Fragment newFrag = new SmilesInformationFragment();
                 Bundle opBundle = new Bundle();
                 opBundle.putInt(ARG_OPERATION_INDEX, this.getAdapterPosition());
                 newFrag.setArguments(opBundle);

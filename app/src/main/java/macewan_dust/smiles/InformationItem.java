@@ -3,13 +3,13 @@ package macewan_dust.smiles;
 
 import android.support.v4.app.Fragment;
 
-public class InfoItem {
+public class InformationItem {
 
     private String mTitle;
     private String mSubtitle;
     private Fragment mFragment;
 
-    public InfoItem(String title, String subtitle, Fragment fragment) {
+    public InformationItem(String title, String subtitle, Fragment fragment) {
         mTitle = title;
         mSubtitle = subtitle;
         mFragment = fragment;

@@ -9,9 +9,9 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-public class SmilesInfoFragment extends Fragment {
+public class SmilesInformationFragment extends Fragment {
 
-    private static final String TAG = "SmilesInfoFragment";
+    private static final String TAG = "SmilesInformationFragment";
 
     int mAdapterIndex;
     ImageView mIconSmilesInfo;

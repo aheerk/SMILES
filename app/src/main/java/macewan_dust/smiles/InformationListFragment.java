@@ -15,29 +15,30 @@ import android.widget.TextView;
 import java.util.LinkedList;
 import java.util.List;
 
-public class InfoListFragment extends Fragment {
+public class InformationListFragment extends Fragment {
 
-    private static final String TAG = "InfoListFragment";
+    private static final String TAG = "InformationListFragment";
 
     private RecyclerView mInfoRecyclerView;
     private RecyclerView.Adapter mInfoRecyclerViewAdapter;
     private RecyclerView.LayoutManager mInfoRecyclerViewLayoutManager;
-    private List<InfoItem> mInfoData = new LinkedList<>();
+    private List<InformationItem> mInfoData = new LinkedList<>();
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-// generating some items for testing                                                                    /////-------- refactor this
-        InfoItem temp4 = new InfoItem(getString(R.string.title_introduction), "Getting started information", new IntroductionFragment());
-        InfoItem temp1 = new InfoItem(getString(R.string.title_smiles), "Categories", new SmilesListFragment());
-        InfoItem temp2 = new InfoItem(getString(R.string.title_web_links), "Useful information", new WebListFragment());
-        InfoItem temp3 = new InfoItem(getString(R.string.title_credits), "subtitle", new CreditInfoFragment());
+        mInfoData = new LinkedList<>();
+        InformationItem temp4 = new InformationItem(getString(R.string.title_introduction), "Getting started information", new IntroductionFragment());
+        InformationItem temp1 = new InformationItem(getString(R.string.title_smiles), "Categories", new SmilesListFragment());
+        InformationItem temp2 = new InformationItem(getString(R.string.title_web_links), "Useful information", new WebListFragment());
+        InformationItem temp3 = new InformationItem(getString(R.string.title_credits), "subtitle", new CreditInfoFragment());
 
         mInfoData.add(temp4);
         mInfoData.add(temp1);
         mInfoData.add(temp2);
         mInfoData.add(temp3);
+
     }
 
     @Nullable
@@ -48,7 +49,7 @@ public class InfoListFragment extends Fragment {
         mInfoRecyclerView = v.findViewById(R.id.info_recycler_view);
         mInfoRecyclerViewLayoutManager = new LinearLayoutManager(this.getActivity());
         mInfoRecyclerView.setLayoutManager(mInfoRecyclerViewLayoutManager);
-        mInfoRecyclerViewAdapter = new InfoListFragment.InfoAdapter(mInfoData);
+        mInfoRecyclerViewAdapter = new InformationListFragment.InfoAdapter(mInfoData);
         mInfoRecyclerView.setAdapter(mInfoRecyclerViewAdapter);
         mInfoRecyclerView.setHasFixedSize(true);
 
@@ -63,9 +64,9 @@ public class InfoListFragment extends Fragment {
 
     }
 
-    public class InfoAdapter extends RecyclerView.Adapter<InfoListFragment.InfoAdapter.InfoViewHolder> {
+    public class InfoAdapter extends RecyclerView.Adapter<InformationListFragment.InfoAdapter.InfoViewHolder> {
 
-        private List<InfoItem> mInfoListData;
+        private List<InformationItem> mInfoListData;
 
         /**
          * Reference for views for each data item.
@@ -96,7 +97,7 @@ public class InfoListFragment extends Fragment {
         /*
          * Passes the list data for use by the system
          */
-        public InfoAdapter(List<InfoItem> infoListData) {
+        public InfoAdapter(List<InformationItem> infoListData) {
             mInfoListData = infoListData;
         }
 
@@ -105,13 +106,13 @@ public class InfoListFragment extends Fragment {
          * Specify what view layout is used here.
          */
 
-        public InfoListFragment.InfoAdapter.InfoViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {              // ----- what is the role of viewType here?
+        public InformationListFragment.InfoAdapter.InfoViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {              // ----- what is the role of viewType here?
 
             // create one new view
             View v = LayoutInflater.from(parent.getContext())
                     .inflate(R.layout.list_item_info, parent, false);
 
-            InfoListFragment.InfoAdapter.InfoViewHolder vh = new InfoListFragment.InfoAdapter.InfoViewHolder(v);
+            InformationListFragment.InfoAdapter.InfoViewHolder vh = new InformationListFragment.InfoAdapter.InfoViewHolder(v);
             return vh;
         }
 
@@ -124,7 +125,7 @@ public class InfoListFragment extends Fragment {
          * @param position - index location in the list of data
          */
         @Override
-        public void onBindViewHolder(@NonNull InfoListFragment.InfoAdapter.InfoViewHolder holder, int position) {
+        public void onBindViewHolder(@NonNull InformationListFragment.InfoAdapter.InfoViewHolder holder, int position) {
             holder.mTitle.setText(mInfoListData.get(position).getTitle());
             holder.mSubtitle.setText(mInfoListData.get(position).getSubtitle());
         }

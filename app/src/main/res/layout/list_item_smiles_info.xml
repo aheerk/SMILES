@@ -4,6 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="horizontal"
+    android:padding="8dp"
     android:paddingLeft="8dp"
     android:paddingRight="8dp">
 
@@ -15,12 +16,8 @@
 
         <ImageView
             android:id="@+id/icon_smiles_list"
-            android:layout_width="80dp"
-            android:layout_height="80dp"
-            android:layout_gravity="left|top"
-            android:layout_marginRight="8dp"
-            android:cropToPadding="true"
-            android:padding="8dp"
+            style="@style/InputIcons"
+            android:padding="0dp"
             app:srcCompat="@drawable/icon_laughter" />
 
         <LinearLayout
@@ -32,12 +29,13 @@
                 android:id="@+id/text_smiles_capital_letter"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_margin="0dp"
+                android:layout_marginLeft="8dp"
                 android:layout_marginTop="0dp"
                 android:layout_marginBottom="0dp"
                 android:text="L"
                 android:textColor="@color/colorAccent"
-                android:textSize="45sp" />
+                android:textSize="26dp"
+                android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/text_smiles_lower_case_letter"
@@ -47,7 +45,7 @@
                 android:layout_marginTop="0dp"
                 android:layout_marginBottom="0dp"
                 android:text="aughter"
-                android:textSize="30dp" />
+                android:textSize="26dp" />
         </LinearLayout>
 
     </LinearLayout>

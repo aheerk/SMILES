@@ -18,7 +18,7 @@
 
     <TextView
         android:id="@+id/introduction_subtitle"
-        style="@style/SubtitleText"
+        style="@style/Heading2Text"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:text="subtitle"
@@ -29,11 +29,12 @@
 
     <ImageView
         android:id="@+id/introduction_image"
-        android:layout_width="300dp"
+        android:layout_width="200dp"
         android:layout_height="200dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="8dp"
+        android:layout_margin="8dp"
+        android:padding="1dp"
+        android:background="@drawable/trim"
+        android:cropToPadding="true"
         app:layout_constraintBottom_toTopOf="@+id/introduction_explanation"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

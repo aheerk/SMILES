@@ -21,6 +21,15 @@
 
     <!-- For List Items -->
     <style name="TitleText" parent="TextAppearance.AppCompat">
+        <item name="android:textSize">32dp</item>
+        <item name="android:color">@color/colorTitleText</item>
+        <item name="android:layout_marginTop">8dp</item>
+        <item name="android:textAlignment">center</item>
+        <item name="android:layout_marginRight">8dp</item>
+        <item name="android:layout_marginLeft">8dp</item>
+    </style>
+
+    <style name="Heading1Text" parent="TextAppearance.AppCompat">
         <item name="android:textSize">26dp</item>
         <item name="android:color">@color/colorTitleText</item>
         <item name="android:layout_marginTop">8dp</item>
@@ -29,7 +38,7 @@
         <item name="android:layout_marginLeft">8dp</item>
     </style>
 
-    <style name="SubtitleText" parent="TextAppearance.AppCompat">
+    <style name="Heading2Text" parent="TextAppearance.AppCompat">
         <item name="android:textSize">20dp</item>
         <item name="android:color">@color/colorSubtitleText</item>
         <item name="android:layout_marginBottom">8dp</item>

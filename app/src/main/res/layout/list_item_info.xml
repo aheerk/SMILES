@@ -21,14 +21,14 @@
                 android:id="@+id/list_item_info_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                style="@style/TitleText"
+                style="@style/Heading1Text"
                 />
 
             <TextView
                 android:id="@+id/list_item_info_subtitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                style="@style/SubtitleText"
+                style="@style/Heading2Text"
                 />
         </LinearLayout>
 

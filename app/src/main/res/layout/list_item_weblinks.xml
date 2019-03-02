@@ -7,17 +7,16 @@
 
     <TextView
         android:id="@+id/list_item_web_title"
+        style="@style/Heading1Text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        style="@style/TitleText"
-        android:textAlignment="textStart"
-        />
+        android:textAlignment="textStart" />
 
     <TextView
         android:id="@+id/list_item_web_subtitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        style="@style/SubtitleText"
+        style="@style/Heading2Text"
         android:textAlignment="textStart"
         />
 
