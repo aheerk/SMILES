@@ -37,7 +37,7 @@ public class IntroductionFragment extends Fragment {
         mNextButton = v.findViewById(R.id.button_introduction_next);
         mBackButton = v.findViewById(R.id.button_introduction_back);
         mBackButton.setVisibility(View.GONE);
-
+        updateScreen ();
         i = 0;
         mNextButton.setOnClickListener(new View.OnClickListener() {
             @Override
