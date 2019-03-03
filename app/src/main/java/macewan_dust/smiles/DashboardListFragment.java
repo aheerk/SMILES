@@ -1,5 +1,6 @@
 package macewan_dust.smiles;
 
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Canvas;
 import android.graphics.Color;
@@ -31,7 +32,7 @@ import java.util.List;
 
 public class DashboardListFragment extends Fragment {
 
-    FloatingActionButton mFloatingButtonStartDailyQuestions;
+ //   FloatingActionButton mFloatingButtonStartDailyQuestions;
     private static final String TAG = "Dashboard";
 
     private RecyclerView mRecyclerView;
@@ -40,6 +41,7 @@ public class DashboardListFragment extends Fragment {
     private List<Score> mDashboardData = new LinkedList<>();
     private Button mButtonStartQuestions;
     private Button mButtonNewUserTest;
+    private Context mContext;
 
 
     /**
@@ -53,7 +55,7 @@ public class DashboardListFragment extends Fragment {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
+        mContext = getContext();
 
         // scores from database
         mDashboardData = ScoringLab.get(getContext()).getScores();
@@ -326,10 +328,14 @@ public class DashboardListFragment extends Fragment {
     /**
      * This class detects swipes on recycler view items and is customized for deleting items.
      * Reference: https://medium.com/@zackcosborn/step-by-step-recyclerview-swipe-to-delete-and-undo-7bbae1fce27e
+     * Note the reference has a bug for right swipe. fix by checking right and left dimensions on icon
      */
     public class SwipeToDeleteCallback extends ItemTouchHelper.SimpleCallback {
 
         private DashboardAdapter mAdapter;
+
+        private Drawable mDeleteIcon;
+        private final ColorDrawable mDeleteBackground;
 
      //   private Drawable icon;
     //    private final ColorDrawable background;
@@ -342,21 +348,55 @@ public class DashboardListFragment extends Fragment {
             super(0, ItemTouchHelper.LEFT | ItemTouchHelper.RIGHT);
             mAdapter = adapter;
 
-      //      icon = ContextCompat.getDrawable(mAdapter.get , R.drawable.ic_delete_white);
-      //      background = new ColorDrawable(Color.RED);
-
+            mDeleteIcon = ContextCompat.getDrawable(mContext , R.drawable.ic_delete);
+            mDeleteBackground = new ColorDrawable(getResources().getColor(R.color.colorDelete));
         }
 
-        /*
+        /**
+         * Override to draw on recycler view
+         * @param c - canvas
+         * @param recyclerView
+         * @param viewHolder
+         * @param dX
+         * @param dY
+         * @param actionState
+         * @param isCurrentlyActive
+         */
         @Override
-        public void onChildDraw(Canvas c, RecyclerView recyclerView, RecyclerView.ViewHolder viewHolder, float dX, float dY, int actionState, boolean isCurrentlyActive) {
-            super.onChildDraw(c, recyclerView, viewHolder, dX,
-                    dY, actionState, isCurrentlyActive);
-            View itemView = viewHolder.itemView;
-            int backgroundCornerOffset = 20;
-        }
-*/
+        public void onChildDraw(Canvas c, RecyclerView recyclerView, RecyclerView.ViewHolder viewHolder,
+                                float dX, float dY, int actionState, boolean isCurrentlyActive) {
+            super.onChildDraw(c, recyclerView, viewHolder, dX, dY, actionState, isCurrentlyActive);
 
+            View v = viewHolder.itemView;
+            int backgroundCornerOffset = 0; // pushes background behind the parent view. looks better if its off
+
+            // icon variables across both swipes
+            // height of view = height of icon / 2 sides
+            int iconMargin = (v.getHeight() - mDeleteIcon.getIntrinsicHeight()) / 2;
+            int iconTop = v.getTop() + iconMargin; // top of view + margin (x y axis move down and to the right
+            int iconBottom = iconTop + mDeleteIcon.getIntrinsicHeight();
+
+            // Right swipe
+            if (dX > 0) {
+                // right and left are specific to which swipe is being done
+                int iconRight = v.getLeft() + iconMargin + mDeleteIcon.getIntrinsicWidth();
+                int iconLeft = v.getLeft() + iconMargin;
+                mDeleteIcon.setBounds(iconLeft, iconTop, iconRight, iconBottom);
+                mDeleteBackground.setBounds(v.getLeft(), v.getTop() + iconMargin /4,
+                        v.getLeft()+ ((int) dX) + backgroundCornerOffset, v.getBottom() - iconMargin /4);
+            } else if (dX < 0) { // left swipe
+                // right and left are specific to which swipe is being done
+                int iconLeft = v.getRight() - iconMargin - mDeleteIcon.getIntrinsicWidth();
+                int iconRight = v.getRight() - iconMargin;
+                mDeleteIcon.setBounds(iconLeft, iconTop, iconRight, iconBottom);
+                mDeleteBackground.setBounds(v.getRight() + ((int) dX) - backgroundCornerOffset,
+                         v.getTop() + iconMargin /4, v.getRight(), v.getBottom() - iconMargin /4);
+            } else { // no swipe
+                mDeleteBackground.setBounds(0,0,0,0);
+            }
+            mDeleteBackground.draw(c);
+            mDeleteIcon.draw(c);
+        }
 
         /**
          * required but not being used
