@@ -27,19 +27,12 @@ public class InputSleepFragment extends Fragment {
     ImageView mIcon2b;
     ImageView mIcon2c;
     ImageView mIcon2d;
-    ImageView mIcon2e;
-
-    Boolean m2aSelected;
-    Boolean m2bSelected;
-    Boolean m2cSelected;
-    Boolean m2dSelected;
-    Boolean m2eSelected;
 
     Button mButton;
-  //  ImageView mIconFeedback;
     TextView mResults;
 
     int mQuestion_A_index;
+    int mQuestion_B_index;
 
     Score mScore;
 
@@ -78,7 +71,6 @@ public class InputSleepFragment extends Fragment {
 
         View v = inflater.inflate(R.layout.fragment_daily_sleep_questions, container, false);
 
-
         getActivity().setTitle(R.string.title_quest_sleep);
 
         mButton = v.findViewById(R.id.score_button);
@@ -91,22 +83,14 @@ public class InputSleepFragment extends Fragment {
         mIcon2b = v.findViewById(R.id.icon_2b);
         mIcon2c = v.findViewById(R.id.icon_2c);
         mIcon2d = v.findViewById(R.id.icon_2d);
-        mIcon2e = v.findViewById(R.id.icon_2e);
-
-        m2aSelected = false;
-        m2bSelected = false;
-        m2cSelected = false;
-        m2dSelected = false;
-        m2eSelected = false;
 
         mQuestion_A_index = NO_SELECTION;
-
-    //    mIconFeedback = v.findViewById(R.id.icon_feedback);
+        mQuestion_B_index = NO_SELECTION;
 
         mIcon1a.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                clearSelected();
+                clearSelectedA();
                 mQuestion_A_index = ScoringAlgorithms.INPUT_a;
                 mIcon1a.setBackground(getResources().getDrawable(R.drawable.border_image_selected));
             }
@@ -115,7 +99,7 @@ public class InputSleepFragment extends Fragment {
         mIcon1b.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                clearSelected();
+                clearSelectedA();
                 mQuestion_A_index = ScoringAlgorithms.INPUT_b;
                 mIcon1b.setBackground(getResources().getDrawable(R.drawable.border_image_selected));
             }
@@ -124,7 +108,7 @@ public class InputSleepFragment extends Fragment {
         mIcon1c.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                clearSelected();
+                clearSelectedA();
                 mQuestion_A_index = ScoringAlgorithms.INPUT_c;;
                 mIcon1c.setBackground(getResources().getDrawable(R.drawable.border_image_selected));
             }
@@ -133,7 +117,7 @@ public class InputSleepFragment extends Fragment {
         mIcon1d.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                clearSelected();
+                clearSelectedA();
                 mQuestion_A_index = ScoringAlgorithms.INPUT_d;
                 mIcon1d.setBackground(getResources().getDrawable(R.drawable.border_image_selected));
             }
@@ -142,55 +126,36 @@ public class InputSleepFragment extends Fragment {
         mIcon2a.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                m2aSelected = !m2aSelected;
-                if (m2aSelected)
-                    mIcon2a.setBackground(getResources().getDrawable(R.drawable.border_image_selected));
-                else
-                    mIcon2a.setBackground(getResources().getDrawable(R.drawable.border_image));
+                clearSelectedB();
+                mQuestion_B_index = 0;
+                mIcon2a.setBackground(getResources().getDrawable(R.drawable.border_image_selected));
             }
         });
 
         mIcon2b.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                m2bSelected = !m2bSelected;
-                if (m2bSelected)
-                    mIcon2b.setBackground(getResources().getDrawable(R.drawable.border_image_selected));
-                else
-                    mIcon2b.setBackground(getResources().getDrawable(R.drawable.border_image));
+                clearSelectedB();
+                mQuestion_B_index = 1;
+                mIcon2b.setBackground(getResources().getDrawable(R.drawable.border_image_selected));
             }
         });
 
         mIcon2c.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                m2cSelected = !m2cSelected;
-                if (m2cSelected)
-                    mIcon2c.setBackground(getResources().getDrawable(R.drawable.border_image_selected));
-                else
-                    mIcon2c.setBackground(getResources().getDrawable(R.drawable.border_image));
+                clearSelectedB();
+                mQuestion_B_index = 2;
+                mIcon2c.setBackground(getResources().getDrawable(R.drawable.border_image_selected));
             }
         });
 
         mIcon2d.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                m2dSelected = !m2dSelected;
-                if (m2dSelected)
-                    mIcon2d.setBackground(getResources().getDrawable(R.drawable.border_image_selected));
-                else
-                    mIcon2d.setBackground(getResources().getDrawable(R.drawable.border_image));
-            }
-        });
-
-        mIcon2e.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                m2eSelected = !m2eSelected;
-                if (m2eSelected)
-                    mIcon2e.setBackground(getResources().getDrawable(R.drawable.border_image_selected));
-                else
-                    mIcon2e.setBackground(getResources().getDrawable(R.drawable.border_image));
+                clearSelectedB();
+                mQuestion_B_index = 3;
+                mIcon2d.setBackground(getResources().getDrawable(R.drawable.border_image_selected));
             }
         });
 
@@ -198,26 +163,12 @@ public class InputSleepFragment extends Fragment {
             @Override
             public void onClick(View v) {
 
-                if (mQuestion_A_index == NO_SELECTION) {
+                if (mQuestion_A_index == NO_SELECTION || mQuestion_A_index == NO_SELECTION) {
                     mResults.setText(getString(R.string.feedback_unselected));
 
                 } else {
 
-                    int counter = 0;
-
-                    if (m2aSelected)
-                        counter ++;
-                    if (m2bSelected)
-                        counter ++;
-                    if (m2cSelected)
-                        counter ++;
-                    if (m2dSelected)
-                        counter ++;
-                    if (m2eSelected)
-                        counter ++;
-                    Log.d(TAG, "Hinderance counter:" + counter );
-
-                    int score = ScoringAlgorithms.scoreSleep(mQuestion_A_index, counter);
+                    int score = ScoringAlgorithms.scoreSleep(mQuestion_A_index, mQuestion_B_index);
 
                     int scoreStringID = 1000; // just here to initialize
                     Log.d(TAG, "Score: " + score);
@@ -281,11 +232,18 @@ public class InputSleepFragment extends Fragment {
     /**
      * ideally the icon being selected woudnt need to be cleared, if its id was passed in here              // refactor potential
      */
-    private void clearSelected() {
+    private void clearSelectedA() {
         mIcon1a.setBackground(getResources().getDrawable(R.drawable.border_image));
         mIcon1b.setBackground(getResources().getDrawable(R.drawable.border_image));
         mIcon1c.setBackground(getResources().getDrawable(R.drawable.border_image));
         mIcon1d.setBackground(getResources().getDrawable(R.drawable.border_image));
+    }
+
+    private void clearSelectedB() {
+        mIcon2a.setBackground(getResources().getDrawable(R.drawable.border_image));
+        mIcon2b.setBackground(getResources().getDrawable(R.drawable.border_image));
+        mIcon2c.setBackground(getResources().getDrawable(R.drawable.border_image));
+        mIcon2d.setBackground(getResources().getDrawable(R.drawable.border_image));
     }
 
 };
