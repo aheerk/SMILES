@@ -101,7 +101,7 @@ public class MainActivity extends SingleFragmentActivity implements BottomNaviga
                 fragment = new DashboardListFragment();
                 break;
             case R.id.navigation_graph:
-                fragment = new GraphFragment();
+                fragment = new WeeklyGraphFragment();
                 break;
             case R.id.navigation_info:
                 fragment = new InformationListFragment();

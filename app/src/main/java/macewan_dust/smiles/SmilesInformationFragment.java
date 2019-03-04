@@ -29,7 +29,7 @@ public class SmilesInformationFragment extends Fragment {
 
     @Override
     public View onCreateView(final LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View v = inflater.inflate(R.layout.fragment_smiles_info, container, false);
+        View v = inflater.inflate(R.layout.fragment_smiles_descriptions, container, false);
 
         mIconSmilesInfo = v.findViewById(R.id.icon_smiles_info);
         mTextSmilesList = v.findViewById(R.id.text_smiles_info);

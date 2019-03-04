@@ -51,7 +51,7 @@ public class SmilesListFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View v = inflater.inflate(R.layout.fragment_smiles_info_list, container, false);
+        View v = inflater.inflate(R.layout.fragment_smiles_descriptions_list, container, false);
 
         mSmilesRecyclerView = v.findViewById(R.id.smiles_recycler_view);
         mSmilesRecyclerViewLayoutManager = new LinearLayoutManager(this.getActivity());
@@ -132,7 +132,7 @@ public class SmilesListFragment extends Fragment {
 
             // create one new view
             View v = LayoutInflater.from(parent.getContext())
-                    .inflate(R.layout.list_item_smiles_info, parent, false);
+                    .inflate(R.layout.list_item_smiles_descriptions, parent, false);
 
             SmilesListFragment.SmilesAdapter.SmilesViewHolder vh = new SmilesListFragment.SmilesAdapter.SmilesViewHolder(v);
             return vh;

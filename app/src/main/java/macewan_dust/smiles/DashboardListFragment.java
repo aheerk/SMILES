@@ -32,7 +32,7 @@ import java.util.List;
 
 public class DashboardListFragment extends Fragment {
 
- //   FloatingActionButton mFloatingButtonStartDailyQuestions;
+    //   FloatingActionButton mFloatingButtonStartDailyQuestions;
     private static final String TAG = "Dashboard";
 
     private RecyclerView mRecyclerView;
@@ -40,12 +40,12 @@ public class DashboardListFragment extends Fragment {
     private RecyclerView.LayoutManager mRecyclerViewLayoutManager;
     private List<Score> mDashboardData = new LinkedList<>();
     private Button mButtonStartQuestions;
-    private Button mButtonNewUserTest;
     private Context mContext;
 
 
     /**
      * new instance constructor
+     *
      * @return InputSleepFragment
      */
     public static DashboardListFragment newInstance() {
@@ -107,7 +107,6 @@ public class DashboardListFragment extends Fragment {
     }
 
 
-
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
@@ -142,7 +141,7 @@ public class DashboardListFragment extends Fragment {
         mButtonStartQuestions.setOnClickListener(new View.OnClickListener() {
 
             @Override
-            public void onClick(View v){
+            public void onClick(View v) {
                 DailyListFragment fragment = new DailyListFragment();
                 replaceFragment(fragment);
             }
@@ -150,29 +149,12 @@ public class DashboardListFragment extends Fragment {
 
         getActivity().setTitle(R.string.title_dashboard);
 
-
-        mButtonNewUserTest = v.findViewById(R.id.button_new_user_test);
-        mButtonNewUserTest.setOnClickListener(new View.OnClickListener() {
-
-            @Override
-            public void onClick(View v){
-
-
-                Intent newActivity = new Intent(getContext(), NewUserActivity.class);
-                getContext().startActivity(newActivity);
-
-
-
-             //   SplashFragment fragment = new SplashFragment();
-              //  replaceFragment(fragment);
-            }
-        });
-
         return v;
     }
 
     /**
      * replaceFragment - performs fragment transactions.
+     *
      * @param newFragment
      */
     private void replaceFragment(Fragment newFragment) {
@@ -226,7 +208,7 @@ public class DashboardListFragment extends Fragment {
                 int position = getAdapterPosition(); // find out where this view is in the list
                 // gets dashboard item at views position, then gets the fragment out of it and loads it
 
-                            // load graph?
+                // load graph?
             }
         }
 
@@ -275,9 +257,17 @@ public class DashboardListFragment extends Fragment {
             holder.mIconSpeaking.setBackground(getResources().getDrawable(
                     Score.getBackgroundID(mDashboardListData.get(position).getSpeakingScore())));
 
+            // keeps the icon from stretching as the screen size changes
+            holder.mIconSleep.setScaleType(ImageView.ScaleType.FIT_CENTER);
+            holder.mIconMovement.setScaleType(ImageView.ScaleType.FIT_CENTER);
+            holder.mIconImagination.setScaleType(ImageView.ScaleType.FIT_CENTER);
+            holder.mIconLaughter.setScaleType(ImageView.ScaleType.FIT_CENTER);
+            holder.mIconEating.setScaleType(ImageView.ScaleType.FIT_CENTER);
+            holder.mIconSpeaking.setScaleType(ImageView.ScaleType.FIT_CENTER);
+
             // format date to exclude time
             String tempDate = mDashboardListData.get(position).getDate();
-           // String tempStringDate = DateFormat.getDateInstance(DateFormat.MEDIUM).format(tempDate);
+            // String tempStringDate = DateFormat.getDateInstance(DateFormat.MEDIUM).format(tempDate);
             holder.mDate.setText(tempDate);
         }
 
@@ -293,6 +283,7 @@ public class DashboardListFragment extends Fragment {
         /**
          * this method is for the swipe on delete feature
          * Reference: https://medium.com/@zackcosborn/step-by-step-recyclerview-swipe-to-delete-and-undo-7bbae1fce27e
+         *
          * @param position
          */
         public void deleteItem(int position) {
@@ -337,24 +328,26 @@ public class DashboardListFragment extends Fragment {
         private Drawable mDeleteIcon;
         private final ColorDrawable mDeleteBackground;
 
-     //   private Drawable icon;
-    //    private final ColorDrawable background;
+        //   private Drawable icon;
+        //    private final ColorDrawable background;
 
         /**
          * constructor
+         *
          * @param adapter - recycler view's adapter
          */
         public SwipeToDeleteCallback(DashboardAdapter adapter) {
             super(0, ItemTouchHelper.LEFT | ItemTouchHelper.RIGHT);
             mAdapter = adapter;
 
-            mDeleteIcon = ContextCompat.getDrawable(mContext , R.drawable.ic_delete);
+            mDeleteIcon = ContextCompat.getDrawable(mContext, R.drawable.ic_delete);
             mDeleteBackground = new ColorDrawable(getResources().getColor(R.color.colorDelete));
         }
 
         /**
          * Override to draw on recycler view
-         * @param c - canvas
+         *
+         * @param c                 - canvas
          * @param recyclerView
          * @param viewHolder
          * @param dX
@@ -382,17 +375,17 @@ public class DashboardListFragment extends Fragment {
                 int iconRight = v.getLeft() + iconMargin + mDeleteIcon.getIntrinsicWidth();
                 int iconLeft = v.getLeft() + iconMargin;
                 mDeleteIcon.setBounds(iconLeft, iconTop, iconRight, iconBottom);
-                mDeleteBackground.setBounds(v.getLeft(), v.getTop() + iconMargin /4,
-                        v.getLeft()+ ((int) dX) + backgroundCornerOffset, v.getBottom() - iconMargin /4);
+                mDeleteBackground.setBounds(v.getLeft(), v.getTop() + iconMargin / 4,
+                        v.getLeft() + ((int) dX) + backgroundCornerOffset, v.getBottom() - iconMargin / 4);
             } else if (dX < 0) { // left swipe
                 // right and left are specific to which swipe is being done
                 int iconLeft = v.getRight() - iconMargin - mDeleteIcon.getIntrinsicWidth();
                 int iconRight = v.getRight() - iconMargin;
                 mDeleteIcon.setBounds(iconLeft, iconTop, iconRight, iconBottom);
                 mDeleteBackground.setBounds(v.getRight() + ((int) dX) - backgroundCornerOffset,
-                         v.getTop() + iconMargin /4, v.getRight(), v.getBottom() - iconMargin /4);
+                        v.getTop() + iconMargin / 4, v.getRight(), v.getBottom() - iconMargin / 4);
             } else { // no swipe
-                mDeleteBackground.setBounds(0,0,0,0);
+                mDeleteBackground.setBounds(0, 0, 0, 0);
             }
             mDeleteBackground.draw(c);
             mDeleteIcon.draw(c);
@@ -400,6 +393,7 @@ public class DashboardListFragment extends Fragment {
 
         /**
          * required but not being used
+         *
          * @param recyclerView
          * @param viewHolder
          * @param target
@@ -415,9 +409,6 @@ public class DashboardListFragment extends Fragment {
             int position = viewHolder.getAdapterPosition();
             mAdapter.deleteItem(position);
         }
-
-
-
 
 
     }

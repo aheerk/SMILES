@@ -1,5 +1,6 @@
 package macewan_dust.smiles;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -11,6 +12,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 import java.util.LinkedList;
 import java.util.List;
@@ -23,6 +25,10 @@ public class InformationListFragment extends Fragment {
     private RecyclerView.Adapter mInfoRecyclerViewAdapter;
     private RecyclerView.LayoutManager mInfoRecyclerViewLayoutManager;
     private List<InformationItem> mInfoData = new LinkedList<>();
+
+    // temp
+    private Button mButtonNewUserTest;
+
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -44,7 +50,7 @@ public class InformationListFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View v = inflater.inflate(R.layout.fragment_info_list, container, false);
+        View v = inflater.inflate(R.layout.fragment_information_list, container, false);
 
         mInfoRecyclerView = v.findViewById(R.id.info_recycler_view);
         mInfoRecyclerViewLayoutManager = new LinearLayoutManager(this.getActivity());
@@ -52,6 +58,24 @@ public class InformationListFragment extends Fragment {
         mInfoRecyclerViewAdapter = new InformationListFragment.InfoAdapter(mInfoData);
         mInfoRecyclerView.setAdapter(mInfoRecyclerViewAdapter);
         mInfoRecyclerView.setHasFixedSize(true);
+
+// temp
+        mButtonNewUserTest = v.findViewById(R.id.button_new_user_test);
+        mButtonNewUserTest.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v){
+
+
+                Intent newActivity = new Intent(getContext(), NewUserActivity.class);
+                getContext().startActivity(newActivity);
+
+
+
+                //   SplashFragment fragment = new SplashFragment();
+                //  replaceFragment(fragment);
+            }
+        });
 
         getActivity().setTitle(R.string.title_information);
 
@@ -110,7 +134,7 @@ public class InformationListFragment extends Fragment {
 
             // create one new view
             View v = LayoutInflater.from(parent.getContext())
-                    .inflate(R.layout.list_item_info, parent, false);
+                    .inflate(R.layout.list_item_information, parent, false);
 
             InformationListFragment.InfoAdapter.InfoViewHolder vh = new InformationListFragment.InfoAdapter.InfoViewHolder(v);
             return vh;
