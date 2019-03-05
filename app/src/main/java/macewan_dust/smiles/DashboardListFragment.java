@@ -1,15 +1,12 @@
 package macewan_dust.smiles;
 
 import android.content.Context;
-import android.content.Intent;
 import android.graphics.Canvas;
-import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
@@ -24,9 +21,6 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-
-import java.text.DateFormat;
-import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -298,7 +292,7 @@ public class DashboardListFragment extends Fragment {
 
         public void showUndoSnackbar() {
             View view = getActivity().findViewById(R.id.dashboard_recycler_view);
-            Snackbar snackbar = Snackbar.make(view, R.string.undo_text, Snackbar.LENGTH_LONG);
+            Snackbar snackbar = Snackbar.make(view, R.string.undo_text, 5000 ); // 5 seconds
 
             snackbar.setAction(R.string.undo_confirm, new View.OnClickListener() {
                 @Override

@@ -77,7 +77,7 @@ public class InputEatingFragment extends Fragment {
 
         View v = inflater.inflate(R.layout.fragment_daily_eating_questions, container, false);
 
-        getActivity().setTitle(R.string.title_quest_eating);
+ //       getActivity().setTitle(R.string.title_quest_eating);
 
         mButton = v.findViewById(R.id.score_button);
 

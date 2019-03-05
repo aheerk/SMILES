@@ -66,7 +66,7 @@ public class InputLaughterFragment extends Fragment {
 
         View v = inflater.inflate(R.layout.fragment_daily_laughter_questions, container, false);
 
-        getActivity().setTitle(R.string.title_quest_laughter);
+    //    getActivity().setTitle(R.string.title_quest_laughter);
 
         mButton = v.findViewById(R.id.score_button);
 

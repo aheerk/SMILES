@@ -8,7 +8,6 @@ import android.support.v4.app.FragmentTransaction;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v4.app.Fragment;
-import android.support.v7.widget.helper.ItemTouchHelper;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -29,6 +28,9 @@ import java.util.UUID;
 public class DailyListFragment extends Fragment {
 
     private static final String TAG = "DailyListFragment";
+    public static final String DAILY_RECYCLER_VIEW_INDEX = "daily_recycler_view_index";
+
+
 
     private RecyclerView mDailyRecyclerView;
     private RecyclerView.Adapter mDailyAdapter;
@@ -125,7 +127,14 @@ public class DailyListFragment extends Fragment {
                 Log.d(TAG, "onClick called");
                 int position = getAdapterPosition(); // find out where this view is in the list
                 // gets daily item at views position, then gets the fragment out of it and loads it
-                replaceFragment(mDailyData.get(position).getFragment());
+                //              replaceFragment(mDailyData.get(position).getFragment());
+
+                DailyPagerFragment tempFragment = new DailyPagerFragment();
+                Bundle opBundle = new Bundle();
+                opBundle.putInt(DAILY_RECYCLER_VIEW_INDEX, position);
+
+                tempFragment.setArguments(opBundle);
+                replaceFragment(tempFragment);
             }
         }
 

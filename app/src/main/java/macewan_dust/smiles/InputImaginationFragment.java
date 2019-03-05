@@ -74,7 +74,7 @@ public class InputImaginationFragment extends Fragment {
 
         View v = inflater.inflate(R.layout.fragment_daily_imagination_questions, container, false);
 
-        getActivity().setTitle(R.string.title_quest_imagination);
+   //     getActivity().setTitle(R.string.title_quest_imagination);
 
 
         mButton = v.findViewById(R.id.score_button);
