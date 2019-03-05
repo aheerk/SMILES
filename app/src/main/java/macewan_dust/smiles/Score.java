@@ -1,10 +1,10 @@
 package macewan_dust.smiles;
 
 import java.text.DateFormat;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.UUID;
+
+import static macewan_dust.smiles.ScoringAlgorithms.*;
 
 /**
  * Note there is no setter for UUID
@@ -22,20 +22,20 @@ public class Score {
 
     public Score() {
         Date tempDate = new Date();
-    //    mDate = timelessDate(mDate);
+        //    mDate = timelessDate(mDate);
 
-   //     mDate.setHours(); // gives the wrong date
+        //     mDate.setHours(); // gives the wrong date
 
         mDate = DateFormat.getDateInstance(DateFormat.MEDIUM).format(tempDate);
-  //      mDate = new Date(tempStringDate);
+        //      mDate = new Date(tempStringDate);
 
         mID = UUID.randomUUID();
-        mSleepScore = ScoringAlgorithms.SCORE_NONE;
-        mMovementScore = ScoringAlgorithms.SCORE_NONE;
-        mImaginationScore = ScoringAlgorithms.SCORE_NONE;
-        mLaughterScore = ScoringAlgorithms.SCORE_NONE;
-        mEatingScore = ScoringAlgorithms.SCORE_NONE;
-        mSpeakingScore = ScoringAlgorithms.SCORE_NONE;
+        mSleepScore = SCORE_NO_DATA;
+        mMovementScore = SCORE_NO_DATA;
+        mImaginationScore = SCORE_NO_DATA;
+        mLaughterScore = SCORE_NO_DATA;
+        mEatingScore = SCORE_NO_DATA;
+        mSpeakingScore = SCORE_NO_DATA;
     }
 
     /**
@@ -45,12 +45,12 @@ public class Score {
      */
     public Score(UUID id) {
         mID = id;
-        mSleepScore = ScoringAlgorithms.SCORE_NONE;
-        mMovementScore = ScoringAlgorithms.SCORE_NONE;
-        mImaginationScore = ScoringAlgorithms.SCORE_NONE;
-        mLaughterScore = ScoringAlgorithms.SCORE_NONE;
-        mEatingScore = ScoringAlgorithms.SCORE_NONE;
-        mSpeakingScore = ScoringAlgorithms.SCORE_NONE;
+        mSleepScore = SCORE_NO_DATA;
+        mMovementScore = SCORE_NO_DATA;
+        mImaginationScore = SCORE_NO_DATA;
+        mLaughterScore = SCORE_NO_DATA;
+        mEatingScore = SCORE_NO_DATA;
+        mSpeakingScore = SCORE_NO_DATA;
     }
 
     public String getDate() {
@@ -137,39 +137,99 @@ public class Score {
         return sb.toString();
     }
 
-    public static int getBackgroundID(int score){
+    /**
+     * scoreCSVFormat - creates a comma separated string.                                   /// ----- beware of commas in string!!!
+     * @return
+     */
+    public String scoreCSVFormat() {
+        StringBuilder sb = new StringBuilder();
+
+        //    sb.append("mID: " + mID);
+        //    sb.append(",");
+        sb.append(mDate);
+        sb.append(",");
+        sb.append(getScoreName(mSleepScore));
+        sb.append(",");
+        sb.append(getScoreName(mMovementScore));
+        sb.append(",");
+        sb.append(getScoreName(mImaginationScore));
+        sb.append(",");
+        sb.append(getScoreName(mLaughterScore));
+        sb.append(",");
+        sb.append(getScoreName(mEatingScore));
+        sb.append(",");
+        sb.append(getScoreName(mSpeakingScore));
+        //  sb.append("\n");
+
+        return sb.toString();
+    }
+
+    public static int getBackgroundID(int score) {
 
         switch (score) {
-            case ScoringAlgorithms.SCORE_LOW:
+            case SCORE_UNDER:
                 return R.drawable.border_image_low;
-            case ScoringAlgorithms.SCORE_HIGH:
+            case SCORE_OVER:
                 return R.drawable.border_image_high;
-            case ScoringAlgorithms.SCORE_BALANCED:
+            case SCORE_BALANCED:
                 return R.drawable.border_image_balanced;
-            case ScoringAlgorithms.SCORE_OFF:
+            case SCORE_UNBALANCED:
                 return R.drawable.border_image_unbalanced;
             default:
                 return R.drawable.border_image_no_data;
         }
     }
 
-    public static int getDotID(int score){
+    /**
+     * getDotID - used by weekly graph to find the right dot image for a given score
+     * @param score
+     * @return
+     */
+    public static int getDotID(int score) {
 
         switch (score) {
-            case ScoringAlgorithms.SCORE_LOW:
+            case SCORE_UNDER:
                 return R.drawable.dot_image_low;
-            case ScoringAlgorithms.SCORE_HIGH:
+            case SCORE_OVER:
                 return R.drawable.dot_image_high;
-            case ScoringAlgorithms.SCORE_BALANCED:
+            case SCORE_BALANCED:
                 return R.drawable.dot_image_balanced;
-            case ScoringAlgorithms.SCORE_OFF:
+            case SCORE_UNBALANCED:
                 return R.drawable.dot_image_unbalanced;
             default:
                 return R.drawable.dot_image;
         }
     }
 
-    public static String timelessDate(Date dateIn){
+    /**
+     * getScoreName - used to make the CSV output human readable
+     * @param score
+     * @return
+     */
+    public String getScoreName(int score) {                                             ///// ------ should return string but need to find out why getResource and getString are not working here. imports most likely
+        switch (score) {
+            case SCORE_UNDER:
+                return "low";
+            case SCORE_BALANCED:
+                return "balanced";
+            case SCORE_OVER:
+                return "over";
+            case SCORE_UNBALANCED:
+                return "unbalanced";
+            case SCORE_ERROR:
+                return "error";
+            default:
+                return "no data";
+        }
+    }
+
+    /**
+     * timelessDate - remove hours, minutes, seconds from date. should only be done in this one
+     * method for consistency
+     * @param dateIn
+     * @return
+     */
+    public static String timelessDate(Date dateIn) {
         return DateFormat.getDateInstance(DateFormat.MEDIUM).format(dateIn);
     }
 /*

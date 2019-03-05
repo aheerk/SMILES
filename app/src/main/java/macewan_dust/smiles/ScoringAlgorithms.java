@@ -20,12 +20,12 @@ public class ScoringAlgorithms {
 
     public static final String TAG = "ScoringAlgorithms";
 
-    public static final int SCORE_LOW = 0;
+    public static final int SCORE_UNDER = 0;
     public static final int SCORE_BALANCED = 1;
-    public static final int SCORE_HIGH = 2;
-    public static final int SCORE_OFF = 3; // off balance input includes both high and low input
+    public static final int SCORE_OVER = 2;
+    public static final int SCORE_UNBALANCED = 3; // off balance input includes both high and low input
     public static final int SCORE_ERROR = 10000;
-    public static final int SCORE_NONE = 8;
+    public static final int SCORE_NO_DATA = 8;
 
     // input_x corresponds to the answer selected for all number range questions
     public static final int INPUT_a = 0;
@@ -58,11 +58,11 @@ public class ScoringAlgorithms {
 
         // scoring
         if (sleepInput < INPUT_c || (sleepInput < INPUT_d && hinderanceCount > 1)) {
-            return SCORE_LOW;
+            return SCORE_UNDER;
         } else if (sleepInput == INPUT_c && hinderanceCount <= 1) {
             return SCORE_BALANCED;
         } else if (sleepInput > INPUT_c) {
-            return SCORE_HIGH;
+            return SCORE_OVER;
         } else {
             Log.e(TAG, "Error: score for sleepInput: " + sleepInput +
                     " and hinderanceCount: " + hinderanceCount + " has no rules");
@@ -206,7 +206,7 @@ public class ScoringAlgorithms {
         }
 
         if (laughterInput < 5) {
-            return SCORE_LOW;
+            return SCORE_UNDER;
         } else if (laughterInput == 5) {
             return SCORE_BALANCED;
         } else {
@@ -364,11 +364,11 @@ public class ScoringAlgorithms {
         if (balancedCounter == balancedRule) {
             return SCORE_BALANCED;
         } else if (lowCounter == 0 && highCounter > 0) {
-            return SCORE_HIGH;
+            return SCORE_OVER;
         } else if (highCounter == 0 && lowCounter > 0) {
-            return SCORE_LOW;
+            return SCORE_UNDER;
         } else if (highCounter > 0 && lowCounter > 0) {
-            return SCORE_OFF;
+            return SCORE_UNBALANCED;
         } else {
             Log.e(TAG, errorMessage);
             return SCORE_ERROR;

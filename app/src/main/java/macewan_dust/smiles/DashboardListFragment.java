@@ -61,11 +61,21 @@ public class DashboardListFragment extends Fragment {
         mDashboardData.add(temp);
 
         Score temp2 = new Score();
-        temp2.setSpeakingScore(ScoringAlgorithms.SCORE_LOW);
-        temp2.setLaughterScore(ScoringAlgorithms.SCORE_LOW);
+        temp2.setSpeakingScore(ScoringAlgorithms.SCORE_UNDER);
+        temp2.setLaughterScore(ScoringAlgorithms.SCORE_UNDER);
         temp2.setMovementScore(ScoringAlgorithms.SCORE_BALANCED);
         mDashboardData.add(temp2);
         */
+
+
+
+
+        // CSV Testing only                                                                 ------------ delete after testing
+        for (Score s : mDashboardData){
+            Log.d(TAG, "CSV format: " + s.scoreCSVFormat());
+        }
+
+
 
     }
 

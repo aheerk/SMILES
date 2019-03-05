@@ -199,16 +199,16 @@ public class InputEatingFragment extends Fragment {
                     Log.d(TAG, "Score: " + score);
                     switch (score) {
 
-                        case ScoringAlgorithms.SCORE_HIGH:
+                        case ScoringAlgorithms.SCORE_OVER:
                             scoreStringID = R.string.score_high;
                             break;
-                        case ScoringAlgorithms.SCORE_LOW:
+                        case ScoringAlgorithms.SCORE_UNDER:
                             scoreStringID = R.string.score_low;
                             break;
                         case ScoringAlgorithms.SCORE_BALANCED:
                             scoreStringID = R.string.score_balanced;
                             break;
-                        case ScoringAlgorithms.SCORE_OFF:
+                        case ScoringAlgorithms.SCORE_UNBALANCED:
                             scoreStringID = R.string.score_unbalanced;
                             break;
                         case ScoringAlgorithms.SCORE_ERROR:

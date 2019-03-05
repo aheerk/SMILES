@@ -197,11 +197,11 @@ public class InputImaginationFragment extends Fragment {
                     Log.d(TAG, "Score: " + score);
                     switch (score) {
 
-                        case ScoringAlgorithms.SCORE_HIGH:
+                        case ScoringAlgorithms.SCORE_OVER:
                             scoreStringID = R.string.score_high;
         //                    mIconFeedback.setBackground(getResources().getDrawable(R.drawable.border_image_high));
                             break;
-                        case ScoringAlgorithms.SCORE_LOW:
+                        case ScoringAlgorithms.SCORE_UNDER:
                             scoreStringID = R.string.score_low;
         //                    mIconFeedback.setBackground(getResources().getDrawable(R.drawable.border_image_low));
                             break;
@@ -209,7 +209,7 @@ public class InputImaginationFragment extends Fragment {
                             scoreStringID = R.string.score_balanced;
          //                   mIconFeedback.setBackground(getResources().getDrawable(R.drawable.border_image_balanced));
                             break;
-                        case ScoringAlgorithms.SCORE_OFF:
+                        case ScoringAlgorithms.SCORE_UNBALANCED:
                             scoreStringID = R.string.score_unbalanced;
           //                  mIconFeedback.setBackground(getResources().getDrawable(R.drawable.border_image_unbalanced));
                             break;
