@@ -1,7 +1,6 @@
 <resources>
     <string name="app_name">SMILES</string>
 
-
     <!--Toolbar Titles-->
     <string name="title_daily_questions">Daily Questions</string>
     <string name="title_dashboard">Dashboard</string>
@@ -41,7 +40,7 @@
 
     <!-- Daily questions -->
     <string name="quest_sleep_a">Hours of sleep per day:</string>
-    <string name="quest_sleep_b">Did any activities hinder your sleep?</string>
+    <string name="quest_sleep_b">How many times was your sleep interrupted in the night?</string>
 
     <string name="quest_movement_a">Length of moderate or vigorous intensity aerobic exercise:</string>
     <string name="quest_movement_b">Did your exercises include bone and muscle strengthening?</string>
