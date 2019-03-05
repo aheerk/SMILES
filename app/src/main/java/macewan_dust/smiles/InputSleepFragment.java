@@ -163,7 +163,7 @@ public class InputSleepFragment extends Fragment {
             @Override
             public void onClick(View v) {
 
-                if (mQuestion_A_index == NO_SELECTION || mQuestion_A_index == NO_SELECTION) {
+                if (mQuestion_A_index == NO_SELECTION || mQuestion_B_index == NO_SELECTION) {
                     mResults.setText(getString(R.string.feedback_unselected));
 
                 } else {
@@ -176,26 +176,24 @@ public class InputSleepFragment extends Fragment {
 
                         case ScoringAlgorithms.SCORE_OVER:
                             scoreStringID = R.string.score_high;
-               //             mIconFeedback.setBackground(getResources().getDrawable(R.drawable.border_image_high));
                             break;
                         case ScoringAlgorithms.SCORE_UNDER:
                             scoreStringID = R.string.score_low;
-              //              mIconFeedback.setBackground(getResources().getDrawable(R.drawable.border_image_low));
                             break;
                         case ScoringAlgorithms.SCORE_BALANCED:
                             scoreStringID = R.string.score_balanced;
-               //             mIconFeedback.setBackground(getResources().getDrawable(R.drawable.border_image_balanced));
                             break;
                         case ScoringAlgorithms.SCORE_UNBALANCED:
                             scoreStringID = R.string.score_unbalanced;
-               //             mIconFeedback.setBackground(getResources().getDrawable(R.drawable.border_image_unbalanced));
                             break;
                         case ScoringAlgorithms.SCORE_ERROR:
+                            scoreStringID = R.string.score_error;
                             Toast t1 = new Toast(getContext());
                             t1.setText("Error returned from scoring algorithm");
                             t1.show();
                             break;
                         default:
+                            scoreStringID = R.string.score_error;
                             Toast t2 = new Toast(getContext());
                             t2.setText("Error in scoring");
                             t2.show();
