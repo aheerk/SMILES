@@ -1,8 +1,76 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.v4.view.ViewPager
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/daily_pager"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-</android.support.v4.view.ViewPager>
+    <android.support.v4.view.ViewPager
+        android:id="@+id/daily_pager"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintBottom_toTopOf="@id/dot_box"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+    </android.support.v4.view.ViewPager>
+
+    <LinearLayout
+        android:id="@+id/dot_box"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:gravity="center_horizontal"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+
+        <ImageView
+            android:id="@+id/pager_dot_1"
+            android:layout_width="15dp"
+            android:layout_height="15dp"
+            android:layout_margin="4dp"
+            app:srcCompat="@drawable/dot_image_other_page" />
+
+        <ImageView
+            android:id="@+id/pager_dot_2"
+            android:layout_width="15dp"
+            android:layout_height="15dp"
+            android:layout_margin="4dp"
+            app:srcCompat="@drawable/dot_image_other_page" />
+
+        <ImageView
+            android:id="@+id/pager_dot_3"
+            android:layout_width="15dp"
+            android:layout_height="15dp"
+            android:layout_margin="4dp"
+            app:srcCompat="@drawable/dot_image_other_page" />
+
+        <ImageView
+            android:id="@+id/pager_dot_4"
+            android:layout_width="15dp"
+            android:layout_height="15dp"
+            android:layout_margin="4dp"
+            app:srcCompat="@drawable/dot_image_other_page" />
+
+        <ImageView
+            android:id="@+id/pager_dot_5"
+            android:layout_width="15dp"
+            android:layout_height="15dp"
+            android:layout_margin="4dp"
+            app:srcCompat="@drawable/dot_image_other_page" />
+
+        <ImageView
+            android:id="@+id/pager_dot_6"
+            android:layout_width="15dp"
+            android:layout_height="15dp"
+            android:layout_margin="4dp"
+            app:srcCompat="@drawable/dot_image_other_page" />
+    </LinearLayout>
+
+</android.support.constraint.ConstraintLayout>

@@ -11,6 +11,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -24,6 +25,14 @@ public class DailyPagerFragment extends Fragment {
 
     private static final String TAG = "DailyPagerFragment";
     ViewPager mViewPager;
+    ImageView mDot1;
+    ImageView mDot2;
+    ImageView mDot3;
+    ImageView mDot4;
+    ImageView mDot5;
+    ImageView mDot6;
+
+
     int mStartPage;
 
     @Override
@@ -31,11 +40,22 @@ public class DailyPagerFragment extends Fragment {
         super.onCreate(savedInstanceState);
         mStartPage = this.getArguments().getInt(DailyListFragment.DAILY_RECYCLER_VIEW_INDEX);
         getActivity().setTitle(getString(R.string.title_quest_sleep));
+
+
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_daily_pager, container, false);
+
+        mDot1 = v.findViewById(R.id.pager_dot_1);
+        mDot2 = v.findViewById(R.id.pager_dot_2);
+        mDot3 = v.findViewById(R.id.pager_dot_3);
+        mDot4 = v.findViewById(R.id.pager_dot_4);
+        mDot5 = v.findViewById(R.id.pager_dot_5);
+        mDot6 = v.findViewById(R.id.pager_dot_6);
+
+        mDot1.setImageDrawable(getResources().getDrawable(R.drawable.dot_image_current_page));
 
 
         return v;
@@ -58,6 +78,44 @@ public class DailyPagerFragment extends Fragment {
             public void onPageSelected(int position) {
                 getActivity().setTitle(mViewPager.getAdapter().getPageTitle(position));
 //                Log.d(TAG, "position: " + position);
+
+                resetDots(position);
+                switch(position){
+
+                    case 0:
+                        mDot1.setImageDrawable(getResources().getDrawable(R.drawable.dot_image_current_page));
+                        break;
+                    case 1:
+                        mDot2.setImageDrawable(getResources().getDrawable(R.drawable.dot_image_current_page));
+                        break;
+                    case 2:
+                        mDot3.setImageDrawable(getResources().getDrawable(R.drawable.dot_image_current_page));
+                        break;
+                    case 3:
+                        mDot4.setImageDrawable(getResources().getDrawable(R.drawable.dot_image_current_page));
+                        break;
+                    case 4:
+                        mDot5.setImageDrawable(getResources().getDrawable(R.drawable.dot_image_current_page));
+                        break;
+                    case 5:
+                        mDot6.setImageDrawable(getResources().getDrawable(R.drawable.dot_image_current_page));
+                        break;
+
+                }
+
+
+            }
+
+            private void resetDots(int position){
+
+                if (position != 0) {
+                    mDot1.setImageDrawable(getResources().getDrawable(R.drawable.dot_image_other_page));
+                }
+                mDot2.setImageDrawable(getResources().getDrawable(R.drawable.dot_image_other_page));
+                mDot3.setImageDrawable(getResources().getDrawable(R.drawable.dot_image_other_page));
+                mDot4.setImageDrawable(getResources().getDrawable(R.drawable.dot_image_other_page));
+                mDot5.setImageDrawable(getResources().getDrawable(R.drawable.dot_image_other_page));
+                mDot6.setImageDrawable(getResources().getDrawable(R.drawable.dot_image_other_page));
             }
 
             @Override

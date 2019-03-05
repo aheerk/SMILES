@@ -48,58 +48,27 @@
 
             <ImageView
                 android:id="@+id/icon_1a"
-                android:layout_width="@dimen/input_icons_width"
-                android:layout_height="@dimen/input_icons_height"
-                android:layout_marginLeft="8dp"
-                android:layout_marginRight="8dp"
-
-                android:layout_weight="1"
+                style="@style/InputIcons"
                 android:background="@drawable/border_image"
-                android:cropToPadding="true"
-                android:padding="@dimen/input_icons_padding"
                 android:src="@drawable/ic_less" />
 
 
             <ImageView
                 android:id="@+id/icon_1b"
-                android:layout_width="@dimen/input_icons_width"
-                android:layout_height="@dimen/input_icons_height"
-                android:layout_marginLeft="8dp"
-                android:layout_marginRight="8dp"
-
-                android:layout_weight="1"
+                style="@style/InputIcons"
                 android:background="@drawable/border_image"
-
-                android:cropToPadding="true"
-                android:padding="@dimen/input_icons_padding"
                 android:src="@drawable/ic_4_5" />
 
             <ImageView
                 android:id="@+id/icon_1c"
-                android:layout_width="@dimen/input_icons_width"
-                android:layout_height="@dimen/input_icons_height"
-                android:layout_marginLeft="8dp"
-                android:layout_marginRight="8dp"
-
-                android:layout_weight="1"
+                style="@style/InputIcons"
                 android:background="@drawable/border_image"
-
-                android:cropToPadding="true"
-                android:padding="@dimen/input_icons_padding"
                 android:src="@drawable/ic_6_9" />
 
             <ImageView
                 android:id="@+id/icon_1d"
-                android:layout_width="@dimen/input_icons_width"
-                android:layout_height="@dimen/input_icons_height"
-                android:layout_marginLeft="8dp"
-                android:layout_marginRight="8dp"
-
-                android:layout_weight="1"
+                style="@style/InputIcons"
                 android:background="@drawable/border_image"
-
-                android:cropToPadding="true"
-                android:padding="@dimen/input_icons_padding"
                 android:src="@drawable/ic_more" />
 
         </LinearLayout>
@@ -143,7 +112,7 @@
             android:orientation="vertical">
 
             <LinearLayout
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_margin="8dp"
                 android:layout_weight="1"
@@ -151,67 +120,32 @@
 
                 <ImageView
                     android:id="@+id/icon_2a"
-                    android:layout_width="@dimen/input_icons_width"
-                    android:layout_height="@dimen/input_icons_height"
-                    android:layout_marginLeft="8dp"
-                    android:layout_marginRight="8dp"
-
-                    android:layout_weight="1"
+                    style="@style/InputIcons"
                     android:background="@drawable/border_image"
-                    android:cropToPadding="true"
-                    android:padding="@dimen/input_icons_padding"
                     android:src="@drawable/icon_zero" />
 
                 <ImageView
                     android:id="@+id/icon_2b"
-                    android:layout_width="@dimen/input_icons_width"
-                    android:layout_height="@dimen/input_icons_height"
-                    android:layout_marginLeft="8dp"
-                    android:layout_marginRight="8dp"
-
-                    android:layout_weight="1"
+                    style="@style/InputIcons"
                     android:background="@drawable/border_image"
-                    android:cropToPadding="true"
-                    android:padding="@dimen/input_icons_padding"
                     android:src="@drawable/icon_one" />
 
                 <ImageView
                     android:id="@+id/icon_2c"
-                    android:layout_width="@dimen/input_icons_width"
-                    android:layout_height="@dimen/input_icons_height"
-                    android:layout_marginLeft="8dp"
-                    android:layout_marginRight="8dp"
-
-                    android:layout_weight="1"
+                    style="@style/InputIcons"
                     android:background="@drawable/border_image"
-                    android:cropToPadding="true"
-                    android:padding="@dimen/input_icons_padding"
                     android:src="@drawable/icon_two" />
 
                 <ImageView
                     android:id="@+id/icon_2d"
-                    android:layout_width="@dimen/input_icons_width"
-                    android:layout_height="@dimen/input_icons_height"
-                    android:layout_marginLeft="8dp"
-                    android:layout_marginRight="8dp"
-
-                    android:layout_weight="1"
+                    style="@style/InputIcons"
                     android:background="@drawable/border_image"
-                    android:cropToPadding="true"
-                    android:padding="@dimen/input_icons_padding"
                     android:src="@drawable/icon_three" />
 
                 <ImageView
                     android:id="@+id/icon_2e"
-                    android:layout_width="@dimen/input_icons_width"
-                    android:layout_height="@dimen/input_icons_height"
-                    android:layout_marginLeft="8dp"
-                    android:layout_marginRight="8dp"
-
-                    android:layout_weight="1"
+                    style="@style/InputIcons"
                     android:background="@drawable/border_image"
-                    android:cropToPadding="true"
-                    android:padding="@dimen/input_icons_padding"
                     android:src="@drawable/ic_more" />
 
 
