@@ -146,8 +146,9 @@ public class Score {
 
         //    sb.append("mID: " + mID);
         //    sb.append(",");
+        sb.append("\"");
         sb.append(mDate);
-        sb.append(",");
+        sb.append("\",");
         sb.append(getScoreName(mSleepScore));
         sb.append(",");
         sb.append(getScoreName(mMovementScore));
