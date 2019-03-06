@@ -2,7 +2,7 @@
 <resources>
     <color name="colorPrimary">#255791</color>
     <color name="colorPrimaryDark">#1b2671</color>
-    <color name="colorAccent">#bd7aea</color>
+    <color name="colorAccent">#BD7AEA</color>
     <color name="colorHigh">#e11212</color>
     <color name="colorUnbalanced">#ffb73b</color>
     <color name="colorLow">#ffe368</color>
@@ -14,7 +14,7 @@
     <color name="colorDelete">#CC3030</color>
 
     <color name="colorBodyText">#000000</color>
-    <color name="colorSubtitleText">#7B4AD1</color>
+    <color name="colorSubtitleText">#000000</color>
     <color name="colorTitleText">#000000</color>
 
     <color name="colorWhite">#FFFFFF</color>

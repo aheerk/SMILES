@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 public class IntroductionFragment extends Fragment {
@@ -13,6 +14,7 @@ public class IntroductionFragment extends Fragment {
     TextView mTitle;
     TextView mSubtitle;
     TextView mBodyText;
+    ImageView mImageView;
     Button mNextButton;
     Button mBackButton;
 
@@ -34,6 +36,7 @@ public class IntroductionFragment extends Fragment {
         mTitle = v.findViewById(R.id.introduction_title);
         mBodyText = v.findViewById(R.id.introduction_explanation);
         mSubtitle = v.findViewById(R.id.introduction_subtitle);
+        mImageView = v.findViewById(R.id.introduction_image);
         mNextButton = v.findViewById(R.id.button_introduction_next);
         mBackButton = v.findViewById(R.id.button_introduction_back);
         mBackButton.setVisibility(View.GONE);
@@ -69,25 +72,30 @@ public class IntroductionFragment extends Fragment {
                 mTitle.setText(R.string.introduction_title_smiles);
                 mSubtitle.setText(R.string.introduction_subtitle_smiles);
                 mSubtitle.setVisibility(View.VISIBLE);
+                mImageView.setImageResource(R.drawable.photo_intro1);
                 mBodyText.setText(R.string.introduction_explanation_smiles);
                 mBackButton.setVisibility(View.GONE);
                 break;
             case 1:
                 mTitle.setText(R.string.introduction_title_stress1);
+                mImageView.setImageResource(R.drawable.photo_intro2);
                 mBodyText.setText(R.string.introduction_explanation_stress1);
                 mBackButton.setVisibility(View.VISIBLE);
                 mSubtitle.setVisibility(View.GONE);
                 break;
             case 2:
+                mImageView.setImageResource(R.drawable.photo_intro3);
                 mTitle.setText(R.string.introduction_title_stress1);
                 mBodyText.setText(R.string.introduction_explanation_stress2);
                 break;
             case 3:
                 mTitle.setText(R.string.introduction_title_balance);
+                mImageView.setImageResource(R.drawable.photo_intro4);
                 mBodyText.setText(R.string.introduction_explanation_balance);
                 break;
             case 4:
                 mTitle.setText(R.string.introduction_title_goals);
+                mImageView.setImageResource(R.drawable.dot_image);
                 mBodyText.setText(R.string.introduction_explanation_goals);
                 break;
         }

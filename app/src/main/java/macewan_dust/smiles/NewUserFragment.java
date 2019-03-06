@@ -79,23 +79,26 @@ public class NewUserFragment extends Fragment {
                 mTitle.setText(R.string.introduction_title_smiles);
                 mSubtitle.setText(R.string.introduction_subtitle_smiles);
                 mSubtitle.setVisibility(View.VISIBLE);
+                mImageView.setImageResource(R.drawable.photo_intro1);
                 mBodyText.setText(R.string.introduction_explanation_smiles);
                 mBackButton.setVisibility(View.GONE);
                 break;
             case 1:
                 mTitle.setText(R.string.introduction_title_stress1);
                 mBodyText.setText(R.string.introduction_explanation_stress1);
-                mImageView.setImageResource(R.drawable.photo_stress);
+                mImageView.setImageResource(R.drawable.photo_intro2);
                 mSubtitle.setVisibility(View.GONE);
                 mBackButton.setVisibility(View.VISIBLE);
 
                 break;
             case 2:
                 mTitle.setText(R.string.introduction_title_stress1);
+                mImageView.setImageResource(R.drawable.photo_intro3);
                 mBodyText.setText(R.string.introduction_explanation_stress2);
                 break;
             case 3:
                 mTitle.setText(R.string.introduction_title_balance);
+                mImageView.setImageResource(R.drawable.photo_intro4);
                 mBodyText.setText(R.string.introduction_explanation_balance);
                 break;
             case 4:
@@ -110,17 +113,17 @@ public class NewUserFragment extends Fragment {
                 break;
             case 6:
                 mTitle.setText("Imagination");
-                mImageView.setImageResource(R.drawable.icon_imagination);
+                mImageView.setImageResource(R.drawable.photo_imagination);
                 mBodyText.setText(R.string.introduction_explanation_imagination);
                 break;
             case 7:
                 mTitle.setText("Laughter");
-                mImageView.setImageResource(R.drawable.icon_laughter);
+                mImageView.setImageResource(R.drawable.photo_laughter);
                 mBodyText.setText(R.string.introduction_explanation_laughter);
                 break;
             case 8:
                 mTitle.setText("Eating");
-                mImageView.setImageResource(R.drawable.icon_eating);
+                mImageView.setImageResource(R.drawable.photo_eating);
                 mBodyText.setText(R.string.introduction_explanation_eating);
                 break;
             case 9:

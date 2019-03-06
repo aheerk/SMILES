@@ -1,46 +1,59 @@
 <resources>
 
-    <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+
+    <style name="AppBar" parent="ThemeOverlay.AppCompat.Dark.ActionBar">
         <!-- Customize your theme here. -->
+
+        <item name="android:textColor">@color/colorWhite</item>
+
+
+    </style>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" >
+        <!-- Customize your theme here. -->
+        <item name="android:fontFamily">@font/sonika_italic</item>
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
     <style name="BodyText" parent="TextAppearance.AppCompat">
-        <item name="android:textSize">18dp</item>
-        <item name="android:color">@color/colorBodyText</item>
+        <item name="android:textSize">18sp</item>
+        <item name="android:textColor">@color/colorBodyText</item>
         <item name="android:layout_margin">8dp</item>
     </style>
 
     <style name="BodyTextNoMargin" parent="TextAppearance.AppCompat">
-        <item name="android:textSize">18dp</item>
-        <item name="android:color">@color/colorBodyText</item>
+        <item name="android:textSize">18sp</item>
+        <item name="android:textColor">@color/colorBodyText</item>
     </style>
 
     <!-- For List Items -->
     <style name="TitleText" parent="TextAppearance.AppCompat">
-        <item name="android:textSize">32dp</item>
-        <item name="android:color">@color/colorTitleText</item>
-        <item name="android:layout_marginTop">8dp</item>
+        <item name="android:textSize">40sp</item>
+        <item name="android:fontFamily">@font/sonika_italic</item>
+        <item name="android:textColor">@color/colorTitleText</item>
+        <item name="android:layout_marginTop">16dp</item>
         <item name="android:textAlignment">center</item>
         <item name="android:layout_marginRight">8dp</item>
         <item name="android:layout_marginLeft">8dp</item>
     </style>
 
     <style name="Heading1Text" parent="TextAppearance.AppCompat">
-        <item name="android:textSize">26dp</item>
-        <item name="android:color">@color/colorTitleText</item>
+        <item name="android:textSize">26sp</item>
+        <item name="android:textColor">@color/colorTitleText</item>
         <item name="android:layout_marginTop">8dp</item>
         <item name="android:textAlignment">center</item>
         <item name="android:layout_marginRight">8dp</item>
         <item name="android:layout_marginLeft">8dp</item>
+        <item name="android:fontFamily">@font/sonika_italic</item>
+
     </style>
 
     <style name="Heading2Text" parent="TextAppearance.AppCompat">
-        <item name="android:textSize">20dp</item>
-        <item name="android:color">@color/colorSubtitleText</item>
+        <item name="android:textSize">20sp</item>
+        <item name="android:textColor">@color/colorSubtitleText</item>
         <item name="android:layout_marginBottom">8dp</item>
         <item name="android:textAlignment">center</item>
         <item name="android:layout_marginRight">8dp</item>
@@ -48,8 +61,8 @@
     </style>
 
     <style name="NotificationText" parent="TextAppearance.AppCompat">
-        <item name="android:textSize">24dp</item>
-        <item name="android:color">@color/colorPrimaryDark</item>
+        <item name="android:textSize">24sp</item>
+        <item name="android:textColor">@color/colorPrimaryDark</item>
         <item name="android:textAlignment">center</item>
         <item name="android:layout_margin">8dp</item>
         <item name="android:textStyle">bold</item>
