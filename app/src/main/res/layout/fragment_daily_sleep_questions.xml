@@ -140,12 +140,6 @@
                     android:id="@+id/icon_2d"
                     style="@style/InputIcons"
                     android:background="@drawable/border_image"
-                    android:src="@drawable/icon_three" />
-
-                <ImageView
-                    android:id="@+id/icon_2e"
-                    style="@style/InputIcons"
-                    android:background="@drawable/border_image"
                     android:src="@drawable/ic_more" />
 
 
