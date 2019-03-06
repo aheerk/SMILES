@@ -103,12 +103,12 @@ public class NewUserFragment extends Fragment {
                 break;
             case 4:
                 mTitle.setText("Sleep");
-                mImageView.setImageResource(R.drawable.icon_sleep);
+                mImageView.setImageResource(R.drawable.photo_sleep);
                 mBodyText.setText(R.string.introduction_explanation_sleep);
                 break;
             case 5:
                 mTitle.setText("Movement");
-                mImageView.setImageResource(R.drawable.icon_movement);
+                mImageView.setImageResource(R.drawable.photo_movement);
                 mBodyText.setText(R.string.introduction_explanation_movement);
                 break;
             case 6:
@@ -128,13 +128,13 @@ public class NewUserFragment extends Fragment {
                 break;
             case 9:
                 mTitle.setText(getString(R.string.title_quest_speaking));
-                mImageView.setImageResource(R.drawable.icon_speaking);
+                mImageView.setImageResource(R.drawable.photo_speaking);
                 mBodyText.setText(R.string.introduction_explanation_speaking);
                 break;
             case 10:
                 mTitle.setText(R.string.introduction_title_goals);
                 mBodyText.setText(R.string.introduction_explanation_goals);
-                mImageView.setImageResource(R.drawable.icon_plus);
+                mImageView.setImageResource(R.drawable.photo_goals);
 
                 break;
             default:

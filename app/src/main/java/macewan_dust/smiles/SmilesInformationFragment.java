@@ -38,32 +38,32 @@ public class SmilesInformationFragment extends Fragment {
         switch(mAdapterIndex){
             case 0:
                 getActivity().setTitle("Sleep");
-                mIconSmilesInfo.setImageResource(R.drawable.icon_sleep);
+                mIconSmilesInfo.setImageResource(R.drawable.photo_sleep);
                 mTextSmilesList.setText(R.string.introduction_explanation_sleep);
                 break;
             case 1:
                 getActivity().setTitle("Movement");
-                mIconSmilesInfo.setImageResource(R.drawable.icon_movement);
+                mIconSmilesInfo.setImageResource(R.drawable.photo_movement);
                 mTextSmilesList.setText(R.string.introduction_explanation_movement);
                 break;
             case 2:
                 getActivity().setTitle("Imagination");
-                mIconSmilesInfo.setImageResource(R.drawable.icon_imagination);
+                mIconSmilesInfo.setImageResource(R.drawable.photo_imagination);
                 mTextSmilesList.setText(R.string.introduction_explanation_imagination);
                 break;
             case 3:
                 getActivity().setTitle("Laughter");
-                mIconSmilesInfo.setImageResource(R.drawable.icon_laughter);
+                mIconSmilesInfo.setImageResource(R.drawable.photo_laughter);
                 mTextSmilesList.setText(R.string.introduction_explanation_laughter);
                 break;
             case 4:
                 getActivity().setTitle("Eating");
-                mIconSmilesInfo.setImageResource(R.drawable.icon_eating);
+                mIconSmilesInfo.setImageResource(R.drawable.photo_eating);
                 mTextSmilesList.setText(R.string.introduction_explanation_eating);
                 break;
             case 5:
                 getActivity().setTitle("Speaking");
-                mIconSmilesInfo.setImageResource(R.drawable.icon_speaking);
+                mIconSmilesInfo.setImageResource(R.drawable.photo_speaking);
                 mTextSmilesList.setText(R.string.introduction_explanation_speaking);
                 break;
             default:

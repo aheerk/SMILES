@@ -95,7 +95,7 @@ public class IntroductionFragment extends Fragment {
                 break;
             case 4:
                 mTitle.setText(R.string.introduction_title_goals);
-                mImageView.setImageResource(R.drawable.dot_image);
+                mImageView.setImageResource(R.drawable.photo_goals);
                 mBodyText.setText(R.string.introduction_explanation_goals);
                 break;
         }
