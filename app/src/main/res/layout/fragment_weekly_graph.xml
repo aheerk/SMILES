@@ -6,13 +6,6 @@
     android:gravity="center_horizontal"
     android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/graph_weekly_title"
-        style="@style/TitleText"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Weekly Graph" />
-
     <LinearLayout
         android:id="@+id/linearLayout"
         android:layout_width="match_parent"

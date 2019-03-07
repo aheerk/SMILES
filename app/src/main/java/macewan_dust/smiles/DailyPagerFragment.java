@@ -7,7 +7,6 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -39,7 +38,7 @@ public class DailyPagerFragment extends Fragment {
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         mStartPage = this.getArguments().getInt(DailyListFragment.DAILY_RECYCLER_VIEW_INDEX);
-        getActivity().setTitle(getString(R.string.title_quest_sleep));
+        getActivity().setTitle(getString(R.string.title_sleep));
 
 
     }
@@ -124,12 +123,12 @@ public class DailyPagerFragment extends Fragment {
         };
         mViewPager.addOnPageChangeListener(listener);
 
-        adapter.addFragment(new InputSleepFragment(), getString(R.string.title_quest_sleep));
-        adapter.addFragment(new InputMovementFragment(),getString(R.string.title_quest_movement));
-        adapter.addFragment(new InputImaginationFragment(),getString(R.string.title_quest_imagination));
-        adapter.addFragment(new InputLaughterFragment(),getString(R.string.title_quest_laughter));
-        adapter.addFragment(new InputEatingFragment(),getString(R.string.title_quest_eating));
-        adapter.addFragment(new InputSpeakingFragment(),getString(R.string.title_quest_speaking));
+        adapter.addFragment(new InputSleepFragment(), getString(R.string.title_sleep));
+        adapter.addFragment(new InputMovementFragment(),getString(R.string.title_movement));
+        adapter.addFragment(new InputImaginationFragment(),getString(R.string.title_imagination));
+        adapter.addFragment(new InputLaughterFragment(),getString(R.string.title_laughter));
+        adapter.addFragment(new InputEatingFragment(),getString(R.string.title_eating));
+        adapter.addFragment(new InputSpeakingFragment(),getString(R.string.title_speaking));
 
         mViewPager.setCurrentItem(mStartPage);
 

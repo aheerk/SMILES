@@ -43,17 +43,17 @@ public class DailyListFragment extends Fragment {
 
         // generating category items. items will be updated based on input later
         mDailyData.add(new DailyItem(R.drawable.icon_sleep,
-                getString(R.string.title_quest_sleep), new InputSleepFragment()));
+                getString(R.string.title_sleep), new InputSleepFragment()));
         mDailyData.add(new DailyItem(R.drawable.icon_movement,
-                getString(R.string.title_quest_movement), new InputMovementFragment()));
+                getString(R.string.title_movement), new InputMovementFragment()));
         mDailyData.add(new DailyItem(R.drawable.icon_imagination,
-                getString(R.string.title_quest_imagination), new InputImaginationFragment()));
+                getString(R.string.title_imagination), new InputImaginationFragment()));
         mDailyData.add(new DailyItem(R.drawable.icon_laughter,
-                getString(R.string.title_quest_laughter), new InputLaughterFragment()));
+                getString(R.string.title_laughter), new InputLaughterFragment()));
         mDailyData.add(new DailyItem(R.drawable.icon_eating,
-                getString(R.string.title_quest_eating), new InputEatingFragment()));
+                getString(R.string.title_eating), new InputEatingFragment()));
         mDailyData.add(new DailyItem(R.drawable.icon_speaking,
-                getString(R.string.title_quest_speaking), new InputSpeakingFragment()));
+                getString(R.string.title_speaking), new InputSpeakingFragment()));
     }
 
     @Nullable

@@ -48,7 +48,7 @@ public class WeeklyGraphFragment extends Fragment {
         View v = inflater.inflate(R.layout.fragment_weekly_graph, null);
 
 
-        getActivity().setTitle(R.string.title_graphs);
+        getActivity().setTitle(R.string.title_weekly_graph);
 
         mRecyclerView = v.findViewById(R.id.recycler_view_weekly_graph);
         mRecyclerViewLayoutManager = new LinearLayoutManager(this.getActivity());
