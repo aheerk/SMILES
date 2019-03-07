@@ -23,14 +23,20 @@ public class InputEatingFragment extends Fragment {
     ImageView mIcon1a;
     ImageView mIcon1b;
     ImageView mIcon1c;
+
     ImageView mIcon2a;
     ImageView mIcon2b;
     ImageView mIcon2c;
+
     ImageView mIcon3a;
     ImageView mIcon3b;
     ImageView mIcon3c;
-    CheckBox mCheck1;
-    CheckBox mCheck2;
+
+    CheckBox mSodiumCheck;
+    CheckBox mSugarCheck;
+    CheckBox mFatCheck;
+    CheckBox mWaterCheck;
+
     Button mButton;
 
     int mQuestion_A_index;
@@ -77,22 +83,24 @@ public class InputEatingFragment extends Fragment {
 
         View v = inflater.inflate(R.layout.fragment_daily_eating_questions, container, false);
 
- //       getActivity().setTitle(R.string.title_quest_eating);
-
         mButton = v.findViewById(R.id.score_button);
 
         mIcon1a = v.findViewById(R.id.icon_1a);
         mIcon1b = v.findViewById(R.id.icon_1b);
         mIcon1c = v.findViewById(R.id.icon_1c);
+
         mIcon2a = v.findViewById(R.id.icon_2a);
         mIcon2b = v.findViewById(R.id.icon_2b);
         mIcon2c = v.findViewById(R.id.icon_2c);
+
         mIcon3a = v.findViewById(R.id.icon_3a);
         mIcon3b = v.findViewById(R.id.icon_3b);
         mIcon3c = v.findViewById(R.id.icon_3c);
 
-        mCheck1 = v.findViewById(R.id.eating_checkBox_1);
-        mCheck2 = v.findViewById(R.id.eating_checkBox_2);
+        mSodiumCheck = v.findViewById(R.id.eating_checkBox_1);
+        mSugarCheck = v.findViewById(R.id.eating_checkBox_2);
+        mFatCheck = v.findViewById(R.id.eating_checkBox_3);
+        mWaterCheck = v.findViewById(R.id.eating_checkBox_4);
 
         mQuestion_A_index = NO_SELECTION;
         mQuestion_B_index = NO_SELECTION;
@@ -193,7 +201,8 @@ public class InputEatingFragment extends Fragment {
 
                     int score = ScoringAlgorithms.scoreEating(mQuestion_A_index,
                             mQuestion_B_index, mQuestion_C_index,
-                            mCheck1.isChecked(), mCheck2.isChecked());
+                            mSodiumCheck.isChecked(), mSugarCheck.isChecked(),
+                            mFatCheck.isChecked(), mWaterCheck.isChecked());
 
                     int scoreStringID = 1000; // just here to initialize
                     Log.d(TAG, "Score: " + score);
@@ -213,10 +222,12 @@ public class InputEatingFragment extends Fragment {
                             break;
                         case ScoringAlgorithms.SCORE_ERROR:
                             Toast t1 = new Toast(getContext());
+                            scoreStringID = R.string.score_error;
                             t1.setText("Error returned from scoring algorithm");
                             t1.show();
                             break;
                         default:
+                            scoreStringID = R.string.score_error;
                             Toast t2 = new Toast(getContext());
                             t2.setText("Error in scoring");
                             t2.show();
