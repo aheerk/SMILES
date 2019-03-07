@@ -102,32 +102,32 @@ public class NewUserFragment extends Fragment {
                 mBodyText.setText(R.string.introduction_explanation_balance);
                 break;
             case 4:
-                mTitle.setText("Sleep");
+                mTitle.setText(R.string.title_sleep);
                 mImageView.setImageResource(R.drawable.photo_sleep);
                 mBodyText.setText(R.string.introduction_explanation_sleep);
                 break;
             case 5:
-                mTitle.setText("Movement");
+                mTitle.setText(R.string.title_movement);
                 mImageView.setImageResource(R.drawable.photo_movement);
                 mBodyText.setText(R.string.introduction_explanation_movement);
                 break;
             case 6:
-                mTitle.setText("Imagination");
+                mTitle.setText(R.string.title_imagination);
                 mImageView.setImageResource(R.drawable.photo_imagination);
                 mBodyText.setText(R.string.introduction_explanation_imagination);
                 break;
             case 7:
-                mTitle.setText("Laughter");
+                mTitle.setText(R.string.title_laughter);
                 mImageView.setImageResource(R.drawable.photo_laughter);
                 mBodyText.setText(R.string.introduction_explanation_laughter);
                 break;
             case 8:
-                mTitle.setText("Eating");
+                mTitle.setText(R.string.title_eating);
                 mImageView.setImageResource(R.drawable.photo_eating);
                 mBodyText.setText(R.string.introduction_explanation_eating);
                 break;
             case 9:
-                mTitle.setText(getString(R.string.title_quest_speaking));
+                mTitle.setText(R.string.title_speaking);
                 mImageView.setImageResource(R.drawable.photo_speaking);
                 mBodyText.setText(R.string.introduction_explanation_speaking);
                 break;

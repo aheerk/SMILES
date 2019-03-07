@@ -9,7 +9,7 @@
     <item
         android:id="@+id/navigation_graph"
         android:icon="@drawable/ic_graph"
-        android:title="@string/title_graphs" />
+        android:title="@string/title_weekly_graph" />
 
     <item
         android:id="@+id/navigation_info"

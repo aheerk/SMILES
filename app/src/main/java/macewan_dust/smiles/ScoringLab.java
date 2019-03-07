@@ -4,6 +4,7 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.os.Environment;
 import android.util.Log;
 
 import macewan_dust.smiles.database.SMILES_DatabaseHelper;
@@ -11,6 +12,10 @@ import macewan_dust.smiles.database.SMILES_DatabaseSchema;
 import macewan_dust.smiles.database.SMILES_CursorWrapper;
 
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -245,5 +250,52 @@ public class ScoringLab {
         } finally {
             cursor.close();
         }
+    }
+
+    public static void writeCSVFile(){
+
+    //    List<Score> scores = getScores();
+
+        // write to file
+        String filepath = Environment.getExternalStorageDirectory() + File.separator + "testCSV.txt";
+        FileOutputStream fileOutputStream = null;
+
+        Log.d(TAG, "CSV file path: " + filepath);
+
+        try {
+
+            fileOutputStream = new FileOutputStream(filepath);
+            byte[] buffer = "test string".getBytes();
+            fileOutputStream.write(buffer, 0, buffer.length);
+            fileOutputStream.close();
+
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            {
+                if (fileOutputStream != null) {
+                    try {
+                        fileOutputStream.close();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+        }
+
+
+
+
+
+
+
+    //    for (Score s : scores){
+
+
+    //    }
+
+
     }
 }

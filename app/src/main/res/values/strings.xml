@@ -4,14 +4,14 @@
     <!--Toolbar Titles-->
     <string name="title_daily_questions">Daily Questions</string>
     <string name="title_dashboard">Dashboard</string>
-    <string name="title_graphs">Graphs</string>
+    <string name="title_weekly_graph">Weekly Graph</string>
     <string name="title_information">Information</string>
-    <string name="title_quest_movement">Movement</string>
-    <string name="title_quest_sleep">Sleep</string>
-    <string name="title_quest_imagination">Imagination</string>
-    <string name="title_quest_laughter">Laughter</string>
-    <string name="title_quest_eating">Eating</string>
-    <string name="title_quest_speaking">Speaking</string>
+    <string name="title_movement">Movement</string>
+    <string name="title_sleep">Sleep</string>
+    <string name="title_imagination">Imagination</string>
+    <string name="title_laughter">Laughter</string>
+    <string name="title_eating">Eating</string>
+    <string name="title_speaking">Speaking</string>
     <string name="title_introduction">Introduction</string>
     <string name="title_web_links">Web Links</string>
     <string name="title_smiles">SMILES</string>
