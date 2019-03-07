@@ -222,13 +222,13 @@ public class ScoringAlgorithms {
      * @param proteinIndex - INPUT_a to INPUT_c
      * @param grainIndex - INPUT_a to INPUT_c
      * @param lessSodium - boolean
-     * @param mindfulEating - boolean
+     * @param lessSugar - boolean
      * @return
      */
     public static int scoreEating(int vegIndex, int proteinIndex, int grainIndex,
-                           boolean lessSodium, boolean mindfulEating) {
+                           boolean lessSodium, boolean lessSugar, boolean lessFat, boolean moreWater) {
 
-        int balancedRule = 5; // the number of questions that must be balanced for an overall balanced score.
+        int balancedRule = 7; // the number of questions that must be balanced for an overall balanced score.
         int highCounter = 0;
         int balancedCounter = 0;
         int lowCounter = 0;
@@ -283,11 +283,23 @@ public class ScoringAlgorithms {
         else
             highCounter++;
 
-        // mindful eating: true is balanced, false is low
-        if (mindfulEating)
+        // sugar: true is balanced, false is high
+        if (lessSugar)
             balancedCounter++;
         else
-            lowCounter++;
+            highCounter++;
+
+        // fat: true is balanced, false is high
+        if (lessFat)
+            balancedCounter++;
+        else
+            highCounter ++;
+
+        // water: true is balanced, false is low
+        if (moreWater)
+            balancedCounter ++;
+        else
+            lowCounter ++;
 
         return scoreHelper(balancedRule, highCounter, balancedCounter, lowCounter,
                 "Error: score for eating has no rule");
