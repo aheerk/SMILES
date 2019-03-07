@@ -25,12 +25,12 @@ import java.util.UUID;
 public class ScoringLab {
 
     public static final String TAG = "ScoringLab";
-
     private static ScoringLab sScoringLab;
 
     // for database
     private Context mContext;
     private SQLiteDatabase mDatabase;
+    private List<Score> mScoresList;
 
     /**
      * constructor
@@ -42,6 +42,7 @@ public class ScoringLab {
         mContext = context.getApplicationContext();
         mDatabase = new SMILES_DatabaseHelper(mContext)
                 .getWritableDatabase();
+        mScoresList = loadScoresFromDB();
         Log.d(TAG, "database setup");
     }
 
@@ -56,7 +57,7 @@ public class ScoringLab {
 
     // ------------------------------ Database methods ------------------------------ //
 
-    public List<Score> getScores() {
+    public List<Score> loadScoresFromDB() {
         List<Score> Scores = new ArrayList<>();
 
         SMILES_CursorWrapper cursor = queryScores(null, null); // gets all of the database
@@ -78,13 +79,30 @@ public class ScoringLab {
     }
 
     /**
-     * gets one score from the Score Table database by UUID
+     * getScores - scores saved in the scoring lab. these should be up to date with the database
+     * at all times.
+     * @return
+     */
+    public List<Score> getScores() {
+        return mScoresList;
+    }
+
+    /**
+     * gets one score by UUID
      *
      * @param id - UUID of score object
      * @return Score - Score object
      */
     public Score getScore(UUID id) {
+        // non-database method
+        for (Score s : mScoresList) {
+            if (s.getID() == id) {
+                return s;
+            }
+        }
 
+        // database method
+        /*
         SMILES_CursorWrapper cursor = queryScores(
                 SMILES_DatabaseSchema.ScoreTable.Columns.UUID + " = ?",
                 new String[]{id.toString()}
@@ -101,6 +119,8 @@ public class ScoringLab {
         } finally {
             cursor.close();
         }
+        */
+        return null; // no score found
     }
 
     /**
@@ -160,6 +180,7 @@ public class ScoringLab {
     public void addScore(Score score) {
         ContentValues values = getContentValues(score);
         long temp = mDatabase.insert(SMILES_DatabaseSchema.ScoreTable.NAME, null, values);
+        mScoresList.add(score);                                                                     ////// -------   sort or use heap
         Log.i(TAG, "number of rows inserted: " + temp);
     }
 
@@ -177,9 +198,21 @@ public class ScoringLab {
         int temp = mDatabase.update(SMILES_DatabaseSchema.ScoreTable.NAME, values,
                 SMILES_DatabaseSchema.ScoreTable.Columns.UUID + " = ? ",
                 new String[]{uuidString});
+        updateScoreList(score); // replace old score with new score object, matched by ID
         Log.i(TAG, "number of rows updated: " + temp);
     }
 
+    /**
+     * update score in scoring lab list. must have the same ID
+     * @param newScore
+     */
+    private void updateScoreList(Score newScore){
+        for (int i = 0 ; i < mScoresList.size() ; i++ ) {
+            if (mScoresList.get(i).getID() == newScore.getID()) {
+                mScoresList.set(i, newScore); // replace old score with new one in list
+            }
+        }
+    }
 
     /**
      * delete score from score table database
@@ -193,6 +226,7 @@ public class ScoringLab {
         int temp = mDatabase.delete(SMILES_DatabaseSchema.ScoreTable.NAME,
                 SMILES_DatabaseSchema.ScoreTable.Columns.UUID + " = ? ",
                 new String[]{uuidString});
+        mScoresList.remove(score);
         Log.i(TAG, "number of rows deleted: " + temp);
     }
 
@@ -203,7 +237,18 @@ public class ScoringLab {
      */
     public boolean isScore(Date date) {
 
-        String tempDate = Score.timelessDate(date);
+        // list method
+        String stringDate = Score.timelessDate(date);
+
+        for (int i = 0 ; i < mScoresList.size() ; i++ ) {
+            if (mScoresList.get(i).getDate().equals(stringDate)) {
+                return true;
+            }
+        }
+        return false;
+
+        // database method
+        /*
         boolean dateFound = false;
 
         SMILES_CursorWrapper cursor = queryScores(
@@ -220,7 +265,8 @@ public class ScoringLab {
         } finally {
             cursor.close();
         }
-        return dateFound;
+                return dateFound;
+        */
     }
 
     /**
@@ -229,6 +275,18 @@ public class ScoringLab {
      * @return UUID unique identiefier for scores
      */
     public UUID getScoreID(String date) {
+
+        // list method
+     //   String stringDate = Score.timelessDate(date);
+
+        for (int i = 0 ; i < mScoresList.size() ; i++ ) {
+            if (mScoresList.get(i).getDate().equals(date)) {
+                return mScoresList.get(i).getID();
+            }
+        }
+        return null;
+
+        /*
         boolean dateFound = false;
 
         SMILES_CursorWrapper cursor = queryScores(
@@ -250,11 +308,10 @@ public class ScoringLab {
         } finally {
             cursor.close();
         }
+        */
     }
 
     public static void writeCSVFile(){
-
-    //    List<Score> scores = getScores();
 
         // write to file
         String filepath = Environment.getExternalStorageDirectory() + File.separator + "testCSV.txt";
@@ -291,7 +348,7 @@ public class ScoringLab {
 
 
 
-    //    for (Score s : scores){
+    //    for (Score s : mScoresList){
 
 
     //    }
