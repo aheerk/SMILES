@@ -53,12 +53,13 @@
     <string name="quest_laughter_a">Rate your laughter out of 5:</string>
 
     <!-- Eating Questions -->
-    <string name="quest_eating_1">Select your percentage of vegetable &amp; fruit intake:</string>
-    <string name="quest_eating_2">Select your percentage of whole grain food intake:</string>
-    <string name="quest_eating_3">Select your percentage of protein food intake:</string>
-
-    <string name="quest_eating_4">Did you consume less than 2300mg of sodium?</string>
-    <string name="quest_eating_5">Were you mindful of your eating habits?</string>
+    <string name="quest_eating_a">Select your percentage of vegetable &amp; fruit intake:</string>
+    <string name="quest_eating_b">Select your percentage of whole grain food intake:</string>
+    <string name="quest_eating_c">Select your percentage of protein food intake:</string>
+    <string name="quest_eating_d">Do you feel you consumed the least amount of sodium that you could?</string>
+    <string name="quest_eating_e">Do you feel you consumed the least amount of free sugar that you could?</string>
+    <string name="quest_eating_f">Do you feel you consumed the least amount of saturated fat that you could?</string>
+    <string name="quest_eating_g">Did you make water your beverage of choice?</string>
 
     <string name="quest_speaking_a">Rate the amount of time spent socializing in person over social media.</string>
     <string name="quest_speaking_b">Did you seek assistance and/or debrief when needed?</string>
