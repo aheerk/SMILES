@@ -91,7 +91,7 @@ public class DashboardListFragment extends Fragment {
         mDashboardData = ScoringLab.get(getContext()).getScores(); // refresh list on resume
 
 
-        Log.d(TAG, "data: " + mDashboardData);  // list is updating
+        Log.d(TAG, "data: \n" + mDashboardData);  // list is updating
 
 
         mDashboardRecyclerViewAdapter.notifyDataSetChanged(); // fails. supposed to update the views.

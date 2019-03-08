@@ -6,12 +6,14 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -23,6 +25,8 @@ public class WeeklyGraphFragment extends Fragment {
     private RecyclerView.Adapter mRecyclerViewAdapter;
     private RecyclerView.LayoutManager mRecyclerViewLayoutManager;
     private List<Score> mWeeklyData = new LinkedList<>();
+    private ScoringLab mScoringLab;
+
 
     /**
      * new instance constructor
@@ -37,7 +41,10 @@ public class WeeklyGraphFragment extends Fragment {
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        mWeeklyData = ScoringLab.get(getContext()).getScores();
+
+
+        mScoringLab = ScoringLab.get(getContext());
+        mWeeklyData  = weekDates(new Date());
 
     }
 
@@ -46,7 +53,6 @@ public class WeeklyGraphFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_weekly_graph, null);
-
 
         getActivity().setTitle(R.string.title_weekly_graph);
 
@@ -60,6 +66,29 @@ public class WeeklyGraphFragment extends Fragment {
         return v;
     }
 
+    /**
+     * weekDates - gets 7 days of score data with the paramater date as the last day
+     * @param lastDay - last day of the week of interest
+     * @return - 7 days of score data
+     */
+    private List<Score> weekDates(Date lastDay) {
+        List<Score> weekList = new LinkedList<>();
+        Date tempDate;
+
+        for (int i = 0 ; i < 7 ; i++) {
+            tempDate = new Date(lastDay.getTime() - i * 86400000); // date - a day
+            // use database score if it exists
+            if (mScoringLab.isScore(tempDate)) {
+                weekList.add(mScoringLab.getScore(tempDate));
+            }
+            else {
+                // add blank score for the day if no data exists
+                weekList.add(new Score(tempDate));
+            }
+        }
+   //     Log.i(TAG, "temp list: " + weekList);
+        return weekList;
+    }
 
     // ----------- recycler view methods
     public class Adapter extends RecyclerView.Adapter<WeeklyGraphFragment.Adapter.WeeklyViewHolder> {
@@ -100,8 +129,16 @@ public class WeeklyGraphFragment extends Fragment {
                 mIconE.setScaleType(ImageView.ScaleType.FIT_CENTER);
                 mIconF.setScaleType(ImageView.ScaleType.FIT_CENTER);
                 */
+
+
+
+
+
             }
         }
+
+
+
 
         /*
          * Passes the list data for use by the system

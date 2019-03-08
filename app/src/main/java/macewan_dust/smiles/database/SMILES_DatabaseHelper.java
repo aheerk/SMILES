@@ -24,7 +24,7 @@ public class SMILES_DatabaseHelper extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase db) {
         db.execSQL("create table " + SMILES_DatabaseSchema.ScoreTable.NAME + " ( " +
                 " _id integer primary key autoincrement, " +
-                ScoreTable.Columns.UUID + ", " +
+                ScoreTable.Columns.SCORE_ID + ", " +
                 ScoreTable.Columns.DATE + ", " +
                 ScoreTable.Columns.SLEEP + ", " +
                 ScoreTable.Columns.MOVEMENT + ", " +

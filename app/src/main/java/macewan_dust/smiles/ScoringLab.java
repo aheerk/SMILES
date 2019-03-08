@@ -11,7 +11,6 @@ import macewan_dust.smiles.database.SMILES_DatabaseHelper;
 import macewan_dust.smiles.database.SMILES_DatabaseSchema;
 import macewan_dust.smiles.database.SMILES_CursorWrapper;
 
-
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -21,7 +20,6 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.Date;
 import java.util.List;
-import java.util.UUID;
 
 
 public class ScoringLab {
@@ -67,15 +65,17 @@ public class ScoringLab {
 
         @Override
         public int compare(Score o1, Score o2) {
-            return (int) (o1.getDate().getTime() - o2.getDate().getTime());
+            return o2.getDate().compareTo(o1.getDate()); // Data comparator method
         }
     }
 
 
-
-
     // ------------------------------ Database methods ------------------------------ //
 
+    /**
+     * loadScoresFromDB - pulls all scores out of the database
+     * @return scores list (not sorted)
+     */
     public List<Score> loadScoresFromDB() {
         List<Score> Scores = new ArrayList<>();
 
@@ -106,8 +106,11 @@ public class ScoringLab {
         return mScoresList;
     }
 
-
-
+    /**
+     * getScore - gets a score by date
+     * @param date date of score. time is ignored
+     * @return score or null
+     */
     public Score getScore(Date date) {
 
         for (Score s : mScoresList) {
@@ -141,7 +144,6 @@ public class ScoringLab {
         return new SMILES_CursorWrapper(cursor);
     }
 
-
     /**
      * getContentValues - gets data from an object and packages it for use with a database
      *
@@ -150,12 +152,9 @@ public class ScoringLab {
      */
     private static ContentValues getContentValues(Score score) {
         ContentValues values = new ContentValues();
-        values.put(SMILES_DatabaseSchema.ScoreTable.Columns.UUID, score.getScoreID().toString());
-
-
+        values.put(SMILES_DatabaseSchema.ScoreTable.Columns.SCORE_ID, score.getScoreID().toString());
         // convert to long to be compatible with database which has no Date type
        // long tempDate = score.getDate().getTime(); // converts data to long
-
        // values.put(SMILES_DatabaseSchema.ScoreTable.Columns.DATE, score.getDateString());
         values.put(SMILES_DatabaseSchema.ScoreTable.Columns.DATE, score.getDate().getTime()); // long
         values.put(SMILES_DatabaseSchema.ScoreTable.Columns.SLEEP, score.getSleepScore());
@@ -187,14 +186,14 @@ public class ScoringLab {
      * @param score - question object
      */
     public void updateScore(Score score) {
-        String uuidString = score.getScoreID().toString();
+        String scoreIdString = score.getScoreID().toString();
         ContentValues values = getContentValues(score);
 
         Log.d(TAG, "ScoringAlgorithms updating score: " + score);
 
         int temp = mDatabase.update(SMILES_DatabaseSchema.ScoreTable.NAME, values,
-                SMILES_DatabaseSchema.ScoreTable.Columns.UUID + " = ? ",
-                new String[]{uuidString});
+                SMILES_DatabaseSchema.ScoreTable.Columns.SCORE_ID + " = ? ",
+                new String[]{scoreIdString});
         updateScoreList(score); // replace old score with new score object, matched by ID
         Log.i(TAG, "number of rows updated: " + temp);
     }
@@ -216,13 +215,23 @@ public class ScoringLab {
      * @param score - score to delete
      */
     public void deleteScore(Score score) {
-        String uuidString = score.getScoreID().toString();
+        String scoreIdString = score.getScoreID().toString();
+       // String dateString = String.valueOf(score.getDate().getTime());
+
+      //  Log.d(TAG, "delete by date: " + dateString);
 
         Log.d(TAG, "ScoringAlgorithms deleting score: " + score);
 
+
         int temp = mDatabase.delete(SMILES_DatabaseSchema.ScoreTable.NAME,
-                SMILES_DatabaseSchema.ScoreTable.Columns.UUID + " = ? ",
-                new String[]{uuidString});
+                SMILES_DatabaseSchema.ScoreTable.Columns.SCORE_ID + " = ? ",
+                new String[]{scoreIdString});
+
+     //   int temp = mDatabase.delete(SMILES_DatabaseSchema.ScoreTable.NAME,
+       //         SMILES_DatabaseSchema.ScoreTable.Columns.DATE + " = ? ",
+         //       new String[]{dateString});
+
+
         mScoresList.remove(score);
         Log.i(TAG, "number of rows deleted: " + temp);
     }
@@ -269,44 +278,44 @@ public class ScoringLab {
     /**
      * get score by id by its date
      * @param date - date excluding time
-     * @return UUID unique identiefier for scores
+     * @return SCORE_ID unique identiefier for scores
      */
-    public UUID getScoreID(String date) {
-
-        // list method
-     //   String stringDate = Score.timelessDate(date);
-
-        for (int i = 0 ; i < mScoresList.size() ; i++ ) {
-            if (mScoresList.get(i).getDateString().equals(date)) {
-                return mScoresList.get(i).getScoreID();
-            }
-        }
-        return null;
-
-        /*
-        boolean dateFound = false;
-
-        SMILES_CursorWrapper cursor = queryScores(
-                SMILES_DatabaseSchema.ScoreTable.Columns.DATE + " = ?",
-                new String[]{date}
-        );
-
-        try {
-            if (cursor.getCount() == 0) {
-                return null;
-            }
-
-            cursor.moveToFirst(); // first item in results
-            Log.d(TAG, "date: " + date + " has ID: " + cursor.getScoreFromDB().getScoreID());
-
-            return cursor.getScoreFromDB().getScoreID();
-
-
-        } finally {
-            cursor.close();
-        }
-        */
-    }
+//    public SCORE_ID getScoreID(String date) {
+//
+//        // list method
+//     //   String stringDate = Score.timelessDate(date);
+//
+//        for (int i = 0 ; i < mScoresList.size() ; i++ ) {
+//            if (mScoresList.get(i).getDateString().equals(date)) {
+//                return mScoresList.get(i).getScoreID();
+//            }
+//        }
+//        return null;
+//
+//        /*
+//        boolean dateFound = false;
+//
+//        SMILES_CursorWrapper cursor = queryScores(
+//                SMILES_DatabaseSchema.ScoreTable.Columns.DATE + " = ?",
+//                new String[]{date}
+//        );
+//
+//        try {
+//            if (cursor.getCount() == 0) {
+//                return null;
+//            }
+//
+//            cursor.moveToFirst(); // first item in results
+//            Log.d(TAG, "date: " + date + " has ID: " + cursor.getScoreFromDB().getScoreID());
+//
+//            return cursor.getScoreFromDB().getScoreID();
+//
+//
+//        } finally {
+//            cursor.close();
+//        }
+//        */
+//    }
 
     public static void writeCSVFile(){
 

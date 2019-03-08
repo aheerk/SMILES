@@ -12,7 +12,7 @@ public class SMILES_DatabaseSchema {
          * Column class
          */
         public static final class Columns {
-            public static final String UUID = "uuid";
+            public static final String SCORE_ID = "uuid";
             public static final String SLEEP = "sleep";
             public static final String MOVEMENT = "movement";
             public static final String IMAGINATION = "imagination";

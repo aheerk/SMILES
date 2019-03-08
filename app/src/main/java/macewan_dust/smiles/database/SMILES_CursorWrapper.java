@@ -25,7 +25,7 @@ public class SMILES_CursorWrapper extends CursorWrapper {
      * @return question object
      */
     public Score getScoreFromDB() {
-        String uuidString = getString(getColumnIndex(SMILES_DatabaseSchema.ScoreTable.Columns.UUID));
+        String uuidString = getString(getColumnIndex(SMILES_DatabaseSchema.ScoreTable.Columns.SCORE_ID));
         int sleepScore = getInt(getColumnIndex(SMILES_DatabaseSchema.ScoreTable.Columns.SLEEP));
         int movementScore = getInt(getColumnIndex(SMILES_DatabaseSchema.ScoreTable.Columns.MOVEMENT));
         int imaginationScore = getInt(getColumnIndex(SMILES_DatabaseSchema.ScoreTable.Columns.IMAGINATION));
@@ -34,7 +34,7 @@ public class SMILES_CursorWrapper extends CursorWrapper {
         int speakingScore = getInt(getColumnIndex(SMILES_DatabaseSchema.ScoreTable.Columns.SPEAKING));
         long dateScore = getLong(getColumnIndex(SMILES_DatabaseSchema.ScoreTable.Columns.DATE));
 
-        Score scoreFromDB = new Score(UUID.fromString(uuidString)); // new score object with old UUID
+        Score scoreFromDB = new Score(UUID.fromString(uuidString)); // new score object with old SCORE_ID
   //      Log.d(TAG, "Date Long: " + dateScore);
         scoreFromDB.setDate(new Date(dateScore));
         //scoreFromDB.setDate(dateScore);

@@ -7,7 +7,7 @@ import java.util.UUID;
 import static macewan_dust.smiles.ScoringAlgorithms.*;
 
 /**
- * Note there is no setter for UUID
+ * Note there is no setter for SCORE_ID
  */
 public class Score {
 
@@ -22,8 +22,20 @@ public class Score {
     private int mSpeakingScore;
 
     public Score() {
-        mDate = new Date();
+        mDate =  new Date();
  //       mDateString = timelessDate(mDate);
+        mScoreID = UUID.randomUUID();
+        mSleepScore = SCORE_NO_DATA;
+        mMovementScore = SCORE_NO_DATA;
+        mImaginationScore = SCORE_NO_DATA;
+        mLaughterScore = SCORE_NO_DATA;
+        mEatingScore = SCORE_NO_DATA;
+        mSpeakingScore = SCORE_NO_DATA;
+    }
+
+    public Score(Date date) {
+        mDate = date;
+        //       mDateString = timelessDate(mDate);
         mScoreID = UUID.randomUUID();
         mSleepScore = SCORE_NO_DATA;
         mMovementScore = SCORE_NO_DATA;
@@ -118,7 +130,9 @@ public class Score {
 
         sb.append("mScoreID: " + mScoreID);
         sb.append("\n");
-        sb.append("Date: " + timelessDate(mDate));
+        sb.append("Date long: " + String.valueOf(mDate.getTime()));
+        sb.append("\n");
+        sb.append("Date string: " + timelessDate(mDate));
         sb.append("\n");
         sb.append("Sleep: " + mSleepScore);
         sb.append("\n");
