@@ -48,7 +48,6 @@
         <item name="android:layout_marginRight">8dp</item>
         <item name="android:layout_marginLeft">8dp</item>
         <item name="android:fontFamily">@font/sonika_italic</item>
-
     </style>
 
     <style name="Heading2Text" parent="TextAppearance.AppCompat">

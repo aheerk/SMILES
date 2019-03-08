@@ -11,8 +11,9 @@ import static macewan_dust.smiles.ScoringAlgorithms.*;
  */
 public class Score {
 
-    private String mDate; // using a string date due to all the date issues. deprecated, etc.
-    private UUID mID;
+//    private String mDateString; // using a string date due to all the date issues. deprecated, etc.
+    private Date mDate;
+    private UUID mScoreID;
     private int mSleepScore;
     private int mMovementScore;
     private int mImaginationScore;
@@ -21,15 +22,9 @@ public class Score {
     private int mSpeakingScore;
 
     public Score() {
-        Date tempDate = new Date();
-        //    mDate = timelessDate(mDate);
-
-        //     mDate.setHours(); // gives the wrong date
-
-        mDate = DateFormat.getDateInstance(DateFormat.MEDIUM).format(tempDate);
-        //      mDate = new Date(tempStringDate);
-
-        mID = UUID.randomUUID();
+        mDate = new Date();
+ //       mDateString = timelessDate(mDate);
+        mScoreID = UUID.randomUUID();
         mSleepScore = SCORE_NO_DATA;
         mMovementScore = SCORE_NO_DATA;
         mImaginationScore = SCORE_NO_DATA;
@@ -44,7 +39,7 @@ public class Score {
      * @param id
      */
     public Score(UUID id) {
-        mID = id;
+        mScoreID = id;
         mSleepScore = SCORE_NO_DATA;
         mMovementScore = SCORE_NO_DATA;
         mImaginationScore = SCORE_NO_DATA;
@@ -53,16 +48,12 @@ public class Score {
         mSpeakingScore = SCORE_NO_DATA;
     }
 
-    public String getDate() {
-        return mDate;
+    public String getDateString() {
+        return timelessDate(mDate);
     }
 
-    public UUID getID() {
-        return mID;
-    }
-
-    public void setDate(String date) {
-        mDate = date;
+    public UUID getScoreID() {
+        return mScoreID;
     }
 
     public int getSleepScore() {
@@ -113,13 +104,21 @@ public class Score {
         this.mSpeakingScore = speakingScore;
     }
 
+    public Date getDate() {
+        return mDate;
+    }
+
+    public void setDate(Date date) {
+        mDate = date;
+    }
+
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
 
-        sb.append("mID: " + mID);
+        sb.append("mScoreID: " + mScoreID);
         sb.append("\n");
-        sb.append("Date: " + mDate);
+        sb.append("Date: " + timelessDate(mDate));
         sb.append("\n");
         sb.append("Sleep: " + mSleepScore);
         sb.append("\n");
@@ -144,10 +143,10 @@ public class Score {
     public String scoreCSVFormat() {
         StringBuilder sb = new StringBuilder();
 
-        //    sb.append("mID: " + mID);
+        //    sb.append("mScoreID: " + mScoreID);
         //    sb.append(",");
         sb.append("\"");
-        sb.append(mDate);
+        sb.append(timelessDate(mDate));
         sb.append("\",");
         sb.append(getScoreName(mSleepScore));
         sb.append(",");
@@ -233,6 +232,7 @@ public class Score {
     public static String timelessDate(Date dateIn) {
         return DateFormat.getDateInstance(DateFormat.MEDIUM).format(dateIn);
     }
+
 /*
     public static Date timelessDate(Date dateIn){
         // removing time from date.

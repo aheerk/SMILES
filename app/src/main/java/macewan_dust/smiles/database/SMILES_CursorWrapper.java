@@ -2,11 +2,9 @@ package macewan_dust.smiles.database;
 
 import android.database.Cursor;
 import android.database.CursorWrapper;
-import android.util.Log;
 
 import macewan_dust.smiles.Score;
 
-import java.text.DateFormat;
 import java.util.Date;
 import java.util.UUID;
 
@@ -34,14 +32,14 @@ public class SMILES_CursorWrapper extends CursorWrapper {
         int laughterScore = getInt(getColumnIndex(SMILES_DatabaseSchema.ScoreTable.Columns.LAUGHTER));
         int eatingScore = getInt(getColumnIndex(SMILES_DatabaseSchema.ScoreTable.Columns.EATING));
         int speakingScore = getInt(getColumnIndex(SMILES_DatabaseSchema.ScoreTable.Columns.SPEAKING));
-        String dateScore = getString(getColumnIndex(SMILES_DatabaseSchema.ScoreTable.Columns.DATE));
+        long dateScore = getLong(getColumnIndex(SMILES_DatabaseSchema.ScoreTable.Columns.DATE));
 
         Score scoreFromDB = new Score(UUID.fromString(uuidString)); // new score object with old UUID
   //      Log.d(TAG, "Date Long: " + dateScore);
-       // scoreFromDB.setDate(new Date(dateScore));
-        scoreFromDB.setDate(dateScore);
+        scoreFromDB.setDate(new Date(dateScore));
+        //scoreFromDB.setDate(dateScore);
 
-        //      Log.d(TAG, "Date Date: " + scoreFromDB.getDate());
+        //      Log.d(TAG, "Date Date: " + scoreFromDB.getDateString());
 
         scoreFromDB.setSleepScore(sleepScore);
         scoreFromDB.setMovementScore(movementScore);

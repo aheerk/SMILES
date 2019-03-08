@@ -271,7 +271,7 @@ public class DashboardListFragment extends Fragment {
             holder.mIconSpeaking.setScaleType(ImageView.ScaleType.FIT_CENTER);
 
             // format date to exclude time
-            String tempDate = mDashboardListData.get(position).getDate();
+            String tempDate = mDashboardListData.get(position).getDateString();
             // String tempStringDate = DateFormat.getDateInstance(DateFormat.MEDIUM).format(tempDate);
             holder.mDate.setText(tempDate);
         }
