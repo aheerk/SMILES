@@ -83,10 +83,8 @@ public class DailyListFragment extends Fragment {
 
     private void setBorders() {
         if (ScoringLab.get(getActivity()).isScore(new Date())) {
-            // get UUID of score with today's date
-            UUID tempID = ScoringLab.get(getActivity()).getScoreID(Score.timelessDate(new Date())); // ------ consider making a get score by id instead of two separate functions
             // get score object to use its data
-            Score tempScore = ScoringLab.get(getActivity()).getScore(tempID);
+            Score tempScore = ScoringLab.get(getActivity()).getScore(new Date());
             // set new score for this category
 
             // set border based on todays score. subtitle is update automatically based on background.

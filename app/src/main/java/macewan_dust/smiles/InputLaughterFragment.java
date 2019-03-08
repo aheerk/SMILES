@@ -163,11 +163,8 @@ public class InputLaughterFragment extends Fragment {
 
                     // if score exists, update it, else make a new one and save it
                     if (ScoringLab.get(getActivity()).isScore(new Date())){
-                        // get UUID of score with today's date
-                        Log.d(TAG, "score found by date: " + Score.timelessDate(new Date()));
-                        UUID tempID = ScoringLab.get(getActivity()).getScoreID(Score.timelessDate(new Date())); // ------ consider making a get score by id instead of two separate functions
                         // get score object to use its data
-                        mScore = ScoringLab.get(getActivity()).getScore(tempID);
+                        mScore = ScoringLab.get(getActivity()).getScore(new Date());
                         // set new score for this category
                         mScore.setLaughterScore(score);
                         // save score to database
