@@ -1,10 +1,16 @@
 package macewan_dust.smiles;
 
+import android.Manifest;
+import android.app.Activity;
+import android.content.Context;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.design.widget.BottomNavigationView;
+import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.MenuItem;
@@ -15,6 +21,7 @@ import android.view.MenuItem;
 public class MainActivity extends SingleFragmentActivity implements BottomNavigationView.OnNavigationItemSelectedListener {
 
     private static final String TAG = "MainActivity";
+    private static final int REQUEST_EXTERNAL_STORAGE_USE = 222;
 
 
     // The first fragment launched is specified here
@@ -36,6 +43,8 @@ public class MainActivity extends SingleFragmentActivity implements BottomNaviga
         // reference: https://stackoverflow.com/questions/26651602/display-back-arrow-on-toolbar
         // https://developer.android.com/training/appbar/setting-up#java
         Toolbar toolbar = findViewById(R.id.toolbar);
+
+
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
        // getSupportActionBar().setDisplayShowHomeEnabled(true);
@@ -46,6 +55,7 @@ public class MainActivity extends SingleFragmentActivity implements BottomNaviga
                 finish();
             }
         });*/
+
 
     }
 
@@ -109,5 +119,48 @@ public class MainActivity extends SingleFragmentActivity implements BottomNaviga
         }
 
         return loadFragment(fragment);
+    }
+
+    public void getPermissions(Context context) {
+        if (ContextCompat.checkSelfPermission(context,
+                Manifest.permission.WRITE_EXTERNAL_STORAGE)  != PackageManager.PERMISSION_GRANTED) {
+            Log.d(TAG, "No permission to access external storage");
+
+            // Show the dialog box to request permissions
+            if (ActivityCompat.shouldShowRequestPermissionRationale(MainActivity.this,
+                    Manifest.permission.WRITE_EXTERNAL_STORAGE)){
+                Log.d(TAG, "Show the rationale!");
+                // Show explanation?
+            } else {
+                Log.d(TAG, "Need to ask for permissions....");
+                String[] permissions = new String[] {Manifest.permission.WRITE_EXTERNAL_STORAGE};
+                ActivityCompat.requestPermissions(MainActivity.this, permissions, REQUEST_EXTERNAL_STORAGE_USE);
+            }
+        }
+    }
+
+    /**
+     * Determines whether permissions have been given and disables corresponding functionality
+     * accordingly
+     *
+     * @param requestCode Unique code used to identify a permission request
+     * @param permissions
+     * @param grantResults
+     */
+    @Override
+    public  void onRequestPermissionsResult(int requestCode, String permissions[], int[] grantResults) {
+        switch (requestCode) {
+
+            case REQUEST_EXTERNAL_STORAGE_USE: {
+
+                if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                    Log.d(TAG, "Permission granted WOOOOHOOOOOOOOO");
+                } else {
+                    Log.d(TAG, "No permissions for us. How sad.");
+                }
+                return;
+            }
+        }
+
     }
 }
