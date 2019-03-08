@@ -75,7 +75,8 @@ public class DashboardListFragment extends Fragment {
             Log.d(TAG, "CSV format: " + s.scoreCSVFormat());
 
         }
-        ScoringLab.writeCSVFile();
+        ScoringLab lab = new ScoringLab(getContext());
+        lab.writeCSVFile();
 
 
     }
@@ -153,6 +154,8 @@ public class DashboardListFragment extends Fragment {
         });
 
         getActivity().setTitle(R.string.title_dashboard);
+
+
 
         return v;
     }
