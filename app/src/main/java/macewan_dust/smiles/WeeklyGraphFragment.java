@@ -1,15 +1,23 @@
 package macewan_dust.smiles;
 
+import android.app.Activity;
+import android.content.Intent;
+import android.database.Cursor;
+import android.net.Uri;
 import android.os.Bundle;
+import android.provider.ContactsContract;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.content.FileProvider;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -26,10 +34,16 @@ public class WeeklyGraphFragment extends Fragment {
     private RecyclerView.LayoutManager mRecyclerViewLayoutManager;
     private List<Score> mWeeklyData = new LinkedList<>();
     private ScoringLab mScoringLab;
+    private Button mDateButton;
+    private Date mGraphDate;
+
+    private static final String DIALOG_DATE = "DialogDate";
+    private static final int REQUEST_DATE = 0;
 
 
     /**
      * new instance constructor
+     *
      * @return WeeklyGraphFragment
      */
     public static WeeklyGraphFragment newInstance() {
@@ -40,11 +54,9 @@ public class WeeklyGraphFragment extends Fragment {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-
-
         mScoringLab = ScoringLab.get(getContext());
-        mWeeklyData  = weekDates(new Date());
+        mGraphDate = new Date();
+        mWeeklyData = weekDates(mGraphDate);
 
     }
 
@@ -61,10 +73,63 @@ public class WeeklyGraphFragment extends Fragment {
         mRecyclerView.setLayoutManager(mRecyclerViewLayoutManager);
         mRecyclerViewAdapter = new WeeklyGraphFragment.Adapter(mWeeklyData);
         mRecyclerView.setAdapter(mRecyclerViewAdapter);
-        mRecyclerView.setHasFixedSize(true);
+        //mRecyclerView.setHasFixedSize(true);
+
+
+        // date picked reference from big nerd ranch android book
+        mDateButton = (Button) v.findViewById(R.id.weekly_date);
+        updateWeeklyGraph();
+
+        mDateButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                FragmentManager manager = getFragmentManager(); // manager of parent
+                DatePickerFragment dialog = DatePickerFragment.newInstance(mGraphDate);
+                dialog.setTargetFragment(WeeklyGraphFragment.this, REQUEST_DATE); // set target to retrieve data from a fragment. p 238
+                dialog.show(manager, DIALOG_DATE); // passing in FragmentManager of parent and string id.
+            }
+        });
 
         return v;
     }
+
+    /**
+     * @param requestCode code that keeps track of where it was called from
+     * @param resultCode  constants. success or failure...
+     * @param data        data to be unpacked.
+     */
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+
+        if (resultCode != Activity.RESULT_OK) {
+            return;
+        }
+
+        if (requestCode == REQUEST_DATE) {
+            // Extra date is a public constant so we are pulling it out of the class.
+            mGraphDate = (Date) data.getSerializableExtra(DatePickerFragment.EXTRA_DATE);
+            updateWeeklyGraph();
+        }
+    }
+
+    private void updateWeeklyGraph() {
+        mDateButton.setText(Score.timelessDate(mGraphDate));
+        mWeeklyData = weekDates(mGraphDate);
+        ((Adapter)mRecyclerViewAdapter).setAdapterData(mWeeklyData);
+        mRecyclerViewAdapter.notifyDataSetChanged();
+
+    /*    if (mRecyclerViewAdapter == null) {
+            mRecyclerViewAdapter = new Adapter(mWeeklyData);
+            ((Adapter) mRecyclerViewAdapter).setAdapterData(mRecyclerViewAdapter);
+
+
+        }
+
+
+       */
+
+    }
+
 
     /**
      * weekDates - gets 7 days of score data with the paramater date as the last day
@@ -94,6 +159,11 @@ public class WeeklyGraphFragment extends Fragment {
     public class Adapter extends RecyclerView.Adapter<WeeklyGraphFragment.Adapter.WeeklyViewHolder> {
 
         private List<Score> mAdapterData;
+
+
+        public void setAdapterData(List<Score> adapterData) {
+            mAdapterData = adapterData;
+        }
 
         /**
          * Reference for views for each data item.
@@ -129,14 +199,8 @@ public class WeeklyGraphFragment extends Fragment {
                 mIconE.setScaleType(ImageView.ScaleType.FIT_CENTER);
                 mIconF.setScaleType(ImageView.ScaleType.FIT_CENTER);
                 */
-
-
-
-
-
             }
         }
-
 
 
 
@@ -189,7 +253,12 @@ public class WeeklyGraphFragment extends Fragment {
         public int getItemCount() {
             return mWeeklyData.size();
         }
+
+
+
     }
+
+
 
 
 }

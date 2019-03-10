@@ -18,6 +18,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Adapter;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -93,7 +94,7 @@ public class DashboardListFragment extends Fragment {
 
         Log.d(TAG, "data: \n" + mDashboardData);  // list is updating
 
-
+        ((DashboardAdapter)mDashboardRecyclerViewAdapter).setDashboardListData(mDashboardData);
         mDashboardRecyclerViewAdapter.notifyDataSetChanged(); // fails. supposed to update the views.
         //mRecyclerView.invalidate();
         //this.getView().invalidate();
@@ -241,6 +242,9 @@ public class DashboardListFragment extends Fragment {
             return vh;
         }
 
+        public void setDashboardListData(List<Score> dashboardListData) {
+            mDashboardListData = dashboardListData;
+        }
 
         /**
          * Called by the system

@@ -213,4 +213,7 @@
         <item>https://myhealth.alberta.ca/health/pages/conditions.aspx?Hwid=abl0295</item>
 
     </string-array>
+
+    <!-- weekly graph strings -->
+    <string name="date_picker_title">Choose a date</string>
 </resources>
