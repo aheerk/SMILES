@@ -44,6 +44,8 @@ public class DatePickerFragment extends DialogFragment {
         mDatePicker = v.findViewById(R.id.dialog_date_picker);
         mDatePicker.init(year, month, day, null);
 
+        mDatePicker.setMaxDate(System.currentTimeMillis());
+
         return new AlertDialog.Builder(getActivity())
                 .setView(v)
                 .setTitle(R.string.date_picker_title)
