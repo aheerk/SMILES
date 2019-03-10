@@ -215,5 +215,5 @@
     </string-array>
 
     <!-- weekly graph strings -->
-    <string name="date_picker_title">Choose a date</string>
+    <string name="date_picker_title">Weekly Graph Date Selector</string>
 </resources>
