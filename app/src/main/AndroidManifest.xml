@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="macewan_dust.smiles">
 
+    <!-- https://stackoverflow.com/questions/35484767/activitycompat-requestpermissions-not-showing-dialog-box/43528880 -->
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"
-        android:maxSdkVersion="18"/>
+        tools:remove="android:maxSdkVersion"/>
 
     <application
         android:allowBackup="true"

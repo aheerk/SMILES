@@ -14,6 +14,7 @@ import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.MenuItem;
+import android.widget.Toast;
 
 /**
  * This activity exists to hold a fragment.
@@ -56,7 +57,7 @@ public class MainActivity extends SingleFragmentActivity implements BottomNaviga
             }
         });*/
 
-
+        this.getPermissions(getApplicationContext());
     }
 
     /**
@@ -136,6 +137,10 @@ public class MainActivity extends SingleFragmentActivity implements BottomNaviga
                 String[] permissions = new String[] {Manifest.permission.WRITE_EXTERNAL_STORAGE};
                 ActivityCompat.requestPermissions(MainActivity.this, permissions, REQUEST_EXTERNAL_STORAGE_USE);
             }
+        } else {
+            Log.d(TAG, "Permissions granted from previous use.");
+            ScoringLab lab = new ScoringLab(MainActivity.this);
+            lab.writeCSVFile("scores.csv");
         }
     }
 
@@ -154,9 +159,15 @@ public class MainActivity extends SingleFragmentActivity implements BottomNaviga
             case REQUEST_EXTERNAL_STORAGE_USE: {
 
                 if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                    Log.d(TAG, "Permission granted WOOOOHOOOOOOOOO");
+                    Log.d(TAG, "Permission granted.");
+                    Toast.makeText(MainActivity.this, R.string.balanced, Toast.LENGTH_SHORT);
+
+                    //ScoringLab lab = new ScoringLab(MainActivity.this);
+                    //lab.writeCSVFile("COOKIES.txt");
+
                 } else {
-                    Log.d(TAG, "No permissions for us. How sad.");
+                    Log.d(TAG, "No permissions given.");
+                    Toast.makeText(MainActivity.this, R.string.unbalanced, Toast.LENGTH_SHORT);
                 }
                 return;
             }
