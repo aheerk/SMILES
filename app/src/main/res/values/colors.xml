@@ -3,11 +3,12 @@
     <color name="colorPrimary">#255791</color>
     <color name="colorPrimaryDark">#1b2671</color>
     <color name="colorAccent">#BD7AEA</color>
-    <color name="colorHigh">#e11212</color>
-    <color name="colorUnbalanced">#ffb73b</color>
+    <color name="colorHigh">#C80000</color>
+    <color name="colorUnbalanced">#ff961e</color>
     <color name="colorLow">#ffe368</color>
     <color name="colorBalanced">#6a79e2</color>
     <color name="colorNoData">#c6c6c6</color>
+
     <color name="colorNavIcon">#ffffff</color>
     <color name="colorNavText">#ffffff</color>
 
