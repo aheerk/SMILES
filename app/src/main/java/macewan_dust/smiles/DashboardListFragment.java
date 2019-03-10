@@ -68,18 +68,6 @@ public class DashboardListFragment extends Fragment {
         mDashboardData.add(temp2);
         */
 
-
-
-
-        // CSV Testing only                                                                 ------------ delete after testing
-        for (Score s : mDashboardData){
-            Log.d(TAG, "CSV format: " + s.scoreCSVFormat());
-
-        }
-        ScoringLab lab = new ScoringLab(getContext());
-        lab.writeCSVFile();
-
-
     }
 
     @Override

@@ -4,7 +4,10 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
-import android.os.Environment;
+import android.icu.util.Output;
+import android.media.MediaScannerConnection;
+import android.net.Uri;
+import android.text.style.TabStopSpan;
 import android.util.Log;
 
 import macewan_dust.smiles.database.SMILES_DatabaseHelper;
@@ -12,9 +15,11 @@ import macewan_dust.smiles.database.SMILES_DatabaseSchema;
 import macewan_dust.smiles.database.SMILES_CursorWrapper;
 
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
+import java.io.FileWriter;
 import java.io.IOException;
+import java.io.OutputStreamWriter;
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
@@ -57,7 +62,7 @@ public class ScoringLab {
         return sScoringLab;
     }
 
-    public void sortList(){
+    public void sortList() {
         Collections.sort(mScoresList, new SortByDate());
     }
 
@@ -74,6 +79,7 @@ public class ScoringLab {
 
     /**
      * loadScoresFromDB - pulls all scores out of the database
+     *
      * @return scores list (not sorted)
      */
     public List<Score> loadScoresFromDB() {
@@ -100,6 +106,7 @@ public class ScoringLab {
     /**
      * getScores - scores saved in the scoring lab. these should be up to date with the database
      * at all times.
+     *
      * @return
      */
     public List<Score> getScores() {
@@ -108,6 +115,7 @@ public class ScoringLab {
 
     /**
      * getScore - gets a score by date
+     *
      * @param date date of score. time is ignored
      * @return score or null
      */
@@ -154,8 +162,8 @@ public class ScoringLab {
         ContentValues values = new ContentValues();
         values.put(SMILES_DatabaseSchema.ScoreTable.Columns.SCORE_ID, score.getScoreID().toString());
         // convert to long to be compatible with database which has no Date type
-       // long tempDate = score.getDate().getTime(); // converts data to long
-       // values.put(SMILES_DatabaseSchema.ScoreTable.Columns.DATE, score.getDateString());
+        // long tempDate = score.getDate().getTime(); // converts data to long
+        // values.put(SMILES_DatabaseSchema.ScoreTable.Columns.DATE, score.getDateString());
         values.put(SMILES_DatabaseSchema.ScoreTable.Columns.DATE, score.getDate().getTime()); // long
         values.put(SMILES_DatabaseSchema.ScoreTable.Columns.SLEEP, score.getSleepScore());
         values.put(SMILES_DatabaseSchema.ScoreTable.Columns.MOVEMENT, score.getMovementScore());
@@ -200,10 +208,11 @@ public class ScoringLab {
 
     /**
      * update score in scoring lab list. must have the same ID
+     *
      * @param newScore
      */
-    private void updateScoreList(Score newScore){
-        for (int i = 0 ; i < mScoresList.size() ; i++ ) {
+    private void updateScoreList(Score newScore) {
+        for (int i = 0; i < mScoresList.size(); i++) {
             if (mScoresList.get(i).getScoreID() == newScore.getScoreID()) {
                 mScoresList.set(i, newScore); // replace old score with new one in list
             }
@@ -212,13 +221,14 @@ public class ScoringLab {
 
     /**
      * delete score from score table database
+     *
      * @param score - score to delete
      */
     public void deleteScore(Score score) {
         String scoreIdString = score.getScoreID().toString();
-       // String dateString = String.valueOf(score.getDate().getTime());
+        // String dateString = String.valueOf(score.getDate().getTime());
 
-      //  Log.d(TAG, "delete by date: " + dateString);
+        //  Log.d(TAG, "delete by date: " + dateString);
 
         Log.d(TAG, "ScoringAlgorithms deleting score: " + score);
 
@@ -227,9 +237,9 @@ public class ScoringLab {
                 SMILES_DatabaseSchema.ScoreTable.Columns.SCORE_ID + " = ? ",
                 new String[]{scoreIdString});
 
-     //   int temp = mDatabase.delete(SMILES_DatabaseSchema.ScoreTable.NAME,
-       //         SMILES_DatabaseSchema.ScoreTable.Columns.DATE + " = ? ",
-         //       new String[]{dateString});
+        //   int temp = mDatabase.delete(SMILES_DatabaseSchema.ScoreTable.NAME,
+        //         SMILES_DatabaseSchema.ScoreTable.Columns.DATE + " = ? ",
+        //       new String[]{dateString});
 
 
         mScoresList.remove(score);
@@ -238,6 +248,7 @@ public class ScoringLab {
 
     /**
      * checks to see if a score exists for today
+     *
      * @param date - date excluding time
      * @return - true if score exists
      */
@@ -246,7 +257,7 @@ public class ScoringLab {
         // list method
         String stringDate = Score.timelessDate(date);
 
-        for (int i = 0 ; i < mScoresList.size() ; i++ ) {
+        for (int i = 0; i < mScoresList.size(); i++) {
             if (mScoresList.get(i).getDateString().equals(stringDate)) {
                 return true;
             }
@@ -277,8 +288,9 @@ public class ScoringLab {
 
     /**
      * get score by id by its date
+     *
      * @param date - date excluding time
-     * @return SCORE_ID unique identiefier for scores
+     * @return SCORE_ID unique identifier for scores
      */
 //    public SCORE_ID getScoreID(String date) {
 //
@@ -317,51 +329,89 @@ public class ScoringLab {
 //        */
 //    }
 
-    public static void writeCSVFile(){
+    /**
+     * writeCSVFile creates a new file with the specified file name
+     * that includes all the user's scores stored on the device.
+     *
+     * @param filename
+     * Referenced https://stackoverflow.com/questions/31063216/filenotfoundexception-storage-emulated-0-android
+     * https://stackoverflow.com/questions/35132693/set-encoding-as-utf-8-for-a-filewriter
+     */
+    public void writeCSVFile(String filename) {
 
+        // Ask for permissions here?
 
-
-
-        // write to file
-        String filepath = Environment.getExternalStorageDirectory() + File.separator + "testCSV.txt";
-        FileOutputStream fileOutputStream = null;
-
-        Log.d(TAG, "CSV file path: " + filepath);
-
-        try {
-
-            fileOutputStream = new FileOutputStream(filepath);
-            byte[] buffer = "test string".getBytes();
-            fileOutputStream.write(buffer, 0, buffer.length);
-            fileOutputStream.close();
-
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        } finally {
-            {
-                if (fileOutputStream != null) {
-                    try {
-                        fileOutputStream.close();
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
-                }
-            }
+        // Check if there is room to write
+        if (FileCreator.isExternalStorageWritable()) {
+            Log.d(TAG, "External storage is writable");
+        } else {
+            Log.d(TAG, "External storage is not writable. Aborting write.");
+            return;
         }
 
+        // Retrieve filepath to external documents directory
+        File path = FileCreator.getPublicStorageDir();
+        Log.d(TAG, "PATH:" + path.toString());
 
+        File file = new File(path, filename);
 
+        // Make sure the Documents directory exists before writing to it
+        if (!path.exists()) {
+            file.mkdir();
+            Log.d(TAG, "Documents path exists now: " + path.exists());
+        }
 
+        // Create the file if one needs to be created (otherwise, existing file will be overwritten
+        if (!file.exists()) {
+            Log.d(TAG, filename + " does not exist.");
 
+            try {
+                file.createNewFile();
+            } catch (IOException e) {
+                Log.d(TAG, "Failed to create " + filename);
+                e.printStackTrace();
+                return;
+            }
+            Log.d(TAG, filename + "created: " + file.exists());
+        }
 
+        // Attempt to write to the file
+        try (OutputStreamWriter fileWriter = new OutputStreamWriter(new FileOutputStream(file),
+                StandardCharsets.UTF_8)) {
 
-    //    for (Score s : mScoresList){
+            List<Score> scores = getScores();
 
+            // add column titles
+            fileWriter.append("date, sleepScore, movementScore, imaginationScore, " +
+                    "laughterScore, eatingScore, speakingScore");
 
-    //    }
+            // Write every score
+            for (Score s : scores) {
+                Log.d(TAG, "Writing a line");
+                fileWriter.append(s.scoreCSVFormat());
+            }
+            fileWriter.close();
 
+            // This makes the file available for viewing for the user ASAP
+            // Taken from android site
+            MediaScannerConnection.scanFile(mContext,
+                    new String[]{file.toString()}, null,
+                    new MediaScannerConnection.OnScanCompletedListener() {
+                        @Override
+                        public void onScanCompleted(String path, Uri uri) {
+                            Log.i(TAG, "Scanned " + path + ":");
+                            Log.i(TAG, "-> uri=" + uri);
+                        }
+                    }
+            );
+
+        } catch (IOException e) {
+            e.printStackTrace();
+            Log.w(TAG, "Error writing " + file, e);
+        }
 
     }
+
 }
+
+
