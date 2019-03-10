@@ -383,12 +383,12 @@ public class ScoringLab {
 
             // add column titles
             fileWriter.append("date, sleepScore, movementScore, imaginationScore, " +
-                    "laughterScore, eatingScore, speakingScore");
+                    "laughterScore, eatingScore, speakingScore\n");
 
             // Write every score
             for (Score s : scores) {
                 Log.d(TAG, "Writing a line");
-                fileWriter.append(s.scoreCSVFormat());
+               fileWriter.append(s.scoreCSVFormat() + "\n");
             }
             fileWriter.close();
 
