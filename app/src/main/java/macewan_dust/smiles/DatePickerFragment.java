@@ -44,6 +44,8 @@ public class DatePickerFragment extends DialogFragment {
         mDatePicker = v.findViewById(R.id.dialog_date_picker);
         mDatePicker.init(year, month, day, null);
 
+        mDatePicker.setMaxDate(System.currentTimeMillis());
+
         return new AlertDialog.Builder(getActivity())
                 .setView(v)
                 .setTitle(R.string.date_picker_title)
@@ -54,6 +56,8 @@ public class DatePickerFragment extends DialogFragment {
                         int month = mDatePicker.getMonth();
                         int day = mDatePicker.getDayOfMonth();
                         Date date = new GregorianCalendar(year, month, day).getTime();
+                        // add 12 hours to the date. this is a fix for daylight savings time bug
+                        date = new Date(date.getTime() + 1000*12*60*60);
                         sendResult(Activity.RESULT_OK, date);
                     }
                 })

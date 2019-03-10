@@ -57,7 +57,6 @@ public class WeeklyGraphFragment extends Fragment {
         mScoringLab = ScoringLab.get(getContext());
         mGraphDate = new Date();
         mWeeklyData = weekDates(mGraphDate);
-
     }
 
     @Nullable
@@ -109,6 +108,7 @@ public class WeeklyGraphFragment extends Fragment {
             // Extra date is a public constant so we are pulling it out of the class.
             mGraphDate = (Date) data.getSerializableExtra(DatePickerFragment.EXTRA_DATE);
             updateWeeklyGraph();
+            Log.d(TAG, "date picker date: " + mGraphDate.toString());
         }
     }
 
@@ -142,6 +142,7 @@ public class WeeklyGraphFragment extends Fragment {
 
         for (int i = 0 ; i < 7 ; i++) {
             tempDate = new Date(lastDay.getTime() - i * 86400000); // date - a day
+  //          Log.d(TAG, "week dates temp date: " + tempDate.toString());
             // use database score if it exists
             if (mScoringLab.isScore(tempDate)) {
                 weekList.add(mScoringLab.getScore(tempDate));
