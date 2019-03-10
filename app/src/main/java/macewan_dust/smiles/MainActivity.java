@@ -162,8 +162,8 @@ public class MainActivity extends SingleFragmentActivity implements BottomNaviga
                     Log.d(TAG, "Permission granted.");
                     Toast.makeText(MainActivity.this, R.string.balanced, Toast.LENGTH_SHORT);
 
-                    //ScoringLab lab = new ScoringLab(MainActivity.this);
-                    //lab.writeCSVFile("COOKIES.txt");
+                    ScoringLab lab = new ScoringLab(MainActivity.this);
+                    lab.writeCSVFile("COOKIES.txt");
 
                 } else {
                     Log.d(TAG, "No permissions given.");
