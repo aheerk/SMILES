@@ -39,16 +39,16 @@
     <string name="undo_confirm">Undo</string>
 
     <!-- Daily questions -->
-    <string name="quest_sleep_a">Hours of sleep per day:</string>
+    <string name="quest_sleep_a">Hours of sleep:</string>
     <string name="quest_sleep_b">How many times was your sleep interrupted in the night?</string>
 
     <string name="quest_movement_a">Length of moderate or vigorous intensity aerobic exercise:</string>
     <string name="quest_movement_b">Did your exercises include bone and muscle strengthening?</string>
     <string name="quest_movement_c">How long did you engage in relaxation techniques?</string>
 
-    <string name="quest_imagination_a">For how many hours did you engage in any mindfulness techniques?</string>
-    <string name="quest_imagination_b">For how many hours did you engage in meditation today?</string>
-    <string name="quest_imagination_c">For how many hours did you practice imagination or creativity today?</string>
+    <string name="quest_imagination_a">How many minutes did you engage in any mindfulness techniques?</string>
+    <string name="quest_imagination_b">How many minutes did you engage in meditation today?</string>
+    <string name="quest_imagination_c">How many minutes did you practice imagination or creativity today?</string>
 
     <string name="quest_laughter_a">Rate your laughter out of 5:</string>
 
@@ -66,6 +66,8 @@
     <string name="quest_speaking_c">Did anything prevent your ability to share your thoughts?</string>
     <string name="quest_speaking_d">Did you engage in more social media than face-to-face socializing?</string>
     <string name="quest_speaking_e">Did your socializing impact your health or take away from your life balance? </string>
+
+    <string name="feedback_over_100_percent">Did you eat more than 100% today? Please try again.</string>
 
     <string name="quest_results">Your score is %s!</string>
     <string name="quest_button">Score</string>
