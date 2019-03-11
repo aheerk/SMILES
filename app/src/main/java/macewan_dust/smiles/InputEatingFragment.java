@@ -43,6 +43,10 @@ public class InputEatingFragment extends Fragment {
     int mQuestion_B_index;
     int mQuestion_C_index;
 
+    int mVegAmount;
+    int mProAmount;
+    int mGraAmount;
+
     TextView mResults;
 
     Score mScore;
@@ -106,12 +110,17 @@ public class InputEatingFragment extends Fragment {
         mQuestion_B_index = NO_SELECTION;
         mQuestion_C_index = NO_SELECTION;
 
+        mVegAmount = 0;
+        mProAmount = 0;;
+        mGraAmount = 0;
+
         mIcon1a.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 clearSelectedA();
                 mQuestion_A_index = ScoringAlgorithms.INPUT_a;
                 mIcon1a.setBackground(getResources().getDrawable(R.drawable.border_image_selected));
+                mVegAmount = 0;
             }
         });
 
@@ -121,6 +130,7 @@ public class InputEatingFragment extends Fragment {
                 clearSelectedA();
                 mQuestion_A_index = ScoringAlgorithms.INPUT_b;
                 mIcon1b.setBackground(getResources().getDrawable(R.drawable.border_image_selected));
+                mVegAmount = 50;
             }
         });
 
@@ -130,6 +140,7 @@ public class InputEatingFragment extends Fragment {
                 clearSelectedA();
                 mQuestion_A_index = ScoringAlgorithms.INPUT_c;
                 mIcon1c.setBackground(getResources().getDrawable(R.drawable.border_image_selected));
+                mVegAmount = 51;
             }
         });
 
@@ -139,6 +150,7 @@ public class InputEatingFragment extends Fragment {
                 clearSelectedB();
                 mQuestion_B_index = ScoringAlgorithms.INPUT_a;
                 mIcon2a.setBackground(getResources().getDrawable(R.drawable.border_image_selected));
+                mGraAmount = 0;
             }
         });
 
@@ -148,6 +160,8 @@ public class InputEatingFragment extends Fragment {
                 clearSelectedB();
                 mQuestion_B_index = ScoringAlgorithms.INPUT_b;
                 mIcon2b.setBackground(getResources().getDrawable(R.drawable.border_image_selected));
+                mGraAmount = 25;
+
             }
         });
 
@@ -157,6 +171,8 @@ public class InputEatingFragment extends Fragment {
                 clearSelectedB();
                 mQuestion_B_index = ScoringAlgorithms.INPUT_c;
                 mIcon2c.setBackground(getResources().getDrawable(R.drawable.border_image_selected));
+                mGraAmount = 26;
+
             }
         });
 
@@ -166,6 +182,7 @@ public class InputEatingFragment extends Fragment {
                 clearSelectedC();
                 mQuestion_C_index = ScoringAlgorithms.INPUT_a;
                 mIcon3a.setBackground(getResources().getDrawable(R.drawable.border_image_selected));
+                mProAmount = 0;
             }
         });
 
@@ -175,6 +192,7 @@ public class InputEatingFragment extends Fragment {
                 clearSelectedC();
                 mQuestion_C_index = ScoringAlgorithms.INPUT_b;
                 mIcon3b.setBackground(getResources().getDrawable(R.drawable.border_image_selected));
+                mProAmount = 25;
             }
         });
 
@@ -184,6 +202,7 @@ public class InputEatingFragment extends Fragment {
                 clearSelectedC();
                 mQuestion_C_index = ScoringAlgorithms.INPUT_c;
                 mIcon3c.setBackground(getResources().getDrawable(R.drawable.border_image_selected));
+                mProAmount = 26;
             }
         });
 
@@ -197,7 +216,10 @@ public class InputEatingFragment extends Fragment {
                 {
                     mResults.setText(getString(R.string.feedback_unselected));
 
-                } else {
+                } else if (mProAmount + mGraAmount + mVegAmount > 100) {
+                    mResults.setText(getString(R.string.feedback_over_100_percent));
+                }
+                else {
 
                     int score = ScoringAlgorithms.scoreEating(mQuestion_A_index,
                             mQuestion_B_index, mQuestion_C_index,
