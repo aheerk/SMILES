@@ -33,7 +33,7 @@ public class SMILES_DatabaseSchema {
          * Column class
          */
         public static final class Columns {
-            public static final String UUID = "uuid";
+            public static final String SCORE_ID = "uuid";
             public static final String DATE = "date";
             public static final String SLEEP1 = "sleep1_time";
             public static final String SLEEP2 = "sleep2_interruptions";
@@ -46,8 +46,14 @@ public class SMILES_DatabaseSchema {
             public static final String IMAGINATION3 = "imagination3_creativity";
 
             public static final String LAUGHTER1 = "laughter1_rating";
-            // eating to be determined
-            //public static final String EATING = "eating";
+            public static final String EATING1 = "eating1_vegetables";
+            public static final String EATING2 = "eating2_grains";
+            public static final String EATING3 = "eating3_protein";
+            public static final String EATING4 = "eating4_sodium";
+            public static final String EATING5 = "eating5_sugar";
+            public static final String EATING6 = "eating6_fat";
+            public static final String EATING7 = "eating7_water";
+
             public static final String SPEAKING1 = "speaking1_rating";
             public static final String SPEAKING2 = "speaking2_debrief";
             public static final String SPEAKING3 = "speaking3_prevented";

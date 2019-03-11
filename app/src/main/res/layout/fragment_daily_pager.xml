@@ -32,44 +32,44 @@
 
         <ImageView
             android:id="@+id/pager_dot_1"
-            android:layout_width="15dp"
-            android:layout_height="15dp"
-            android:layout_margin="4dp"
+            android:layout_width="10dp"
+            android:layout_height="10dp"
+            android:layout_margin="2dp"
             app:srcCompat="@drawable/dot_image_other_page" />
 
         <ImageView
             android:id="@+id/pager_dot_2"
-            android:layout_width="15dp"
-            android:layout_height="15dp"
-            android:layout_margin="4dp"
+            android:layout_width="10dp"
+            android:layout_height="10dp"
+            android:layout_margin="2dp"
             app:srcCompat="@drawable/dot_image_other_page" />
 
         <ImageView
             android:id="@+id/pager_dot_3"
-            android:layout_width="15dp"
-            android:layout_height="15dp"
-            android:layout_margin="4dp"
+            android:layout_width="10dp"
+            android:layout_height="10dp"
+            android:layout_margin="2dp"
             app:srcCompat="@drawable/dot_image_other_page" />
 
         <ImageView
             android:id="@+id/pager_dot_4"
-            android:layout_width="15dp"
-            android:layout_height="15dp"
-            android:layout_margin="4dp"
+            android:layout_width="10dp"
+            android:layout_height="10dp"
+            android:layout_margin="2dp"
             app:srcCompat="@drawable/dot_image_other_page" />
 
         <ImageView
             android:id="@+id/pager_dot_5"
-            android:layout_width="15dp"
-            android:layout_height="15dp"
-            android:layout_margin="4dp"
+            android:layout_width="10dp"
+            android:layout_height="10dp"
+            android:layout_margin="2dp"
             app:srcCompat="@drawable/dot_image_other_page" />
 
         <ImageView
             android:id="@+id/pager_dot_6"
-            android:layout_width="15dp"
-            android:layout_height="15dp"
-            android:layout_margin="4dp"
+            android:layout_width="10dp"
+            android:layout_height="10dp"
+            android:layout_margin="2dp"
             app:srcCompat="@drawable/dot_image_other_page" />
     </LinearLayout>
 

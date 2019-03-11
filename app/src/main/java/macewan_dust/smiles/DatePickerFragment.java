@@ -74,6 +74,11 @@ public class DatePickerFragment extends DialogFragment {
         return fragment;
     }
 
+    /**
+     * sends results to the parent fragment.d
+     * @param resultCode
+     * @param date
+     */
     private void sendResult(int resultCode, Date date){
         if (getTargetFragment() == null) {
             return;
