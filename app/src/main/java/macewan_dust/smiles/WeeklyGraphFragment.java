@@ -2,17 +2,14 @@ package macewan_dust.smiles;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.database.Cursor;
-import android.net.Uri;
 import android.os.Bundle;
-import android.provider.ContactsContract;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
-import android.support.v4.content.FileProvider;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -49,9 +46,10 @@ public class WeeklyGraphFragment extends Fragment {
      *
      * @return WeeklyGraphFragment
      */
-    public static WeeklyGraphFragment newInstance() {
+    public WeeklyGraphFragment newInstance() {
         return new WeeklyGraphFragment();
     }
+
 
 
     @Override
@@ -59,6 +57,24 @@ public class WeeklyGraphFragment extends Fragment {
         super.onCreate(savedInstanceState);
         mScoringLab = ScoringLab.get(getContext());
         mGraphDate = new Date();
+
+
+        // requires api lvl 14 or higher
+        // ref: https://stackoverflow.com/questions/15055272/how-to-hide-up-button-in-actionbar
+        Toolbar toolbar = getActivity().findViewById(R.id.toolbar);
+   /*     getActivity().setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        if (actionBar != null) {
+            actionBar.setHomeButtonEnabled(false); // disable the button
+            actionBar.setDisplayHomeAsUpEnabled(false); // remove the left caret
+            actionBar.setDisplayShowHomeEnabled(false); // remove the icon
+        }
+*/
+
+      /*  Toolbar toolbar = getActivity().findViewById(R.id.toolbar);
+        toolbar.
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);*/
     }
 
     @Nullable

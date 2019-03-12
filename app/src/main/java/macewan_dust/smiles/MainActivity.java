@@ -43,11 +43,12 @@ public class MainActivity extends SingleFragmentActivity implements BottomNaviga
         // reference: https://stackoverflow.com/questions/26651602/display-back-arrow-on-toolbar
         // https://developer.android.com/training/appbar/setting-up#java
         Toolbar toolbar = findViewById(R.id.toolbar);
-
-
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-       // getSupportActionBar().setDisplayShowHomeEnabled(true);
+        //getSupportActionBar().setDisplayShowHomeEnabled(true);
+
+
+      //  toggleUpButton();
 /*
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
@@ -58,6 +59,14 @@ public class MainActivity extends SingleFragmentActivity implements BottomNaviga
 
         this.getPermissions(getApplicationContext());
         minBackstack = 0;
+    }
+
+    public void toggleUpButton(){                                                       //////// ---- need to call this
+        if (getSupportFragmentManager().getBackStackEntryCount() == minBackstack) {
+            getSupportActionBar().setDisplayHomeAsUpEnabled(false);
+        } else if (getSupportFragmentManager().getBackStackEntryCount() > minBackstack) {
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        }
     }
 
     /**
@@ -77,6 +86,17 @@ public class MainActivity extends SingleFragmentActivity implements BottomNaviga
         Log.d(TAG, "up pressed. backstack: " +
                 getSupportFragmentManager().getBackStackEntryCount() + " min backstack: " + minBackstack);
         return true;
+    }
+
+    @Override
+    public void onBackPressed() {
+        //super.onBackPressed();
+        Log.d(TAG, "back <- pressed. backstack: " +
+                getSupportFragmentManager().getBackStackEntryCount() + " min backstack: " + minBackstack);
+        if (getSupportFragmentManager().getBackStackEntryCount() == minBackstack) {
+            //getSupportFragmentManager().popBackStackImmediate(0, FragmentManager.POP_BACK_STACK_INCLUSIVE);
+            finish();
+        }
     }
 
     /**
