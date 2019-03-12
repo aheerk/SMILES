@@ -9,7 +9,9 @@ import android.support.annotation.Nullable;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
 import android.support.v4.content.ContextCompat;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.MenuItem;
@@ -45,7 +47,7 @@ public class MainActivity extends SingleFragmentActivity implements BottomNaviga
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        //getSupportActionBar().setDisplayShowHomeEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
 
 
       //  toggleUpButton();
@@ -78,24 +80,29 @@ public class MainActivity extends SingleFragmentActivity implements BottomNaviga
         // note: FragmentManager is not used in this program Instead, SupportFragmentManager is used.
 
         // back button only works within the app and does not close the base pages.
-        if (getSupportFragmentManager().getBackStackEntryCount() > minBackstack) {
+   //     if (getSupportFragmentManager().getBackStackEntryCount() > minBackstack) {
 
-            Log.d(TAG, "backstack count: " + getSupportFragmentManager().getBackStackEntryCount());
+    //        Log.d(TAG, "backstack count: " + getSupportFragmentManager().getBackStackEntryCount());
             onBackPressed();
-        }
-        Log.d(TAG, "up pressed. backstack: " +
-                getSupportFragmentManager().getBackStackEntryCount() + " min backstack: " + minBackstack);
+   //     }
+    //    Log.d(TAG, "up pressed. backstack: " + getSupportFragmentManager().getBackStackEntryCount() + " min backstack: " + minBackstack);
         return true;
     }
 
     @Override
     public void onBackPressed() {
-        //super.onBackPressed();
-        Log.d(TAG, "back <- pressed. backstack: " +
-                getSupportFragmentManager().getBackStackEntryCount() + " min backstack: " + minBackstack);
-        if (getSupportFragmentManager().getBackStackEntryCount() == minBackstack) {
+        // fragments are not removed from the backstack when navigation is used. popping them
+        // from the backstack causes them to appear briefly before being removed. Instead, this
+        // method updates the minimum backstack amount for a base page and exits the app if the
+        // back button is pressed from one of these pages.
+     //   Log.d(TAG, "back <- pressed. backstack: " +
+   //             getSupportFragmentManager().getBackStackEntryCount() + " min backstack: " + minBackstack);
+        if (getSupportFragmentManager().getBackStackEntryCount() < minBackstack) {
             //getSupportFragmentManager().popBackStackImmediate(0, FragmentManager.POP_BACK_STACK_INCLUSIVE);
             finish();
+        }
+        else {
+            super.onBackPressed();
         }
     }
 
@@ -129,10 +136,12 @@ public class MainActivity extends SingleFragmentActivity implements BottomNaviga
      */
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+
         Fragment fragment = null;
 
-        minBackstack = minBackstack + getSupportFragmentManager().getBackStackEntryCount();
+        minBackstack = getSupportFragmentManager().getBackStackEntryCount() + 1;
 
+     //   Log.d(TAG, "minimum backstack set to: " + minBackstack);
         switch (item.getItemId()) {
             case R.id.navigation_dashboard:
                 fragment = new DashboardListFragment();
@@ -144,7 +153,6 @@ public class MainActivity extends SingleFragmentActivity implements BottomNaviga
                 fragment = new InformationListFragment();
                 break;
         }
-
         return loadFragment(fragment);
     }
 

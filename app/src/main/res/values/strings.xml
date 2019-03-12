@@ -69,7 +69,7 @@
     <string name="quest_speaking_d">You engaged in more social media than face-to-face socializing.</string>
     <string name="quest_speaking_e">Your socializing impacted your health or took away from your life balance.</string>
 
-    <string name="feedback_over_100_percent">Did you eat more than 100% today? Please try again.</string>
+    <string name="feedback_over_100_percent">Please select 100% or less food.</string>
 
     <string name="quest_results">Your score is %s!</string>
     <string name="quest_button">Score</string>
@@ -79,7 +79,7 @@
     <string name="score_balanced">balanced</string>
     <string name="score_unbalanced">unbalanced</string>
 
-    <string name="feedback_unselected">Please answer all of the questions before scoring. </string>
+    <string name="feedback_unselected">Please answer all of the questions.</string>
     <string name="score_error">Error</string>
 
     <!--INTRODUCTIONS -->

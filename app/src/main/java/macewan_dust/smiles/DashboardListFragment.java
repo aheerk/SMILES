@@ -11,6 +11,7 @@ import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.content.ContextCompat;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.helper.ItemTouchHelper;
@@ -52,6 +53,9 @@ public class DashboardListFragment extends Fragment {
         super.onCreate(savedInstanceState);
         mContext = getContext();
 
+        ((AppCompatActivity)getActivity()).getSupportActionBar().setDisplayHomeAsUpEnabled(false);
+
+
         // scores from database
         mDashboardData = ScoringLab.get(getContext()).getScores();
 /*
@@ -79,11 +83,10 @@ public class DashboardListFragment extends Fragment {
         // redraw the screen when coming back from a question page
         mDashboardData = ScoringLab.get(getContext()).getScores(); // refresh list on resume
 
-
-     //   Log.d(TAG, "data: \n" + mDashboardData);
-
         ((DashboardAdapter)mDashboardRecyclerViewAdapter).setDashboardListData(mDashboardData);
         mDashboardRecyclerViewAdapter.notifyDataSetChanged();
+
+        ((AppCompatActivity)getActivity()).getSupportActionBar().setDisplayHomeAsUpEnabled(false);
     }
 
 
