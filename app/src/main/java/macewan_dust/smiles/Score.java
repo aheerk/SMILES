@@ -2,6 +2,7 @@ package macewan_dust.smiles;
 
 import java.text.DateFormat;
 import java.util.Date;
+import java.util.TimeZone;
 import java.util.UUID;
 
 import static macewan_dust.smiles.ScoringAlgorithms.*;
@@ -23,7 +24,10 @@ public class Score {
 
     public Score() {
         mDate =  new Date();
- //       mDateString = timelessDate(mDate);
+    //    long currentTime = mDate.getTime();
+    //    long dateOnly = currentTime + TimeZone.getDefault().getOffset(currentTime);
+    //    mDate = new Date(dateOnly);
+
         mScoreID = UUID.randomUUID();
         mSleepScore = SCORE_NO_DATA;
         mMovementScore = SCORE_NO_DATA;
@@ -35,7 +39,10 @@ public class Score {
 
     public Score(Date date) {
         mDate = date;
-        //       mDateString = timelessDate(mDate);
+    //    long currentTime = mDate.getTime();
+    //    long dateOnly = currentTime + TimeZone.getDefault().getOffset(currentTime);
+    //    mDate = new Date(dateOnly);
+
         mScoreID = UUID.randomUUID();
         mSleepScore = SCORE_NO_DATA;
         mMovementScore = SCORE_NO_DATA;
@@ -117,6 +124,9 @@ public class Score {
     }
 
     public Date getDate() {
+ //       long currentTime = mDate.getTime();
+   //     long dateOnly = currentTime + TimeZone.getDefault().getOffset(currentTime);
+     //   mDate = new Date(dateOnly);
         return mDate;
     }
 

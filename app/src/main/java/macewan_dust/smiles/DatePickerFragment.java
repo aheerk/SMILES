@@ -2,6 +2,7 @@ package macewan_dust.smiles;
 
 import android.app.Activity;
 import android.app.Dialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
@@ -46,6 +47,10 @@ public class DatePickerFragment extends DialogFragment {
 
         mDatePicker.setMaxDate(System.currentTimeMillis());
 
+        if (ScoringLab.get(getContext()).getOldestDate() != null) {
+            mDatePicker.setMinDate(ScoringLab.get(getContext()).getOldestDate().getTime());
+        }
+
         return new AlertDialog.Builder(getActivity())
                 .setView(v)
                 .setTitle(R.string.date_picker_title)
@@ -57,7 +62,7 @@ public class DatePickerFragment extends DialogFragment {
                         int day = mDatePicker.getDayOfMonth();
                         Date date = new GregorianCalendar(year, month, day).getTime();
                         // add 12 hours to the date. this is a fix for daylight savings time bug
-                        date = new Date(date.getTime() + 1000*12*60*60);
+                        date = new Date(date.getTime() + 1000*23*60*60 -1);
                         sendResult(Activity.RESULT_OK, date);
                     }
                 })

@@ -74,6 +74,13 @@ public class ScoringLab {
         }
     }
 
+    public Date getOldestDate(){
+        if (!mScoresList.isEmpty())
+            return mScoresList.get(mScoresList.size()-1).getDate();
+        else
+            return null;
+    }
+
 
     // ------------------------------ Database methods ------------------------------ //
 
@@ -411,6 +418,8 @@ public class ScoringLab {
         }
 
     }
+
+
 
 }
 

@@ -18,6 +18,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -36,6 +38,7 @@ public class WeeklyGraphFragment extends Fragment {
     private ScoringLab mScoringLab;
     private Button mDateButton;
     private Date mGraphDate;
+    private CheckBox mDisplayNoDataScoreCheckbox;
 
     private static final String DIALOG_DATE = "DialogDate";
     private static final int REQUEST_DATE = 0;
@@ -56,7 +59,6 @@ public class WeeklyGraphFragment extends Fragment {
         super.onCreate(savedInstanceState);
         mScoringLab = ScoringLab.get(getContext());
         mGraphDate = new Date();
-        mWeeklyData = weekDates(mGraphDate);
     }
 
     @Nullable
@@ -76,8 +78,7 @@ public class WeeklyGraphFragment extends Fragment {
 
 
         // date picked reference from big nerd ranch android book
-        mDateButton = (Button) v.findViewById(R.id.weekly_date);
-        updateWeeklyGraph();
+        mDateButton = v.findViewById(R.id.weekly_date);
 
         mDateButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -86,8 +87,23 @@ public class WeeklyGraphFragment extends Fragment {
                 DatePickerFragment dialog = DatePickerFragment.newInstance(mGraphDate);
                 dialog.setTargetFragment(WeeklyGraphFragment.this, REQUEST_DATE); // set target to retrieve data from a fragment. p 238
                 dialog.show(manager, DIALOG_DATE); // passing in FragmentManager of parent and string id.
+                Log.d(TAG, "calendar date: " + mGraphDate.toString());
+
             }
         });
+
+        mDisplayNoDataScoreCheckbox = v.findViewById(R.id.weekly_display_no_data_checkbox);
+        mDisplayNoDataScoreCheckbox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                Log.d(TAG, "checkbox set to: " + mDisplayNoDataScoreCheckbox.isChecked());
+                updateWeeklyGraph();
+            }
+        });
+
+        mWeeklyData = weekDates(mGraphDate);
+        updateWeeklyGraph();
+
 
         return v;
     }
@@ -112,24 +128,15 @@ public class WeeklyGraphFragment extends Fragment {
         }
     }
 
+    /**
+     * refresh data in graphs recycler view
+     */
     private void updateWeeklyGraph() {
         mDateButton.setText(Score.timelessDate(mGraphDate));
         mWeeklyData = weekDates(mGraphDate);
         ((Adapter)mRecyclerViewAdapter).setAdapterData(mWeeklyData);
         mRecyclerViewAdapter.notifyDataSetChanged();
-
-    /*    if (mRecyclerViewAdapter == null) {
-            mRecyclerViewAdapter = new Adapter(mWeeklyData);
-            ((Adapter) mRecyclerViewAdapter).setAdapterData(mRecyclerViewAdapter);
-
-
-        }
-
-
-       */
-
     }
-
 
     /**
      * weekDates - gets 7 days of score data with the paramater date as the last day
@@ -138,21 +145,41 @@ public class WeeklyGraphFragment extends Fragment {
      */
     private List<Score> weekDates(Date lastDay) {
         List<Score> weekList = new LinkedList<>();
-        Date tempDate;
+        Date tempDate = lastDay;
 
-        for (int i = 0 ; i < 7 ; i++) {
-            tempDate = new Date(lastDay.getTime() - i * 86400000); // date - a day
-  //          Log.d(TAG, "week dates temp date: " + tempDate.toString());
-            // use database score if it exists
-            if (mScoringLab.isScore(tempDate)) {
-                weekList.add(mScoringLab.getScore(tempDate));
+        // if checked, include filler dates if there is no data
+        if (mDisplayNoDataScoreCheckbox.isChecked()) {
+            for (int i = 0; i < 7; i++) {
+                tempDate = new Date(lastDay.getTime() - i * 24*60*60*1000); // date - a day
+                //          Log.d(TAG, "week dates temp date: " + tempDate.toString());
+                // use database score if it exists
+                if (mScoringLab.isScore(tempDate)) {
+                    weekList.add(mScoringLab.getScore(tempDate));
+                } else {
+                    // add blank score for the day if no data exists
+                    weekList.add(new Score(tempDate));
+                }
             }
-            else {
-                // add blank score for the day if no data exists
+            // if not checked, exclude filler dates if there is no data
+        } else {
+            // get last 7 dates if possible
+            for (int i = 0 ; i < mScoringLab.getScores().size() && weekList.size() < 7; i++) {
+                if (mScoringLab.getScores().get(i).getDate().compareTo(tempDate) < 1) {
+                    weekList.add(mScoringLab.getScores().get(i));
+                }
+            }
+            // if the list is not 7 items long, create fillers for the remaining spaces
+            if (weekList.isEmpty()) {
+                tempDate = mGraphDate;
+            } else {
+                tempDate = ((LinkedList<Score>) weekList).getLast().getDate(); // last date in list
+                tempDate = new Date(tempDate.getTime() -  86400000); // date minus a day
+            }
+            while (weekList.size() < 7) {
                 weekList.add(new Score(tempDate));
+                tempDate = new Date(tempDate.getTime() -  86400000); // date minus a day
             }
         }
-   //     Log.i(TAG, "temp list: " + weekList);
         return weekList;
     }
 
@@ -202,9 +229,7 @@ public class WeeklyGraphFragment extends Fragment {
                 */
             }
         }
-
-
-
+        
         /*
          * Passes the list data for use by the system
          */

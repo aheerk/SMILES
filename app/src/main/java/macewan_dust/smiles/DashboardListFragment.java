@@ -71,7 +71,7 @@ public class DashboardListFragment extends Fragment {
     }
 
     @Override
-    public void onResume() {                                                                 ////////// not working
+    public void onResume() {
         super.onResume();
 
         Log.d(TAG, "resuming dashboard");
@@ -80,25 +80,10 @@ public class DashboardListFragment extends Fragment {
         mDashboardData = ScoringLab.get(getContext()).getScores(); // refresh list on resume
 
 
-        Log.d(TAG, "data: \n" + mDashboardData);  // list is updating
+     //   Log.d(TAG, "data: \n" + mDashboardData);
 
         ((DashboardAdapter)mDashboardRecyclerViewAdapter).setDashboardListData(mDashboardData);
-        mDashboardRecyclerViewAdapter.notifyDataSetChanged(); // fails. supposed to update the views.
-        //mRecyclerView.invalidate();
-        //this.getView().invalidate();
-
-/* // fails. infinite loops
-        // All above recommended methods of refreshing the dashboard failed. The only method
-        // that works is pressing the dashboard navigation button which creates the new fragment
-        // again. This code does the same thing.
-        Fragment newFragment = new DashboardListFragment();
-        FragmentTransaction transaction = getFragmentManager().beginTransaction();
-        transaction.replace(R.id.fragment_container, newFragment);
-        //transaction.addToBackStack("dashboard");
-        transaction.commit();
-*/
-
-
+        mDashboardRecyclerViewAdapter.notifyDataSetChanged();
     }
 
 
@@ -119,7 +104,6 @@ public class DashboardListFragment extends Fragment {
         // setup for delete on swipe
         ItemTouchHelper itemTouchHelper = new ItemTouchHelper(new SwipeToDeleteCallback((DashboardAdapter) mDashboardRecyclerViewAdapter));
         itemTouchHelper.attachToRecyclerView(mRecyclerView);
-
 
         /*
         mFloatingButtonStartDailyQuestions = v.findViewById(R.id.button_start_daily_questions);
@@ -144,10 +128,10 @@ public class DashboardListFragment extends Fragment {
 
         getActivity().setTitle(R.string.title_dashboard);
 
-
-
         return v;
     }
+
+
 
     /**
      * replaceFragment - performs fragment transactions.
@@ -230,6 +214,12 @@ public class DashboardListFragment extends Fragment {
             return vh;
         }
 
+        /**
+         * used to update the data in the adapter. pass data with this method and then call
+         * the notifyDataSetChanged method to have the adapter use the new data.
+         *
+         * @param dashboardListData
+         */
         public void setDashboardListData(List<Score> dashboardListData) {
             mDashboardListData = dashboardListData;
         }

@@ -175,7 +175,7 @@
         <item>https://myhealth.alberta.ca/health/pages/conditions.aspx?Hwid=ug1812</item>
 
         <!-- Link 9 -->
-        <item>10 Benefits of Expressing Your Creativity</item>
+        <item>Ten Benefits of Expressing Your Creativity</item>
         <item>Article</item>
         <item>http://www.selfgrowth.com/articles/Morris4.html</item>
 
@@ -218,4 +218,5 @@
 
     <!-- weekly graph strings -->
     <string name="date_picker_title">Weekly Graph Date Selector</string>
+    <string name="weekly_checkbox_description">Show days without scores</string>
 </resources>

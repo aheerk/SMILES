@@ -13,13 +13,13 @@ public class SMILES_DatabaseSchema {
          */
         public static final class Columns {
             public static final String SCORE_ID = "uuid";
+            public static final String DATE = "date";
             public static final String SLEEP = "sleep";
             public static final String MOVEMENT = "movement";
             public static final String IMAGINATION = "imagination";
             public static final String LAUGHTER = "laughter";
             public static final String EATING = "eating";
             public static final String SPEAKING = "speaking";
-            public static final String DATE = "date";
         }
     }
 
@@ -35,8 +35,10 @@ public class SMILES_DatabaseSchema {
         public static final class Columns {
             public static final String SCORE_ID = "uuid";
             public static final String DATE = "date";
+
             public static final String SLEEP1 = "sleep1_time";
             public static final String SLEEP2 = "sleep2_interruptions";
+
             public static final String MOVEMENT1 = "movement1_aerobic";
             public static final String MOVEMENT2 = "movement2_bone_and_muscle";
             public static final String MOVEMENT3 = "movement3_relaxation";
@@ -46,6 +48,7 @@ public class SMILES_DatabaseSchema {
             public static final String IMAGINATION3 = "imagination3_creativity";
 
             public static final String LAUGHTER1 = "laughter1_rating";
+
             public static final String EATING1 = "eating1_vegetables";
             public static final String EATING2 = "eating2_grains";
             public static final String EATING3 = "eating3_protein";

@@ -51,4 +51,7 @@ public class SMILES_CursorWrapper extends CursorWrapper {
         return scoreFromDB;
     }
 
+
+
+
 }
