@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -56,6 +57,8 @@ public class InputSpeakingFragment extends Fragment {
     int mQuestion_D_index;
     int mQuestion_E_index;
 
+    ScrollView mScrollView;
+
     Score mScore;
     CountDownTimer mExitCountDownTimer;
 
@@ -93,6 +96,8 @@ public class InputSpeakingFragment extends Fragment {
     public View onCreateView(final LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
         View v = inflater.inflate(R.layout.fragment_daily_speaking_questions, container, false);
+
+        mScrollView = v.findViewById(R.id.speaking_scroll_view);
 
         mButton = v.findViewById(R.id.score_button);
 
@@ -264,10 +269,13 @@ public class InputSpeakingFragment extends Fragment {
             @Override
             public void onClick(View v) {
 
+
+
                 if (mQuestion_A_index == NO_SELECTION || mQuestion_B_index == NO_SELECTION ||
                         mQuestion_C_index == NO_SELECTION || mQuestion_D_index == NO_SELECTION ||
                         mQuestion_E_index == NO_SELECTION) {
                     mResults.setText(getString(R.string.feedback_unselected));
+
 
                 } else {
 
@@ -326,6 +334,7 @@ public class InputSpeakingFragment extends Fragment {
                     mResults.setText(getString(R.string.quest_results, getString(scoreStringID)));
                     exitOnLastScore();
                 }
+                mScrollView.smoothScrollTo(0, mScrollView.getMaxScrollAmount());
             }
         });
 
@@ -337,12 +346,14 @@ public class InputSpeakingFragment extends Fragment {
 
     /**
      * exits out of the question fragment if all questions have been answered.
+     *
+     * Timer Ref: https://developer.android.com/reference/android/os/CountDownTimer
      */
     private void exitOnLastScore(){
         if (ScoringLab.get(getActivity()).getScore(new Date()).isAllScored()){
             Log.d(TAG, "all questions answered. popping out");
 
-            mExitCountDownTimer = new CountDownTimer(3000, 3000) {
+            mExitCountDownTimer = new CountDownTimer(DailyPagerFragment.EXIT_TIMER_MILLISECONDS, DailyPagerFragment.EXIT_TIMER_MILLISECONDS) {
 
                 @Override
                 public void onTick(long millisUntilFinished) {

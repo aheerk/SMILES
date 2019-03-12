@@ -157,32 +157,19 @@
         style="@style/Widget.AppCompat.Button.Colored"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/quest_button"
-        android:textAlignment="center"
-        android:layout_margin="8dp"
         android:layout_gravity="center"
-        />
+        android:layout_marginTop="8dp"
+        android:text="@string/quest_button"
+        android:textAlignment="center" />
 
     <!-- Score Display -->
-    <LinearLayout
-        android:layout_width="300dp"
+    <TextView
+        android:id="@+id/text_score"
+        style="@style/NotificationText"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_margin="8dp"
-        android:orientation="horizontal"
-        >
-
-        <!-- Score Text -->
-        <TextView
-            android:id="@+id/text_score"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text=""
-            style="@style/NotificationText"
-            android:visibility="invisible" />
-
-    </LinearLayout>
-
+        android:text=""
+        android:visibility="invisible" />
 
 
 </LinearLayout>

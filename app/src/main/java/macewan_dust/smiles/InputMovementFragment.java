@@ -274,7 +274,7 @@ public class InputMovementFragment extends Fragment {
         if (ScoringLab.get(getActivity()).getScore(new Date()).isAllScored()){
             Log.d(TAG, "all questions answered. popping out");
 
-            mExitCountDownTimer = new CountDownTimer(3000, 3000) {
+            mExitCountDownTimer = new CountDownTimer(DailyPagerFragment.EXIT_TIMER_MILLISECONDS, DailyPagerFragment.EXIT_TIMER_MILLISECONDS) {
 
                 @Override
                 public void onTick(long millisUntilFinished) {

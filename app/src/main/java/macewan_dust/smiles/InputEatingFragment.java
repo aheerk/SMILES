@@ -10,6 +10,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.ImageView;
+import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -49,6 +50,8 @@ public class InputEatingFragment extends Fragment {
     int mGraAmount;
 
     TextView mResults;
+
+    ScrollView mScrollView;
 
     Score mScore;
     CountDownTimer mExitCountDownTimer;
@@ -90,6 +93,8 @@ public class InputEatingFragment extends Fragment {
         View v = inflater.inflate(R.layout.fragment_daily_eating_questions, container, false);
 
         mButton = v.findViewById(R.id.score_button);
+
+        mScrollView = v.findViewById(R.id.eating_scroll_view);
 
         mIcon1a = v.findViewById(R.id.icon_1a);
         mIcon1b = v.findViewById(R.id.icon_1b);
@@ -276,6 +281,8 @@ public class InputEatingFragment extends Fragment {
                     mResults.setText(getString(R.string.quest_results, getString(scoreStringID)));
                     exitOnLastScore();
                 }
+                mScrollView.smoothScrollTo(0, mScrollView.getMaxScrollAmount());
+
             }
         });
 
@@ -292,7 +299,7 @@ public class InputEatingFragment extends Fragment {
         if (ScoringLab.get(getActivity()).getScore(new Date()).isAllScored()){
             Log.d(TAG, "all questions answered. popping out");
 
-            mExitCountDownTimer = new CountDownTimer(3000, 3000) {
+            mExitCountDownTimer = new CountDownTimer(DailyPagerFragment.EXIT_TIMER_MILLISECONDS, DailyPagerFragment.EXIT_TIMER_MILLISECONDS) {
 
                 @Override
                 public void onTick(long millisUntilFinished) {
