@@ -1,7 +1,6 @@
 package macewan_dust.smiles;
 
 import android.Manifest;
-import android.app.Activity;
 import android.content.Context;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
@@ -23,7 +22,7 @@ public class MainActivity extends SingleFragmentActivity implements BottomNaviga
 
     private static final String TAG = "MainActivity";
     private static final int REQUEST_EXTERNAL_STORAGE_USE = 222;
-
+    private int minBackstack; // this is the fix for the visual back button bug.
 
     // The first fragment launched is specified here
     @Override
@@ -58,6 +57,7 @@ public class MainActivity extends SingleFragmentActivity implements BottomNaviga
         });*/
 
         this.getPermissions(getApplicationContext());
+        minBackstack = 0;
     }
 
     /**
@@ -69,11 +69,13 @@ public class MainActivity extends SingleFragmentActivity implements BottomNaviga
         // note: FragmentManager is not used in this program Instead, SupportFragmentManager is used.
 
         // back button only works within the app and does not close the base pages.
-        if (getSupportFragmentManager().getBackStackEntryCount() > 0) {
+        if (getSupportFragmentManager().getBackStackEntryCount() > minBackstack) {
 
             Log.d(TAG, "backstack count: " + getSupportFragmentManager().getBackStackEntryCount());
             onBackPressed();
         }
+        Log.d(TAG, "up pressed. backstack: " +
+                getSupportFragmentManager().getBackStackEntryCount() + " min backstack: " + minBackstack);
         return true;
     }
 
@@ -106,6 +108,8 @@ public class MainActivity extends SingleFragmentActivity implements BottomNaviga
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         Fragment fragment = null;
+
+        minBackstack = minBackstack + getSupportFragmentManager().getBackStackEntryCount();
 
         switch (item.getItemId()) {
             case R.id.navigation_dashboard:

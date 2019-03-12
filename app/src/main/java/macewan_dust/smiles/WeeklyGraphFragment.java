@@ -105,6 +105,11 @@ public class WeeklyGraphFragment extends Fragment {
         updateWeeklyGraph();
 
 
+
+        Log.d(TAG, "backstack count: " + getActivity().getSupportFragmentManager().getBackStackEntryCount());
+
+
+
         return v;
     }
 
@@ -229,7 +234,7 @@ public class WeeklyGraphFragment extends Fragment {
                 */
             }
         }
-        
+
         /*
          * Passes the list data for use by the system
          */
