@@ -1,6 +1,7 @@
 package macewan_dust.smiles;
 
 import android.os.Bundle;
+import android.os.CountDownTimer;
 import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -29,6 +30,7 @@ public class InputLaughterFragment extends Fragment {
     int mQuestion_A_index;
 
     Score mScore;
+    CountDownTimer mExitCountDownTimer;
 
     /**
      * new instance constructor
@@ -177,6 +179,7 @@ public class InputLaughterFragment extends Fragment {
                         ScoringLab.get(getActivity()).addScore(mScore);
                     }
                     mResults.setText(getString(R.string.quest_results, getString(scoreStringID)));
+                    exitOnLastScore();
                 }
             }
         });
@@ -185,6 +188,40 @@ public class InputLaughterFragment extends Fragment {
         mResults.setVisibility(View.VISIBLE);
 
         return v;
+    }
+
+    /**
+     * exits out of the question fragment if all questions have been answered.
+     */
+    private void exitOnLastScore(){
+        if (ScoringLab.get(getActivity()).getScore(new Date()).isAllScored()){
+            Log.d(TAG, "all questions answered. popping out");
+
+            mExitCountDownTimer = new CountDownTimer(3000, 3000) {
+
+                @Override
+                public void onTick(long millisUntilFinished) {
+                }
+
+                @Override
+                public void onFinish() {
+                    getActivity().getSupportFragmentManager().popBackStackImmediate();
+                }
+            }.start();
+        }
+    }
+
+    /**
+     * cancel timer if the fragment is exited
+     */
+    @Override
+    public void onStop() {
+        super.onStop();
+        Log.d(TAG, "stopped");
+        if (mExitCountDownTimer != null) {
+            mExitCountDownTimer.cancel();
+            Log.d(TAG, "cancelling exit timer");
+        }
     }
 
     private void clearSelected() {

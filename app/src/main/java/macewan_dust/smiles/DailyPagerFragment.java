@@ -31,7 +31,6 @@ public class DailyPagerFragment extends Fragment {
     ImageView mDot5;
     ImageView mDot6;
 
-
     int mStartPage;
 
     @Override

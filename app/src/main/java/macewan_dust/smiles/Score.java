@@ -27,7 +27,7 @@ public class Score {
     //    long currentTime = mDate.getTime();
     //    long dateOnly = currentTime + TimeZone.getDefault().getOffset(currentTime);
     //    mDate = new Date(dateOnly);
-
+        dateShiftHelper();
         mScoreID = UUID.randomUUID();
         mSleepScore = SCORE_NO_DATA;
         mMovementScore = SCORE_NO_DATA;
@@ -42,7 +42,7 @@ public class Score {
     //    long currentTime = mDate.getTime();
     //    long dateOnly = currentTime + TimeZone.getDefault().getOffset(currentTime);
     //    mDate = new Date(dateOnly);
-
+        dateShiftHelper();
         mScoreID = UUID.randomUUID();
         mSleepScore = SCORE_NO_DATA;
         mMovementScore = SCORE_NO_DATA;
@@ -50,6 +50,38 @@ public class Score {
         mLaughterScore = SCORE_NO_DATA;
         mEatingScore = SCORE_NO_DATA;
         mSpeakingScore = SCORE_NO_DATA;
+    }
+
+    /**
+     * Shifts a new date forward by 2 hours if doing so doesnt change the day. This is to avoid
+     * daylight savings time issues with the calendar which takes the end of the day date.
+     * This should only be used on new dates that have not yet been saved into the database.
+     * Dates from the database will have the date overwritten and should stay consistent.
+     */
+    private void dateShiftHelper(){
+        if (timelessDate(mDate).equals(timelessDate(new Date(mDate.getTime() - 60*2*1000)))) {
+            mDate = new Date(mDate.getTime() - 60*2*1000);
+        }
+    }
+
+    /**
+     * returns true if all categories have been scored.
+     * @return
+     */
+    public boolean isAllScored() {
+        if (mSleepScore == SCORE_NO_DATA)
+            return false;
+        if (mMovementScore == SCORE_NO_DATA)
+            return false;
+        if (mImaginationScore == SCORE_NO_DATA)
+            return false;
+        if (mLaughterScore == SCORE_NO_DATA)
+            return false;
+        if (mEatingScore == SCORE_NO_DATA)
+            return false;
+        if (mSpeakingScore == SCORE_NO_DATA)
+            return false;
+        return true;
     }
 
     /**

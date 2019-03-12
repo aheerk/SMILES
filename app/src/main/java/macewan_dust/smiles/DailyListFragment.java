@@ -30,8 +30,6 @@ public class DailyListFragment extends Fragment {
     private static final String TAG = "DailyListFragment";
     public static final String DAILY_RECYCLER_VIEW_INDEX = "daily_recycler_view_index";
 
-
-
     private RecyclerView mDailyRecyclerView;
     private RecyclerView.Adapter mDailyAdapter;
     private RecyclerView.LayoutManager mDailyLayoutManager;

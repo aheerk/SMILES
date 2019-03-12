@@ -87,6 +87,8 @@ public class MainActivity extends SingleFragmentActivity implements BottomNaviga
      * @return
      */
     public boolean loadFragment(Fragment fragment) {
+
+
         if (fragment != null) {
             getSupportFragmentManager()
                     .beginTransaction()
