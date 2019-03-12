@@ -7,11 +7,14 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -61,20 +64,21 @@ public class WeeklyGraphFragment extends Fragment {
 
         // requires api lvl 14 or higher
         // ref: https://stackoverflow.com/questions/15055272/how-to-hide-up-button-in-actionbar
-        Toolbar toolbar = getActivity().findViewById(R.id.toolbar);
-   /*     getActivity().setSupportActionBar(toolbar);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        if (actionBar != null) {
-            actionBar.setHomeButtonEnabled(false); // disable the button
-            actionBar.setDisplayHomeAsUpEnabled(false); // remove the left caret
-            actionBar.setDisplayShowHomeEnabled(false); // remove the icon
-        }
-*/
+     //   Toolbar toolbar = getActivity().findViewById(R.id.toolbar);
+     //   ((AppCompatActivity)getActivity()).setSupportActionBar(toolbar);
+      ((AppCompatActivity)getActivity()).getSupportActionBar().setDisplayHomeAsUpEnabled(false);
+      //  ((AppCompatActivity)getActivity()).getSupportActionBar().up
 
       /*  Toolbar toolbar = getActivity().findViewById(R.id.toolbar);
         toolbar.
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);*/
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        ((AppCompatActivity)getActivity()).getSupportActionBar().setDisplayHomeAsUpEnabled(false);
     }
 
     @Nullable

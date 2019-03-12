@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -34,6 +35,10 @@ public class WebListFragment extends Fragment {
         setRetainInstance(true); // prevents instance of the fragment from being destroyed on rotation.
 
         mWebItems = WebLab.getWebList(this.getContext());
+
+        ((AppCompatActivity)getActivity()).getSupportActionBar();
+        ((AppCompatActivity)getActivity()).getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        ((AppCompatActivity)getActivity()).getSupportActionBar().setDisplayShowHomeEnabled(true);
     }
 
     @Override
