@@ -39,6 +39,8 @@
     <string name="undo_confirm">Undo</string>
 
     <!-- Daily questions -->
+    <string name="quest_check_app">Check all that apply:</string>
+
     <string name="quest_sleep_a">Hours of sleep:</string>
     <string name="quest_sleep_b">How many times was your sleep interrupted in the night?</string>
 
@@ -56,16 +58,16 @@
     <string name="quest_eating_a">Select your percentage of vegetable &amp; fruit intake:</string>
     <string name="quest_eating_b">Select your percentage of whole grain food intake:</string>
     <string name="quest_eating_c">Select your percentage of protein food intake:</string>
-    <string name="quest_eating_d">Do you feel you consumed the least amount of sodium that you could?</string>
-    <string name="quest_eating_e">Do you feel you consumed the least amount of free sugar that you could?</string>
-    <string name="quest_eating_f">Do you feel you consumed the least amount of saturated fat that you could?</string>
-    <string name="quest_eating_g">Did you make water your beverage of choice?</string>
+    <string name="quest_eating_d">You feel you consumed the least amount of sodium that you could.</string>
+    <string name="quest_eating_e">You feel you consumed the least amount of free sugar that you could.</string>
+    <string name="quest_eating_f">You feel you consumed the least amount of saturated fat that you could.</string>
+    <string name="quest_eating_g">You make water your beverage of choice</string>
 
     <string name="quest_speaking_a">Rate the amount of time spent socializing in person over social media.</string>
-    <string name="quest_speaking_b">Did you seek assistance and/or debrief when needed?</string>
-    <string name="quest_speaking_c">Did anything prevent your ability to share your thoughts?</string>
-    <string name="quest_speaking_d">Did you engage in more social media than face-to-face socializing?</string>
-    <string name="quest_speaking_e">Did your socializing impact your health or take away from your life balance? </string>
+    <string name="quest_speaking_b">You seeked assistance and/or debrief when needed.</string>
+    <string name="quest_speaking_c">Nothing prevented your ability to share your thoughts.</string>
+    <string name="quest_speaking_d">You engaged in more social media than face-to-face socializing.</string>
+    <string name="quest_speaking_e">Your socializing impacted your health or took away from your life balance.</string>
 
     <string name="feedback_over_100_percent">Did you eat more than 100% today? Please try again.</string>
 
