@@ -8,13 +8,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.Date;
-import java.util.UUID;
 
 public class InputSpeakingFragment extends Fragment {
 
@@ -29,17 +29,10 @@ public class InputSpeakingFragment extends Fragment {
     ImageView mIcon1d;
     ImageView mIcon1e;
 
-    ImageView mIcon2a;
-    ImageView mIcon2b;
-
-    ImageView mIcon3a;
-    ImageView mIcon3b;
-
-    ImageView mIcon4a;
-    ImageView mIcon4b;
-
-    ImageView mIcon5a;
-    ImageView mIcon5b;
+    CheckBox mDebriefCheck;
+    CheckBox mShareCheck;
+    CheckBox mSocialMediaCheck;
+    CheckBox mSocialBalanceCheck;
 
     // Score Button
     Button mButton;
@@ -48,14 +41,6 @@ public class InputSpeakingFragment extends Fragment {
     TextView mResults;
 
     int mQuestion_A_index;
-    //The following are indices instead of booleans, as there is no way to indicate
-    //that there is no selection with a boolean. Having these as ints allows for us to
-    //use the NO_SELECTION constant.
-    //The scoring algorithm takes the result of the expression mQuestion_X_index == 1
-    int mQuestion_B_index;
-    int mQuestion_C_index;
-    int mQuestion_D_index;
-    int mQuestion_E_index;
 
     ScrollView mScrollView;
 
@@ -107,25 +92,12 @@ public class InputSpeakingFragment extends Fragment {
         mIcon1d = v.findViewById(R.id.icon_1d);
         mIcon1e = v.findViewById(R.id.icon_1e);
 
-        mIcon2a = v.findViewById(R.id.icon_2a);
-        mIcon2b = v.findViewById(R.id.icon_2b);
-
-        mIcon3a = v.findViewById(R.id.icon_3a);
-        mIcon3b = v.findViewById(R.id.icon_3b);
-
-        mIcon4a = v.findViewById(R.id.icon_4a);
-        mIcon4b = v.findViewById(R.id.icon_4b);
-
-        mIcon5a = v.findViewById(R.id.icon_5a);
-        mIcon5b = v.findViewById(R.id.icon_5b);
+        mDebriefCheck = v.findViewById(R.id.assistance_checkBox);
+        mShareCheck = v.findViewById(R.id.share_checkbox);
+        mSocialMediaCheck = v.findViewById(R.id.social_media_checkbox);
+        mSocialBalanceCheck = v.findViewById(R.id.social_balance_checkbox);
 
         mQuestion_A_index = NO_SELECTION;
-        mQuestion_B_index = NO_SELECTION;
-        mQuestion_C_index = NO_SELECTION;
-        mQuestion_D_index = NO_SELECTION;
-        mQuestion_E_index = NO_SELECTION;
-
-     //   mIconFeedback = v.findViewById(R.id.icon_feedback);
 
         mIcon1a.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -173,117 +145,20 @@ public class InputSpeakingFragment extends Fragment {
         });
 
 
-        // Selected Yes for Q2
-        mIcon2a.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                mQuestion_B_index = 1;
-                mIcon2a.setBackground(getResources().getDrawable(R.drawable.border_image_selected));
-                // un-select no if applicable
-                mIcon2b.setBackground(getResources().getDrawable(R.drawable.border_image));
-            }
-        });
-
-        // Selected no for Q2
-        mIcon2b.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                mQuestion_B_index = 2;
-                mIcon2b.setBackground(getResources().getDrawable(R.drawable.border_image_selected));
-                // un-select no if applicable
-                mIcon2a.setBackground(getResources().getDrawable(R.drawable.border_image));
-            }
-        });
-
-
-        // Selected Yes
-        mIcon3a.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                mQuestion_C_index = 1;
-                mIcon3a.setBackground(getResources().getDrawable(R.drawable.border_image_selected));
-                // un-select no if applicable
-                mIcon3b.setBackground(getResources().getDrawable(R.drawable.border_image));
-            }
-        });
-
-        // Selected No
-        mIcon3b.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                mQuestion_C_index = 2;
-                mIcon3b.setBackground(getResources().getDrawable(R.drawable.border_image_selected));
-                // un-select no if applicable
-                mIcon3a.setBackground(getResources().getDrawable(R.drawable.border_image));
-            }
-        });
-
-
-        // Selected Yes
-        mIcon4a.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                mQuestion_D_index = 1;
-                mIcon4a.setBackground(getResources().getDrawable(R.drawable.border_image_selected));
-                // un-select no if applicable
-                mIcon4b.setBackground(getResources().getDrawable(R.drawable.border_image));
-            }
-        });
-
-        // Selected No
-        mIcon4b.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                mQuestion_D_index = 2;
-                mIcon4b.setBackground(getResources().getDrawable(R.drawable.border_image_selected));
-                // un-select no if applicable
-                mIcon4a.setBackground(getResources().getDrawable(R.drawable.border_image));
-            }
-        });
-
-
-        // Selected Yes
-        mIcon5a.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                mQuestion_E_index = 1;
-                mIcon5a.setBackground(getResources().getDrawable(R.drawable.border_image_selected));
-                // un-select no if applicable
-                mIcon5b.setBackground(getResources().getDrawable(R.drawable.border_image));
-            }
-        });
-
-        // Selected No
-        mIcon5b.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                mQuestion_E_index = 2;
-                mIcon5b.setBackground(getResources().getDrawable(R.drawable.border_image_selected));
-                // un-select no if applicable
-                mIcon5a.setBackground(getResources().getDrawable(R.drawable.border_image));
-            }
-        });
-
-
         mButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-
-
-                if (mQuestion_A_index == NO_SELECTION || mQuestion_B_index == NO_SELECTION ||
-                        mQuestion_C_index == NO_SELECTION || mQuestion_D_index == NO_SELECTION ||
-                        mQuestion_E_index == NO_SELECTION) {
+                if (mQuestion_A_index == NO_SELECTION) {
                     mResults.setText(getString(R.string.feedback_unselected));
-
 
                 } else {
 
                     int score = ScoringAlgorithms.scoreSpeaking(mQuestion_A_index,
-                            mQuestion_B_index == 1,
-                            mQuestion_C_index == 1,
-                            mQuestion_D_index == 1,
-                            mQuestion_E_index == 1);
+                            mDebriefCheck.isChecked(),
+                            mShareCheck.isChecked(),
+                            mSocialMediaCheck.isChecked(),
+                            mSocialBalanceCheck.isChecked());
 
                     int scoreStringID = 1000; // just here to initialize
                     Log.d(TAG, "Score: " + score);
@@ -291,26 +166,24 @@ public class InputSpeakingFragment extends Fragment {
 
                         case ScoringAlgorithms.SCORE_OVER:
                             scoreStringID = R.string.score_high;
-            //                mIconFeedback.setBackground(getResources().getDrawable(R.drawable.border_image_high));
                             break;
                         case ScoringAlgorithms.SCORE_UNDER:
                             scoreStringID = R.string.score_low;
-             //               mIconFeedback.setBackground(getResources().getDrawable(R.drawable.border_image_low));
                             break;
                         case ScoringAlgorithms.SCORE_BALANCED:
                             scoreStringID = R.string.score_balanced;
-             //               mIconFeedback.setBackground(getResources().getDrawable(R.drawable.border_image_balanced));
                             break;
                         case ScoringAlgorithms.SCORE_UNBALANCED:
                             scoreStringID = R.string.score_unbalanced;
-             //               mIconFeedback.setBackground(getResources().getDrawable(R.drawable.border_image_unbalanced));
                             break;
                         case ScoringAlgorithms.SCORE_ERROR:
+                            scoreStringID = R.string.score_error;
                             Toast t1 = new Toast(getContext());
                             t1.setText("Error returned from scoring algorithm");
                             t1.show();
                             break;
                         default:
+                            scoreStringID = R.string.score_error;
                             Toast t2 = new Toast(getContext());
                             t2.setText("Error in scoring");
                             t2.show();
