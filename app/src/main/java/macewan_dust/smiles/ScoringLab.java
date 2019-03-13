@@ -136,6 +136,15 @@ public class ScoringLab {
         return null;
     }
 
+
+    public List<Score> getThreeScores() {
+        List<Score> tempList = new ArrayList<>();
+        for (int i = 0 ; i < 3 ; i++){
+            tempList.add(mScoresList.get(i));
+        }
+        return tempList;
+    }
+
     /**
      * queryScore - does queries to the score table, customized by the where clause and args
      * <p>

@@ -97,6 +97,10 @@ public class MainActivity extends SingleFragmentActivity implements BottomNaviga
         // back button is pressed from one of these pages.
      //   Log.d(TAG, "back <- pressed. backstack: " +
    //             getSupportFragmentManager().getBackStackEntryCount() + " min backstack: " + minBackstack);
+
+
+
+
         if (getSupportFragmentManager().getBackStackEntryCount() < minBackstack) {
             //getSupportFragmentManager().popBackStackImmediate(0, FragmentManager.POP_BACK_STACK_INCLUSIVE);
             finish();

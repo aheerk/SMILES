@@ -158,4 +158,6 @@ public class NewUserFragment extends Fragment {
         Log.d(TAG, "replacing fragment");
     }
 
+
+
 }
