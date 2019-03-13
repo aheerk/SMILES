@@ -71,7 +71,7 @@ public class MainActivity extends SingleFragmentActivity implements BottomNaviga
      * This method handles when the user selects an item on the overflow menu
      * @param item
      * @return
-     */
+
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch(item.getItemId()) {
@@ -91,7 +91,7 @@ public class MainActivity extends SingleFragmentActivity implements BottomNaviga
         }
         return true;
     }
-
+     */
 
     public void toggleUpButton(){                                                       //////// ---- need to call this
         if (getSupportFragmentManager().getBackStackEntryCount() == minBackstack) {
