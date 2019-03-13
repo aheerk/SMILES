@@ -5,13 +5,19 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
+import android.content.Context;
+import android.view.GestureDetector;
+import android.view.GestureDetector.SimpleOnGestureListener;
+import android.view.MotionEvent;
+import android.view.View.OnTouchListener;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-public class NewUserFragment extends Fragment {
+public class NewUserFragment extends Fragment implements OnTouchListener {
 
     private static final String TAG = "NewUserFragment";
 
@@ -23,6 +29,8 @@ public class NewUserFragment extends Fragment {
     Button mBackButton;
     int i; // screen index
 
+    private GestureDetector gestureDetector;
+
     public static NewUserFragment newInstance() {
         return new NewUserFragment();
     }
@@ -31,6 +39,7 @@ public class NewUserFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        gestureDetector = new GestureDetector(getContext(), new GestureListener());
         setRetainInstance(true); // prevents instance of the fragment from being destroyed on rotation.
     }
 
@@ -158,4 +167,67 @@ public class NewUserFragment extends Fragment {
         Log.d(TAG, "replacing fragment");
     }
 
+    /**
+     * Reference:
+     * https://stackoverflow.com/questions/4139288/android-how-to-handle-right-to-left-swipe-gestures
+     */
+
+    /**
+     *
+     * @param view
+     * @param motionEvent
+     * @return
+     */
+    @Override
+    public boolean onTouch(View view, MotionEvent motionEvent) {
+        return gestureDetector.onTouchEvent(motionEvent);
+    }
+
+    private final class GestureListener extends SimpleOnGestureListener {
+
+        private static final int SWIPE_THRESHOLD = 100;
+        private static final int SWIPE_VELOCITY_THRESHOLD = 100;
+
+        @Override
+        public boolean onDown(MotionEvent e) {
+            return true;
+        }
+
+        @Override
+        public boolean onFling(MotionEvent e1, MotionEvent e2, float velocityX, float velocityY) {
+            boolean result = false;
+            try {
+                float diffY = e2.getY() - e1.getY();
+                float diffX = e2.getX() - e1.getX();
+                if (Math.abs(diffX) > Math.abs(diffY)) {
+                    if (Math.abs(diffX) > SWIPE_THRESHOLD && Math.abs(velocityX) > SWIPE_VELOCITY_THRESHOLD) {
+                        if (diffX > 0) {
+                            onSwipeRight();
+                        } else {
+                            onSwipeLeft();
+                        }
+                        result = true;
+                    }
+                }
+            } catch (Exception exception) {
+                exception.printStackTrace();
+            }
+            return result;
+        }
+    }
+
+    public void onSwipeRight() {
+        if (i<12){
+            i++;
+        }
+        updateScreen();
+    }
+
+    public void onSwipeLeft() {
+        if (i>0){
+            i--;
+        }
+        updateScreen();
+    }
+    
 }

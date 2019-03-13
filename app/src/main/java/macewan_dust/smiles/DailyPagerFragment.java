@@ -40,8 +40,6 @@ public class DailyPagerFragment extends Fragment {
         super.onCreate(savedInstanceState);
         mStartPage = this.getArguments().getInt(DailyListFragment.DAILY_RECYCLER_VIEW_INDEX);
         getActivity().setTitle(getString(R.string.title_sleep));
-
-
     }
 
     @Override
@@ -57,9 +55,20 @@ public class DailyPagerFragment extends Fragment {
 
         mDot1.setImageDrawable(getResources().getDrawable(R.drawable.dot_image_current_page));
 
-
         return v;
     }
+
+/*
+    @Override
+    public void onBackPressed() {
+        int currentItem = mViewPager.getCurrentItem();
+        if (currentItem != 0) {
+            mViewPager.setCurrentItem(currentItem - 1, true);
+        } else {
+            super.onBackPressed();
+        }
+    }
+    */
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
@@ -100,10 +109,7 @@ public class DailyPagerFragment extends Fragment {
                     case 5:
                         mDot6.setImageDrawable(getResources().getDrawable(R.drawable.dot_image_current_page));
                         break;
-
                 }
-
-
             }
 
             private void resetDots(int position){
@@ -132,7 +138,6 @@ public class DailyPagerFragment extends Fragment {
         adapter.addFragment(new InputSpeakingFragment(),getString(R.string.title_speaking));
 
         mViewPager.setCurrentItem(mStartPage);
-
     }
 
     public class ViewPagerAdapter extends FragmentPagerAdapter {
@@ -164,7 +169,6 @@ public class DailyPagerFragment extends Fragment {
             mTitlesList.add("");
             notifyDataSetChanged();
         }
-
 
         public void addFragment(Fragment fragment, String title) {
             mFragmentList.add(fragment);
