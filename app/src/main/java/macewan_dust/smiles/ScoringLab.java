@@ -4,19 +4,12 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
-import android.icu.util.Output;
 import android.media.MediaScannerConnection;
 import android.net.Uri;
-import android.text.style.TabStopSpan;
 import android.util.Log;
-
-import macewan_dust.smiles.database.SMILES_DatabaseHelper;
-import macewan_dust.smiles.database.SMILES_DatabaseSchema;
-import macewan_dust.smiles.database.SMILES_CursorWrapper;
 
 import java.io.File;
 import java.io.FileOutputStream;
-import java.io.FileWriter;
 import java.io.IOException;
 import java.io.OutputStreamWriter;
 import java.nio.charset.StandardCharsets;
@@ -25,6 +18,10 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.Date;
 import java.util.List;
+
+import macewan_dust.smiles.database.SMILES_CursorWrapper;
+import macewan_dust.smiles.database.SMILES_DatabaseHelper;
+import macewan_dust.smiles.database.SMILES_DatabaseSchema;
 
 
 public class ScoringLab {

@@ -1,23 +1,22 @@
 package macewan_dust.smiles;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.util.Log;
+import android.view.GestureDetector;
+import android.view.GestureDetector.SimpleOnGestureListener;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
-import android.content.Context;
-import android.view.GestureDetector;
-import android.view.GestureDetector.SimpleOnGestureListener;
-import android.view.MotionEvent;
 import android.view.View.OnTouchListener;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-public class NewUserFragment extends Fragment implements OnTouchListener {
+public class NewUserFragment extends Fragment {
 
     private static final String TAG = "NewUserFragment";
 
@@ -29,8 +28,6 @@ public class NewUserFragment extends Fragment implements OnTouchListener {
     Button mBackButton;
     int i; // screen index
 
-    private GestureDetector gestureDetector;
-
     public static NewUserFragment newInstance() {
         return new NewUserFragment();
     }
@@ -39,7 +36,6 @@ public class NewUserFragment extends Fragment implements OnTouchListener {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        gestureDetector = new GestureDetector(getContext(), new GestureListener());
         setRetainInstance(true); // prevents instance of the fragment from being destroyed on rotation.
     }
 
@@ -57,6 +53,8 @@ public class NewUserFragment extends Fragment implements OnTouchListener {
         updateScreen ();
 
         i = 0;
+
+        // button code
         mNextButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -70,6 +68,25 @@ public class NewUserFragment extends Fragment implements OnTouchListener {
         mBackButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                if (i>0){
+                    i--;
+                }
+                updateScreen();
+            }
+        });
+
+        // swipe code
+        v.setOnTouchListener(new OnSwipeTouchListener(getContext()) {
+            @Override
+            public void onSwipeLeft() {
+                if (i<12){
+                    i++;
+                }
+                updateScreen();
+            }
+
+            @Override
+            public void onSwipeRight() {
                 if (i>0){
                     i--;
                 }
@@ -149,11 +166,8 @@ public class NewUserFragment extends Fragment implements OnTouchListener {
             default:
                 mTitle.setText(R.string.no_data);
                 mBodyText.setText(R.string.no_data);
-
         }
     }
-
-
 
     /**
      * replaceFragment - performs fragment transactions.
@@ -166,68 +180,4 @@ public class NewUserFragment extends Fragment implements OnTouchListener {
         transaction.commit();
         Log.d(TAG, "replacing fragment");
     }
-
-    /**
-     * Reference:
-     * https://stackoverflow.com/questions/4139288/android-how-to-handle-right-to-left-swipe-gestures
-     */
-
-    /**
-     *
-     * @param view
-     * @param motionEvent
-     * @return
-     */
-    @Override
-    public boolean onTouch(View view, MotionEvent motionEvent) {
-        return gestureDetector.onTouchEvent(motionEvent);
-    }
-
-    private final class GestureListener extends SimpleOnGestureListener {
-
-        private static final int SWIPE_THRESHOLD = 100;
-        private static final int SWIPE_VELOCITY_THRESHOLD = 100;
-
-        @Override
-        public boolean onDown(MotionEvent e) {
-            return true;
-        }
-
-        @Override
-        public boolean onFling(MotionEvent e1, MotionEvent e2, float velocityX, float velocityY) {
-            boolean result = false;
-            try {
-                float diffY = e2.getY() - e1.getY();
-                float diffX = e2.getX() - e1.getX();
-                if (Math.abs(diffX) > Math.abs(diffY)) {
-                    if (Math.abs(diffX) > SWIPE_THRESHOLD && Math.abs(velocityX) > SWIPE_VELOCITY_THRESHOLD) {
-                        if (diffX > 0) {
-                            onSwipeRight();
-                        } else {
-                            onSwipeLeft();
-                        }
-                        result = true;
-                    }
-                }
-            } catch (Exception exception) {
-                exception.printStackTrace();
-            }
-            return result;
-        }
-    }
-
-    public void onSwipeRight() {
-        if (i<12){
-            i++;
-        }
-        updateScreen();
-    }
-
-    public void onSwipeLeft() {
-        if (i>0){
-            i--;
-        }
-        updateScreen();
-    }
-    
 }
