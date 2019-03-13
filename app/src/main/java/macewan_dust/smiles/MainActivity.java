@@ -71,10 +71,15 @@ public class MainActivity extends SingleFragmentActivity implements BottomNaviga
      * This method handles when the user selects an item on the overflow menu
      * @param item
      * @return
-
+*/
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch(item.getItemId()) {
+            // this home case replaces the onSupportNavigateUp() if implemented
+            case android.R.id.home:
+                onBackPressed();
+                // Log.d(TAG, "up pressed. backstack: " + getSupportFragmentManager().getBackStackEntryCount() + " min backstack: " + minBackstack);
+                break;
             case R.id.overflow_settings: {
                 Log.d(TAG, "Clicked settings.");
                 loadFragment(new SettingsListFragment());
@@ -89,25 +94,6 @@ public class MainActivity extends SingleFragmentActivity implements BottomNaviga
                 break;
             }
         }
-        return true;
-    }
-     */
-
-    /**
-     * when navigation back button is pressed, do the same as pressing the phone back button.
-     * @return
-     */
-    @Override
-    public boolean onSupportNavigateUp() {
-        // note: FragmentManager is not used in this program Instead, SupportFragmentManager is used.
-
-        // back button only works within the app and does not close the base pages.
-   //     if (getSupportFragmentManager().getBackStackEntryCount() > minBackstack) {
-
-    //        Log.d(TAG, "backstack count: " + getSupportFragmentManager().getBackStackEntryCount());
-            onBackPressed();
-   //     }
-    //    Log.d(TAG, "up pressed. backstack: " + getSupportFragmentManager().getBackStackEntryCount() + " min backstack: " + minBackstack);
         return true;
     }
 
