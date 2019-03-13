@@ -14,6 +14,7 @@ public class Score {
 
 //    private String mDateString; // using a string date due to all the date issues. deprecated, etc.
     private Date mDate;
+    private String mDateString;
     private UUID mScoreID;
     private int mSleepScore;
     private int mMovementScore;
@@ -35,6 +36,8 @@ public class Score {
         mLaughterScore = SCORE_NO_DATA;
         mEatingScore = SCORE_NO_DATA;
         mSpeakingScore = SCORE_NO_DATA;
+
+        mDateString = timelessDate(mDate);
     }
 
     public Score(Date date) {
@@ -50,6 +53,25 @@ public class Score {
         mLaughterScore = SCORE_NO_DATA;
         mEatingScore = SCORE_NO_DATA;
         mSpeakingScore = SCORE_NO_DATA;
+
+        mDateString = timelessDate(mDate);
+    }
+
+    /**
+     * //Will need to load the rest of the data from the database
+     *
+     * @param id
+     */
+    public Score(UUID id) {
+        // no date shift here! this is for databases
+        mScoreID = id;
+        mSleepScore = SCORE_NO_DATA;
+        mMovementScore = SCORE_NO_DATA;
+        mImaginationScore = SCORE_NO_DATA;
+        mLaughterScore = SCORE_NO_DATA;
+        mEatingScore = SCORE_NO_DATA;
+        mSpeakingScore = SCORE_NO_DATA;
+
     }
 
     /**
@@ -84,23 +106,8 @@ public class Score {
         return true;
     }
 
-    /**
-     * //Will need to load the rest of the data from the database
-     *
-     * @param id
-     */
-    public Score(UUID id) {
-        mScoreID = id;
-        mSleepScore = SCORE_NO_DATA;
-        mMovementScore = SCORE_NO_DATA;
-        mImaginationScore = SCORE_NO_DATA;
-        mLaughterScore = SCORE_NO_DATA;
-        mEatingScore = SCORE_NO_DATA;
-        mSpeakingScore = SCORE_NO_DATA;
-    }
-
     public String getDateString() {
-        return timelessDate(mDate);
+        return mDateString;
     }
 
     public UUID getScoreID() {
@@ -164,6 +171,7 @@ public class Score {
 
     public void setDate(Date date) {
         mDate = date;
+        mDateString = timelessDate(mDate);
     }
 
     @Override
@@ -174,7 +182,7 @@ public class Score {
         sb.append("\n");
         sb.append("Date long: " + String.valueOf(mDate.getTime()));
         sb.append("\n");
-        sb.append("Date string: " + timelessDate(mDate));
+        sb.append("Date string: " + mDateString);
         sb.append("\n");
         sb.append("Sleep: " + mSleepScore);
         sb.append("\n");

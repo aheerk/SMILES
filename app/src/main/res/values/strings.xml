@@ -5,6 +5,8 @@
     <string name="title_daily_questions">Daily Questions</string>
     <string name="title_dashboard">Dashboard</string>
     <string name="title_weekly_graph">Weekly Graph</string>
+    <string name="title_monthly_graph">Monthly Graph</string>
+
     <string name="title_information">Information</string>
     <string name="title_movement">Movement</string>
     <string name="title_sleep">Sleep</string>

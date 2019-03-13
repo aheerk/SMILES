@@ -18,6 +18,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.Date;
+import java.util.LinkedList;
 import java.util.List;
 
 import macewan_dust.smiles.database.SMILES_CursorWrapper;
@@ -134,6 +135,25 @@ public class ScoringLab {
         return null;
     }
 
+    /**
+     * returns all scores in a given month
+     * @param monthShort
+     * @param year
+     * @return
+     */
+    public List<Score> monthScores(String monthShort, String year) {
+
+        List<Score> monthList = new LinkedList<>();
+        String tempDate;
+
+        for (int i = 0; i < getScores().size() ; i++) {
+            tempDate = mScoresList.get(i).getDateString();
+
+            if (tempDate.contains(monthShort) && tempDate.contains(year));
+            monthList.add(mScoresList.get(i));
+        }
+        return monthList;
+    }
 
     public List<Score> getThreeScores() {
         List<Score> tempList = new ArrayList<>();

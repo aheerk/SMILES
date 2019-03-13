@@ -7,9 +7,14 @@
         android:title="@string/title_dashboard"/>
 
     <item
-        android:id="@+id/navigation_graph"
+        android:id="@+id/navigation_weekly_graph"
         android:icon="@drawable/ic_graph"
         android:title="@string/title_weekly_graph" />
+
+    <item
+        android:id="@+id/navigation_monthly_graph"
+        android:icon="@drawable/ic_graph"
+        android:title="@string/title_monthly_graph" />
 
     <item
         android:id="@+id/navigation_info"
