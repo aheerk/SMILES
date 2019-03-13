@@ -20,26 +20,26 @@ public class ScoringAlgorithmsTest {
     @Test
     public void scoreSleep() {
 
-        assertEquals(ScoringAlgorithms.SCORE_HIGH, ScoringAlgorithms.scoreSleep(ScoringAlgorithms.INPUT_d, 0));
+        assertEquals(ScoringAlgorithms.SCORE_OVER, ScoringAlgorithms.scoreSleep(ScoringAlgorithms.INPUT_d, 0));
 
         // Input_d is >9 hours of sleep
-        assertEquals(ScoringAlgorithms.SCORE_HIGH, ScoringAlgorithms.scoreSleep(ScoringAlgorithms.INPUT_d, 0));
-        assertEquals(ScoringAlgorithms.SCORE_HIGH, ScoringAlgorithms.scoreSleep(ScoringAlgorithms.INPUT_d, 5));
+        assertEquals(ScoringAlgorithms.SCORE_OVER, ScoringAlgorithms.scoreSleep(ScoringAlgorithms.INPUT_d, 0));
+        assertEquals(ScoringAlgorithms.SCORE_OVER, ScoringAlgorithms.scoreSleep(ScoringAlgorithms.INPUT_d, 5));
 
         // Input_c is 6-9 hours of sleep. balanced unless hindered > 1
         assertEquals(ScoringAlgorithms.SCORE_BALANCED, ScoringAlgorithms.scoreSleep(ScoringAlgorithms.INPUT_c, 0));
         assertEquals(ScoringAlgorithms.SCORE_BALANCED, ScoringAlgorithms.scoreSleep(ScoringAlgorithms.INPUT_c, 1));
-        assertEquals(ScoringAlgorithms.SCORE_LOW, ScoringAlgorithms.scoreSleep(ScoringAlgorithms.INPUT_c, 2));
+        assertEquals(ScoringAlgorithms.SCORE_UNDER, ScoringAlgorithms.scoreSleep(ScoringAlgorithms.INPUT_c, 2));
 
         // Input_b and a are low in all cases
-        assertEquals(ScoringAlgorithms.SCORE_LOW, ScoringAlgorithms.scoreSleep(ScoringAlgorithms.INPUT_b, 5));
-        assertEquals(ScoringAlgorithms.SCORE_LOW, ScoringAlgorithms.scoreSleep(ScoringAlgorithms.INPUT_b, 0));
-        assertEquals(ScoringAlgorithms.SCORE_LOW, ScoringAlgorithms.scoreSleep(ScoringAlgorithms.INPUT_a, 0));
-        assertEquals(ScoringAlgorithms.SCORE_LOW, ScoringAlgorithms.scoreSleep(ScoringAlgorithms.INPUT_a, 5));
+        assertEquals(ScoringAlgorithms.SCORE_UNDER, ScoringAlgorithms.scoreSleep(ScoringAlgorithms.INPUT_b, 5));
+        assertEquals(ScoringAlgorithms.SCORE_UNDER, ScoringAlgorithms.scoreSleep(ScoringAlgorithms.INPUT_b, 0));
+        assertEquals(ScoringAlgorithms.SCORE_UNDER, ScoringAlgorithms.scoreSleep(ScoringAlgorithms.INPUT_a, 0));
+        assertEquals(ScoringAlgorithms.SCORE_UNDER, ScoringAlgorithms.scoreSleep(ScoringAlgorithms.INPUT_a, 5));
 
         // error cases. hinderance should be 0-5. input index is 0-3
         assertEquals(ScoringAlgorithms.SCORE_ERROR, ScoringAlgorithms.scoreSleep(ScoringAlgorithms.INPUT_a, -1));
-        assertEquals(ScoringAlgorithms.SCORE_ERROR, ScoringAlgorithms.scoreSleep(ScoringAlgorithms.INPUT_a, 100));
+        assertEquals(ScoringAlgorithms.SCORE_ERROR, ScoringAlgorithms.scoreSleep(ScoringAlgorithms.INPUT_a, 10));
         assertEquals(ScoringAlgorithms.SCORE_ERROR, ScoringAlgorithms.scoreSleep(4, 0));
     }
 
@@ -47,9 +47,9 @@ public class ScoringAlgorithmsTest {
     public void scoreMovement() {
 
         // input a is low
-        assertEquals(ScoringAlgorithms.SCORE_LOW, ScoringAlgorithms.scoreMovement(
+        assertEquals(ScoringAlgorithms.SCORE_UNDER, ScoringAlgorithms.scoreMovement(
                 ScoringAlgorithms.INPUT_a, true, ScoringAlgorithms.INPUT_a));
-        assertEquals(ScoringAlgorithms.SCORE_LOW, ScoringAlgorithms.scoreMovement(
+        assertEquals(ScoringAlgorithms.SCORE_UNDER, ScoringAlgorithms.scoreMovement(
                 ScoringAlgorithms.INPUT_a, false, ScoringAlgorithms.INPUT_a));
 
         // input b and c are balanced if boneAndMuscle is true
@@ -63,34 +63,34 @@ public class ScoringAlgorithmsTest {
                 ScoringAlgorithms.INPUT_c, true, ScoringAlgorithms.INPUT_b));
 
         // input b and c and boneAndMuscle is false are all low
-        assertEquals(ScoringAlgorithms.SCORE_LOW, ScoringAlgorithms.scoreMovement(
+        assertEquals(ScoringAlgorithms.SCORE_UNDER, ScoringAlgorithms.scoreMovement(
                 ScoringAlgorithms.INPUT_b, false, ScoringAlgorithms.INPUT_b));
 
-        assertEquals(ScoringAlgorithms.SCORE_LOW, ScoringAlgorithms.scoreMovement(
+        assertEquals(ScoringAlgorithms.SCORE_UNDER, ScoringAlgorithms.scoreMovement(
                 ScoringAlgorithms.INPUT_c, false, ScoringAlgorithms.INPUT_c));
 
-        assertEquals(ScoringAlgorithms.SCORE_LOW, ScoringAlgorithms.scoreMovement(
+        assertEquals(ScoringAlgorithms.SCORE_UNDER, ScoringAlgorithms.scoreMovement(
                 ScoringAlgorithms.INPUT_b, false, ScoringAlgorithms.INPUT_c));
 
-        assertEquals(ScoringAlgorithms.SCORE_LOW, ScoringAlgorithms.scoreMovement(
+        assertEquals(ScoringAlgorithms.SCORE_UNDER, ScoringAlgorithms.scoreMovement(
                 ScoringAlgorithms.INPUT_c, false, ScoringAlgorithms.INPUT_b));
 
         // input d is high
-        assertEquals(ScoringAlgorithms.SCORE_HIGH, ScoringAlgorithms.scoreMovement(
+        assertEquals(ScoringAlgorithms.SCORE_OVER, ScoringAlgorithms.scoreMovement(
                 ScoringAlgorithms.INPUT_d, true, ScoringAlgorithms.INPUT_d));
 
         // this high is actually unbalanced because of the lack of bone and muscle ----------------------
-        assertEquals(ScoringAlgorithms.SCORE_OFF, ScoringAlgorithms.scoreMovement(
+        assertEquals(ScoringAlgorithms.SCORE_UNBALANCED, ScoringAlgorithms.scoreMovement(
                 ScoringAlgorithms.INPUT_d, false, ScoringAlgorithms.INPUT_d));
 
         // unbalanced inputs
-        assertEquals(ScoringAlgorithms.SCORE_OFF, ScoringAlgorithms.scoreMovement(
+        assertEquals(ScoringAlgorithms.SCORE_UNBALANCED, ScoringAlgorithms.scoreMovement(
                 ScoringAlgorithms.INPUT_a, true, ScoringAlgorithms.INPUT_d));
-        assertEquals(ScoringAlgorithms.SCORE_OFF, ScoringAlgorithms.scoreMovement(
+        assertEquals(ScoringAlgorithms.SCORE_UNBALANCED, ScoringAlgorithms.scoreMovement(
                 ScoringAlgorithms.INPUT_d, true, ScoringAlgorithms.INPUT_a));
-        assertEquals(ScoringAlgorithms.SCORE_OFF, ScoringAlgorithms.scoreMovement(
+        assertEquals(ScoringAlgorithms.SCORE_UNBALANCED, ScoringAlgorithms.scoreMovement(
                 ScoringAlgorithms.INPUT_a, false, ScoringAlgorithms.INPUT_d));
-        assertEquals(ScoringAlgorithms.SCORE_OFF, ScoringAlgorithms.scoreMovement(
+        assertEquals(ScoringAlgorithms.SCORE_UNBALANCED, ScoringAlgorithms.scoreMovement(
                 ScoringAlgorithms.INPUT_d, false, ScoringAlgorithms.INPUT_a));
 
         // input range is 0-3
@@ -106,32 +106,32 @@ public class ScoringAlgorithmsTest {
     public void scoreImagination() {
 
         // in all categories a is low, b is balanced, c is high.
-        assertEquals(ScoringAlgorithms.SCORE_LOW, ScoringAlgorithms.scoreImagination(
+        assertEquals(ScoringAlgorithms.SCORE_UNDER, ScoringAlgorithms.scoreImagination(
                 ScoringAlgorithms.INPUT_a, ScoringAlgorithms.INPUT_a, ScoringAlgorithms.INPUT_a));
         assertEquals(ScoringAlgorithms.SCORE_BALANCED, ScoringAlgorithms.scoreImagination(
                 ScoringAlgorithms.INPUT_b, ScoringAlgorithms.INPUT_b, ScoringAlgorithms.INPUT_b));
-        assertEquals(ScoringAlgorithms.SCORE_HIGH, ScoringAlgorithms.scoreImagination(
+        assertEquals(ScoringAlgorithms.SCORE_OVER, ScoringAlgorithms.scoreImagination(
                 ScoringAlgorithms.INPUT_c, ScoringAlgorithms.INPUT_c, ScoringAlgorithms.INPUT_c));
 
         // low mixed with balanced is low
-        assertEquals(ScoringAlgorithms.SCORE_LOW, ScoringAlgorithms.scoreImagination(
+        assertEquals(ScoringAlgorithms.SCORE_UNDER, ScoringAlgorithms.scoreImagination(
                 ScoringAlgorithms.INPUT_a, ScoringAlgorithms.INPUT_b, ScoringAlgorithms.INPUT_b));
-        assertEquals(ScoringAlgorithms.SCORE_LOW, ScoringAlgorithms.scoreImagination(
+        assertEquals(ScoringAlgorithms.SCORE_UNDER, ScoringAlgorithms.scoreImagination(
                 ScoringAlgorithms.INPUT_b, ScoringAlgorithms.INPUT_a, ScoringAlgorithms.INPUT_b));
 
         // high mixed with balanced is high
-        assertEquals(ScoringAlgorithms.SCORE_HIGH, ScoringAlgorithms.scoreImagination(
+        assertEquals(ScoringAlgorithms.SCORE_OVER, ScoringAlgorithms.scoreImagination(
                 ScoringAlgorithms.INPUT_b, ScoringAlgorithms.INPUT_c, ScoringAlgorithms.INPUT_c));
 
-        assertEquals(ScoringAlgorithms.SCORE_HIGH, ScoringAlgorithms.scoreImagination(
+        assertEquals(ScoringAlgorithms.SCORE_OVER, ScoringAlgorithms.scoreImagination(
                 ScoringAlgorithms.INPUT_c, ScoringAlgorithms.INPUT_b, ScoringAlgorithms.INPUT_b));
 
         // off balance
-        assertEquals(ScoringAlgorithms.SCORE_OFF, ScoringAlgorithms.scoreImagination(
+        assertEquals(ScoringAlgorithms.SCORE_UNBALANCED, ScoringAlgorithms.scoreImagination(
                 ScoringAlgorithms.INPUT_a, ScoringAlgorithms.INPUT_b, ScoringAlgorithms.INPUT_c));
-        assertEquals(ScoringAlgorithms.SCORE_OFF, ScoringAlgorithms.scoreImagination(
+        assertEquals(ScoringAlgorithms.SCORE_UNBALANCED, ScoringAlgorithms.scoreImagination(
                 ScoringAlgorithms.INPUT_c, ScoringAlgorithms.INPUT_a, ScoringAlgorithms.INPUT_c));
-        assertEquals(ScoringAlgorithms.SCORE_OFF, ScoringAlgorithms.scoreImagination(
+        assertEquals(ScoringAlgorithms.SCORE_UNBALANCED, ScoringAlgorithms.scoreImagination(
                 ScoringAlgorithms.INPUT_c, ScoringAlgorithms.INPUT_a, ScoringAlgorithms.INPUT_b));
 
         // errors - input range is a to c on all fields
@@ -146,10 +146,10 @@ public class ScoringAlgorithmsTest {
     @Test
     public void scoreLaughter() {
         // note that laughter has no high or off balanced score
-        assertEquals(ScoringAlgorithms.SCORE_LOW, ScoringAlgorithms.scoreLaughter(1));
-        assertEquals(ScoringAlgorithms.SCORE_LOW, ScoringAlgorithms.scoreLaughter(2));
-        assertEquals(ScoringAlgorithms.SCORE_LOW, ScoringAlgorithms.scoreLaughter(3));
-        assertEquals(ScoringAlgorithms.SCORE_LOW, ScoringAlgorithms.scoreLaughter(4));
+        assertEquals(ScoringAlgorithms.SCORE_UNDER, ScoringAlgorithms.scoreLaughter(1));
+        assertEquals(ScoringAlgorithms.SCORE_UNDER, ScoringAlgorithms.scoreLaughter(2));
+        assertEquals(ScoringAlgorithms.SCORE_UNDER, ScoringAlgorithms.scoreLaughter(3));
+        assertEquals(ScoringAlgorithms.SCORE_UNDER, ScoringAlgorithms.scoreLaughter(4));
         assertEquals(ScoringAlgorithms.SCORE_BALANCED, ScoringAlgorithms.scoreLaughter(5));
         assertEquals(ScoringAlgorithms.SCORE_ERROR, ScoringAlgorithms.scoreLaughter(100));
         assertEquals(ScoringAlgorithms.SCORE_ERROR, ScoringAlgorithms.scoreLaughter(-100));
@@ -169,25 +169,25 @@ public class ScoringAlgorithmsTest {
                 5, true, false, false, false));
 
         // low for any speakingRating < 5 and any combination of booleans
-        assertEquals(ScoringAlgorithms.SCORE_LOW, ScoringAlgorithms.scoreSpeaking(
+        assertEquals(ScoringAlgorithms.SCORE_UNDER, ScoringAlgorithms.scoreSpeaking(
                 4, true, false, false, false));
-        assertEquals(ScoringAlgorithms.SCORE_LOW, ScoringAlgorithms.scoreSpeaking(
+        assertEquals(ScoringAlgorithms.SCORE_UNDER, ScoringAlgorithms.scoreSpeaking(
                 2, true, true, false, false));
 
         // low if speakingRating 5 but booleans reduce score
-        assertEquals(ScoringAlgorithms.SCORE_LOW, ScoringAlgorithms.scoreSpeaking(
+        assertEquals(ScoringAlgorithms.SCORE_UNDER, ScoringAlgorithms.scoreSpeaking(
                 5, false, false, false, false));
 
         // high if socialMedia is true and/or impactHealth is true
-        assertEquals(ScoringAlgorithms.SCORE_HIGH, ScoringAlgorithms.scoreSpeaking(
+        assertEquals(ScoringAlgorithms.SCORE_OVER, ScoringAlgorithms.scoreSpeaking(
                 5, true, false, true, false));
-        assertEquals(ScoringAlgorithms.SCORE_HIGH, ScoringAlgorithms.scoreSpeaking(
+        assertEquals(ScoringAlgorithms.SCORE_OVER, ScoringAlgorithms.scoreSpeaking(
                 5, true, false, false, true));
 
         // off balanced
-        assertEquals(ScoringAlgorithms.SCORE_OFF, ScoringAlgorithms.scoreSpeaking(
+        assertEquals(ScoringAlgorithms.SCORE_UNBALANCED, ScoringAlgorithms.scoreSpeaking(
                 1, true, false, true, false));
-        assertEquals(ScoringAlgorithms.SCORE_OFF, ScoringAlgorithms.scoreSpeaking(
+        assertEquals(ScoringAlgorithms.SCORE_UNBALANCED, ScoringAlgorithms.scoreSpeaking(
                 5, true, true, false, true));
 
         // error - speaking out of range 1-5
