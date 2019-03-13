@@ -12,6 +12,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
 
@@ -57,9 +58,40 @@ public class MainActivity extends SingleFragmentActivity implements BottomNaviga
             }
         });*/
 
-        this.getPermissions(getApplicationContext());
         minBackstack = 0;
     }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.toolbar, menu);
+        return true;
+    }
+
+    /**
+     * This method handles when the user selects an item on the overflow menu
+     * @param item
+     * @return
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch(item.getItemId()) {
+            case R.id.overflow_settings: {
+                Log.d(TAG, "Clicked settings.");
+                loadFragment(new SettingsListFragment());
+                break;
+            }
+            case R.id.overflow_export: {
+                export(getApplicationContext());
+                break;
+            }
+            case R.id.overflow_import: {
+                // Does nothing right now
+                break;
+            }
+        }
+        return true;
+    }
+     */
 
     /**
      * when navigation back button is pressed, do the same as pressing the phone back button.
@@ -150,7 +182,13 @@ public class MainActivity extends SingleFragmentActivity implements BottomNaviga
         return loadFragment(fragment);
     }
 
-    public void getPermissions(Context context) {
+    private String getFilename() {
+        return "score.csv";
+    }
+
+    private void export (Context context) {
+
+        // Check if we have permission to export
         if (ContextCompat.checkSelfPermission(context,
                 Manifest.permission.WRITE_EXTERNAL_STORAGE)  != PackageManager.PERMISSION_GRANTED) {
             Log.d(TAG, "No permission to access external storage");
@@ -167,8 +205,10 @@ public class MainActivity extends SingleFragmentActivity implements BottomNaviga
             }
         } else {
             Log.d(TAG, "Permissions granted from previous use.");
+
+            // Write to csv
             ScoringLab lab = new ScoringLab(MainActivity.this);
-            lab.writeCSVFile("scores.csv");
+            lab.writeCSVFile(getFilename(), MainActivity.this);
         }
     }
 
@@ -188,14 +228,14 @@ public class MainActivity extends SingleFragmentActivity implements BottomNaviga
 
                 if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                     Log.d(TAG, "Permission granted.");
-                    Toast.makeText(MainActivity.this, R.string.balanced, Toast.LENGTH_SHORT);
 
+                    // Write to csv
                     ScoringLab lab = new ScoringLab(MainActivity.this);
-                    lab.writeCSVFile("COOKIES.txt");
+                    lab.writeCSVFile(getFilename(), MainActivity.this);
 
                 } else {
                     Log.d(TAG, "No permissions given.");
-                    Toast.makeText(MainActivity.this, R.string.unbalanced, Toast.LENGTH_SHORT);
+                    Toast.makeText(MainActivity.this, R.string.csv_no_permission, Toast.LENGTH_SHORT).show();
                 }
                 return;
             }

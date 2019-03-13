@@ -221,4 +221,12 @@
     <!-- weekly graph strings -->
     <string name="date_picker_title">Weekly Graph Date Selector</string>
     <string name="weekly_checkbox_description">Show days without scores</string>
+
+    <string name="overflow_settings">Settings</string>
+    <string name="overflow_export">Export</string>
+    <string name="overflow_import">Import</string>
+
+    <string name="csv_no_permission">Please accept permissions to export data.</string>
+    <string name="csv_success">Your data was successfully exported to your documents.</string>
+    <string name="csv_failure">Export unsuccessful.</string>
 </resources>

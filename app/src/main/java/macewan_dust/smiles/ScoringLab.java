@@ -7,6 +7,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.media.MediaScannerConnection;
 import android.net.Uri;
 import android.util.Log;
+import android.widget.Toast;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -350,7 +351,7 @@ public class ScoringLab {
      * Referenced https://stackoverflow.com/questions/31063216/filenotfoundexception-storage-emulated-0-android
      * https://stackoverflow.com/questions/35132693/set-encoding-as-utf-8-for-a-filewriter
      */
-    public void writeCSVFile(String filename) {
+    public void writeCSVFile(String filename, Context context) {
 
         // Ask for permissions here?
 
@@ -359,6 +360,7 @@ public class ScoringLab {
             Log.d(TAG, "External storage is writable");
         } else {
             Log.d(TAG, "External storage is not writable. Aborting write.");
+            Toast.makeText(context, R.string.csv_failure, Toast.LENGTH_SHORT).show();
             return;
         }
 
@@ -383,6 +385,7 @@ public class ScoringLab {
             } catch (IOException e) {
                 Log.d(TAG, "Failed to create " + filename);
                 e.printStackTrace();
+                Toast.makeText(context, R.string.csv_failure, Toast.LENGTH_SHORT).show();
                 return;
             }
             Log.d(TAG, filename + "created: " + file.exists());
@@ -418,9 +421,13 @@ public class ScoringLab {
                     }
             );
 
+            Toast.makeText(context, R.string.csv_success, Toast.LENGTH_SHORT).show();
+
         } catch (IOException e) {
             e.printStackTrace();
             Log.w(TAG, "Error writing " + file, e);
+
+            Toast.makeText(context, R.string.csv_failure, Toast.LENGTH_SHORT).show();
         }
 
     }
