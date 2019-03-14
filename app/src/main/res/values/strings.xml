@@ -231,4 +231,21 @@
     <string name="csv_no_permission">Please accept permissions to export data.</string>
     <string name="csv_success">Your data was successfully exported to your documents.</string>
     <string name="csv_failure">Export unsuccessful.</string>
+
+    <!-- monthly graph strings -->
+    <string-array name="month_array">
+        <item>Jan</item>
+        <item>Feb</item>
+        <item>Mar</item>
+        <item>Apr</item>
+        <item>May</item>
+        <item>Jun</item>
+        <item>Jul</item>
+        <item>Aug</item>
+        <item>Sep</item>
+        <item>Oct</item>
+        <item>Nov</item>
+        <item>Dec</item>
+    </string-array>
+
 </resources>

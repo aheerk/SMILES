@@ -148,6 +148,10 @@ public class WeeklyGraphFragment extends Fragment {
         if (requestCode == REQUEST_DATE) {
             // Extra date is a public constant so we are pulling it out of the class.
             mGraphDate = (Date) data.getSerializableExtra(DatePickerFragment.EXTRA_DATE);
+
+            // set date to night. this is a fix for daylight savings time bug
+            mGraphDate = new Date(mGraphDate.getTime() + 1000*23*60*60 -1);
+
             updateWeeklyGraph();
             Log.d(TAG, "date picker date: " + mGraphDate.toString());
         }

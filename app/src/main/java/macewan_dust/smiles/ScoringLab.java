@@ -149,8 +149,9 @@ public class ScoringLab {
         for (int i = 0; i < getScores().size() ; i++) {
             tempDate = mScoresList.get(i).getDateString();
 
-            if (tempDate.contains(monthShort) && tempDate.contains(year));
-            monthList.add(mScoresList.get(i));
+            if (tempDate.contains(monthShort) && tempDate.contains(year)) {
+                monthList.add(mScoresList.get(i));
+            }
         }
         return monthList;
     }
