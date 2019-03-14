@@ -158,7 +158,52 @@ public class ScoringAlgorithmsTest {
 
     @Test
     public void scoreEating() {
-        // eating is changing
+
+        // Balance
+        assertEquals(ScoringAlgorithms.SCORE_BALANCED, ScoringAlgorithms.scoreEating(
+                ScoringAlgorithms.INPUT_b, ScoringAlgorithms.INPUT_b, ScoringAlgorithms.INPUT_b,
+                true, true, true, true));
+
+        // Under and balanced produces under
+        assertEquals(ScoringAlgorithms.SCORE_UNDER, ScoringAlgorithms.scoreEating(
+                ScoringAlgorithms.INPUT_a, ScoringAlgorithms.INPUT_a, ScoringAlgorithms.INPUT_a,
+                true, true, true, false));
+        assertEquals(ScoringAlgorithms.SCORE_UNDER, ScoringAlgorithms.scoreEating(
+                ScoringAlgorithms.INPUT_b, ScoringAlgorithms.INPUT_b, ScoringAlgorithms.INPUT_b,
+                true, true, true, false));
+
+        // Over and balanced produces over
+        assertEquals(ScoringAlgorithms.SCORE_OVER, ScoringAlgorithms.scoreEating(
+            ScoringAlgorithms.INPUT_c, ScoringAlgorithms.INPUT_c, ScoringAlgorithms.INPUT_c,
+                false, false, false, true));
+        assertEquals(ScoringAlgorithms.SCORE_OVER, ScoringAlgorithms.scoreEating(
+                ScoringAlgorithms.INPUT_b, ScoringAlgorithms.INPUT_b, ScoringAlgorithms.INPUT_b,
+                false, false, false, true));
+        assertEquals(ScoringAlgorithms.SCORE_OVER, ScoringAlgorithms.scoreEating(
+                ScoringAlgorithms.INPUT_b, ScoringAlgorithms.INPUT_b, ScoringAlgorithms.INPUT_b,
+                true, true, false, true));
+
+        // Unbalanced
+        assertEquals(ScoringAlgorithms.SCORE_UNBALANCED, ScoringAlgorithms.scoreEating(
+                ScoringAlgorithms.INPUT_c, ScoringAlgorithms.INPUT_c, ScoringAlgorithms.INPUT_c,
+                false, false, false, false));
+        assertEquals(ScoringAlgorithms.SCORE_UNBALANCED, ScoringAlgorithms.scoreEating(
+                ScoringAlgorithms.INPUT_a, ScoringAlgorithms.INPUT_c, ScoringAlgorithms.INPUT_a,
+                false, false, true, false));
+        assertEquals(ScoringAlgorithms.SCORE_UNBALANCED, ScoringAlgorithms.scoreEating(
+                ScoringAlgorithms.INPUT_a, ScoringAlgorithms.INPUT_b, ScoringAlgorithms.INPUT_c,
+                false, false, true, false));
+
+        // Error
+        assertEquals(ScoringAlgorithms.SCORE_ERROR, ScoringAlgorithms.scoreEating(
+                100, ScoringAlgorithms.INPUT_c, ScoringAlgorithms.INPUT_c,
+                false, false, false, false));
+        assertEquals(ScoringAlgorithms.SCORE_ERROR, ScoringAlgorithms.scoreEating(
+                ScoringAlgorithms.INPUT_a, -5, ScoringAlgorithms.INPUT_a,
+                false, false, true, false));
+        assertEquals(ScoringAlgorithms.SCORE_ERROR, ScoringAlgorithms.scoreEating(
+                ScoringAlgorithms.INPUT_a, ScoringAlgorithms.INPUT_b, 800,
+                false, false, true, false));
     }
 
     @Test
