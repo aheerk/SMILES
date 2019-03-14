@@ -6,11 +6,6 @@
     tools:context=".activity.MainActivity">
 
     <item
-        android:id="@+id/overflow_settings"
-        android:title="@string/overflow_settings"
-        app:showAsAction="never"/>
-
-    <item
         android:id="@+id/overflow_export"
         android:title="@string/overflow_export"
         app:showAsAction="never"/>
@@ -18,6 +13,16 @@
     <item
         android:id="@+id/overflow_import"
         android:title="@string/overflow_import"
+        app:showAsAction="never"/>
+
+    <item
+        android:id="@+id/overflow_information"
+        android:title="Information"
+        app:showAsAction="never"/>
+
+    <item
+        android:id="@+id/overflow_settings"
+        android:title="@string/overflow_settings"
         app:showAsAction="never"/>
 
 </menu>
