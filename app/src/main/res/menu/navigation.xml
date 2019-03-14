@@ -16,9 +16,4 @@
         android:icon="@drawable/ic_graph"
         android:title="@string/title_monthly_graph" />
 
-    <item
-        android:id="@+id/navigation_info"
-        android:icon="@drawable/ic_information"
-        android:title="@string/title_information" />
-
 </menu>

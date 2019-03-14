@@ -68,7 +68,7 @@ public class MainActivity extends SingleFragmentActivity implements BottomNaviga
     }
 
     /**
-     * This method handles when the user selects an item on the overflow menu
+     * This method handles when the user selects an item on the overflow menu and the back button
      * @param item
      * @return
 */
@@ -80,6 +80,7 @@ public class MainActivity extends SingleFragmentActivity implements BottomNaviga
                 onBackPressed();
                 // Log.d(TAG, "up pressed. backstack: " + getSupportFragmentManager().getBackStackEntryCount() + " min backstack: " + minBackstack);
                 break;
+                
             case R.id.overflow_settings: {
                 Log.d(TAG, "Clicked settings.");
                 loadFragment(new SettingsListFragment());
@@ -91,6 +92,10 @@ public class MainActivity extends SingleFragmentActivity implements BottomNaviga
             }
             case R.id.overflow_import: {
                 // Does nothing right now
+                break;
+            }
+            case R.id.overflow_information: {
+                loadFragment(new InformationListFragment());
                 break;
             }
         }
@@ -163,9 +168,6 @@ public class MainActivity extends SingleFragmentActivity implements BottomNaviga
                 break;
             case R.id.navigation_monthly_graph:
                 fragment = new MonthlyGraphFragment();
-                break;
-            case R.id.navigation_info:
-                fragment = new InformationListFragment();
                 break;
         }
         return loadFragment(fragment);
