@@ -374,8 +374,6 @@ public class ScoringLab {
      */
     public void writeCSVFile(String filename, Context context) {
 
-        // Ask for permissions here?
-
         // Check if there is room to write
         if (FileCreator.isExternalStorageWritable()) {
             Log.d(TAG, "External storage is writable");
