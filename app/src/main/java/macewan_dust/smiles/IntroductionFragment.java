@@ -70,6 +70,25 @@ public class IntroductionFragment extends Fragment {
             }
         });
 
+        // swipe code
+        v.setOnTouchListener(new OnSwipeTouchListener(getContext()) {
+            @Override
+            public void onSwipeLeft() {
+                if (i<4){
+                    i++;
+                }
+                updateScreen();
+            }
+
+            @Override
+            public void onSwipeRight() {
+                if (i>0){
+                    i--;
+                }
+                updateScreen();
+            }
+        });
+
         v.invalidate();
         return v;
     }
