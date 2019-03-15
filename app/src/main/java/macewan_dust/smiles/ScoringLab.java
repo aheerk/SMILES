@@ -156,10 +156,10 @@ public class ScoringLab {
         return monthList;
     }
 
-    public List<Score> getThreeScores() {
+    public List<Score> getOneScore() {
         List<Score> tempList = new ArrayList<>();
-        for (int i = 0 ; i < 3 ; i++){
-            tempList.add(mScoresList.get(i));
+        if (!mScoresList.isEmpty()) {
+            tempList.add(mScoresList.get(0));
         }
         return tempList;
     }
