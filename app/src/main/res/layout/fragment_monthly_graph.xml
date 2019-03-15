@@ -14,16 +14,12 @@
         android:orientation="vertical"
         android:paddingTop="16dp">
 
-        <ImageView
-            android:layout_width="300dp"
-            android:layout_height="200dp"
-            android:layout_marginLeft="8dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginRight="8dp"
-            android:background="@drawable/trim"
-            android:cropToPadding="true"
-            android:padding="1dp"
-            app:srcCompat="@drawable/photo_bar_graph_filler" />
+        <com.jjoe64.graphview.GraphView
+            android:layout_width="match_parent"
+            android:layout_height="200dip"
+            android:id="@+id/bar_graph" />
+
+        
 
         <LinearLayout
             android:layout_width="match_parent"

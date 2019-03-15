@@ -2,6 +2,7 @@ package macewan_dust.smiles;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Color;
 import android.icu.util.GregorianCalendar;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -20,6 +21,11 @@ import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.jjoe64.graphview.GraphView;
+import com.jjoe64.graphview.ValueDependentColor;
+import com.jjoe64.graphview.series.BarGraphSeries;
+import com.jjoe64.graphview.series.DataPoint;
 
 import java.util.Calendar;
 import java.util.Date;
@@ -41,6 +47,7 @@ public class MonthlyGraphFragment extends Fragment {
     private CheckBox mLaughterCheckbox;
     private CheckBox mEatingCheckbox;
     private CheckBox mSpeakingCheckbox;
+    private GraphView mGraph;
 
     // aggragate data for the month
     private int mBalanced;
@@ -86,6 +93,32 @@ public class MonthlyGraphFragment extends Fragment {
                              @Nullable Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_monthly_graph, null);
 
+        //Resource #1: https://www.loginworks.com/blogs/how-to-create-graphs-in-android-application/
+        //Resource #2: http://www.android-graphview.org/bar-chart/
+        //initialize the bar graph
+        mGraph = v.findViewById(R.id.bar_graph);
+
+
+        //Setting data to the bar graph
+        BarGraphSeries<DataPoint> mGraphData = new BarGraphSeries<>(new DataPoint[] {
+                new DataPoint(0, 1),
+                new DataPoint(1, 5),
+                new DataPoint(2, 3),
+                new DataPoint(3, 2),
+                new DataPoint(4, 6)
+        });
+        mGraph.addSeries(mGraphData);
+
+        //Define the color of the y-value
+        mGraphData.setValueDependentColor(new ValueDependentColor<DataPoint>() {
+            @Override
+            public int get(DataPoint info) {
+                return Color.rgb((int) info.getX()*255/4, (int) Math.abs(info.getY()*255/6), 100);
+            }
+        });
+
+        //change the spacing between 2 bars
+        mGraphData.setSpacing(20);
 
 
 
