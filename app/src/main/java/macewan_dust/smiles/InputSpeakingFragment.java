@@ -46,6 +46,7 @@ public class InputSpeakingFragment extends Fragment {
 
     Score mScore;
     CountDownTimer mExitCountDownTimer;
+    Date mScoreDate;
 
     /**
      * new instance constructor
@@ -66,6 +67,8 @@ public class InputSpeakingFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setRetainInstance(true); // prevents instance of the fragment from being destroyed on rotation.
+        mScoreDate = new Date(this.getArguments().getLong(DailyListFragment.DAILY_DATE));
+
     }
 
     /**
@@ -190,9 +193,9 @@ public class InputSpeakingFragment extends Fragment {
                     }
 
                     // if score exists, update it, else make a new one and save it
-                    if (ScoringLab.get(getActivity()).isScore(new Date())){
+                    if (ScoringLab.get(getActivity()).isScore(mScoreDate)){
                         // get score object to use its data
-                        mScore = ScoringLab.get(getActivity()).getScore(new Date());
+                        mScore = ScoringLab.get(getActivity()).getScore(mScoreDate);
                         // set new score for this category
                         mScore.setSpeakingScore(score);
                         // save score to database
@@ -223,7 +226,7 @@ public class InputSpeakingFragment extends Fragment {
      * Timer Ref: https://developer.android.com/reference/android/os/CountDownTimer
      */
     private void exitOnLastScore(){
-        if (ScoringLab.get(getActivity()).getScore(new Date()).isAllScored()){
+        if (ScoringLab.get(getActivity()).getScore(mScoreDate).isAllScored()){
             Log.d(TAG, "all questions answered. popping out");
 
             mExitCountDownTimer = new CountDownTimer(DailyPagerFragment.EXIT_TIMER_MILLISECONDS, DailyPagerFragment.EXIT_TIMER_MILLISECONDS) {

@@ -37,6 +37,8 @@ public class InputSleepFragment extends Fragment {
 
     Score mScore;
     CountDownTimer mExitCountDownTimer;
+    Date mScoreDate;
+
 
     /**
      * new instance constructor
@@ -57,6 +59,8 @@ public class InputSleepFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setRetainInstance(true); // prevents instance of the fragment from being destroyed on rotation.
+        mScoreDate = new Date(this.getArguments().getLong(DailyListFragment.DAILY_DATE));
+
     }
 
     /**
@@ -202,9 +206,9 @@ public class InputSleepFragment extends Fragment {
                     }
 
                     // if score exists, update it, else make a new one and save it
-                    if (ScoringLab.get(getActivity()).isScore(new Date())){
+                    if (ScoringLab.get(getActivity()).isScore(mScoreDate)){
                         // get score object to use its data
-                        mScore = ScoringLab.get(getActivity()).getScore(new Date());
+                        mScore = ScoringLab.get(getActivity()).getScore(mScoreDate);
                         // set new score for this category
                         mScore.setSleepScore(score);
                         // save score to database
@@ -232,7 +236,7 @@ public class InputSleepFragment extends Fragment {
      * exits out of the question fragment if all questions have been answered.
      */
     private void exitOnLastScore(){
-        if (ScoringLab.get(getActivity()).getScore(new Date()).isAllScored()){
+        if (ScoringLab.get(getActivity()).getScore(mScoreDate).isAllScored()){
             Log.d(TAG, "all questions answered. popping out");
 
             mExitCountDownTimer = new CountDownTimer(DailyPagerFragment.EXIT_TIMER_MILLISECONDS, DailyPagerFragment.EXIT_TIMER_MILLISECONDS) {
