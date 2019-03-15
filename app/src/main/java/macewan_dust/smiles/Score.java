@@ -201,29 +201,26 @@ public class Score {
     }
 
     /**
-     * scoreCSVFormat - creates a comma separated string.                                   /// ----- beware of commas in string!!!
+     * scoreCSVFormat - creates a comma separated string.
      * @return
      */
     public String scoreCSVFormat() {
         StringBuilder sb = new StringBuilder();
 
-        //    sb.append("mScoreID: " + mScoreID);
-        //    sb.append(",");
         sb.append("\"");
         sb.append(timelessDate(mDate));
         sb.append("\",");
-        sb.append(getScoreName(mSleepScore));
+        sb.append(mSleepScore);
         sb.append(",");
-        sb.append(getScoreName(mMovementScore));
+        sb.append(mMovementScore);
         sb.append(",");
-        sb.append(getScoreName(mImaginationScore));
+        sb.append(mImaginationScore);
         sb.append(",");
-        sb.append(getScoreName(mLaughterScore));
+        sb.append(mLaughterScore);
         sb.append(",");
-        sb.append(getScoreName(mEatingScore));
+        sb.append(mEatingScore);
         sb.append(",");
-        sb.append(getScoreName(mSpeakingScore));
-        //  sb.append("\n");
+        sb.append(mSpeakingScore);
 
         return sb.toString();
     }

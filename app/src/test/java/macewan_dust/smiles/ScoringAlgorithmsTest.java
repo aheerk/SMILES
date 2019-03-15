@@ -174,7 +174,7 @@ public class ScoringAlgorithmsTest {
 
         // Over and balanced produces over
         assertEquals(ScoringAlgorithms.SCORE_OVER, ScoringAlgorithms.scoreEating(
-            ScoringAlgorithms.INPUT_c, ScoringAlgorithms.INPUT_c, ScoringAlgorithms.INPUT_c,
+            ScoringAlgorithms.INPUT_b, ScoringAlgorithms.INPUT_b, ScoringAlgorithms.INPUT_c,
                 false, false, false, true));
         assertEquals(ScoringAlgorithms.SCORE_OVER, ScoringAlgorithms.scoreEating(
                 ScoringAlgorithms.INPUT_b, ScoringAlgorithms.INPUT_b, ScoringAlgorithms.INPUT_b,
@@ -185,7 +185,7 @@ public class ScoringAlgorithmsTest {
 
         // Unbalanced
         assertEquals(ScoringAlgorithms.SCORE_UNBALANCED, ScoringAlgorithms.scoreEating(
-                ScoringAlgorithms.INPUT_c, ScoringAlgorithms.INPUT_c, ScoringAlgorithms.INPUT_c,
+                ScoringAlgorithms.INPUT_a, ScoringAlgorithms.INPUT_c, ScoringAlgorithms.INPUT_c,
                 false, false, false, false));
         assertEquals(ScoringAlgorithms.SCORE_UNBALANCED, ScoringAlgorithms.scoreEating(
                 ScoringAlgorithms.INPUT_a, ScoringAlgorithms.INPUT_c, ScoringAlgorithms.INPUT_a,

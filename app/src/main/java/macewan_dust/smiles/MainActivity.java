@@ -16,6 +16,9 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
 
+import java.text.DateFormat;
+import java.util.Date;
+
 /**
  * This activity exists to hold a fragment.
  */
@@ -173,10 +176,23 @@ public class MainActivity extends SingleFragmentActivity implements BottomNaviga
         return loadFragment(fragment);
     }
 
+    /**
+     * getFilename retrieves an appropriate filename for an exported
+     * CSV file based on today's date
+     * @return A string filename
+     */
     private String getFilename() {
-        return "score.csv";
+        Date today = new Date();
+        String formatted = DateFormat.getDateInstance(DateFormat.SHORT).format(today);
+        return "scores_" + formatted + ".csv";
     }
 
+    /**
+     * export checks permissions for exporting the user's data into a new CSV
+     * file. If given permissions, it will save the csv file to the user's documents
+     * folder
+     * @param context Activity context
+     */
     private void export (Context context) {
 
         // Check if we have permission to export
@@ -188,7 +204,9 @@ public class MainActivity extends SingleFragmentActivity implements BottomNaviga
             if (ActivityCompat.shouldShowRequestPermissionRationale(MainActivity.this,
                     Manifest.permission.WRITE_EXTERNAL_STORAGE)){
                 Log.d(TAG, "Show the rationale!");
+
                 // Show explanation?
+
             } else {
                 Log.d(TAG, "Need to ask for permissions....");
                 String[] permissions = new String[] {Manifest.permission.WRITE_EXTERNAL_STORAGE};
@@ -204,8 +222,9 @@ public class MainActivity extends SingleFragmentActivity implements BottomNaviga
     }
 
     /**
-     * Determines whether permissions have been given and disables corresponding functionality
-     * accordingly
+     * Determines whether permissions for external storage use
+     * have been given and disables corresponding functionality accordingly
+     * Android calls this after requesting permissions
      *
      * @param requestCode Unique code used to identify a permission request
      * @param permissions
