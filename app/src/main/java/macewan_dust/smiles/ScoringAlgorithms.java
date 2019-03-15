@@ -20,12 +20,12 @@ public class ScoringAlgorithms {
 
     public static final String TAG = "ScoringAlgorithms";
 
-    public static final int SCORE_UNDER = 0;
-    public static final int SCORE_BALANCED = 1;
-    public static final int SCORE_OVER = 2;
-    public static final int SCORE_UNBALANCED = 3; // off balance input includes both high and low input
+    public static final int SCORE_UNDER = 1;
+    public static final int SCORE_BALANCED = 2;
+    public static final int SCORE_OVER = 3;
+    public static final int SCORE_UNBALANCED = 4; // off balance input includes both high and low input
     public static final int SCORE_ERROR = 10000;
-    public static final int SCORE_NO_DATA = 8;
+    public static final int SCORE_NO_DATA = 0;
 
     // input_x corresponds to the answer selected for all number range questions
     public static final int INPUT_a = 0;

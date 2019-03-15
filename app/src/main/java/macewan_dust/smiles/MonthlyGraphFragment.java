@@ -1,17 +1,16 @@
 package macewan_dust.smiles;
 
+
 import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Color;
 import android.icu.util.GregorianCalendar;
+
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -19,7 +18,6 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.jjoe64.graphview.GraphView;
@@ -29,7 +27,6 @@ import com.jjoe64.graphview.series.DataPoint;
 
 import java.util.Calendar;
 import java.util.Date;
-import java.util.LinkedList;
 import java.util.List;
 
 public class MonthlyGraphFragment extends Fragment {
@@ -78,7 +75,6 @@ public class MonthlyGraphFragment extends Fragment {
         mScoringLab = ScoringLab.get(getContext());
 
         mMonths = getContext().getResources().getStringArray(R.array.month_array);
-
     }
 
     @Override
@@ -141,6 +137,7 @@ public class MonthlyGraphFragment extends Fragment {
         mGraphDate = new Date(); // today
         Calendar calendar = Calendar.getInstance();
         calendar.setTime(mGraphDate);
+        // moves the month up by one in the calendar to have the correct starting month
         calendar.roll(Calendar.MONTH, true);
         mYear = calendar.get(Calendar.YEAR);
         monthIndex = calendar.get(Calendar.MONTH) - 1; // month - 1 to make an index
@@ -183,7 +180,7 @@ public class MonthlyGraphFragment extends Fragment {
                 updateMonthlyGraph();
             }
         });
-        
+
         // note that 11 is December. 0 is January
         mLastMonthButton.setOnClickListener(new View.OnClickListener() {
             @Override

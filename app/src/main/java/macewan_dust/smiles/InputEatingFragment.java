@@ -55,6 +55,7 @@ public class InputEatingFragment extends Fragment {
 
     Score mScore;
     CountDownTimer mExitCountDownTimer;
+    Date mScoreDate;
 
     /**
      * new instance constructor
@@ -75,7 +76,7 @@ public class InputEatingFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setRetainInstance(true); // prevents instance of the fragment from being destroyed on rotation.
-
+        mScoreDate = new Date(this.getArguments().getLong(DailyListFragment.DAILY_DATE));
     }
 
     /**
@@ -263,18 +264,18 @@ public class InputEatingFragment extends Fragment {
                     }
 
                     // if score exists, update it, else make a new one and save it
-                    if (ScoringLab.get(getActivity()).isScore(new Date())){
+                    if (ScoringLab.get(getActivity()).isScore(mScoreDate)){
                         // get score object to use its data
-                        mScore = ScoringLab.get(getActivity()).getScore(new Date());
+                        mScore = ScoringLab.get(getActivity()).getScore(mScoreDate);
                         // set new score for this category
                         mScore.setEatingScore(score);
                         // save score to database
                         ScoringLab.get(getActivity()).updateScore(mScore);
                         //
                     } else {
-                        Log.d(TAG, "score NOT found by date: " + Score.timelessDate(new Date()));
+                        Log.d(TAG, "score NOT found by date: " + Score.timelessDate(mScoreDate));
 
-                        mScore = new Score();
+                        mScore = new Score(mScoreDate);
                         mScore.setEatingScore(score);
                         ScoringLab.get(getActivity()).addScore(mScore);
                     }
@@ -296,7 +297,7 @@ public class InputEatingFragment extends Fragment {
      * exits out of the question fragment if all questions have been answered.
      */
     private void exitOnLastScore(){
-        if (ScoringLab.get(getActivity()).getScore(new Date()).isAllScored()){
+        if (ScoringLab.get(getActivity()).getScore(mScoreDate).isAllScored() && Score.isToday(mScoreDate)){
             Log.d(TAG, "all questions answered. popping out");
 
             mExitCountDownTimer = new CountDownTimer(DailyPagerFragment.EXIT_TIMER_MILLISECONDS, DailyPagerFragment.EXIT_TIMER_MILLISECONDS) {
