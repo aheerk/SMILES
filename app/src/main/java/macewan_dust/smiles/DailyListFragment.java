@@ -73,6 +73,12 @@ public class DailyListFragment extends Fragment {
         }
     }
 
+    private void updateUI(){
+        mDatePicker.setText(Score.timelessDate(mScoreDate));
+        mDailyAdapter.notifyDataSetChanged();
+        setBorders();
+    }
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -101,7 +107,7 @@ public class DailyListFragment extends Fragment {
 
         getActivity().setTitle(R.string.title_daily_questions);
 
-        setBorders();
+        updateUI();
         return v;
     }
 
@@ -121,13 +127,11 @@ public class DailyListFragment extends Fragment {
             // Extra date is a public constant so we are pulling it out of the class.
             mScoreDate = (Date) data.getSerializableExtra(DatePickerFragment.EXTRA_DATE);
 
-            // set date to morning.
-            mScoreDate = new Date(mScoreDate.getTime() + 1000*2*60*60);
+            // set date to morning. // this is shifted on create
+       //     mScoreDate = new Date(mScoreDate.getTime() + 1000*2*60*60);
 
             Log.d(TAG, "date picker date: " + mScoreDate.toString());
-            mDatePicker.setText(Score.timelessDate(mScoreDate));
-            setBorders();
-            mDailyAdapter.notifyDataSetChanged();
+            updateUI();
         }
     }
 
@@ -135,8 +139,7 @@ public class DailyListFragment extends Fragment {
     public void onResume() {
         super.onResume();
         getActivity().setTitle(R.string.title_daily_questions);
-        setBorders();
-        mDatePicker.setText(Score.timelessDate(mScoreDate));
+        updateUI();
         }
 
     private void setBorders() {
@@ -152,6 +155,14 @@ public class DailyListFragment extends Fragment {
             mDailyData.get(3).setBackgroundID(Score.getBackgroundID(tempScore.getLaughterScore()));
             mDailyData.get(4).setBackgroundID(Score.getBackgroundID(tempScore.getEatingScore()));
             mDailyData.get(5).setBackgroundID(Score.getBackgroundID(tempScore.getSpeakingScore()));
+        } else {
+            // changing borders to no data if its a new date
+            mDailyData.get(0).setBackgroundID(Score.getBackgroundID(ScoringAlgorithms.SCORE_NO_DATA));
+            mDailyData.get(1).setBackgroundID(Score.getBackgroundID(ScoringAlgorithms.SCORE_NO_DATA));
+            mDailyData.get(2).setBackgroundID(Score.getBackgroundID(ScoringAlgorithms.SCORE_NO_DATA));
+            mDailyData.get(3).setBackgroundID(Score.getBackgroundID(ScoringAlgorithms.SCORE_NO_DATA));
+            mDailyData.get(4).setBackgroundID(Score.getBackgroundID(ScoringAlgorithms.SCORE_NO_DATA));
+            mDailyData.get(5).setBackgroundID(Score.getBackgroundID(ScoringAlgorithms.SCORE_NO_DATA));
         }
     }
 

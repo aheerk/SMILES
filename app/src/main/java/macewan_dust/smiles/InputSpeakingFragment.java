@@ -202,7 +202,7 @@ public class InputSpeakingFragment extends Fragment {
                         ScoringLab.get(getActivity()).updateScore(mScore);
                         //
                     } else {
-                        mScore = new Score();
+                        mScore = new Score(mScoreDate);
                         mScore.setSpeakingScore(score);
                         ScoringLab.get(getActivity()).addScore(mScore);
                     }
@@ -226,7 +226,7 @@ public class InputSpeakingFragment extends Fragment {
      * Timer Ref: https://developer.android.com/reference/android/os/CountDownTimer
      */
     private void exitOnLastScore(){
-        if (ScoringLab.get(getActivity()).getScore(mScoreDate).isAllScored()){
+        if (ScoringLab.get(getActivity()).getScore(mScoreDate).isAllScored() && Score.isToday(mScoreDate)){
             Log.d(TAG, "all questions answered. popping out");
 
             mExitCountDownTimer = new CountDownTimer(DailyPagerFragment.EXIT_TIMER_MILLISECONDS, DailyPagerFragment.EXIT_TIMER_MILLISECONDS) {

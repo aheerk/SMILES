@@ -254,7 +254,7 @@ public class InputMovementFragment extends Fragment {
                         ScoringLab.get(getActivity()).updateScore(mScore);
                         //
                     } else {
-                        mScore = new Score();
+                        mScore = new Score(mScoreDate);
                         mScore.setMovementScore(score);
                         ScoringLab.get(getActivity()).addScore(mScore);
                     }
@@ -275,7 +275,7 @@ public class InputMovementFragment extends Fragment {
      * exits out of the question fragment if all questions have been answered.
      */
     private void exitOnLastScore(){
-        if (ScoringLab.get(getActivity()).getScore(mScoreDate).isAllScored()){
+        if (ScoringLab.get(getActivity()).getScore(mScoreDate).isAllScored() && Score.isToday(mScoreDate)){
             Log.d(TAG, "all questions answered. popping out");
 
             mExitCountDownTimer = new CountDownTimer(DailyPagerFragment.EXIT_TIMER_MILLISECONDS, DailyPagerFragment.EXIT_TIMER_MILLISECONDS) {

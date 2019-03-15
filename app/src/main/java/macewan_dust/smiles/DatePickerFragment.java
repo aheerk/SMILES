@@ -46,9 +46,9 @@ public class DatePickerFragment extends DialogFragment {
 
         mDatePicker.setMaxDate(System.currentTimeMillis());
 
-        if (ScoringLab.get(getContext()).getOldestDate() != null) {
-            mDatePicker.setMinDate(ScoringLab.get(getContext()).getOldestDate().getTime());
-        }
+//        if (ScoringLab.get(getContext()).getOldestDate() != null) {
+//            mDatePicker.setMinDate(ScoringLab.get(getContext()).getOldestDate().getTime());
+//        }
 
         return new AlertDialog.Builder(getActivity())
                 .setView(v)

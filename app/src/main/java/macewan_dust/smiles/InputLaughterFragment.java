@@ -53,7 +53,7 @@ public class InputLaughterFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setRetainInstance(true); // prevents instance of the fragment from being destroyed on rotation.
-
+        mScoreDate = new Date(this.getArguments().getLong(DailyListFragment.DAILY_DATE));
     }
 
     /**
@@ -176,7 +176,7 @@ public class InputLaughterFragment extends Fragment {
                         //
                     } else {
                         Log.d(TAG, "score NOT found by date: " + Score.timelessDate(mScoreDate));
-                        mScore = new Score();
+                        mScore = new Score(mScoreDate);
                         mScore.setLaughterScore(score);
                         ScoringLab.get(getActivity()).addScore(mScore);
                     }
@@ -196,7 +196,7 @@ public class InputLaughterFragment extends Fragment {
      * exits out of the question fragment if all questions have been answered.
      */
     private void exitOnLastScore(){
-        if (ScoringLab.get(getActivity()).getScore(mScoreDate).isAllScored()){
+        if (ScoringLab.get(getActivity()).getScore(mScoreDate).isAllScored() && Score.isToday(mScoreDate)){
             Log.d(TAG, "all questions answered. popping out");
 
             mExitCountDownTimer = new CountDownTimer(DailyPagerFragment.EXIT_TIMER_MILLISECONDS, DailyPagerFragment.EXIT_TIMER_MILLISECONDS) {
