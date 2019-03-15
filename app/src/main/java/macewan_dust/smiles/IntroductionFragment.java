@@ -74,7 +74,7 @@ public class IntroductionFragment extends Fragment {
         v.setOnTouchListener(new OnSwipeTouchListener(getContext()) {
             @Override
             public void onSwipeLeft() {
-                if (i<12){
+                if (i<4){
                     i++;
                 }
                 updateScreen();
