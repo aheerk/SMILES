@@ -44,6 +44,7 @@ public class DailyListFragment extends Fragment {
     private List<DailyItem> mDailyData = new LinkedList<>();
 
     private Button mDatePicker;
+    private Button mDeleteButton;
     private Date mScoreDate;
 
     @Override
@@ -73,11 +74,7 @@ public class DailyListFragment extends Fragment {
         }
     }
 
-    private void updateUI(){
-        mDatePicker.setText(Score.timelessDate(mScoreDate));
-        mDailyAdapter.notifyDataSetChanged();
-        setBorders();
-    }
+
 
     @Nullable
     @Override
@@ -105,10 +102,43 @@ public class DailyListFragment extends Fragment {
             }
         });
 
+        mDeleteButton = v.findViewById(R.id.daily_score_date_deleter);
+
+
+        mDeleteButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (ScoringLab.get(getContext()).isScore(mScoreDate)) {
+
+                    ScoringLab.get(getContext()).deleteScore(mScoreDate);
+
+                    updateUI();
+                }
+
+
+
+            }
+        });
+
+     //   mDeleteView.
+
+
         getActivity().setTitle(R.string.title_daily_questions);
 
         updateUI();
         return v;
+    }
+
+    private void updateUI(){
+        mDatePicker.setText(Score.timelessDate(mScoreDate));
+        setBorders();
+        mDailyAdapter.notifyDataSetChanged();
+
+        if (ScoringLab.get(getContext()).isScore(mScoreDate)){
+            mDeleteButton.setEnabled(true);
+        } else {
+            mDeleteButton.setEnabled(false);
+        }
     }
 
     /**

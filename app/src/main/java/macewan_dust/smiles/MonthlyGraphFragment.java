@@ -4,6 +4,7 @@ package macewan_dust.smiles;
 import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Color;
+import android.graphics.Paint;
 import android.icu.util.GregorianCalendar;
 
 import android.os.Bundle;
@@ -95,26 +96,7 @@ public class MonthlyGraphFragment extends Fragment {
         mGraph = v.findViewById(R.id.bar_graph);
 
 
-        //Setting data to the bar graph
-        BarGraphSeries<DataPoint> mGraphData = new BarGraphSeries<>(new DataPoint[] {
-                new DataPoint(0, 1),
-                new DataPoint(1, 5),
-                new DataPoint(2, 3),
-                new DataPoint(3, 2),
-                new DataPoint(4, 6)
-        });
-        mGraph.addSeries(mGraphData);
 
-        //Define the color of the y-value
-        mGraphData.setValueDependentColor(new ValueDependentColor<DataPoint>() {
-            @Override
-            public int get(DataPoint info) {
-                return Color.rgb((int) info.getX()*255/4, (int) Math.abs(info.getY()*255/6), 100);
-            }
-        });
-
-        //change the spacing between 2 bars
-        mGraphData.setSpacing(20);
 
 
 
@@ -206,6 +188,10 @@ public class MonthlyGraphFragment extends Fragment {
             }
         });
 
+
+
+
+
         return v;
     }
 
@@ -217,6 +203,30 @@ public class MonthlyGraphFragment extends Fragment {
         Log.d(TAG, "month: " + mMonths[monthIndex] + "\n year: " + String.valueOf(mYear));
         mMonthData = mScoringLab.monthScores(mMonths[monthIndex], String.valueOf(mYear));
         countScores();
+
+
+        //Setting data to the bar graph
+        BarGraphSeries<DataPoint> mGraphData = new BarGraphSeries<>(new DataPoint[] {
+                new DataPoint(0, 0 ),
+                new DataPoint(1, mBalanced),
+                new DataPoint(2, mUnbalanced),
+                new DataPoint(3, mOver),
+                new DataPoint(4, mUnder),
+                new DataPoint(5, 0 ),
+
+        });
+
+        Paint colors = new Paint();
+        colors.setColor(getResources().getColor(R.color.colorLow));
+        colors.setColor(getResources().getColor(R.color.colorHigh));
+        mGraphData.setCustomPaint(colors);
+
+        mGraphData.setDataWidth(0.7);
+        mGraph.addSeries(mGraphData);
+
+
+        mGraph.onDataChanged(false, true);
+        //invalidate();
     }
 
     private void countScores(){

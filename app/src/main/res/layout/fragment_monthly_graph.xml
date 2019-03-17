@@ -15,9 +15,11 @@
         android:paddingTop="16dp">
 
         <com.jjoe64.graphview.GraphView
-            android:layout_width="match_parent"
+            android:id="@+id/bar_graph"
+            android:layout_width="wrap_content"
             android:layout_height="200dip"
-            android:id="@+id/bar_graph" />
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp" />
 
         
 
@@ -80,7 +82,7 @@
                 android:orientation="horizontal">
 
                 <LinearLayout
-                    android:id="@+id/linearLayout"
+                    android:id="@+id/linearLayout2"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="16dp"
