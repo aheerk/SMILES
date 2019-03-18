@@ -187,8 +187,6 @@ public class MainActivity extends SingleFragmentActivity implements BottomNaviga
         return loadFragment(fragment);
     }
 
-
-
     /*private void importCsv(Context context) {
 
         // Check if we have permission to read documents for import
