@@ -16,8 +16,11 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
 
+import java.io.File;
 import java.text.DateFormat;
 import java.util.Date;
+import java.util.LinkedList;
+import java.util.List;
 
 /**
  * This activity exists to hold a fragment.
@@ -25,7 +28,6 @@ import java.util.Date;
 public class MainActivity extends SingleFragmentActivity implements BottomNavigationView.OnNavigationItemSelectedListener {
 
     private static final String TAG = "MainActivity";
-    private static final int REQUEST_EXTERNAL_STORAGE_USE = 222;
     private int minBackstack; // this is the fix for the visual back button bug.
 
     // The first fragment launched is specified here
@@ -90,11 +92,18 @@ public class MainActivity extends SingleFragmentActivity implements BottomNaviga
                 break;
             }
             case R.id.overflow_export: {
-                export(getApplicationContext());
+                CsvFileManager fileManager = new CsvFileManager(MainActivity.this,
+                        getApplicationContext());
+                fileManager.exportScores();
                 break;
             }
             case R.id.overflow_import: {
-                // Does nothing right now
+                // Need to open up a page for import and show a list of files
+
+                CsvFileManager fileManager = new CsvFileManager(MainActivity.this,
+                        getApplicationContext());
+                //importCsv(getApplicationContext());
+                fileManager.readCSVFile();
                 break;
             }
             case R.id.overflow_information: {
@@ -104,6 +113,8 @@ public class MainActivity extends SingleFragmentActivity implements BottomNaviga
         }
         return true;
     }
+
+
 
     @Override
     public void onBackPressed() {
@@ -176,80 +187,31 @@ public class MainActivity extends SingleFragmentActivity implements BottomNaviga
         return loadFragment(fragment);
     }
 
-    /**
-     * getFilename retrieves an appropriate filename for an exported
-     * CSV file based on today's date
-     * @return A string filename
-     */
-    private String getFilename() {
-        Date today = new Date();
-        String formatted = DateFormat.getDateInstance(DateFormat.MEDIUM).format(today);
-        return "scores_" + formatted + ".csv";
-    }
+    /*private void importCsv(Context context) {
 
-    /**
-     * export checks permissions for exporting the user's data into a new CSV
-     * file. If given permissions, it will save the csv file to the user's documents
-     * folder
-     * @param context Activity context
-     */
-    private void export (Context context) {
-
-        // Check if we have permission to export
+        // Check if we have permission to read documents for import
         if (ContextCompat.checkSelfPermission(context,
-                Manifest.permission.WRITE_EXTERNAL_STORAGE)  != PackageManager.PERMISSION_GRANTED) {
-            Log.d(TAG, "No permission to access external storage");
+                Manifest.permission.READ_EXTERNAL_STORAGE)  != PackageManager.PERMISSION_GRANTED) {
+            Log.d(TAG, "No permission to read external storage");
 
             // Show the dialog box to request permissions
             if (ActivityCompat.shouldShowRequestPermissionRationale(MainActivity.this,
-                    Manifest.permission.WRITE_EXTERNAL_STORAGE)){
+                    Manifest.permission.READ_EXTERNAL_STORAGE)){
                 Log.d(TAG, "Show the rationale!");
 
                 // Show explanation?
 
             } else {
-                Log.d(TAG, "Need to ask for permissions....");
-                String[] permissions = new String[] {Manifest.permission.WRITE_EXTERNAL_STORAGE};
-                ActivityCompat.requestPermissions(MainActivity.this, permissions, REQUEST_EXTERNAL_STORAGE_USE);
+                Log.d(TAG, "Need to ask for permissions to read external storage.");
+                String[] permissions = new String[] {Manifest.permission.READ_EXTERNAL_STORAGE};
+                ActivityCompat.requestPermissions(MainActivity.this, permissions, REQUEST_WRITE_EXTERNAL_STORAGE);
             }
         } else {
-            Log.d(TAG, "Permissions granted from previous use.");
+            Log.d(TAG, "Read permissions granted from previous use.");
 
-            // Write to csv
-            ScoringLab lab = new ScoringLab(MainActivity.this);
-            lab.writeCSVFile(getFilename(), MainActivity.this);
+            readDocuments();
         }
-    }
+    }*/
 
-    /**
-     * Determines whether permissions for external storage use
-     * have been given and disables corresponding functionality accordingly
-     * Android calls this after requesting permissions
-     *
-     * @param requestCode Unique code used to identify a permission request
-     * @param permissions
-     * @param grantResults
-     */
-    @Override
-    public  void onRequestPermissionsResult(int requestCode, String permissions[], int[] grantResults) {
-        switch (requestCode) {
 
-            case REQUEST_EXTERNAL_STORAGE_USE: {
-
-                if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                    Log.d(TAG, "Permission granted.");
-
-                    // Write to csv
-                    ScoringLab lab = new ScoringLab(MainActivity.this);
-                    lab.writeCSVFile(getFilename(), MainActivity.this);
-
-                } else {
-                    Log.d(TAG, "No permissions given.");
-                    Toast.makeText(MainActivity.this, R.string.csv_no_permission, Toast.LENGTH_SHORT).show();
-                }
-                return;
-            }
-        }
-
-    }
 }
