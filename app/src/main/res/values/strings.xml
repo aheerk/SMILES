@@ -228,9 +228,14 @@
     <string name="overflow_export">Export</string>
     <string name="overflow_import">Import</string>
 
-    <string name="csv_no_permission">Please accept permissions to export data.</string>
-    <string name="csv_success">Your data was successfully exported to your documents.</string>
-    <string name="csv_failure">Export unsuccessful.</string>
+    <string name="csv_no_write_permission">Please accept permissions to export data.</string>
+    <string name="csv_export_success">Your data was successfully exported to your documents.</string>
+    <string name="csv_export_failure">Export unsuccessful.</string>
+
+    <string name="csv_no_read_permission">Please accept permissions to import data.</string>
+    <string name="csv_import_success">Your data was successfully imported.</string>
+    <string name="csv_import_failure">Import unsuccessful.</string>
+    <string name="csv_import_choose_file">Please select the file you would like to import:</string>
 
     <!-- monthly graph strings -->
     <string-array name="month_array">
