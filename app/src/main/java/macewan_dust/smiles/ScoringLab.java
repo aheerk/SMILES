@@ -254,6 +254,13 @@ public class ScoringLab {
         }
     }
 
+    public void deleteScore(Date date) {
+        if (this.isScore(date)) {
+            deleteScore(getScore(date));
+            Log.d(TAG, "score deleted by date");
+        }
+    }
+
     /**
      * delete score from score table database
      *

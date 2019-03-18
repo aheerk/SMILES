@@ -13,6 +13,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -34,11 +35,13 @@ public class DailyPagerFragment extends Fragment {
     public static final int EXIT_TIMER_MILLISECONDS = 3000;
 
     int mStartPage;
+    Date mScoreDate;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         mStartPage = this.getArguments().getInt(DailyListFragment.DAILY_RECYCLER_VIEW_INDEX);
+        mScoreDate = new Date(this.getArguments().getLong(DailyListFragment.DAILY_DATE));
         getActivity().setTitle(getString(R.string.title_sleep));
     }
 
@@ -130,12 +133,35 @@ public class DailyPagerFragment extends Fragment {
         };
         mViewPager.addOnPageChangeListener(listener);
 
-        adapter.addFragment(new InputSleepFragment(), getString(R.string.title_sleep));
-        adapter.addFragment(new InputMovementFragment(),getString(R.string.title_movement));
-        adapter.addFragment(new InputImaginationFragment(),getString(R.string.title_imagination));
-        adapter.addFragment(new InputLaughterFragment(),getString(R.string.title_laughter));
-        adapter.addFragment(new InputEatingFragment(),getString(R.string.title_eating));
-        adapter.addFragment(new InputSpeakingFragment(),getString(R.string.title_speaking));
+        // same bundle for all fragments.
+        Bundle opBundle = new Bundle();
+        opBundle.putLong(DailyListFragment.DAILY_DATE, mScoreDate.getTime());
+
+        // date passing
+        Fragment temp1 = new InputSleepFragment();
+        temp1.setArguments(opBundle);
+
+        Fragment temp2 = new InputMovementFragment();
+        temp2.setArguments(opBundle);
+
+        Fragment temp3 = new InputImaginationFragment();
+        temp3.setArguments(opBundle);
+
+        Fragment temp4 = new InputLaughterFragment();
+        temp4.setArguments(opBundle);
+
+        Fragment temp5 = new InputEatingFragment();
+        temp5.setArguments(opBundle);
+
+        Fragment temp6 = new InputSpeakingFragment();
+        temp6.setArguments(opBundle);
+
+        adapter.addFragment(temp1, getString(R.string.title_sleep));
+        adapter.addFragment(temp2,getString(R.string.title_movement));
+        adapter.addFragment(temp3,getString(R.string.title_imagination));
+        adapter.addFragment(temp4,getString(R.string.title_laughter));
+        adapter.addFragment(temp5,getString(R.string.title_eating));
+        adapter.addFragment(temp6,getString(R.string.title_speaking));
 
         mViewPager.setCurrentItem(mStartPage);
     }

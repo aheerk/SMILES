@@ -1,29 +1,28 @@
 package macewan_dust.smiles;
 
 
+import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.support.v4.app.Fragment;
-import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.UUID;
 
 /**
  * Reference pages:
@@ -34,11 +33,19 @@ public class DailyListFragment extends Fragment {
 
     private static final String TAG = "DailyListFragment";
     public static final String DAILY_RECYCLER_VIEW_INDEX = "daily_recycler_view_index";
+    public static final String DAILY_DATE = "daily_date";
+
+    private static final String DIALOG_DATE = "DialogDate";
+    private static final int REQUEST_DATE = 0;
 
     private RecyclerView mDailyRecyclerView;
     private RecyclerView.Adapter mDailyAdapter;
     private RecyclerView.LayoutManager mDailyLayoutManager;
     private List<DailyItem> mDailyData = new LinkedList<>();
+
+    private Button mDatePicker;
+    private Button mDeleteButton;
+    private Date mScoreDate;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -61,7 +68,13 @@ public class DailyListFragment extends Fragment {
         ((AppCompatActivity)getActivity()).getSupportActionBar();
         ((AppCompatActivity)getActivity()).getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         ((AppCompatActivity)getActivity()).getSupportActionBar().setDisplayShowHomeEnabled(true);
+
+        if (mScoreDate == null) {
+            mScoreDate = new Date();
+        }
     }
+
+
 
     @Nullable
     @Override
@@ -75,23 +88,94 @@ public class DailyListFragment extends Fragment {
         mDailyRecyclerView.setAdapter(mDailyAdapter);
         mDailyRecyclerView.setHasFixedSize(true);
 
+        mDatePicker = v.findViewById(R.id.daily_score_date_picker_button);
+        mDatePicker.setText(Score.timelessDate(new Date()));
+
+        mDatePicker.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                FragmentManager manager = getFragmentManager(); // manager of parent
+                DatePickerFragment dialog = DatePickerFragment.newInstance(mScoreDate);
+                dialog.setTargetFragment(DailyListFragment.this, REQUEST_DATE); // set target to retrieve data from a fragment. p 238
+                dialog.show(manager, DIALOG_DATE); // passing in FragmentManager of parent and string id.
+                Log.d(TAG, "calendar date: " + mScoreDate.toString());
+            }
+        });
+
+        mDeleteButton = v.findViewById(R.id.daily_score_date_deleter);
+
+
+        mDeleteButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (ScoringLab.get(getContext()).isScore(mScoreDate)) {
+
+                    ScoringLab.get(getContext()).deleteScore(mScoreDate);
+
+                    updateUI();
+                }
+
+
+
+            }
+        });
+
+     //   mDeleteView.
+
+
         getActivity().setTitle(R.string.title_daily_questions);
 
-        setBorders();
+        updateUI();
         return v;
+    }
+
+    private void updateUI(){
+        mDatePicker.setText(Score.timelessDate(mScoreDate));
+        setBorders();
+        mDailyAdapter.notifyDataSetChanged();
+
+        if (ScoringLab.get(getContext()).isScore(mScoreDate)){
+            mDeleteButton.setEnabled(true);
+        } else {
+            mDeleteButton.setEnabled(false);
+        }
+    }
+
+    /**
+     * @param requestCode code that keeps track of where it was called from
+     * @param resultCode  constants. success or failure...
+     * @param data        data to be unpacked.
+     */
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+
+        if (resultCode != Activity.RESULT_OK) {
+            return;
+        }
+
+        if (requestCode == REQUEST_DATE) {
+            // Extra date is a public constant so we are pulling it out of the class.
+            mScoreDate = (Date) data.getSerializableExtra(DatePickerFragment.EXTRA_DATE);
+
+            // set date to morning. // this is shifted on create
+       //     mScoreDate = new Date(mScoreDate.getTime() + 1000*2*60*60);
+
+            Log.d(TAG, "date picker date: " + mScoreDate.toString());
+            updateUI();
+        }
     }
 
     @Override
     public void onResume() {
         super.onResume();
         getActivity().setTitle(R.string.title_daily_questions);
-        setBorders();
+        updateUI();
         }
 
     private void setBorders() {
-        if (ScoringLab.get(getActivity()).isScore(new Date())) {
+        if (ScoringLab.get(getActivity()).isScore(mScoreDate)) {
             // get score object to use its data
-            Score tempScore = ScoringLab.get(getActivity()).getScore(new Date());
+            Score tempScore = ScoringLab.get(getActivity()).getScore(mScoreDate);
             // set new score for this category
 
             // set border based on todays score. subtitle is update automatically based on background.
@@ -101,6 +185,14 @@ public class DailyListFragment extends Fragment {
             mDailyData.get(3).setBackgroundID(Score.getBackgroundID(tempScore.getLaughterScore()));
             mDailyData.get(4).setBackgroundID(Score.getBackgroundID(tempScore.getEatingScore()));
             mDailyData.get(5).setBackgroundID(Score.getBackgroundID(tempScore.getSpeakingScore()));
+        } else {
+            // changing borders to no data if its a new date
+            mDailyData.get(0).setBackgroundID(Score.getBackgroundID(ScoringAlgorithms.SCORE_NO_DATA));
+            mDailyData.get(1).setBackgroundID(Score.getBackgroundID(ScoringAlgorithms.SCORE_NO_DATA));
+            mDailyData.get(2).setBackgroundID(Score.getBackgroundID(ScoringAlgorithms.SCORE_NO_DATA));
+            mDailyData.get(3).setBackgroundID(Score.getBackgroundID(ScoringAlgorithms.SCORE_NO_DATA));
+            mDailyData.get(4).setBackgroundID(Score.getBackgroundID(ScoringAlgorithms.SCORE_NO_DATA));
+            mDailyData.get(5).setBackgroundID(Score.getBackgroundID(ScoringAlgorithms.SCORE_NO_DATA));
         }
     }
 
@@ -132,11 +224,12 @@ public class DailyListFragment extends Fragment {
                 Log.d(TAG, "onClick called");
                 int position = getAdapterPosition(); // find out where this view is in the list
                 // gets daily item at views position, then gets the fragment out of it and loads it
-                //              replaceFragment(mDailyData.get(position).getFragment());
+                // replaceFragment(mDailyData.get(position).getFragment());
 
                 DailyPagerFragment tempFragment = new DailyPagerFragment();
                 Bundle opBundle = new Bundle();
                 opBundle.putInt(DAILY_RECYCLER_VIEW_INDEX, position);
+                opBundle.putLong(DAILY_DATE, mScoreDate.getTime());
 
                 tempFragment.setArguments(opBundle);
                 replaceFragment(tempFragment);
@@ -148,7 +241,6 @@ public class DailyListFragment extends Fragment {
          */
         public DailyAdapter(List<DailyItem> dailyListData) {
             mDailyListData = dailyListData;
-
         }
 
         /**
@@ -205,8 +297,5 @@ public class DailyListFragment extends Fragment {
         transaction.commit();
         Log.d(TAG, "replacing fragment");
     }
-
-
-
 }
 

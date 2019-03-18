@@ -14,16 +14,14 @@
         android:orientation="vertical"
         android:paddingTop="16dp">
 
-        <ImageView
-            android:layout_width="300dp"
-            android:layout_height="200dp"
-            android:layout_marginLeft="8dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginRight="8dp"
-            android:background="@drawable/trim"
-            android:cropToPadding="true"
-            android:padding="1dp"
-            app:srcCompat="@drawable/photo_bar_graph_filler" />
+        <com.jjoe64.graphview.GraphView
+            android:id="@+id/bar_graph"
+            android:layout_width="wrap_content"
+            android:layout_height="200dip"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp" />
+
+        
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -84,7 +82,7 @@
                 android:orientation="horizontal">
 
                 <LinearLayout
-                    android:id="@+id/linearLayout"
+                    android:id="@+id/linearLayout2"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="16dp"
@@ -339,27 +337,6 @@
                     </LinearLayout>
                 </LinearLayout>
 
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:gravity="left|center_vertical"
-                    android:orientation="horizontal">
-
-                    <ImageView
-                        android:layout_width="20dp"
-                        android:layout_height="20dp"
-                        android:layout_margin="4dp"
-                        app:srcCompat="@drawable/dot_image" />
-
-                    <TextView
-                        style="@style/BodyTextNoMargin"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_margin="4dp"
-
-                        android:text="@string/no_data" />
-                </LinearLayout>
             </LinearLayout>
 
 

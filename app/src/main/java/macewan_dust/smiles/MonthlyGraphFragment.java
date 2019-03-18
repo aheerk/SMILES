@@ -1,16 +1,17 @@
 package macewan_dust.smiles;
 
+
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.Paint;
 import android.icu.util.GregorianCalendar;
+
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -18,12 +19,15 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
-import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.jjoe64.graphview.GraphView;
+import com.jjoe64.graphview.ValueDependentColor;
+import com.jjoe64.graphview.series.BarGraphSeries;
+import com.jjoe64.graphview.series.DataPoint;
 
 import java.util.Calendar;
 import java.util.Date;
-import java.util.LinkedList;
 import java.util.List;
 
 public class MonthlyGraphFragment extends Fragment {
@@ -41,6 +45,7 @@ public class MonthlyGraphFragment extends Fragment {
     private CheckBox mLaughterCheckbox;
     private CheckBox mEatingCheckbox;
     private CheckBox mSpeakingCheckbox;
+    private GraphView mGraph;
 
     // aggragate data for the month
     private int mBalanced;
@@ -71,7 +76,6 @@ public class MonthlyGraphFragment extends Fragment {
         mScoringLab = ScoringLab.get(getContext());
 
         mMonths = getContext().getResources().getStringArray(R.array.month_array);
-
     }
 
     @Override
@@ -85,6 +89,13 @@ public class MonthlyGraphFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_monthly_graph, null);
+
+        //Resource #1: https://www.loginworks.com/blogs/how-to-create-graphs-in-android-application/
+        //Resource #2: http://www.android-graphview.org/bar-chart/
+        //initialize the bar graph
+        mGraph = v.findViewById(R.id.bar_graph);
+
+
 
 
 
@@ -108,6 +119,7 @@ public class MonthlyGraphFragment extends Fragment {
         mGraphDate = new Date(); // today
         Calendar calendar = Calendar.getInstance();
         calendar.setTime(mGraphDate);
+        // moves the month up by one in the calendar to have the correct starting month
         calendar.roll(Calendar.MONTH, true);
         mYear = calendar.get(Calendar.YEAR);
         monthIndex = calendar.get(Calendar.MONTH) - 1; // month - 1 to make an index
@@ -150,7 +162,7 @@ public class MonthlyGraphFragment extends Fragment {
                 updateMonthlyGraph();
             }
         });
-        
+
         // note that 11 is December. 0 is January
         mLastMonthButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -176,6 +188,10 @@ public class MonthlyGraphFragment extends Fragment {
             }
         });
 
+
+
+
+
         return v;
     }
 
@@ -187,6 +203,30 @@ public class MonthlyGraphFragment extends Fragment {
         Log.d(TAG, "month: " + mMonths[monthIndex] + "\n year: " + String.valueOf(mYear));
         mMonthData = mScoringLab.monthScores(mMonths[monthIndex], String.valueOf(mYear));
         countScores();
+
+
+        //Setting data to the bar graph
+        BarGraphSeries<DataPoint> mGraphData = new BarGraphSeries<>(new DataPoint[] {
+                new DataPoint(0, 0 ),
+                new DataPoint(1, mBalanced),
+                new DataPoint(2, mUnbalanced),
+                new DataPoint(3, mOver),
+                new DataPoint(4, mUnder),
+                new DataPoint(5, 0 ),
+
+        });
+
+        Paint colors = new Paint();
+        colors.setColor(getResources().getColor(R.color.colorLow));
+        colors.setColor(getResources().getColor(R.color.colorHigh));
+        mGraphData.setCustomPaint(colors);
+
+        mGraphData.setDataWidth(0.7);
+        mGraph.addSeries(mGraphData);
+
+
+        mGraph.onDataChanged(false, true);
+        //invalidate();
     }
 
     private void countScores(){

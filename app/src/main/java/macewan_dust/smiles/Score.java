@@ -1,5 +1,7 @@
 package macewan_dust.smiles;
 
+import android.util.Log;
+
 import java.text.DateFormat;
 import java.util.Date;
 import java.util.TimeZone;
@@ -13,6 +15,8 @@ import static macewan_dust.smiles.ScoringAlgorithms.*;
 public class Score {
 
 //    private String mDateString; // using a string date due to all the date issues. deprecated, etc.
+    private static final String TAG = "Score";
+
     private Date mDate;
     private String mDateString;
     private UUID mScoreID;
@@ -283,6 +287,19 @@ public class Score {
                 return "no data";
         }
     }
+
+
+    public static boolean isToday(Date date) {
+        Date today = new Date();
+        Log.d(TAG, timelessDate(date) + " is today: " + timelessDate(today));
+        if (timelessDate(today).equals(timelessDate(date))) {
+            Log.d(TAG, "true");
+            return true;
+        }
+        Log.d(TAG, "false");
+        return false;
+    }
+
 
     /**
      * timelessDate - remove hours, minutes, seconds from date. should only be done in this one

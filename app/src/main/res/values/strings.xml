@@ -17,6 +17,9 @@
     <string name="title_introduction">Introduction</string>
     <string name="title_web_links">Web Links</string>
     <string name="title_smiles">SMILES</string>
+    <string name="daily_challenge">Daily Challenge</string>
+
+    <string name="daily_web_title">Daily Weblink</string>
 
     <string name="title_credits">Credits</string>
 
@@ -28,6 +31,7 @@
     <string name="subtitle_score_balanced">Balanced: A perfect day!</string>
     <string name="subtitle_score_unbalanced">Unbalanced: Over and Under</string>
     <string name="subtitle_score_no_data">Score your activities</string>
+    <string name="delete">Delete</string>
 
     <!-- Legend text -->
     <string name="over">Over</string>

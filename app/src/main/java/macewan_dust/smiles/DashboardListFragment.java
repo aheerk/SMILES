@@ -54,7 +54,7 @@ public class DashboardListFragment extends Fragment {
         ((AppCompatActivity)getActivity()).getSupportActionBar().setDisplayHomeAsUpEnabled(false);
 
         // scores from database
-        mDashboardData = ScoringLab.get(getContext()).getOneScore();
+        mDashboardData = ScoringLab.get(getContext()).getScores();
 /*
         // generating some items for testing
         Score temp = new Score();
@@ -78,7 +78,7 @@ public class DashboardListFragment extends Fragment {
         Log.d(TAG, "resuming dashboard");
 
         // redraw the screen when coming back from a question page
-        mDashboardData = ScoringLab.get(getContext()).getOneScore(); // refresh list on resume
+        mDashboardData = ScoringLab.get(getContext()).getScores(); // refresh list on resume
 
         ((DashboardAdapter)mDashboardRecyclerViewAdapter).setDashboardListData(mDashboardData);
         mDashboardRecyclerViewAdapter.notifyDataSetChanged();

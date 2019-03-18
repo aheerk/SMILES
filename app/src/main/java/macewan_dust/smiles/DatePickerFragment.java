@@ -2,7 +2,6 @@ package macewan_dust.smiles;
 
 import android.app.Activity;
 import android.app.Dialog;
-import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
@@ -47,9 +46,9 @@ public class DatePickerFragment extends DialogFragment {
 
         mDatePicker.setMaxDate(System.currentTimeMillis());
 
-        if (ScoringLab.get(getContext()).getOldestDate() != null) {
-            mDatePicker.setMinDate(ScoringLab.get(getContext()).getOldestDate().getTime());
-        }
+//        if (ScoringLab.get(getContext()).getOldestDate() != null) {
+//            mDatePicker.setMinDate(ScoringLab.get(getContext()).getOldestDate().getTime());
+//        }
 
         return new AlertDialog.Builder(getActivity())
                 .setView(v)
