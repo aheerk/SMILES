@@ -183,7 +183,7 @@ public class MainActivity extends SingleFragmentActivity implements BottomNaviga
      */
     private String getFilename() {
         Date today = new Date();
-        String formatted = DateFormat.getDateInstance(DateFormat.SHORT).format(today);
+        String formatted = DateFormat.getDateInstance(DateFormat.MEDIUM).format(today);
         return "scores_" + formatted + ".csv";
     }
 
