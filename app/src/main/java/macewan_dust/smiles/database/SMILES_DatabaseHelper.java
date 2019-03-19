@@ -39,7 +39,7 @@ public class SMILES_DatabaseHelper extends SQLiteOpenHelper {
 
         db.execSQL("create table " + SMILES_DatabaseSchema.RawTable.NAME + " ( " +
                 " _id integer primary key autoincrement, " +
-                RawTable.Columns.SCORE_ID + ", " +
+                RawTable.Columns.RAW_ID + ", " +
                 RawTable.Columns.DATE + ", " +
                 RawTable.Columns.SLEEP1 + ", " +
                 RawTable.Columns.SLEEP2 + ", " +

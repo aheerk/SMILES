@@ -19,11 +19,11 @@ public class InputLaughterFragment extends Fragment {
     private static final String TAG = "InputLaughterFragment";
     private static final int NO_SELECTION = 104000;
 
-    ImageView mIcon1;
-    ImageView mIcon2;
-    ImageView mIcon3;
-    ImageView mIcon4;
-    ImageView mIcon5;
+    TextView mIcon1;
+    TextView mIcon2;
+    TextView mIcon3;
+    TextView mIcon4;
+    TextView mIcon5;
     Button mButton;
     TextView mResults;
 
@@ -87,7 +87,7 @@ public class InputLaughterFragment extends Fragment {
             public void onClick(View v) {
                 clearSelected();
                 mQuestion_A_index = 1;
-                mIcon1.setBackground(getResources().getDrawable(R.drawable.border_image_selected));
+                mIcon1.setBackground(getResources().getDrawable(R.drawable.ic_single_border_selected));
             }
         });
 
@@ -96,7 +96,7 @@ public class InputLaughterFragment extends Fragment {
             public void onClick(View v) {
                 clearSelected();
                 mQuestion_A_index = 2;
-                mIcon2.setBackground(getResources().getDrawable(R.drawable.border_image_selected));
+                mIcon2.setBackground(getResources().getDrawable(R.drawable.ic_single_border_selected));
             }
         });
 
@@ -105,7 +105,7 @@ public class InputLaughterFragment extends Fragment {
             public void onClick(View v) {
                 clearSelected();
                 mQuestion_A_index = 3;
-                mIcon3.setBackground(getResources().getDrawable(R.drawable.border_image_selected));
+                mIcon3.setBackground(getResources().getDrawable(R.drawable.ic_single_border_selected));
             }
         });
 
@@ -114,7 +114,7 @@ public class InputLaughterFragment extends Fragment {
             public void onClick(View v) {
                 clearSelected();
                 mQuestion_A_index = 4;
-                mIcon4.setBackground(getResources().getDrawable(R.drawable.border_image_selected));
+                mIcon4.setBackground(getResources().getDrawable(R.drawable.ic_single_border_selected));
             }
         });
 
@@ -123,7 +123,7 @@ public class InputLaughterFragment extends Fragment {
             public void onClick(View v) {
                 clearSelected();
                 mQuestion_A_index = 5;
-                mIcon5.setBackground(getResources().getDrawable(R.drawable.border_image_selected));
+                mIcon5.setBackground(getResources().getDrawable(R.drawable.ic_single_border_selected));
             }
         });
 
@@ -227,10 +227,10 @@ public class InputLaughterFragment extends Fragment {
     }
 
     private void clearSelected() {
-        mIcon1.setBackground(getResources().getDrawable(R.drawable.border_image));
-        mIcon2.setBackground(getResources().getDrawable(R.drawable.border_image));
-        mIcon3.setBackground(getResources().getDrawable(R.drawable.border_image));
-        mIcon4.setBackground(getResources().getDrawable(R.drawable.border_image));
-        mIcon5.setBackground(getResources().getDrawable(R.drawable.border_image));
+        mIcon1.setBackground(getResources().getDrawable(R.drawable.ic_single_border));
+        mIcon2.setBackground(getResources().getDrawable(R.drawable.ic_single_border));
+        mIcon3.setBackground(getResources().getDrawable(R.drawable.ic_single_border));
+        mIcon4.setBackground(getResources().getDrawable(R.drawable.ic_single_border));
+        mIcon5.setBackground(getResources().getDrawable(R.drawable.ic_single_border));
     }
 };

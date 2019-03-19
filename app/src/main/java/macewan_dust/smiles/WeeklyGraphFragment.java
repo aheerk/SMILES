@@ -217,7 +217,6 @@ public class WeeklyGraphFragment extends Fragment {
 
         private List<Score> mAdapterData;
 
-
         public void setAdapterData(List<Score> adapterData) {
             mAdapterData = adapterData;
         }

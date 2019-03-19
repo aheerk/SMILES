@@ -300,9 +300,12 @@ public class DashboardListFragment extends Fragment {
         }
 
         private void undoDelete() {
-            mDashboardListData.add(mDeletedItemPosition, mDeletedItem);
-            notifyItemInserted(mDeletedItemPosition);
+
+
             ScoringLab.get(getContext()).addScore(mDeletedItem);
+            mDashboardListData = ScoringLab.get(getContext()).getScores();
+            //notifyItemInserted(mDeletedItemPosition);
+            notifyDataSetChanged();
         }
     }
 

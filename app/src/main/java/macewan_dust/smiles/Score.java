@@ -10,7 +10,7 @@ import java.util.UUID;
 import static macewan_dust.smiles.ScoringAlgorithms.*;
 
 /**
- * Note there is no setter for SCORE_ID
+ * Note there is no setter for RAW_ID
  */
 public class Score {
 
@@ -266,29 +266,6 @@ public class Score {
         }
     }
 
-    /**
-     * getScoreName - used to make the CSV output human readable
-     * @param score
-     * @return
-     */
-    public String getScoreName(int score) {                                             ///// ------ should return string but need to find out why getResource and getString are not working here. imports most likely
-        switch (score) {
-            case SCORE_UNDER:
-                return "low";
-            case SCORE_BALANCED:
-                return "balanced";
-            case SCORE_OVER:
-                return "over";
-            case SCORE_UNBALANCED:
-                return "unbalanced";
-            case SCORE_ERROR:
-                return "error";
-            default:
-                return "no data";
-        }
-    }
-
-
     public static boolean isToday(Date date) {
         Date today = new Date();
         Log.d(TAG, timelessDate(date) + " is today: " + timelessDate(today));
@@ -300,7 +277,6 @@ public class Score {
         return false;
     }
 
-
     /**
      * timelessDate - remove hours, minutes, seconds from date. should only be done in this one
      * method for consistency
@@ -310,16 +286,4 @@ public class Score {
     public static String timelessDate(Date dateIn) {
         return DateFormat.getDateInstance(DateFormat.MEDIUM).format(dateIn);
     }
-
-/*
-    public static Date timelessDate(Date dateIn){
-        // removing time from date.
-        DateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
-        try {
-            dateIn = formatter.parse(formatter.format(dateIn));
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
-        return dateIn;
-    }*/
 }
