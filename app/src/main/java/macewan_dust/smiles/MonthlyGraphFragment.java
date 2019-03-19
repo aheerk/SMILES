@@ -90,11 +90,11 @@ public class MonthlyGraphFragment extends Fragment {
                              @Nullable Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_monthly_graph, null);
 
+
         //Resource #1: https://www.loginworks.com/blogs/how-to-create-graphs-in-android-application/
         //Resource #2: http://www.android-graphview.org/bar-chart/
         //initialize the bar graph
         mGraph = v.findViewById(R.id.bar_graph);
-
 
 
 
@@ -163,6 +163,7 @@ public class MonthlyGraphFragment extends Fragment {
             }
         });
 
+
         // note that 11 is December. 0 is January
         mLastMonthButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -174,7 +175,7 @@ public class MonthlyGraphFragment extends Fragment {
                     monthIndex = 11;
                     mYear--;
                 }
-            updateMonthlyGraph();
+                updateMonthlyGraph();
             }
         });
         mNextMonthButton.setOnClickListener(new View.OnClickListener() {
@@ -213,7 +214,6 @@ public class MonthlyGraphFragment extends Fragment {
                 new DataPoint(3, mOver),
                 new DataPoint(4, mUnder),
                 new DataPoint(5, 0 ),
-
         });
 
         Paint colors = new Paint();
@@ -222,11 +222,11 @@ public class MonthlyGraphFragment extends Fragment {
         mGraphData.setCustomPaint(colors);
 
         mGraphData.setDataWidth(0.7);
+        mGraph.removeAllSeries();
         mGraph.addSeries(mGraphData);
 
 
         mGraph.onDataChanged(false, true);
-        //invalidate();
     }
 
     private void countScores(){

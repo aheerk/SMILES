@@ -76,4 +76,12 @@
         <item name="android:cropToPadding">true</item>
     </style>
 
+    <style name="ButtonText">
+        <item name="android:textSize">22sp</item>
+        <item name="android:textColor">@color/colorTitleText</item>
+        <item name="android:layout_margin">8dp</item>
+        <item name="android:textAlignment">center</item>
+        <item name="android:gravity">center</item>
+    </style>
+
 </resources>

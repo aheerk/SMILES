@@ -45,6 +45,16 @@ public class Raw {
         mRawID = UUID.randomUUID();
     }
 
+    /**
+     * this constructor is for data from the database
+     * @param date
+     * @param id
+     */
+    public Raw(Date date, UUID id) {
+        this.mDate = date;
+        mRawID = id;
+    }
+
     public void setSleep(int q1, int q2) {
         mSleep1 = q1;
         mSleep2 = q2;
@@ -82,6 +92,18 @@ public class Raw {
         mSpeaking3 = q3;
         mSpeaking4 = q4;
         mSpeaking5 = q5;
+    }
+
+    public String getDateString() {
+        return Score.timelessDate(mDate);
+    }
+
+    public UUID getRawID() {
+        return mRawID;
+    }
+
+    public Date getDate() {
+        return mDate;
     }
 
     public int getSleep1() {

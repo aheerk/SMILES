@@ -33,7 +33,7 @@ public class SMILES_DatabaseSchema {
          * Column class
          */
         public static final class Columns {
-            public static final String SCORE_ID = "uuid";
+            public static final String RAW_ID = "uuid";
             public static final String DATE = "date";
 
             public static final String SLEEP1 = "sleep1_time";
@@ -62,7 +62,6 @@ public class SMILES_DatabaseSchema {
             public static final String SPEAKING3 = "speaking3_prevented";
             public static final String SPEAKING4 = "speaking4_social_media";
             public static final String SPEAKING5 = "speaking5_negative_impact";
-
         }
     }
 }
