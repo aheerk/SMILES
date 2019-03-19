@@ -21,10 +21,15 @@ import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.TextView;
 
-import com.jjoe64.graphview.GraphView;
-import com.jjoe64.graphview.ValueDependentColor;
-import com.jjoe64.graphview.series.BarGraphSeries;
-import com.jjoe64.graphview.series.DataPoint;
+
+import java.util.ArrayList;
+import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
+import com.github.mikephil.charting.charts.BarChart;
+import com.github.mikephil.charting.data.BarData;
+import com.github.mikephil.charting.data.BarDataSet;
+import com.github.mikephil.charting.data.BarEntry;
+import com.github.mikephil.charting.utils.ColorTemplate;
 
 import java.util.Calendar;
 import java.util.Date;
@@ -45,7 +50,6 @@ public class MonthlyGraphFragment extends Fragment {
     private CheckBox mLaughterCheckbox;
     private CheckBox mEatingCheckbox;
     private CheckBox mSpeakingCheckbox;
-    private GraphView mGraph;
 
     // aggragate data for the month
     private int mBalanced;
@@ -89,16 +93,6 @@ public class MonthlyGraphFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_monthly_graph, null);
-
-        //Resource #1: https://www.loginworks.com/blogs/how-to-create-graphs-in-android-application/
-        //Resource #2: http://www.android-graphview.org/bar-chart/
-        //initialize the bar graph
-        mGraph = v.findViewById(R.id.bar_graph);
-
-
-
-
-
 
 
         getActivity().setTitle(R.string.title_monthly_graph);
@@ -195,6 +189,63 @@ public class MonthlyGraphFragment extends Fragment {
         return v;
     }
 
+    // Reference:  https://www.android-examples.com/create-bar-chart-graph-using-mpandroidchart-library/
+    public class MainActivity extends AppCompatActivity {
+
+        BarChart chart ;
+        ArrayList<BarEntry> BARENTRY ;
+        ArrayList<String> BarEntryLabels ;
+        BarDataSet Bardataset ;
+        BarData BARDATA ;
+        @Override
+        protected void onCreate(Bundle savedInstanceState) {
+            super.onCreate(savedInstanceState);
+            setContentView(R.layout.fragment_monthly_graph);
+            chart = (BarChart) findViewById(R.id.chart1);
+
+            BARENTRY = new ArrayList<>();
+
+            BarEntryLabels = new ArrayList<String>();
+
+            AddValuesToBARENTRY();
+
+            AddValuesToBarEntryLabels();
+
+            Bardataset = new BarDataSet(BARENTRY, "Projects");
+
+            BARDATA = new BarData(BarEntryLabels, Bardataset);
+
+            Bardataset.setColors(ColorTemplate.COLORFUL_COLORS);
+
+            chart.setData(BARDATA);
+
+            chart.animateY(3000);
+
+        }
+
+        public void AddValuesToBARENTRY(){
+
+            BARENTRY.add(new BarEntry(2f, 0));
+            BARENTRY.add(new BarEntry(4f, 1));
+            BARENTRY.add(new BarEntry(6f, 2));
+            BARENTRY.add(new BarEntry(8f, 3));
+            BARENTRY.add(new BarEntry(7f, 4));
+            BARENTRY.add(new BarEntry(3f, 5));
+
+        }
+
+        public void AddValuesToBarEntryLabels(){
+
+            BarEntryLabels.add("January");
+            BarEntryLabels.add("February");
+            BarEntryLabels.add("March");
+            BarEntryLabels.add("April");
+            BarEntryLabels.add("May");
+            BarEntryLabels.add("June");
+
+        }
+    }
+
     /**
      * refresh data in graph
      */
@@ -203,30 +254,6 @@ public class MonthlyGraphFragment extends Fragment {
         Log.d(TAG, "month: " + mMonths[monthIndex] + "\n year: " + String.valueOf(mYear));
         mMonthData = mScoringLab.monthScores(mMonths[monthIndex], String.valueOf(mYear));
         countScores();
-
-
-        //Setting data to the bar graph
-        BarGraphSeries<DataPoint> mGraphData = new BarGraphSeries<>(new DataPoint[] {
-                new DataPoint(0, 0 ),
-                new DataPoint(1, mBalanced),
-                new DataPoint(2, mUnbalanced),
-                new DataPoint(3, mOver),
-                new DataPoint(4, mUnder),
-                new DataPoint(5, 0 ),
-
-        });
-
-        Paint colors = new Paint();
-        colors.setColor(getResources().getColor(R.color.colorLow));
-        colors.setColor(getResources().getColor(R.color.colorHigh));
-        mGraphData.setCustomPaint(colors);
-
-        mGraphData.setDataWidth(0.7);
-        mGraph.addSeries(mGraphData);
-
-
-        mGraph.onDataChanged(false, true);
-        //invalidate();
     }
 
     private void countScores(){
