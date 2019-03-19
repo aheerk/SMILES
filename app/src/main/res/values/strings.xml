@@ -233,7 +233,7 @@
     <string name="overflow_import">Import</string>
 
     <string name="csv_no_write_permission">Please accept permissions to export data.</string>
-    <string name="csv_export_success">Your data was successfully exported to your documents.</string>
+    <string name="csv_export_success">Your data was successfully exported.</string>
     <string name="csv_export_failure">Export unsuccessful.</string>
 
     <string name="csv_no_read_permission">Please accept permissions to import data.</string>

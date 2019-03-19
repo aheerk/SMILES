@@ -1,8 +1,11 @@
 package macewan_dust.smiles;
 
 import android.Manifest;
+import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -16,11 +19,6 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
 
-import java.io.File;
-import java.text.DateFormat;
-import java.util.Date;
-import java.util.LinkedList;
-import java.util.List;
 
 /**
  * This activity exists to hold a fragment.
@@ -29,6 +27,10 @@ public class MainActivity extends SingleFragmentActivity implements BottomNaviga
 
     private static final String TAG = "MainActivity";
     private int minBackstack; // this is the fix for the visual back button bug.
+    private static final int WRITE_REQUEST_CODE = 43;
+    private static final int READ_REQUEST_CODE = 44;
+    private static final int REQUEST_WRITE_EXTERNAL_STORAGE = 222;
+    private static final int REQUEST_READ_EXTERNAL_STORAGE = 111;
 
     // The first fragment launched is specified here
     @Override
@@ -92,18 +94,11 @@ public class MainActivity extends SingleFragmentActivity implements BottomNaviga
                 break;
             }
             case R.id.overflow_export: {
-                CsvFileManager fileManager = new CsvFileManager(MainActivity.this,
-                        getApplicationContext());
-                fileManager.exportScores();
+                checkPermissionsAndWriteFile();
                 break;
             }
             case R.id.overflow_import: {
-                // Need to open up a page for import and show a list of files
-
-                CsvFileManager fileManager = new CsvFileManager(MainActivity.this,
-                        getApplicationContext());
-                //importCsv(getApplicationContext());
-                fileManager.readCSVFile();
+                checkPermissionsAndReadFiles();
                 break;
             }
             case R.id.overflow_information: {
@@ -145,8 +140,6 @@ public class MainActivity extends SingleFragmentActivity implements BottomNaviga
      * @return
      */
     public boolean loadFragment(Fragment fragment) {
-
-
         if (fragment != null) {
             getSupportFragmentManager()
                     .beginTransaction()
@@ -187,14 +180,136 @@ public class MainActivity extends SingleFragmentActivity implements BottomNaviga
         return loadFragment(fragment);
     }
 
+    /*--- IMPORT & EXPORT -----------------------------------------------------------------------*/
 
+    /**
+     * This method checks if the app has permissions to write to external storage. If so,
+     * it writes the new CSV file.
+     */
+    public void checkPermissionsAndWriteFile () {
+        checkWriteExternalPermissions("");
+    }
 
-    /*private void importCsv(Context context) {
+    /**
+     * createFile launches an intent that asks the user where to store a new file. The results
+     * will be provided in the onActivityResult method
+     * Adapted from: https://developer.android.com/guide/topics/providers/document-provider#create
+     */
+    public void createFile() {
+        Intent intent = new Intent(Intent.ACTION_CREATE_DOCUMENT);
 
-        // Check if we have permission to read documents for import
-        if (ContextCompat.checkSelfPermission(context,
+        // Filter to only show results that can be "opened", such as
+        // a file (as opposed to a list of contacts or timezones).
+        intent.addCategory(Intent.CATEGORY_OPENABLE);
+
+        // Create a csv file type.
+        intent.setType("text/csv");
+        intent.putExtra(Intent.EXTRA_TITLE, CsvFileManager.getFilename());
+        startActivityForResult(intent, WRITE_REQUEST_CODE);
+    }
+
+    /**
+     * readFiles launches an intent that asks the which file they'd like to import. The results
+     * will be provided in the onActivityResult method
+     * Source: https://developer.android.com/guide/topics/providers/document-provider#java
+     */
+    private void readFiles() {
+        // ACTION_OPEN_DOCUMENT is the intent to choose a file via the system's file
+        // browser.
+        Intent intent = new Intent(Intent.ACTION_OPEN_DOCUMENT);
+
+        // Filter to only show results that can be "opened", such as a
+        // file (as opposed to a list of contacts or timezones)
+        intent.addCategory(Intent.CATEGORY_OPENABLE);
+
+        // Filter to show only CSV files
+        intent.setType("text/csv");
+        startActivityForResult(intent, READ_REQUEST_CODE);
+    }
+
+    /**
+     * onActivityResult is called by Android after an intent is created such as the one initiated
+     * in createFile.
+     * SOURCE: https://developer.android.com/guide/topics/providers/document-provider#create
+     * @param requestCode
+     * @param resultCode
+     * @param resultData
+     */
+    @Override
+    public void onActivityResult(int requestCode, int resultCode,
+                                 Intent resultData) {
+
+        if (requestCode == WRITE_REQUEST_CODE && resultCode == Activity.RESULT_OK) {
+            // Retrieve the file stored as a URI
+            Uri uri = null;
+            if (resultData != null) {
+                uri = resultData.getData();
+                CsvFileManager.writeCSVFile(MainActivity.this, getApplicationContext(), uri);
+                Log.i(TAG, "Write Uri: " + uri.toString());
+            }
+        } else if (requestCode == READ_REQUEST_CODE && resultCode == Activity.RESULT_OK) {
+            // Retrieve uri
+            Uri uri = null;
+            if (resultData != null) {
+                uri = resultData.getData();
+                CsvFileManager.importCSVFile(MainActivity.this, getApplicationContext(), uri);
+                Log.i(TAG, "Read Uri: " + uri.toString());
+            }
+        }
+    }
+
+    /**
+     * checkPermissionsAndReadFiles checks that the app has read permisisons and reads files for
+     * import if it does.
+     */
+    public void checkPermissionsAndReadFiles () {
+        checkReadExternalPermissions("");
+    }
+
+    /*--------- PERMISSIONs ----------------------------------------------------------------*/
+
+    /**
+     * checkWriteExternalPermissions checks if the app has permissions to write to external storage
+     * If they already have permission, the user is prompted to create a new csv file.
+     *
+     * @param rationale
+     * @return
+     */
+    private void checkWriteExternalPermissions(String rationale)  {
+        // Check if we have permission to export
+        if (ContextCompat.checkSelfPermission(getApplicationContext(),
+                Manifest.permission.WRITE_EXTERNAL_STORAGE)  != PackageManager.PERMISSION_GRANTED) {
+            Log.d(TAG, "No permission to write to external storage");
+
+            // Show the dialog box to request permissions
+            if (ActivityCompat.shouldShowRequestPermissionRationale(MainActivity.this,
+                    Manifest.permission.WRITE_EXTERNAL_STORAGE)){
+                Log.d(TAG, "Show the rationale!");
+
+                // Show explanation?
+
+            } else {
+                Log.d(TAG, "Need to ask for permissions to write external storage.");
+                String[] permissions = new String[] {Manifest.permission.WRITE_EXTERNAL_STORAGE};
+                ActivityCompat.requestPermissions(MainActivity.this, permissions,
+                        REQUEST_WRITE_EXTERNAL_STORAGE);
+            }
+        } else {
+            Log.d(TAG, "Write permissions granted from previous use.");
+            createFile();
+        }
+    }
+
+    /**
+     * checkReadExternalPermissions checks if the app has permissions to read external storage
+     * If they already have permission, the user is prompted to import a csv file.
+     * @param rationale
+     */
+    public void checkReadExternalPermissions(String rationale) {
+        // Check if we have permission to export
+        if (ContextCompat.checkSelfPermission(getApplicationContext(),
                 Manifest.permission.READ_EXTERNAL_STORAGE)  != PackageManager.PERMISSION_GRANTED) {
-            Log.d(TAG, "No permission to read external storage");
+            Log.d(TAG, "No permission to read to external storage");
 
             // Show the dialog box to request permissions
             if (ActivityCompat.shouldShowRequestPermissionRationale(MainActivity.this,
@@ -204,16 +319,54 @@ public class MainActivity extends SingleFragmentActivity implements BottomNaviga
                 // Show explanation?
 
             } else {
-                Log.d(TAG, "Need to ask for permissions to read external storage.");
+                Log.d(TAG, "Need to ask for permissions to write external storage.");
                 String[] permissions = new String[] {Manifest.permission.READ_EXTERNAL_STORAGE};
-                ActivityCompat.requestPermissions(MainActivity.this, permissions, REQUEST_WRITE_EXTERNAL_STORAGE);
+                ActivityCompat.requestPermissions(MainActivity.this, permissions,
+                        REQUEST_READ_EXTERNAL_STORAGE);
             }
         } else {
             Log.d(TAG, "Read permissions granted from previous use.");
-
-            readDocuments();
+            readFiles();
         }
-    }*/
+    }
 
+    /**
+     * Determines whether permissions for external storage use
+     * have been given and disables corresponding functionality accordingly
+     * Android calls this after requesting permissions
+     *
+     * @param requestCode Unique code used to identify a permission request
+     * @param permissions
+     * @param grantResults
+     */
+    @Override
+    public void onRequestPermissionsResult(int requestCode, String permissions[], int[] grantResults) {
+        switch (requestCode) {
+
+            case REQUEST_WRITE_EXTERNAL_STORAGE: {
+
+                if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                    Log.d(TAG, "Write External Storage permission granted.");
+                    // Write to csv
+                    createFile();
+                } else {
+                    Log.d(TAG, "No permissions given to write external storage.");
+                    Toast.makeText(getApplicationContext(), R.string.csv_no_write_permission, Toast.LENGTH_SHORT).show();
+                }
+                return;
+            }
+            case REQUEST_READ_EXTERNAL_STORAGE: {
+                if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                    Log.d(TAG, "Read External Storage permission granted.");
+                    // Read Files
+                    readFiles();
+                } else {
+                    Log.d(TAG, "No permissions given to read external storage.");
+                    Toast.makeText(getApplicationContext(), R.string.csv_no_read_permission, Toast.LENGTH_SHORT).show();
+                }
+            }
+        }
+
+    }
 
 }
