@@ -48,7 +48,8 @@ public class InputMovementFragment extends Fragment {
     CountDownTimer mExitCountDownTimer;
 
     Date mScoreDate;
-
+    ScoringLab mScoringLab;
+    Raw mRaw;
 
     /**
      * new instance constructor
@@ -68,7 +69,7 @@ public class InputMovementFragment extends Fragment {
         super.onCreate(savedInstanceState);
         setRetainInstance(true); // prevents instance of the fragment from being destroyed on rotation.
         mScoreDate = new Date(this.getArguments().getLong(DailyListFragment.DAILY_DATE));
-
+        mScoringLab = ScoringLab.get(getContext());
     }
 
     /**
@@ -245,19 +246,36 @@ public class InputMovementFragment extends Fragment {
                     }
 
                     // if score exists, update it, else make a new one and save it
-                    if (ScoringLab.get(getActivity()).isScore(mScoreDate)){
+                    if (mScoringLab.isScore(mScoreDate)){
                         // get score object to use its data
-                        mScore = ScoringLab.get(getActivity()).getScore(mScoreDate);
+                        mScore = mScoringLab.getScore(mScoreDate);
                         // set new score for this category
                         mScore.setMovementScore(score);
                         // save score to database
-                        ScoringLab.get(getActivity()).updateScore(mScore);
+                        mScoringLab.updateScore(mScore);
                         //
                     } else {
                         mScore = new Score(mScoreDate);
                         mScore.setMovementScore(score);
-                        ScoringLab.get(getActivity()).addScore(mScore);
+                        mScoringLab.addScore(mScore);
                     }
+
+                    // update
+                    if (mScoringLab.isRaw(mScoreDate)){
+                        mRaw = mScoringLab.getRaw(mScoreDate);
+                        mRaw.setMovement(mQuestion_A_index,
+                                mQuestion_B_index == 1,
+                                mQuestion_C_index);
+                        mScoringLab.updateRaw(mRaw);
+
+                    }else { // add
+                        mRaw = new Raw(mScoreDate);
+                        mRaw.setMovement(mQuestion_A_index,
+                                mQuestion_B_index == 1,
+                                mQuestion_C_index);
+                        mScoringLab.addRaw(mRaw);
+                    }
+                    Log.d(TAG, "raw object: " + mRaw);
 
                     mResults.setText(getString(R.string.quest_results, getString(scoreStringID)));
                     exitOnLastScore();
@@ -275,7 +293,7 @@ public class InputMovementFragment extends Fragment {
      * exits out of the question fragment if all questions have been answered.
      */
     private void exitOnLastScore(){
-        if (ScoringLab.get(getActivity()).getScore(mScoreDate).isAllScored() && Score.isToday(mScoreDate)){
+        if (mScoringLab.getScore(mScoreDate).isAllScored() && Score.isToday(mScoreDate)){
             Log.d(TAG, "all questions answered. popping out");
 
             mExitCountDownTimer = new CountDownTimer(DailyPagerFragment.EXIT_TIMER_MILLISECONDS, DailyPagerFragment.EXIT_TIMER_MILLISECONDS) {

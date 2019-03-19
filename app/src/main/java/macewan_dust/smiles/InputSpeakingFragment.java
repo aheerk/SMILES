@@ -47,6 +47,8 @@ public class InputSpeakingFragment extends Fragment {
     Score mScore;
     CountDownTimer mExitCountDownTimer;
     Date mScoreDate;
+    ScoringLab mScoringLab;
+    Raw mRaw;
 
     /**
      * new instance constructor
@@ -68,7 +70,7 @@ public class InputSpeakingFragment extends Fragment {
         super.onCreate(savedInstanceState);
         setRetainInstance(true); // prevents instance of the fragment from being destroyed on rotation.
         mScoreDate = new Date(this.getArguments().getLong(DailyListFragment.DAILY_DATE));
-
+        mScoringLab = ScoringLab.get(getContext());
     }
 
     /**
@@ -193,19 +195,38 @@ public class InputSpeakingFragment extends Fragment {
                     }
 
                     // if score exists, update it, else make a new one and save it
-                    if (ScoringLab.get(getActivity()).isScore(mScoreDate)){
+                    if (mScoringLab.isScore(mScoreDate)){
                         // get score object to use its data
-                        mScore = ScoringLab.get(getActivity()).getScore(mScoreDate);
+                        mScore = mScoringLab.getScore(mScoreDate);
                         // set new score for this category
                         mScore.setSpeakingScore(score);
                         // save score to database
-                        ScoringLab.get(getActivity()).updateScore(mScore);
+                        mScoringLab.updateScore(mScore);
                         //
                     } else {
                         mScore = new Score(mScoreDate);
                         mScore.setSpeakingScore(score);
-                        ScoringLab.get(getActivity()).addScore(mScore);
+                        mScoringLab.addScore(mScore);
                     }
+
+                    // update
+                    if (mScoringLab.isRaw(mScoreDate)){
+                        mRaw = mScoringLab.getRaw(mScoreDate);
+                        mRaw.setSpeaking(mQuestion_A_index,
+                                mDebriefCheck.isChecked(),
+                                mShareCheck.isChecked(),
+                                mSocialMediaCheck.isChecked(),
+                                mSocialBalanceCheck.isChecked());
+
+                    }else { // add
+                        mRaw = new Raw(mScoreDate);
+                        mRaw.setSpeaking(mQuestion_A_index,
+                                mDebriefCheck.isChecked(),
+                                mShareCheck.isChecked(),
+                                mSocialMediaCheck.isChecked(),
+                                mSocialBalanceCheck.isChecked());
+                    }
+                    Log.d(TAG, "raw object: " + mRaw);
 
                     mResults.setText(getString(R.string.quest_results, getString(scoreStringID)));
                     exitOnLastScore();
@@ -226,7 +247,7 @@ public class InputSpeakingFragment extends Fragment {
      * Timer Ref: https://developer.android.com/reference/android/os/CountDownTimer
      */
     private void exitOnLastScore(){
-        if (ScoringLab.get(getActivity()).getScore(mScoreDate).isAllScored() && Score.isToday(mScoreDate)){
+        if (mScoringLab.getScore(mScoreDate).isAllScored() && Score.isToday(mScoreDate)){
             Log.d(TAG, "all questions answered. popping out");
 
             mExitCountDownTimer = new CountDownTimer(DailyPagerFragment.EXIT_TIMER_MILLISECONDS, DailyPagerFragment.EXIT_TIMER_MILLISECONDS) {

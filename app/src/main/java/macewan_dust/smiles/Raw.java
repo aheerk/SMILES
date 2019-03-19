@@ -189,4 +189,31 @@ public class Raw {
     public boolean isSpeaking5() {
         return mSpeaking5;
     }
+
+    @Override
+    public String toString() {
+        return  "mRawID=" + mRawID +
+                ", mDate=" + mDate + "\n" +
+                " mSleep1=" + mSleep1 +
+                ", mSleep2=" + mSleep2 +"\n" +
+                " mMovement1=" + mMovement1 +
+                ", mMovement2=" + mMovement2 +
+                ", mMovement3=" + mMovement3 + "\n" +
+                " mImagination1=" + mImagination1 +
+                ", mImagination2=" + mImagination2 +
+                ", mImagination3=" + mImagination3 + "\n" +
+                " mLaughter1=" + mLaughter1 + "\n" +
+                " mEating1=" + mEating1 +
+                ", mEating2=" + mEating2 +
+                ", mEating3=" + mEating3 +
+                ", mEating4=" + mEating4 +
+                ", mEating5=" + mEating5 +
+                ", mEating6=" + mEating6 +
+                ", mEating7=" + mEating7 + "\n" +
+                " mSpeaking1=" + mSpeaking1 +
+                ", mSpeaking2=" + mSpeaking2 +
+                ", mSpeaking3=" + mSpeaking3 +
+                ", mSpeaking4=" + mSpeaking4 +
+                ", mSpeaking5=" + mSpeaking5 + "\n";
+    }
 }

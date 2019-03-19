@@ -32,6 +32,9 @@ public class InputLaughterFragment extends Fragment {
     Score mScore;
     CountDownTimer mExitCountDownTimer;
     Date mScoreDate;
+    ScoringLab mScoringLab;
+    Raw mRaw;
+
 
 
     /**
@@ -54,6 +57,7 @@ public class InputLaughterFragment extends Fragment {
         super.onCreate(savedInstanceState);
         setRetainInstance(true); // prevents instance of the fragment from being destroyed on rotation.
         mScoreDate = new Date(this.getArguments().getLong(DailyListFragment.DAILY_DATE));
+        mScoringLab = ScoringLab.get(getContext());
     }
 
     /**
@@ -166,20 +170,33 @@ public class InputLaughterFragment extends Fragment {
                     }
 
                     // if score exists, update it, else make a new one and save it
-                    if (ScoringLab.get(getActivity()).isScore(mScoreDate)){
+                    if (mScoringLab.isScore(mScoreDate)){
                         // get score object to use its data
-                        mScore = ScoringLab.get(getActivity()).getScore(mScoreDate);
+                        mScore = mScoringLab.getScore(mScoreDate);
                         // set new score for this category
                         mScore.setLaughterScore(score);
                         // save score to database
-                        ScoringLab.get(getActivity()).updateScore(mScore);
+                        mScoringLab.updateScore(mScore);
                         //
                     } else {
                         Log.d(TAG, "score NOT found by date: " + Score.timelessDate(mScoreDate));
                         mScore = new Score(mScoreDate);
                         mScore.setLaughterScore(score);
-                        ScoringLab.get(getActivity()).addScore(mScore);
+                        mScoringLab.addScore(mScore);
                     }
+                    // update
+                    if (mScoringLab.isRaw(mScoreDate)){
+                        mRaw = mScoringLab.getRaw(mScoreDate);
+                        mRaw.setLaughter(mQuestion_A_index);
+                        mScoringLab.updateRaw(mRaw);
+
+                    }else { // add
+                        mRaw = new Raw(mScoreDate);
+                        mRaw.setLaughter(mQuestion_A_index);
+                        mScoringLab.addRaw(mRaw);
+                    }
+                    Log.d(TAG, "raw object: " + mRaw);
+
                     mResults.setText(getString(R.string.quest_results, getString(scoreStringID)));
                     exitOnLastScore();
                 }
