@@ -70,10 +70,10 @@
     <string name="quest_eating_g">You make water your beverage of choice</string>
 
     <string name="quest_speaking_a">Rate the amount of time spent socializing in person or over social media from a low of 1 to a high of 5.</string>
-    <string name="quest_speaking_b">You seeked assistance and/or debrief when needed.</string>
+    <string name="quest_speaking_b">You seeked assistance and/or debriefed when needed.</string>
     <string name="quest_speaking_c">Nothing prevented your ability to share your thoughts.</string>
     <string name="quest_speaking_d">You engaged in more social media than face-to-face socializing.</string>
-    <string name="quest_speaking_e">Your socializing impacted your health or took away from your life balance.</string>
+    <string name="quest_speaking_e">Your socializing negatively impacted your health or took away from your life balance.</string>
 
     <string name="feedback_over_100_percent">Please select 100% or less food.</string>
 
