@@ -232,6 +232,9 @@ public class InputLaughterFragment extends Fragment {
         }
     }
 
+    /**
+     * if there is saved raw data for this date, sets the selected buttons to match
+     */
     private void setButtonsFromDatabase(){
         if (mScoringLab.isRaw(mScoreDate)) {
             mRaw = mScoringLab.getRaw(mScoreDate);
@@ -239,19 +242,19 @@ public class InputLaughterFragment extends Fragment {
             mQuestion_A_value = mRaw.getLaughter1();
             clearSelected();
             switch (mQuestion_A_value){
-                case 1:
+                case ScoringAlgorithms.INPUT_a:
                     mIcon1.setBackground(getResources().getDrawable(R.drawable.ic_single_border_selected));
                     break;
-                case 2:
+                case ScoringAlgorithms.INPUT_b:
                     mIcon2.setBackground(getResources().getDrawable(R.drawable.ic_single_border_selected));
                     break;
-                case 3:
+                case ScoringAlgorithms.INPUT_c:
                     mIcon3.setBackground(getResources().getDrawable(R.drawable.ic_single_border_selected));
                     break;
-                case 4:
+                case ScoringAlgorithms.INPUT_d:
                     mIcon4.setBackground(getResources().getDrawable(R.drawable.ic_single_border_selected));
                     break;
-                case 5:
+                case ScoringAlgorithms.INPUT_e:
                     mIcon5.setBackground(getResources().getDrawable(R.drawable.ic_single_border_selected));
                     break;
             }

@@ -13,24 +13,23 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.Date;
-import java.util.UUID;
 
 public class InputImaginationFragment extends Fragment {
 
     private static final String TAG = "InputImagFragment";
     private static final int NO_SELECTION = 100000;
 
-    ImageView mIcon1_a;
-    ImageView mIcon1_b;
-    ImageView mIcon1_c;
+    ImageView mIcon1a;
+    ImageView mIcon1b;
+    ImageView mIcon1c;
 
-    ImageView mIcon2_a;
-    ImageView mIcon2_b;
-    ImageView mIcon2_c;
+    ImageView mIcon2a;
+    ImageView mIcon2b;
+    ImageView mIcon2c;
 
-    ImageView mIcon3_a;
-    ImageView mIcon3_b;
-    ImageView mIcon3_c;
+    ImageView mIcon3a;
+    ImageView mIcon3b;
+    ImageView mIcon3c;
 
     Button mButton;
  //   ImageView mIconFeedback;
@@ -87,17 +86,17 @@ public class InputImaginationFragment extends Fragment {
 
         mButton = v.findViewById(R.id.score_button);
 
-        mIcon1_a = v.findViewById(R.id.icon_1a);
-        mIcon1_b = v.findViewById(R.id.icon_1b);
-        mIcon1_c = v.findViewById(R.id.icon_1c);
+        mIcon1a = v.findViewById(R.id.icon_1a);
+        mIcon1b = v.findViewById(R.id.icon_1b);
+        mIcon1c = v.findViewById(R.id.icon_1c);
 
-        mIcon2_a = v.findViewById(R.id.icon_2a);
-        mIcon2_b = v.findViewById(R.id.icon_2b);
-        mIcon2_c = v.findViewById(R.id.icon_2c);
+        mIcon2a = v.findViewById(R.id.icon_2a);
+        mIcon2b = v.findViewById(R.id.icon_2b);
+        mIcon2c = v.findViewById(R.id.icon_2c);
 
-        mIcon3_a = v.findViewById(R.id.icon_3a);
-        mIcon3_b = v.findViewById(R.id.icon_3b);
-        mIcon3_c = v.findViewById(R.id.icon_3c);
+        mIcon3a = v.findViewById(R.id.icon_3a);
+        mIcon3b = v.findViewById(R.id.icon_3b);
+        mIcon3c = v.findViewById(R.id.icon_3c);
 
         mQuestion_A_index = NO_SELECTION;
         mQuestion_B_index = NO_SELECTION;
@@ -106,84 +105,84 @@ public class InputImaginationFragment extends Fragment {
    //     mIconFeedback = v.findViewById(R.id.icon_feedback);
 
         // QUESTION 1 Listeners
-        mIcon1_a.setOnClickListener(new View.OnClickListener() {
+        mIcon1a.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                clearQ1Selected();
+                clearSelectedA();
                 mQuestion_A_index = ScoringAlgorithms.INPUT_a;
-                mIcon1_a.setBackground(getResources().getDrawable(R.drawable.border_image_selected));
+                mIcon1a.setBackground(getResources().getDrawable(R.drawable.border_image_selected));
             }
         });
 
-        mIcon1_b.setOnClickListener(new View.OnClickListener() {
+        mIcon1b.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                clearQ1Selected();
+                clearSelectedA();
                 mQuestion_A_index = ScoringAlgorithms.INPUT_b;
-                mIcon1_b.setBackground(getResources().getDrawable(R.drawable.border_image_selected));
+                mIcon1b.setBackground(getResources().getDrawable(R.drawable.border_image_selected));
             }
         });
 
-        mIcon1_c.setOnClickListener(new View.OnClickListener() {
+        mIcon1c.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                clearQ1Selected();
+                clearSelectedA();
                 mQuestion_A_index = ScoringAlgorithms.INPUT_c;
-                mIcon1_c.setBackground(getResources().getDrawable(R.drawable.border_image_selected));
+                mIcon1c.setBackground(getResources().getDrawable(R.drawable.border_image_selected));
             }
         });
 
         // QUESTION 2 Listeners
-        mIcon2_a.setOnClickListener(new View.OnClickListener() {
+        mIcon2a.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                clearQ2Selected();
+                clearSelectedB();
                 mQuestion_B_index = ScoringAlgorithms.INPUT_a;
-                mIcon2_a.setBackground(getResources().getDrawable(R.drawable.border_image_selected));
+                mIcon2a.setBackground(getResources().getDrawable(R.drawable.border_image_selected));
             }
         });
-        mIcon2_b.setOnClickListener(new View.OnClickListener() {
+        mIcon2b.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                clearQ2Selected();
+                clearSelectedB();
                 mQuestion_B_index = ScoringAlgorithms.INPUT_b;
-                mIcon2_b.setBackground(getResources().getDrawable(R.drawable.border_image_selected));
+                mIcon2b.setBackground(getResources().getDrawable(R.drawable.border_image_selected));
             }
         });
-        mIcon2_c.setOnClickListener(new View.OnClickListener() {
+        mIcon2c.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                clearQ2Selected();
+                clearSelectedB();
                 mQuestion_B_index = ScoringAlgorithms.INPUT_c;
-                mIcon2_c.setBackground(getResources().getDrawable(R.drawable.border_image_selected));
+                mIcon2c.setBackground(getResources().getDrawable(R.drawable.border_image_selected));
             }
         });
 
         // QUESTION 3 Listeners
-        mIcon3_a.setOnClickListener(new View.OnClickListener() {
+        mIcon3a.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                clearQ3Selected();
+                clearSelectedC();
                 mQuestion_C_index = ScoringAlgorithms.INPUT_a;
-                mIcon3_a.setBackground(getResources().getDrawable(R.drawable.border_image_selected));
+                mIcon3a.setBackground(getResources().getDrawable(R.drawable.border_image_selected));
             }
         });
 
-        mIcon3_b.setOnClickListener(new View.OnClickListener() {
+        mIcon3b.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                clearQ3Selected();
+                clearSelectedC();
                 mQuestion_C_index = ScoringAlgorithms.INPUT_b;
-                mIcon3_b.setBackground(getResources().getDrawable(R.drawable.border_image_selected));
+                mIcon3b.setBackground(getResources().getDrawable(R.drawable.border_image_selected));
             }
         });
 
-        mIcon3_c.setOnClickListener(new View.OnClickListener() {
+        mIcon3c.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                clearQ3Selected();
+                clearSelectedC();
                 mQuestion_C_index = ScoringAlgorithms.INPUT_c;
-                mIcon3_c.setBackground(getResources().getDrawable(R.drawable.border_image_selected));
+                mIcon3c.setBackground(getResources().getDrawable(R.drawable.border_image_selected));
             }
         });
 
@@ -272,8 +271,62 @@ public class InputImaginationFragment extends Fragment {
         mResults = v.findViewById(R.id.text_score); // note this object is invisible
         mResults.setVisibility(View.VISIBLE);
 
+        setButtonsFromDatabase();
         return v;
     }
+
+    /**
+     * if there is saved raw data for this date, sets the selected buttons to match
+     */
+    private void setButtonsFromDatabase(){
+        if (mScoringLab.isRaw(mScoreDate)) {
+            mRaw = mScoringLab.getRaw(mScoreDate);
+
+            clearSelectedA();
+            clearSelectedB();
+            clearSelectedC();
+
+            mQuestion_A_index = mRaw.getImagination1();
+            switch (mQuestion_A_index){
+                case ScoringAlgorithms.INPUT_a:
+                    mIcon1a.setBackground(getResources().getDrawable(R.drawable.ic_single_border_selected));
+                    break;
+                case ScoringAlgorithms.INPUT_b:
+                    mIcon1b.setBackground(getResources().getDrawable(R.drawable.ic_single_border_selected));
+                    break;
+                case ScoringAlgorithms.INPUT_c:
+                    mIcon1c.setBackground(getResources().getDrawable(R.drawable.ic_single_border_selected));
+                    break;
+            }
+
+            mQuestion_B_index = mRaw.getImagination2();
+            switch (mQuestion_B_index){
+                case ScoringAlgorithms.INPUT_a:
+                    mIcon2a.setBackground(getResources().getDrawable(R.drawable.ic_single_border_selected));
+                    break;
+                case ScoringAlgorithms.INPUT_b:
+                    mIcon2b.setBackground(getResources().getDrawable(R.drawable.ic_single_border_selected));
+                    break;
+                case ScoringAlgorithms.INPUT_c:
+                    mIcon2c.setBackground(getResources().getDrawable(R.drawable.ic_single_border_selected));
+                    break;
+            }
+
+            mQuestion_C_index = mRaw.getImagination3();
+            switch (mQuestion_C_index){
+                case ScoringAlgorithms.INPUT_a:
+                    mIcon3a.setBackground(getResources().getDrawable(R.drawable.ic_single_border_selected));
+                    break;
+                case ScoringAlgorithms.INPUT_b:
+                    mIcon3b.setBackground(getResources().getDrawable(R.drawable.ic_single_border_selected));
+                    break;
+                case ScoringAlgorithms.INPUT_c:
+                    mIcon3c.setBackground(getResources().getDrawable(R.drawable.ic_single_border_selected));
+                    break;
+            }
+        }
+    }
+
 
     /**
      * exits out of the question fragment if all questions have been answered.
@@ -312,22 +365,22 @@ public class InputImaginationFragment extends Fragment {
     /**
      * ideally the icon being selected wouldn't need to be cleared, if its id was passed in here              // refactor potential
      */
-    private void clearQ1Selected(){
-        mIcon1_a.setBackground(getResources().getDrawable(R.drawable.border_image));
-        mIcon1_b.setBackground(getResources().getDrawable(R.drawable.border_image));
-        mIcon1_c.setBackground(getResources().getDrawable(R.drawable.border_image));
+    private void clearSelectedA(){
+        mIcon1a.setBackground(getResources().getDrawable(R.drawable.border_image));
+        mIcon1b.setBackground(getResources().getDrawable(R.drawable.border_image));
+        mIcon1c.setBackground(getResources().getDrawable(R.drawable.border_image));
     }
 
-    private void clearQ2Selected(){
-        mIcon2_a.setBackground(getResources().getDrawable(R.drawable.border_image));
-        mIcon2_b.setBackground(getResources().getDrawable(R.drawable.border_image));
-        mIcon2_c.setBackground(getResources().getDrawable(R.drawable.border_image));
+    private void clearSelectedB(){
+        mIcon2a.setBackground(getResources().getDrawable(R.drawable.border_image));
+        mIcon2b.setBackground(getResources().getDrawable(R.drawable.border_image));
+        mIcon2c.setBackground(getResources().getDrawable(R.drawable.border_image));
     }
 
-    private void clearQ3Selected(){
-        mIcon3_a.setBackground(getResources().getDrawable(R.drawable.border_image));
-        mIcon3_b.setBackground(getResources().getDrawable(R.drawable.border_image));
-        mIcon3_c.setBackground(getResources().getDrawable(R.drawable.border_image));
+    private void clearSelectedC(){
+        mIcon3a.setBackground(getResources().getDrawable(R.drawable.border_image));
+        mIcon3b.setBackground(getResources().getDrawable(R.drawable.border_image));
+        mIcon3c.setBackground(getResources().getDrawable(R.drawable.border_image));
     }
 
 }

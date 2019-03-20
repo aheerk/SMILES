@@ -238,7 +238,43 @@ public class InputSpeakingFragment extends Fragment {
         mResults = v.findViewById(R.id.text_score); // note this object is invisible
         mResults.setVisibility(View.VISIBLE);
 
+        setButtonsFromDatabase();
         return v;
+    }
+
+    /**
+     * if there is saved raw data for this date, sets the selected buttons to match
+     */
+    private void setButtonsFromDatabase(){
+        if (mScoringLab.isRaw(mScoreDate)) {
+            mRaw = mScoringLab.getRaw(mScoreDate);
+
+            clearSelected();
+
+            mQuestion_A_index = mRaw.getSpeaking1();
+            switch (mQuestion_A_index){
+                case ScoringAlgorithms.INPUT_a:
+                    mIcon1a.setBackground(getResources().getDrawable(R.drawable.ic_single_border_selected));
+                    break;
+                case ScoringAlgorithms.INPUT_b:
+                    mIcon1b.setBackground(getResources().getDrawable(R.drawable.ic_single_border_selected));
+                    break;
+                case ScoringAlgorithms.INPUT_c:
+                    mIcon1c.setBackground(getResources().getDrawable(R.drawable.ic_single_border_selected));
+                    break;
+                case ScoringAlgorithms.INPUT_d:
+                    mIcon1d.setBackground(getResources().getDrawable(R.drawable.ic_single_border_selected));
+                    break;
+                case ScoringAlgorithms.INPUT_e:
+                    mIcon1e.setBackground(getResources().getDrawable(R.drawable.ic_single_border_selected));
+                    break;
+            }
+
+            mDebriefCheck.setChecked(mRaw.isSpeaking2());
+            mShareCheck.setChecked(mRaw.isSpeaking3());
+            mSocialMediaCheck.setChecked(mRaw.isSpeaking4());
+            mSocialBalanceCheck.setChecked(mRaw.isSpeaking5());
+        }
     }
 
     /**

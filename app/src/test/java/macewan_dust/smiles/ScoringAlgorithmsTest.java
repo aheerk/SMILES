@@ -20,27 +20,27 @@ public class ScoringAlgorithmsTest {
     @Test
     public void scoreSleep() {
 
-        assertEquals(ScoringAlgorithms.SCORE_OVER, ScoringAlgorithms.scoreSleep(ScoringAlgorithms.INPUT_d, 0));
+        assertEquals(ScoringAlgorithms.SCORE_OVER, ScoringAlgorithms.scoreSleep(ScoringAlgorithms.INPUT_d, ScoringAlgorithms.INPUT_a));
 
         // Input_d is >9 hours of sleep
-        assertEquals(ScoringAlgorithms.SCORE_OVER, ScoringAlgorithms.scoreSleep(ScoringAlgorithms.INPUT_d, 0));
-        assertEquals(ScoringAlgorithms.SCORE_OVER, ScoringAlgorithms.scoreSleep(ScoringAlgorithms.INPUT_d, 5));
+        assertEquals(ScoringAlgorithms.SCORE_OVER, ScoringAlgorithms.scoreSleep(ScoringAlgorithms.INPUT_d, ScoringAlgorithms.INPUT_c));
+        assertEquals(ScoringAlgorithms.SCORE_OVER, ScoringAlgorithms.scoreSleep(ScoringAlgorithms.INPUT_d, ScoringAlgorithms.INPUT_d));
 
         // Input_c is 6-9 hours of sleep. balanced unless hindered > 1
-        assertEquals(ScoringAlgorithms.SCORE_BALANCED, ScoringAlgorithms.scoreSleep(ScoringAlgorithms.INPUT_c, 0));
-        assertEquals(ScoringAlgorithms.SCORE_BALANCED, ScoringAlgorithms.scoreSleep(ScoringAlgorithms.INPUT_c, 1));
-        assertEquals(ScoringAlgorithms.SCORE_UNDER, ScoringAlgorithms.scoreSleep(ScoringAlgorithms.INPUT_c, 2));
+        assertEquals(ScoringAlgorithms.SCORE_BALANCED, ScoringAlgorithms.scoreSleep(ScoringAlgorithms.INPUT_c, ScoringAlgorithms.INPUT_a));
+        assertEquals(ScoringAlgorithms.SCORE_BALANCED, ScoringAlgorithms.scoreSleep(ScoringAlgorithms.INPUT_c, ScoringAlgorithms.INPUT_b));
+        assertEquals(ScoringAlgorithms.SCORE_UNDER, ScoringAlgorithms.scoreSleep(ScoringAlgorithms.INPUT_c, ScoringAlgorithms.INPUT_c));
 
         // Input_b and a are low in all cases
-        assertEquals(ScoringAlgorithms.SCORE_UNDER, ScoringAlgorithms.scoreSleep(ScoringAlgorithms.INPUT_b, 5));
-        assertEquals(ScoringAlgorithms.SCORE_UNDER, ScoringAlgorithms.scoreSleep(ScoringAlgorithms.INPUT_b, 0));
-        assertEquals(ScoringAlgorithms.SCORE_UNDER, ScoringAlgorithms.scoreSleep(ScoringAlgorithms.INPUT_a, 0));
-        assertEquals(ScoringAlgorithms.SCORE_UNDER, ScoringAlgorithms.scoreSleep(ScoringAlgorithms.INPUT_a, 5));
+        assertEquals(ScoringAlgorithms.SCORE_UNDER, ScoringAlgorithms.scoreSleep(ScoringAlgorithms.INPUT_b, ScoringAlgorithms.INPUT_d));
+        assertEquals(ScoringAlgorithms.SCORE_UNDER, ScoringAlgorithms.scoreSleep(ScoringAlgorithms.INPUT_b, ScoringAlgorithms.INPUT_a));
+        assertEquals(ScoringAlgorithms.SCORE_UNDER, ScoringAlgorithms.scoreSleep(ScoringAlgorithms.INPUT_a, ScoringAlgorithms.INPUT_a));
+        assertEquals(ScoringAlgorithms.SCORE_UNDER, ScoringAlgorithms.scoreSleep(ScoringAlgorithms.INPUT_a, ScoringAlgorithms.INPUT_d));
 
         // error cases. hinderance should be 0-5. input index is 0-3
         assertEquals(ScoringAlgorithms.SCORE_ERROR, ScoringAlgorithms.scoreSleep(ScoringAlgorithms.INPUT_a, -1));
         assertEquals(ScoringAlgorithms.SCORE_ERROR, ScoringAlgorithms.scoreSleep(ScoringAlgorithms.INPUT_a, 10));
-        assertEquals(ScoringAlgorithms.SCORE_ERROR, ScoringAlgorithms.scoreSleep(4, 0));
+        assertEquals(ScoringAlgorithms.SCORE_ERROR, ScoringAlgorithms.scoreSleep(ScoringAlgorithms.INPUT_e, ScoringAlgorithms.INPUT_e));
     }
 
     @Test
@@ -95,9 +95,9 @@ public class ScoringAlgorithmsTest {
 
         // input range is 0-3
         assertEquals(ScoringAlgorithms.SCORE_ERROR, ScoringAlgorithms.scoreMovement(
-                4, false, ScoringAlgorithms.INPUT_a));
+                ScoringAlgorithms.INPUT_e, false, ScoringAlgorithms.INPUT_a));
         assertEquals(ScoringAlgorithms.SCORE_ERROR, ScoringAlgorithms.scoreMovement(
-                4, false, 4));
+                ScoringAlgorithms.INPUT_e, false, ScoringAlgorithms.INPUT_e));
         assertEquals(ScoringAlgorithms.SCORE_ERROR, ScoringAlgorithms.scoreMovement(
                 -1, false, ScoringAlgorithms.INPUT_a));
     }
