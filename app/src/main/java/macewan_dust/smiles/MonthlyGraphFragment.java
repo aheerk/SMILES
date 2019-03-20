@@ -1,12 +1,6 @@
 package macewan_dust.smiles;
 
 
-import android.app.Activity;
-import android.content.Intent;
-import android.graphics.Color;
-import android.graphics.Paint;
-import android.icu.util.GregorianCalendar;
-
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -21,10 +15,14 @@ import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.TextView;
 
-import com.jjoe64.graphview.GraphView;
-import com.jjoe64.graphview.ValueDependentColor;
-import com.jjoe64.graphview.series.BarGraphSeries;
-import com.jjoe64.graphview.series.DataPoint;
+
+import java.util.ArrayList;
+
+import com.github.mikephil.charting.charts.BarChart;
+import com.github.mikephil.charting.data.BarData;
+import com.github.mikephil.charting.data.BarDataSet;
+import com.github.mikephil.charting.data.BarEntry;
+import com.github.mikephil.charting.utils.ColorTemplate;
 
 import java.util.Calendar;
 import java.util.Date;
@@ -45,7 +43,6 @@ public class MonthlyGraphFragment extends Fragment {
     private CheckBox mLaughterCheckbox;
     private CheckBox mEatingCheckbox;
     private CheckBox mSpeakingCheckbox;
-    private GraphView mGraph;
 
     // aggragate data for the month
     private int mBalanced;
@@ -59,6 +56,12 @@ public class MonthlyGraphFragment extends Fragment {
     int monthIndex;
 
     private int mYear;
+
+    BarChart mGraph ;
+    ArrayList<BarEntry> mBarEntry ;
+    ArrayList<String> mBarEntryLabels;
+    BarDataSet mBarDataSet;
+    BarData mBarData;
 
     /**
      * new instance constructor
@@ -76,6 +79,12 @@ public class MonthlyGraphFragment extends Fragment {
         mScoringLab = ScoringLab.get(getContext());
 
         mMonths = getContext().getResources().getStringArray(R.array.month_array);
+
+
+
+
+
+
     }
 
     @Override
@@ -91,14 +100,26 @@ public class MonthlyGraphFragment extends Fragment {
         View v = inflater.inflate(R.layout.fragment_monthly_graph, null);
 
 
-        //Resource #1: https://www.loginworks.com/blogs/how-to-create-graphs-in-android-application/
-        //Resource #2: http://www.android-graphview.org/bar-chart/
-        //initialize the bar graph
+
         mGraph = v.findViewById(R.id.bar_graph);
 
+        mBarEntry = new ArrayList<>();
 
+        mBarEntryLabels = new ArrayList<String>();
 
+        AddValuesToBARENTRY();
 
+        AddValuesToBarEntryLabels();
+
+        mBarDataSet = new BarDataSet(mBarEntry, "Projects");
+
+        mBarData = new BarData(mBarEntryLabels, mBarDataSet);
+
+        mBarDataSet.setColors(ColorTemplate.COLORFUL_COLORS);
+
+        mGraph.setData(mBarData);
+
+        mGraph.animateY(3000);
 
 
         getActivity().setTitle(R.string.title_monthly_graph);
@@ -196,15 +217,40 @@ public class MonthlyGraphFragment extends Fragment {
         return v;
     }
 
+    public void AddValuesToBARENTRY(){
+
+        mBarEntry.add(new BarEntry(2f, 0));
+        mBarEntry.add(new BarEntry(4f, 1));
+        mBarEntry.add(new BarEntry(6f, 2));
+        mBarEntry.add(new BarEntry(8f, 3));
+        mBarEntry.add(new BarEntry(7f, 4));
+        mBarEntry.add(new BarEntry(3f, 5));
+
+    }
+
+    public void AddValuesToBarEntryLabels(){
+
+        mBarEntryLabels.add("January");
+        mBarEntryLabels.add("February");
+        mBarEntryLabels.add("March");
+        mBarEntryLabels.add("April");
+        mBarEntryLabels.add("May");
+        mBarEntryLabels.add("June");
+
+    }
+
+
+
     /**
      * refresh data in graph
      */
+
     private void updateMonthlyGraph() {
+        /*
         mCurrentMonthText.setText(mMonths[monthIndex] + ", " + mYear);
         Log.d(TAG, "month: " + mMonths[monthIndex] + "\n year: " + String.valueOf(mYear));
         mMonthData = mScoringLab.monthScores(mMonths[monthIndex], String.valueOf(mYear));
         countScores();
-
 
         //Setting data to the bar graph
         BarGraphSeries<DataPoint> mGraphData = new BarGraphSeries<>(new DataPoint[] {
@@ -227,6 +273,8 @@ public class MonthlyGraphFragment extends Fragment {
 
 
         mGraph.onDataChanged(false, true);
+
+*/
     }
 
     private void countScores(){
