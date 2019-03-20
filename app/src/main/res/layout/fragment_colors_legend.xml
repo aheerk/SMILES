@@ -25,12 +25,6 @@
                 android:id="@+id/introduction_balanced_image"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
-                android:layout_marginLeft="8dp"
-                android:layout_marginTop="8dp"
-                android:layout_marginRight="8dp"
-                android:cropToPadding="true"
-
-                android:padding="1dp"
                 app:srcCompat="@drawable/ic_box_balanced" />
 
             <LinearLayout
@@ -43,9 +37,6 @@
                     style="@style/TitleText"
                     android:layout_width="315dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="8dp"
-                    android:layout_marginTop="8dp"
-                    android:layout_marginEnd="8dp"
                     android:text="@string/information_introduction_balanced_heading" />
 
 
@@ -54,10 +45,6 @@
                     style="@style/BodyText"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="8dp"
-                    android:layout_marginTop="8dp"
-                    android:layout_marginEnd="8dp"
-                    android:padding="8dp"
                     android:text="@string/information_introduction_balanced_body_text" />
 
             </LinearLayout>
@@ -73,12 +60,6 @@
                 android:id="@+id/introduction_over_image"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
-                android:layout_marginLeft="8dp"
-                android:layout_marginTop="8dp"
-                android:layout_marginRight="8dp"
-                android:cropToPadding="true"
-
-                android:padding="1dp"
                 app:srcCompat="@drawable/ic_box_over" />
 
             <LinearLayout
@@ -91,9 +72,6 @@
                     style="@style/TitleText"
                     android:layout_width="226dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="8dp"
-                    android:layout_marginTop="8dp"
-                    android:layout_marginEnd="8dp"
                     android:text="@string/information_introduction_over_heading" />
 
 
@@ -102,10 +80,6 @@
                     style="@style/BodyText"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="8dp"
-                    android:layout_marginTop="8dp"
-                    android:layout_marginEnd="8dp"
-                    android:padding="8dp"
                     android:text="@string/information_introduction_over_body_text" />
 
             </LinearLayout>
@@ -121,12 +95,6 @@
                 android:id="@+id/introduction_under_image"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
-                android:layout_marginLeft="8dp"
-                android:layout_marginTop="8dp"
-                android:layout_marginRight="8dp"
-                android:cropToPadding="true"
-
-                android:padding="1dp"
                 app:srcCompat="@drawable/ic_box_under" />
 
             <LinearLayout
@@ -139,9 +107,6 @@
                     style="@style/TitleText"
                     android:layout_width="285dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="8dp"
-                    android:layout_marginTop="8dp"
-                    android:layout_marginEnd="8dp"
                     android:text="@string/information_introduction_under_heading" />
 
 
@@ -150,10 +115,6 @@
                     style="@style/BodyText"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="8dp"
-                    android:layout_marginTop="8dp"
-                    android:layout_marginEnd="8dp"
-                    android:padding="8dp"
                     android:text="@string/information_introduction_under_body_text" />
 
             </LinearLayout>
@@ -169,12 +130,6 @@
                 android:id="@+id/introduction_unbalanced_image"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
-                android:layout_marginLeft="8dp"
-                android:layout_marginTop="8dp"
-                android:layout_marginRight="8dp"
-                android:cropToPadding="true"
-
-                android:padding="1dp"
                 app:srcCompat="@drawable/ic_box_unbalanced" />
 
             <LinearLayout
@@ -187,9 +142,6 @@
                     style="@style/TitleText"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="8dp"
-                    android:layout_marginTop="8dp"
-                    android:layout_marginEnd="8dp"
                     android:text="@string/information_introduction_unbalanced_heading" />
 
 
@@ -198,10 +150,6 @@
                     style="@style/BodyText"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="8dp"
-                    android:layout_marginTop="8dp"
-                    android:layout_marginEnd="8dp"
-                    android:padding="8dp"
                     android:text="@string/information_introduction_unbalanced_body_text" />
 
             </LinearLayout>
@@ -217,12 +165,6 @@
                 android:id="@+id/introduction_no_data_image"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
-                android:layout_marginLeft="8dp"
-                android:layout_marginTop="8dp"
-                android:layout_marginRight="8dp"
-                android:cropToPadding="true"
-
-                android:padding="1dp"
                 app:srcCompat="@drawable/ic_box_no_data" />
 
             <LinearLayout
@@ -235,9 +177,6 @@
                     style="@style/TitleText"
                     android:layout_width="305dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="8dp"
-                    android:layout_marginTop="8dp"
-                    android:layout_marginEnd="8dp"
                     android:text="@string/information_introduction_no_data_heading" />
 
 
@@ -246,10 +185,6 @@
                     style="@style/BodyText"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="8dp"
-                    android:layout_marginTop="8dp"
-                    android:layout_marginEnd="8dp"
-                    android:padding="8dp"
                     android:text="@string/information_introduction_no_data_body_text" />
 
             </LinearLayout>
