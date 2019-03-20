@@ -239,24 +239,27 @@ public class InputLaughterFragment extends Fragment {
         if (mScoringLab.isRaw(mScoreDate)) {
             mRaw = mScoringLab.getRaw(mScoreDate);
 
-            mQuestion_A_value = mRaw.getLaughter1();
             clearSelected();
-            switch (mQuestion_A_value){
-                case ScoringAlgorithms.INPUT_a:
-                    mIcon1.setBackground(getResources().getDrawable(R.drawable.ic_single_border_selected));
-                    break;
-                case ScoringAlgorithms.INPUT_b:
-                    mIcon2.setBackground(getResources().getDrawable(R.drawable.ic_single_border_selected));
-                    break;
-                case ScoringAlgorithms.INPUT_c:
-                    mIcon3.setBackground(getResources().getDrawable(R.drawable.ic_single_border_selected));
-                    break;
-                case ScoringAlgorithms.INPUT_d:
-                    mIcon4.setBackground(getResources().getDrawable(R.drawable.ic_single_border_selected));
-                    break;
-                case ScoringAlgorithms.INPUT_e:
-                    mIcon5.setBackground(getResources().getDrawable(R.drawable.ic_single_border_selected));
-                    break;
+
+            if (mRaw.getLaughter1() != 0) {
+                mQuestion_A_value = mRaw.getLaughter1();
+                switch (mQuestion_A_value) {
+                    case ScoringAlgorithms.INPUT_a:
+                        mIcon1.setBackground(getResources().getDrawable(R.drawable.ic_single_border_selected));
+                        break;
+                    case ScoringAlgorithms.INPUT_b:
+                        mIcon2.setBackground(getResources().getDrawable(R.drawable.ic_single_border_selected));
+                        break;
+                    case ScoringAlgorithms.INPUT_c:
+                        mIcon3.setBackground(getResources().getDrawable(R.drawable.ic_single_border_selected));
+                        break;
+                    case ScoringAlgorithms.INPUT_d:
+                        mIcon4.setBackground(getResources().getDrawable(R.drawable.ic_single_border_selected));
+                        break;
+                    case ScoringAlgorithms.INPUT_e:
+                        mIcon5.setBackground(getResources().getDrawable(R.drawable.ic_single_border_selected));
+                        break;
+                }
             }
         }
     }

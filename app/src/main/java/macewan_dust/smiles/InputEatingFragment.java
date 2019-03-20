@@ -329,44 +329,47 @@ public class InputEatingFragment extends Fragment {
             clearSelectedA();
             clearSelectedB();
             clearSelectedC();
-
-            mQuestion_A_index = mRaw.getEating1();
-            switch (mQuestion_A_index){
-                case ScoringAlgorithms.INPUT_a:
-                    mIcon1a.setBackground(getResources().getDrawable(R.drawable.ic_single_border_selected));
-                    break;
-                case ScoringAlgorithms.INPUT_b:
-                    mIcon1b.setBackground(getResources().getDrawable(R.drawable.ic_single_border_selected));
-                    break;
-                case ScoringAlgorithms.INPUT_c:
-                    mIcon1c.setBackground(getResources().getDrawable(R.drawable.ic_single_border_selected));
-                    break;
+            if (mRaw.getEating1() != 0) {
+                mQuestion_A_index = mRaw.getEating1();
+                switch (mQuestion_A_index) {
+                    case ScoringAlgorithms.INPUT_a:
+                        mIcon1a.setBackground(getResources().getDrawable(R.drawable.ic_single_border_selected));
+                        break;
+                    case ScoringAlgorithms.INPUT_b:
+                        mIcon1b.setBackground(getResources().getDrawable(R.drawable.ic_single_border_selected));
+                        break;
+                    case ScoringAlgorithms.INPUT_c:
+                        mIcon1c.setBackground(getResources().getDrawable(R.drawable.ic_single_border_selected));
+                        break;
+                }
             }
-
-            mQuestion_B_index = mRaw.getEating2();
-            switch (mQuestion_B_index){
-                case ScoringAlgorithms.INPUT_a:
-                    mIcon2a.setBackground(getResources().getDrawable(R.drawable.ic_single_border_selected));
-                    break;
-                case ScoringAlgorithms.INPUT_b:
-                    mIcon2b.setBackground(getResources().getDrawable(R.drawable.ic_single_border_selected));
-                    break;
-                case ScoringAlgorithms.INPUT_c:
-                    mIcon2c.setBackground(getResources().getDrawable(R.drawable.ic_single_border_selected));
-                    break;
+            if (mRaw.getEating2() != 0) {
+                mQuestion_B_index = mRaw.getEating2();
+                switch (mQuestion_B_index) {
+                    case ScoringAlgorithms.INPUT_a:
+                        mIcon2a.setBackground(getResources().getDrawable(R.drawable.ic_single_border_selected));
+                        break;
+                    case ScoringAlgorithms.INPUT_b:
+                        mIcon2b.setBackground(getResources().getDrawable(R.drawable.ic_single_border_selected));
+                        break;
+                    case ScoringAlgorithms.INPUT_c:
+                        mIcon2c.setBackground(getResources().getDrawable(R.drawable.ic_single_border_selected));
+                        break;
+                }
             }
-
-            mQuestion_C_index = mRaw.getEating3();
-            switch (mQuestion_C_index){
-                case ScoringAlgorithms.INPUT_a:
-                    mIcon3a.setBackground(getResources().getDrawable(R.drawable.ic_single_border_selected));
-                    break;
-                case ScoringAlgorithms.INPUT_b:
-                    mIcon3b.setBackground(getResources().getDrawable(R.drawable.ic_single_border_selected));
-                    break;
-                case ScoringAlgorithms.INPUT_c:
-                    mIcon3c.setBackground(getResources().getDrawable(R.drawable.ic_single_border_selected));
-                    break;
+            if (mRaw.getEating3() != 0) {
+                mQuestion_C_index = mRaw.getEating3();
+                switch (mQuestion_C_index) {
+                    case ScoringAlgorithms.INPUT_a:
+                        mIcon3a.setBackground(getResources().getDrawable(R.drawable.ic_single_border_selected));
+                        break;
+                    case ScoringAlgorithms.INPUT_b:
+                        mIcon3b.setBackground(getResources().getDrawable(R.drawable.ic_single_border_selected));
+                        break;
+                    case ScoringAlgorithms.INPUT_c:
+                        mIcon3c.setBackground(getResources().getDrawable(R.drawable.ic_single_border_selected));
+                        break;
+                }
             }
 
             mSodiumCheck.setChecked(mRaw.isEating4());

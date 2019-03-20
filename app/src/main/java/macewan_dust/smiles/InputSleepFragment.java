@@ -258,38 +258,40 @@ public class InputSleepFragment extends Fragment {
 
             clearSelectedA();
             clearSelectedB();
+            if (mRaw.getSleep1()!= 0) {
+                mQuestion_A_index = mRaw.getSleep1();
+                switch (mQuestion_A_index) {
+                    case ScoringAlgorithms.INPUT_a:
+                        mIcon1a.setBackground(getResources().getDrawable(R.drawable.ic_single_border_selected));
+                        break;
+                    case ScoringAlgorithms.INPUT_b:
+                        mIcon1b.setBackground(getResources().getDrawable(R.drawable.ic_single_border_selected));
+                        break;
+                    case ScoringAlgorithms.INPUT_c:
+                        mIcon1c.setBackground(getResources().getDrawable(R.drawable.ic_single_border_selected));
+                        break;
+                    case ScoringAlgorithms.INPUT_d:
+                        mIcon1d.setBackground(getResources().getDrawable(R.drawable.ic_single_border_selected));
+                        break;
 
-            mQuestion_A_index = mRaw.getSleep1();
-            switch (mQuestion_A_index){
-                case ScoringAlgorithms.INPUT_a:
-                    mIcon1a.setBackground(getResources().getDrawable(R.drawable.ic_single_border_selected));
-                    break;
-                case ScoringAlgorithms.INPUT_b:
-                    mIcon1b.setBackground(getResources().getDrawable(R.drawable.ic_single_border_selected));
-                    break;
-                case ScoringAlgorithms.INPUT_c:
-                    mIcon1c.setBackground(getResources().getDrawable(R.drawable.ic_single_border_selected));
-                    break;
-                case ScoringAlgorithms.INPUT_d:
-                    mIcon1d.setBackground(getResources().getDrawable(R.drawable.ic_single_border_selected));
-                    break;
-
+                }
             }
-
-            mQuestion_B_index = mRaw.getSleep2();
-            switch (mQuestion_B_index){
-                case ScoringAlgorithms.INPUT_a:
-                    mIcon2a.setBackground(getResources().getDrawable(R.drawable.ic_single_border_selected));
-                    break;
-                case ScoringAlgorithms.INPUT_b:
-                    mIcon2b.setBackground(getResources().getDrawable(R.drawable.ic_single_border_selected));
-                    break;
-                case ScoringAlgorithms.INPUT_c:
-                    mIcon2c.setBackground(getResources().getDrawable(R.drawable.ic_single_border_selected));
-                    break;
-                case ScoringAlgorithms.INPUT_d:
-                    mIcon2d.setBackground(getResources().getDrawable(R.drawable.ic_single_border_selected));
-                    break;
+            if (mRaw.getSleep2()!= 0) {
+                mQuestion_B_index = mRaw.getSleep2();
+                switch (mQuestion_B_index) {
+                    case ScoringAlgorithms.INPUT_a:
+                        mIcon2a.setBackground(getResources().getDrawable(R.drawable.ic_single_border_selected));
+                        break;
+                    case ScoringAlgorithms.INPUT_b:
+                        mIcon2b.setBackground(getResources().getDrawable(R.drawable.ic_single_border_selected));
+                        break;
+                    case ScoringAlgorithms.INPUT_c:
+                        mIcon2c.setBackground(getResources().getDrawable(R.drawable.ic_single_border_selected));
+                        break;
+                    case ScoringAlgorithms.INPUT_d:
+                        mIcon2d.setBackground(getResources().getDrawable(R.drawable.ic_single_border_selected));
+                        break;
+                }
             }
         }
     }
