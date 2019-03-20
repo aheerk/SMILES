@@ -27,7 +27,7 @@ public class InputLaughterFragment extends Fragment {
     Button mButton;
     TextView mResults;
 
-    int mQuestion_A_index;
+    int mQuestion_A_value;  // 1-5
 
     Score mScore;
     CountDownTimer mExitCountDownTimer;
@@ -84,13 +84,13 @@ public class InputLaughterFragment extends Fragment {
         mIcon4 = v.findViewById(R.id.icon_1d);
         mIcon5 = v.findViewById(R.id.icon_1e);
 
-        mQuestion_A_index = NO_SELECTION;
+        mQuestion_A_value = NO_SELECTION;
 
         mIcon1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 clearSelected();
-                mQuestion_A_index = 1;
+                mQuestion_A_value = 1;
                 mIcon1.setBackground(getResources().getDrawable(R.drawable.ic_single_border_selected));
             }
         });
@@ -99,7 +99,7 @@ public class InputLaughterFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 clearSelected();
-                mQuestion_A_index = 2;
+                mQuestion_A_value = 2;
                 mIcon2.setBackground(getResources().getDrawable(R.drawable.ic_single_border_selected));
             }
         });
@@ -108,7 +108,7 @@ public class InputLaughterFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 clearSelected();
-                mQuestion_A_index = 3;
+                mQuestion_A_value = 3;
                 mIcon3.setBackground(getResources().getDrawable(R.drawable.ic_single_border_selected));
             }
         });
@@ -117,7 +117,7 @@ public class InputLaughterFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 clearSelected();
-                mQuestion_A_index = 4;
+                mQuestion_A_value = 4;
                 mIcon4.setBackground(getResources().getDrawable(R.drawable.ic_single_border_selected));
             }
         });
@@ -126,7 +126,7 @@ public class InputLaughterFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 clearSelected();
-                mQuestion_A_index = 5;
+                mQuestion_A_value = 5;
                 mIcon5.setBackground(getResources().getDrawable(R.drawable.ic_single_border_selected));
             }
         });
@@ -135,12 +135,12 @@ public class InputLaughterFragment extends Fragment {
             @Override
             public void onClick(View v) {
 
-                if (mQuestion_A_index == NO_SELECTION) {
+                if (mQuestion_A_value == NO_SELECTION) {
                     mResults.setText(getString(R.string.feedback_unselected));
 
                 } else {
 
-                    int score = ScoringAlgorithms.scoreLaughter(mQuestion_A_index);
+                    int score = ScoringAlgorithms.scoreLaughter(mQuestion_A_value);
 
                     int scoreStringID = 1000; // just here to initialize
                     Log.d(TAG, "Score: " + score);
@@ -187,12 +187,12 @@ public class InputLaughterFragment extends Fragment {
                     // update
                     if (mScoringLab.isRaw(mScoreDate)){
                         mRaw = mScoringLab.getRaw(mScoreDate);
-                        mRaw.setLaughter(mQuestion_A_index);
+                        mRaw.setLaughter(mQuestion_A_value);
                         mScoringLab.updateRaw(mRaw);
 
                     }else { // add
                         mRaw = new Raw(mScoreDate);
-                        mRaw.setLaughter(mQuestion_A_index);
+                        mRaw.setLaughter(mQuestion_A_value);
                         mScoringLab.addRaw(mRaw);
                     }
                     Log.d(TAG, "raw object: " + mRaw);
@@ -206,6 +206,8 @@ public class InputLaughterFragment extends Fragment {
         mResults = v.findViewById(R.id.text_score); // note this object is invisible
         mResults.setVisibility(View.VISIBLE);
 
+
+        setButtonsFromDatabase();
         return v;
     }
 
@@ -229,6 +231,33 @@ public class InputLaughterFragment extends Fragment {
             }.start();
         }
     }
+
+    private void setButtonsFromDatabase(){
+        if (mScoringLab.isRaw(mScoreDate)) {
+            mRaw = mScoringLab.getRaw(mScoreDate);
+
+            mQuestion_A_value = mRaw.getLaughter1();
+            clearSelected();
+            switch (mQuestion_A_value){
+                case 1:
+                    mIcon1.setBackground(getResources().getDrawable(R.drawable.ic_single_border_selected));
+                    break;
+                case 2:
+                    mIcon2.setBackground(getResources().getDrawable(R.drawable.ic_single_border_selected));
+                    break;
+                case 3:
+                    mIcon3.setBackground(getResources().getDrawable(R.drawable.ic_single_border_selected));
+                    break;
+                case 4:
+                    mIcon4.setBackground(getResources().getDrawable(R.drawable.ic_single_border_selected));
+                    break;
+                case 5:
+                    mIcon5.setBackground(getResources().getDrawable(R.drawable.ic_single_border_selected));
+                    break;
+            }
+        }
+    }
+
 
     /**
      * cancel timer if the fragment is exited

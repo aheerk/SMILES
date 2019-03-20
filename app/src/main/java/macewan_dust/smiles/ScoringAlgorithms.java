@@ -28,10 +28,10 @@ public class ScoringAlgorithms {
     public static final int SCORE_NO_DATA = 0;
 
     // input_x corresponds to the answer selected for all number range questions
-    public static final int INPUT_a = 0;
-    public static final int INPUT_b = 1;
-    public static final int INPUT_c = 2;
-    public static final int INPUT_d = 3;
+    public static final int INPUT_a = 1;
+    public static final int INPUT_b = 2;
+    public static final int INPUT_c = 3;
+    public static final int INPUT_d = 4;
 
     /**
      * Question A
