@@ -211,7 +211,7 @@ public class ScoringAlgorithmsTest {
 
         // balanced
         assertEquals(ScoringAlgorithms.SCORE_BALANCED, ScoringAlgorithms.scoreSpeaking(
-                5, true, false, false, false));
+                5, true, true, false, false));
 
         // low for any speakingRating < 5 and any combination of booleans
         assertEquals(ScoringAlgorithms.SCORE_UNDER, ScoringAlgorithms.scoreSpeaking(
@@ -225,15 +225,15 @@ public class ScoringAlgorithmsTest {
 
         // high if socialMedia is true and/or impactHealth is true
         assertEquals(ScoringAlgorithms.SCORE_OVER, ScoringAlgorithms.scoreSpeaking(
-                5, true, false, true, false));
+                5, true, true, true, false));
         assertEquals(ScoringAlgorithms.SCORE_OVER, ScoringAlgorithms.scoreSpeaking(
-                5, true, false, false, true));
+                5, true, true, false, true));
 
         // off balanced
         assertEquals(ScoringAlgorithms.SCORE_UNBALANCED, ScoringAlgorithms.scoreSpeaking(
                 1, true, false, true, false));
         assertEquals(ScoringAlgorithms.SCORE_UNBALANCED, ScoringAlgorithms.scoreSpeaking(
-                5, true, true, false, true));
+                5, false, true, false, true));
 
         // error - speaking out of range 1-5
         assertEquals(ScoringAlgorithms.SCORE_ERROR, ScoringAlgorithms.scoreSpeaking(

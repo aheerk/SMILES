@@ -3,8 +3,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="macewan_dust.smiles">
 
-    <!-- https://stackoverflow.com/questions/35484767/activitycompat-requestpermissions-not-showing-dialog-box/43528880 -->
+    <!-- Referenced: https://stackoverflow.com/questions/35484767/activitycompat-requestpermissions-not-showing-dialog-box/43528880 -->
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"
+        tools:remove="android:maxSdkVersion"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"
         tools:remove="android:maxSdkVersion"/>
 
     <application

@@ -311,12 +311,12 @@ public class ScoringAlgorithms {
      *
      * @param speakingRating integer from 1 to 5 as entered by the user
      * @param debrief        true or false
-     * @param prevented      true or false
+     * @param notPrevented      true or false
      * @param socialMedia    true or false
      * @param impactHealth   true or false
      * @return high, low, balanced or unbalanced score constant
      */
-    public static int scoreSpeaking(int speakingRating, boolean debrief, boolean prevented, boolean socialMedia, boolean impactHealth) {
+    public static int scoreSpeaking(int speakingRating, boolean debrief, boolean notPrevented, boolean socialMedia, boolean impactHealth) {
 
         int balancedRule = 5; // the number of questions that must be balanced for an overall balanced score.
 
@@ -341,7 +341,7 @@ public class ScoringAlgorithms {
         else
             lowCounter++;
 
-        if (!prevented)
+        if (notPrevented)
             balancedCounter++;
         else
             lowCounter++;

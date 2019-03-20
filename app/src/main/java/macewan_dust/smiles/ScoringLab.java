@@ -4,16 +4,8 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
-import android.media.MediaScannerConnection;
-import android.net.Uri;
 import android.util.Log;
-import android.widget.Toast;
 
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.OutputStreamWriter;
-import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
@@ -35,6 +27,7 @@ public class ScoringLab {
     private Context mContext;
     private SQLiteDatabase mDatabase;
     private List<Score> mScoresList;
+    private List<Raw> mRawList;
 
     /**
      * constructor
@@ -47,8 +40,9 @@ public class ScoringLab {
         mDatabase = new SMILES_DatabaseHelper(mContext)
                 .getWritableDatabase();
         mScoresList = loadScoresFromDB();
+        mRawList = loadRawFromDB();
 
-        sortList();
+        sortScoresList();
 
         Log.d(TAG, "database setup");
     }
@@ -61,11 +55,11 @@ public class ScoringLab {
         return sScoringLab;
     }
 
-    public void sortList() {
-        Collections.sort(mScoresList, new SortByDate());
+    public void sortScoresList() {
+        Collections.sort(mScoresList, new SortScoresByDate());
     }
 
-    class SortByDate implements Comparator<Score> {
+    class SortScoresByDate implements Comparator<Score> {
 
         @Override
         public int compare(Score o1, Score o2) {
@@ -80,6 +74,20 @@ public class ScoringLab {
             return null;
     }
 
+    /**
+     * only use this before csv. its not necessary otherwise because raw data is not displayed in a list
+     */
+    public void sortRawsList() {
+        Collections.sort(mRawList, new SortRawByDate());
+    }
+
+    class SortRawByDate implements Comparator<Raw> {
+
+        @Override
+        public int compare(Raw o1, Raw o2) {
+            return o2.getDate().compareTo(o1.getDate()); // Data comparator method
+        }
+    }
 
     // ------------------------------ Database methods ------------------------------ //
 
@@ -156,7 +164,7 @@ public class ScoringLab {
         return monthList;
     }
 
-    public List<Score> getOneScore() {
+    public List<Score> getTopScore() {
         List<Score> tempList = new ArrayList<>();
         if (!mScoresList.isEmpty()) {
             tempList.add(mScoresList.get(0));
@@ -219,8 +227,8 @@ public class ScoringLab {
         ContentValues values = getContentValues(score);
         long temp = mDatabase.insert(SMILES_DatabaseSchema.ScoreTable.NAME, null, values);
         mScoresList.add(score);
-        sortList();
-        Log.i(TAG, "number of rows inserted: " + temp);
+        sortScoresList();
+        Log.i(TAG, "number of rows inserted to score: " + temp);
     }
 
     /**
@@ -232,7 +240,7 @@ public class ScoringLab {
         String scoreIdString = score.getScoreID().toString();
         ContentValues values = getContentValues(score);
 
-        Log.d(TAG, "ScoringAlgorithms updating score: " + score);
+        Log.d(TAG, "updating score: " + score);
 
         int temp = mDatabase.update(SMILES_DatabaseSchema.ScoreTable.NAME, values,
                 SMILES_DatabaseSchema.ScoreTable.Columns.SCORE_ID + " = ? ",
@@ -332,9 +340,9 @@ public class ScoringLab {
      * get score by id by its date
      *
      * @param date - date excluding time
-     * @return SCORE_ID unique identifier for scores
+     * @return RAW_ID unique identifier for scores
      */
-//    public SCORE_ID getScoreID(String date) {
+//    public RAW_ID getScoreID(String date) {
 //
 //        // list method
 //     //   String stringDate = Score.timelessDate(date);
@@ -371,95 +379,157 @@ public class ScoringLab {
 //        */
 //    }
 
+
+    // ------------------------------ RAW Database methods ------------------------------ //
+
     /**
-     * writeCSVFile creates a new file with the specified file name
-     * that includes all the user's scores stored on the device.
+     * loadScoresFromDB - pulls all scores out of the database
      *
-     * @param filename
-     * Referenced https://stackoverflow.com/questions/31063216/filenotfoundexception-storage-emulated-0-android
-     * https://stackoverflow.com/questions/35132693/set-encoding-as-utf-8-for-a-filewriter
+     * @return scores list (not sorted)
      */
-    public void writeCSVFile(String filename, Context context) {
+    public List<Raw> loadRawFromDB() {
+        List<Raw> Raws = new ArrayList<>();
 
-        // Check if there is room to write
-        if (FileCreator.isExternalStorageWritable()) {
-            Log.d(TAG, "External storage is writable");
-        } else {
-            Log.d(TAG, "External storage is not writable. Aborting write.");
-            Toast.makeText(context, R.string.csv_failure, Toast.LENGTH_SHORT).show();
-            return;
-        }
+        SMILES_CursorWrapper cursor = queryRaws(null, null); // gets all of the database
 
-        // Retrieve filepath to external documents directory
-        File path = FileCreator.getPublicStorageDir();
-        Log.d(TAG, "PATH:" + path.toString());
+        try {
+            cursor.moveToFirst();
+            while (!cursor.isAfterLast()) {
+                Raw tempRaw = cursor.getRawFromDB();
+                Raws.add(tempRaw);
 
-        File file = new File(path, filename);
+                Log.d(TAG, "Date: " + tempRaw.getDateString());
 
-        // Make sure the Documents directory exists before writing to it
-        if (!path.exists()) {
-            file.mkdir();
-            Log.d(TAG, "Documents path exists now: " + path.exists());
-        }
-
-        // Create the file if one needs to be created (otherwise, existing file will be overwritten
-        if (!file.exists()) {
-            Log.d(TAG, filename + " does not exist.");
-
-            try {
-                file.createNewFile();
-            } catch (IOException e) {
-                Log.d(TAG, "Failed to create " + filename);
-                e.printStackTrace();
-                Toast.makeText(context, R.string.csv_failure, Toast.LENGTH_SHORT).show();
-                return;
+                cursor.moveToNext();
             }
-            Log.d(TAG, filename + "created: " + file.exists());
+        } finally {
+            cursor.close();
         }
-
-        // Attempt to write to the file
-        try (OutputStreamWriter fileWriter = new OutputStreamWriter(new FileOutputStream(file),
-                StandardCharsets.UTF_8)) {
-
-            List<Score> scores = getScores();
-
-            // add column titles
-            fileWriter.append("date, sleepScore, movementScore, imaginationScore, " +
-                    "laughterScore, eatingScore, speakingScore\n");
-
-            // Write every score
-            for (Score s : scores) {
-                Log.d(TAG, "Writing a line");
-               fileWriter.append(s.scoreCSVFormat() + "\n");
-            }
-            fileWriter.close();
-
-            // This makes the file available for viewing for the user ASAP
-            // Taken from android site
-            MediaScannerConnection.scanFile(mContext,
-                    new String[]{file.toString()}, null,
-                    new MediaScannerConnection.OnScanCompletedListener() {
-                        @Override
-                        public void onScanCompleted(String path, Uri uri) {
-                            Log.i(TAG, "Scanned " + path + ":");
-                            Log.i(TAG, "-> uri=" + uri);
-                        }
-                    }
-            );
-
-            Toast.makeText(context, R.string.csv_success, Toast.LENGTH_SHORT).show();
-
-        } catch (IOException e) {
-            e.printStackTrace();
-            Log.w(TAG, "Error writing " + file, e);
-
-            Toast.makeText(context, R.string.csv_failure, Toast.LENGTH_SHORT).show();
-        }
-
+        return Raws;
     }
 
 
+    private SMILES_CursorWrapper queryRaws(String whereClause, String[] whereArgs) {                /// ---- check this. corsor wrapper could be broken down into 2
+        Cursor cursor = mDatabase.query(
+                SMILES_DatabaseSchema.RawTable.NAME,
+                null,
+                whereClause,
+                whereArgs,
+                null,
+                null,
+                null
+        );
+        return new SMILES_CursorWrapper(cursor);
+    }
 
+
+    public List<Raw> getRaws() {
+        return mRawList;
+    }
+
+
+    public Raw getRaw(Date date) {
+
+        for (Raw r : mRawList) {
+            if (r.getDateString().equals(Score.timelessDate(date))) {
+                return r;
+            }
+        }
+        return null;
+    }
+
+
+    private static ContentValues getContentValues(Raw raw) {
+        ContentValues values = new ContentValues();
+        values.put(SMILES_DatabaseSchema.RawTable.Columns.RAW_ID, raw.getRawID().toString());
+        values.put(SMILES_DatabaseSchema.RawTable.Columns.DATE, raw.getDate().getTime()); // long
+
+        values.put(SMILES_DatabaseSchema.RawTable.Columns.SLEEP1, raw.getSleep1());
+        values.put(SMILES_DatabaseSchema.RawTable.Columns.SLEEP2, raw.getSleep2());
+        values.put(SMILES_DatabaseSchema.RawTable.Columns.MOVEMENT1, raw.getMovement1());
+        values.put(SMILES_DatabaseSchema.RawTable.Columns.MOVEMENT2, raw.isMovement2() ? 1 : 0);        // convert boolean to 1 or 0
+        values.put(SMILES_DatabaseSchema.RawTable.Columns.MOVEMENT3, raw.getMovement3());
+        values.put(SMILES_DatabaseSchema.RawTable.Columns.IMAGINATION1, raw.getImagination1());
+        values.put(SMILES_DatabaseSchema.RawTable.Columns.IMAGINATION2, raw.getImagination2());
+        values.put(SMILES_DatabaseSchema.RawTable.Columns.IMAGINATION3, raw.getImagination3());
+        values.put(SMILES_DatabaseSchema.RawTable.Columns.LAUGHTER1, raw.getLaughter1());
+        values.put(SMILES_DatabaseSchema.RawTable.Columns.EATING1, raw.getEating1());
+        values.put(SMILES_DatabaseSchema.RawTable.Columns.EATING2, raw.getEating2());
+        values.put(SMILES_DatabaseSchema.RawTable.Columns.EATING3, raw.getEating3());
+        values.put(SMILES_DatabaseSchema.RawTable.Columns.EATING4, raw.isEating4() ? 1 : 0);
+        values.put(SMILES_DatabaseSchema.RawTable.Columns.EATING5, raw.isEating5() ? 1 : 0);
+        values.put(SMILES_DatabaseSchema.RawTable.Columns.EATING6, raw.isEating6() ? 1 : 0);
+        values.put(SMILES_DatabaseSchema.RawTable.Columns.EATING7, raw.isEating7() ? 1 : 0);
+        values.put(SMILES_DatabaseSchema.RawTable.Columns.SPEAKING1, raw.getSpeaking1());
+        values.put(SMILES_DatabaseSchema.RawTable.Columns.SPEAKING2, raw.isSpeaking2() ? 1 : 0);
+        values.put(SMILES_DatabaseSchema.RawTable.Columns.SPEAKING3, raw.isSpeaking3() ? 1 : 0);
+        values.put(SMILES_DatabaseSchema.RawTable.Columns.SPEAKING4, raw.isSpeaking4() ? 1 : 0);
+        values.put(SMILES_DatabaseSchema.RawTable.Columns.SPEAKING5, raw.isSpeaking5() ? 1 : 0);
+
+        Log.d(TAG, "getContentValues put raw: " + raw);
+        return values;
+    }
+
+    public void addRaw(Raw raw) {
+        ContentValues values = getContentValues(raw);
+        long temp = mDatabase.insert(SMILES_DatabaseSchema.RawTable.NAME, null, values);
+        mRawList.add(raw);
+        Log.i(TAG, "number of rows inserted to raw: " + temp);
+    }
+
+    public void updateRaw(Raw raw) {
+        String rawIdString = raw.getRawID().toString();
+        ContentValues values = getContentValues(raw);
+
+        Log.d(TAG, "updating raw: " + raw);
+
+        int temp = mDatabase.update(SMILES_DatabaseSchema.RawTable.NAME, values,
+                SMILES_DatabaseSchema.RawTable.Columns.RAW_ID + " = ? ",
+                new String[]{rawIdString});
+        updateRawList(raw); // replace old score with new score object, matched by ID
+        Log.i(TAG, "number of rows updated in raw: " + temp);
+    }
+
+    private void updateRawList(Raw newRaw) {
+        for (int i = 0; i < mRawList.size(); i++) {
+            if (mRawList.get(i).getRawID() == newRaw.getRawID()) {
+                mRawList.set(i, newRaw); // replace old score with new one in list
+            }
+        }
+    }
+
+    public void deleteRaw(Date date) {
+        if (this.isRaw(date)) {
+            deleteRaw(getRaw(date));
+            Log.d(TAG, "raw deleted by date");
+        }
+    }
+
+    public void deleteRaw(Raw raw) {
+        String rawIdString = raw.getRawID().toString();
+
+        Log.d(TAG, "deleting raw: " + raw);
+
+        int temp = mDatabase.delete(SMILES_DatabaseSchema.RawTable.NAME,
+                SMILES_DatabaseSchema.RawTable.Columns.RAW_ID + " = ? ",
+                new String[]{rawIdString});
+
+        mRawList.remove(raw);
+        Log.i(TAG, "number of rows deleted from raw: " + temp);
+    }
+
+    public boolean isRaw(Date date) {
+
+        // list method
+        String stringDate = Score.timelessDate(date); // note Score has the timeless date method rather than raw.   ------ should move it to Scoring Lab
+
+        for (int i = 0; i < mRawList.size(); i++) {
+            if (mRawList.get(i).getDateString().equals(stringDate)) {
+                return true;
+            }
+        }
+        return false;
+    }
 }
 
 

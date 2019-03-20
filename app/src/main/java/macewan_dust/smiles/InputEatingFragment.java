@@ -56,6 +56,8 @@ public class InputEatingFragment extends Fragment {
     Score mScore;
     CountDownTimer mExitCountDownTimer;
     Date mScoreDate;
+    ScoringLab mScoringLab;
+    Raw mRaw;
 
     /**
      * new instance constructor
@@ -77,6 +79,7 @@ public class InputEatingFragment extends Fragment {
         super.onCreate(savedInstanceState);
         setRetainInstance(true); // prevents instance of the fragment from being destroyed on rotation.
         mScoreDate = new Date(this.getArguments().getLong(DailyListFragment.DAILY_DATE));
+        mScoringLab = ScoringLab.get(getContext());
     }
 
     /**
@@ -264,21 +267,42 @@ public class InputEatingFragment extends Fragment {
                     }
 
                     // if score exists, update it, else make a new one and save it
-                    if (ScoringLab.get(getActivity()).isScore(mScoreDate)){
+                    if (mScoringLab.isScore(mScoreDate)){
                         // get score object to use its data
-                        mScore = ScoringLab.get(getActivity()).getScore(mScoreDate);
+                        mScore = mScoringLab.getScore(mScoreDate);
                         // set new score for this category
                         mScore.setEatingScore(score);
                         // save score to database
-                        ScoringLab.get(getActivity()).updateScore(mScore);
+                        mScoringLab.updateScore(mScore);
                         //
                     } else {
                         Log.d(TAG, "score NOT found by date: " + Score.timelessDate(mScoreDate));
 
                         mScore = new Score(mScoreDate);
                         mScore.setEatingScore(score);
-                        ScoringLab.get(getActivity()).addScore(mScore);
+                        mScoringLab.addScore(mScore);
                     }
+
+                    // update
+                    if (mScoringLab.isRaw(mScoreDate)){
+                        mRaw = mScoringLab.getRaw(mScoreDate);
+                        mRaw.setEating(mQuestion_A_index,
+                                mQuestion_B_index, mQuestion_C_index,
+                                mSodiumCheck.isChecked(), mSugarCheck.isChecked(),
+                                mFatCheck.isChecked(), mWaterCheck.isChecked());
+                        mScoringLab.updateRaw(mRaw);
+
+                    }else { // add
+                        mRaw = new Raw(mScoreDate);
+                        mRaw.setEating(mQuestion_A_index,
+                                mQuestion_B_index, mQuestion_C_index,
+                                mSodiumCheck.isChecked(), mSugarCheck.isChecked(),
+                                mFatCheck.isChecked(), mWaterCheck.isChecked());
+                        mScoringLab.addRaw(mRaw);
+                    }
+                    Log.d(TAG, "raw object: " + mRaw);
+
+
                     mResults.setText(getString(R.string.quest_results, getString(scoreStringID)));
                     exitOnLastScore();
                 }
@@ -293,11 +317,16 @@ public class InputEatingFragment extends Fragment {
         return v;
     }
 
+
+
+
+
+
     /**
      * exits out of the question fragment if all questions have been answered.
      */
     private void exitOnLastScore(){
-        if (ScoringLab.get(getActivity()).getScore(mScoreDate).isAllScored() && Score.isToday(mScoreDate)){
+        if (mScoringLab.getScore(mScoreDate).isAllScored() && Score.isToday(mScoreDate)){
             Log.d(TAG, "all questions answered. popping out");
 
             mExitCountDownTimer = new CountDownTimer(DailyPagerFragment.EXIT_TIMER_MILLISECONDS, DailyPagerFragment.EXIT_TIMER_MILLISECONDS) {

@@ -19,11 +19,11 @@ public class InputLaughterFragment extends Fragment {
     private static final String TAG = "InputLaughterFragment";
     private static final int NO_SELECTION = 104000;
 
-    ImageView mIcon1;
-    ImageView mIcon2;
-    ImageView mIcon3;
-    ImageView mIcon4;
-    ImageView mIcon5;
+    TextView mIcon1;
+    TextView mIcon2;
+    TextView mIcon3;
+    TextView mIcon4;
+    TextView mIcon5;
     Button mButton;
     TextView mResults;
 
@@ -32,6 +32,9 @@ public class InputLaughterFragment extends Fragment {
     Score mScore;
     CountDownTimer mExitCountDownTimer;
     Date mScoreDate;
+    ScoringLab mScoringLab;
+    Raw mRaw;
+
 
 
     /**
@@ -54,6 +57,7 @@ public class InputLaughterFragment extends Fragment {
         super.onCreate(savedInstanceState);
         setRetainInstance(true); // prevents instance of the fragment from being destroyed on rotation.
         mScoreDate = new Date(this.getArguments().getLong(DailyListFragment.DAILY_DATE));
+        mScoringLab = ScoringLab.get(getContext());
     }
 
     /**
@@ -87,7 +91,7 @@ public class InputLaughterFragment extends Fragment {
             public void onClick(View v) {
                 clearSelected();
                 mQuestion_A_index = 1;
-                mIcon1.setBackground(getResources().getDrawable(R.drawable.border_image_selected));
+                mIcon1.setBackground(getResources().getDrawable(R.drawable.ic_single_border_selected));
             }
         });
 
@@ -96,7 +100,7 @@ public class InputLaughterFragment extends Fragment {
             public void onClick(View v) {
                 clearSelected();
                 mQuestion_A_index = 2;
-                mIcon2.setBackground(getResources().getDrawable(R.drawable.border_image_selected));
+                mIcon2.setBackground(getResources().getDrawable(R.drawable.ic_single_border_selected));
             }
         });
 
@@ -105,7 +109,7 @@ public class InputLaughterFragment extends Fragment {
             public void onClick(View v) {
                 clearSelected();
                 mQuestion_A_index = 3;
-                mIcon3.setBackground(getResources().getDrawable(R.drawable.border_image_selected));
+                mIcon3.setBackground(getResources().getDrawable(R.drawable.ic_single_border_selected));
             }
         });
 
@@ -114,7 +118,7 @@ public class InputLaughterFragment extends Fragment {
             public void onClick(View v) {
                 clearSelected();
                 mQuestion_A_index = 4;
-                mIcon4.setBackground(getResources().getDrawable(R.drawable.border_image_selected));
+                mIcon4.setBackground(getResources().getDrawable(R.drawable.ic_single_border_selected));
             }
         });
 
@@ -123,7 +127,7 @@ public class InputLaughterFragment extends Fragment {
             public void onClick(View v) {
                 clearSelected();
                 mQuestion_A_index = 5;
-                mIcon5.setBackground(getResources().getDrawable(R.drawable.border_image_selected));
+                mIcon5.setBackground(getResources().getDrawable(R.drawable.ic_single_border_selected));
             }
         });
 
@@ -166,20 +170,33 @@ public class InputLaughterFragment extends Fragment {
                     }
 
                     // if score exists, update it, else make a new one and save it
-                    if (ScoringLab.get(getActivity()).isScore(mScoreDate)){
+                    if (mScoringLab.isScore(mScoreDate)){
                         // get score object to use its data
-                        mScore = ScoringLab.get(getActivity()).getScore(mScoreDate);
+                        mScore = mScoringLab.getScore(mScoreDate);
                         // set new score for this category
                         mScore.setLaughterScore(score);
                         // save score to database
-                        ScoringLab.get(getActivity()).updateScore(mScore);
+                        mScoringLab.updateScore(mScore);
                         //
                     } else {
                         Log.d(TAG, "score NOT found by date: " + Score.timelessDate(mScoreDate));
                         mScore = new Score(mScoreDate);
                         mScore.setLaughterScore(score);
-                        ScoringLab.get(getActivity()).addScore(mScore);
+                        mScoringLab.addScore(mScore);
                     }
+                    // update
+                    if (mScoringLab.isRaw(mScoreDate)){
+                        mRaw = mScoringLab.getRaw(mScoreDate);
+                        mRaw.setLaughter(mQuestion_A_index);
+                        mScoringLab.updateRaw(mRaw);
+
+                    }else { // add
+                        mRaw = new Raw(mScoreDate);
+                        mRaw.setLaughter(mQuestion_A_index);
+                        mScoringLab.addRaw(mRaw);
+                    }
+                    Log.d(TAG, "raw object: " + mRaw);
+
                     mResults.setText(getString(R.string.quest_results, getString(scoreStringID)));
                     exitOnLastScore();
                 }
@@ -227,10 +244,10 @@ public class InputLaughterFragment extends Fragment {
     }
 
     private void clearSelected() {
-        mIcon1.setBackground(getResources().getDrawable(R.drawable.border_image));
-        mIcon2.setBackground(getResources().getDrawable(R.drawable.border_image));
-        mIcon3.setBackground(getResources().getDrawable(R.drawable.border_image));
-        mIcon4.setBackground(getResources().getDrawable(R.drawable.border_image));
-        mIcon5.setBackground(getResources().getDrawable(R.drawable.border_image));
+        mIcon1.setBackground(getResources().getDrawable(R.drawable.ic_single_border));
+        mIcon2.setBackground(getResources().getDrawable(R.drawable.ic_single_border));
+        mIcon3.setBackground(getResources().getDrawable(R.drawable.ic_single_border));
+        mIcon4.setBackground(getResources().getDrawable(R.drawable.ic_single_border));
+        mIcon5.setBackground(getResources().getDrawable(R.drawable.ic_single_border));
     }
 };
