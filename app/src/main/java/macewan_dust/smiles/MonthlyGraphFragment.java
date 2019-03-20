@@ -119,7 +119,7 @@ public class MonthlyGraphFragment extends Fragment {
 
         mGraph.setData(mBarData);
 
-        mGraph.animateY(3000);
+        mGraph.animateY(300);
 
 
         getActivity().setTitle(R.string.title_monthly_graph);
@@ -210,32 +210,25 @@ public class MonthlyGraphFragment extends Fragment {
             }
         });
 
-
-
-
-
         return v;
     }
 
     public void AddValuesToBARENTRY(){
 
-        mBarEntry.add(new BarEntry(2f, 0));
-        mBarEntry.add(new BarEntry(4f, 1));
-        mBarEntry.add(new BarEntry(6f, 2));
-        mBarEntry.add(new BarEntry(8f, 3));
-        mBarEntry.add(new BarEntry(7f, 4));
-        mBarEntry.add(new BarEntry(3f, 5));
+        mBarEntry.add(new BarEntry(mBalanced, 0));
+        mBarEntry.add(new BarEntry(mUnbalanced, 1));
+        mBarEntry.add(new BarEntry(mOver, 2));
+        mBarEntry.add(new BarEntry(mUnbalanced, 3));
+
 
     }
 
     public void AddValuesToBarEntryLabels(){
 
-        mBarEntryLabels.add("January");
-        mBarEntryLabels.add("February");
-        mBarEntryLabels.add("March");
-        mBarEntryLabels.add("April");
-        mBarEntryLabels.add("May");
-        mBarEntryLabels.add("June");
+        mBarEntryLabels.add("Balanced");
+        mBarEntryLabels.add("Unbalanced");
+        mBarEntryLabels.add("Over");
+        mBarEntryLabels.add("Under");
 
     }
 
