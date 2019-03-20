@@ -264,5 +264,27 @@
     <string name="button_4">4</string>
     <string name="button_5">5</string>
 
+    <!-- Information Introduction Colors strings -->
+    <string name="information_introduction_balanced_heading">Blue is Balanced</string>
+    <string name="information_introduction_balanced_body_text">Achieving a score of balanced means
+                    that you are accomplishing work life balance! This is the score you want.</string>
+
+    <string name="information_introduction_over_heading">Red is Over</string>
+    <string name="information_introduction_over_body_text">This score indicates that you are engaging
+                                                        in an activity in excessive amounts.</string>
+
+    <string name="information_introduction_under_heading">Yellow is Under</string>
+    <string name="information_introduction_under_body_text">This score indicates that you are not
+                                                            engaging in an activity enough. </string>
+
+    <string name="information_introduction_unbalanced_heading">Orange is Unbalanced</string>
+    <string name="information_introduction_unbalanced_body_text">This score indicates that you have a
+                                                            combination of over and under.</string>
+
+    <string name="information_introduction_no_data_heading">Grey is No Data</string>
+    <string name="information_introduction_no_data_body_text">This score indicates that you have not
+                                        inputed any data.</string>
+
+
 
 </resources>
