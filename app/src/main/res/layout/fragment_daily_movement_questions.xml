@@ -45,30 +45,34 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal">
 
-            <ImageView
+            <TextView
                 android:id="@+id/icon_1a"
-                style="@style/InputIcons"
-                android:background="@drawable/border_image"
-                app:srcCompat="@drawable/ic_less" />
+                style="@style/ButtonText"
+                android:layout_weight="1"
+                android:background="@drawable/ic_wide_border"
+                android:text="@string/less"/>
 
 
-            <ImageView
+            <TextView
                 android:id="@+id/icon_1b"
-                style="@style/InputIcons"
-                android:background="@drawable/border_image"
-                app:srcCompat="@drawable/ic_10_20" />
+                style="@style/ButtonText"
+                android:layout_weight="1"
+                android:background="@drawable/ic_wide_border"
+                android:text="@string/string_10_20"/>
 
-            <ImageView
+            <TextView
                 android:id="@+id/icon_1c"
-                style="@style/InputIcons"
-                android:background="@drawable/border_image"
-                app:srcCompat="@drawable/ic_20_45" />
+                style="@style/ButtonText"
+                android:layout_weight="1"
+                android:background="@drawable/ic_wide_border"
+                android:text="@string/string_20_45"/>
 
-            <ImageView
+            <TextView
                 android:id="@+id/icon_1d"
-                style="@style/InputIcons"
-                android:background="@drawable/border_image"
-                app:srcCompat="@drawable/ic_more" />
+                style="@style/ButtonText"
+                android:layout_weight="1"
+                android:background="@drawable/ic_wide_border"
+                android:text="@string/more"/>
 
         </LinearLayout>
 
@@ -102,18 +106,20 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal">
 
-            <ImageView
+            <TextView
                 android:id="@+id/icon_2a"
-                style="@style/InputIcons"
-                android:background="@drawable/border_image"
-                app:srcCompat="@drawable/icon_yes" />
+                style="@style/ButtonText"
+                android:layout_weight="1"
+                android:background="@drawable/ic_wide_border"
+                android:text="@string/yes"/>
 
 
-            <ImageView
+            <TextView
                 android:id="@+id/icon_2b"
-                style="@style/InputIcons"
-                android:background="@drawable/border_image"
-                app:srcCompat="@drawable/icon_no" />
+                style="@style/ButtonText"
+                android:layout_weight="1"
+                android:background="@drawable/ic_wide_border"
+                android:text="@string/no"/>
 
 
         </LinearLayout>
@@ -148,29 +154,33 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal">
 
-            <ImageView
+            <TextView
                 android:id="@+id/icon_3a"
-                style="@style/InputIcons"
-                android:background="@drawable/border_image"
-                app:srcCompat="@drawable/ic_less" />
+                style="@style/ButtonText"
+                android:layout_weight="1"
+                android:background="@drawable/ic_wide_border"
+                android:text="@string/less"/>
 
-            <ImageView
+            <TextView
                 android:id="@+id/icon_3b"
-                style="@style/InputIcons"
-                android:background="@drawable/border_image"
-                app:srcCompat="@drawable/ic_10_20" />
+                style="@style/ButtonText"
+                android:layout_weight="1"
+                android:background="@drawable/ic_wide_border"
+                android:text="@string/string_10_20"/>
 
-            <ImageView
+            <TextView
                 android:id="@+id/icon_3c"
-                style="@style/InputIcons"
-                android:background="@drawable/border_image"
-                app:srcCompat="@drawable/ic_20_45" />
+                style="@style/ButtonText"
+                android:layout_weight="1"
+                android:background="@drawable/ic_wide_border"
+                android:text="@string/string_20_45"/>
 
-            <ImageView
+            <TextView
                 android:id="@+id/icon_3d"
-                style="@style/InputIcons"
-                android:background="@drawable/border_image"
-                app:srcCompat="@drawable/ic_more" />
+                style="@style/ButtonText"
+                android:layout_weight="1"
+                android:background="@drawable/ic_wide_border"
+                android:text="@string/more"/>
 
         </LinearLayout>
 

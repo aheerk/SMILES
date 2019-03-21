@@ -127,7 +127,7 @@ public class MonthlyGraphFragment extends Fragment {
      //   Log.d(TAG, "Month Index: " + monthIndex);
 
         mGraph = v.findViewById(R.id.bar_graph);
-        mGraph.animateY(300);
+       // mGraph.animateY(300);
         mGraph.setDescription("");
 
         updateMonthlyGraph();

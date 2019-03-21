@@ -19,18 +19,18 @@ public class InputMovementFragment extends Fragment {
     private static final String TAG = "InputMovementFragment";
     private static final int NO_SELECTION = 100000;
 
-    ImageView mIcon1a;
-    ImageView mIcon1b;
-    ImageView mIcon1c;
-    ImageView mIcon1d;
+    TextView mIcon1a;
+    TextView mIcon1b;
+    TextView mIcon1c;
+    TextView mIcon1d;
 
-    ImageView mIcon2a;
-    ImageView mIcon2b;
+    TextView mIcon2a;
+    TextView mIcon2b;
 
-    ImageView mIcon3a;
-    ImageView mIcon3b;
-    ImageView mIcon3c;
-    ImageView mIcon3d;
+    TextView mIcon3a;
+    TextView mIcon3b;
+    TextView mIcon3c;
+    TextView mIcon3d;
 
     Button mButton;
   //  ImageView mIconFeedback;
@@ -112,7 +112,7 @@ public class InputMovementFragment extends Fragment {
             public void onClick(View v) {
                 clearSelectedA();
                 mQuestion_A_index = ScoringAlgorithms.INPUT_a;
-                mIcon1a.setBackground(getResources().getDrawable(R.drawable.border_image_selected));
+                mIcon1a.setBackground(getResources().getDrawable(R.drawable.ic_wide_border_selected));
             }
         });
 
@@ -121,7 +121,7 @@ public class InputMovementFragment extends Fragment {
             public void onClick(View v) {
                 clearSelectedA();
                 mQuestion_A_index = ScoringAlgorithms.INPUT_b;
-                mIcon1b.setBackground(getResources().getDrawable(R.drawable.border_image_selected));
+                mIcon1b.setBackground(getResources().getDrawable(R.drawable.ic_wide_border_selected));
             }
         });
 
@@ -130,7 +130,7 @@ public class InputMovementFragment extends Fragment {
             public void onClick(View v) {
                 clearSelectedA();
                 mQuestion_A_index = ScoringAlgorithms.INPUT_c;
-                mIcon1c.setBackground(getResources().getDrawable(R.drawable.border_image_selected));
+                mIcon1c.setBackground(getResources().getDrawable(R.drawable.ic_wide_border_selected));
             }
         });
 
@@ -139,7 +139,7 @@ public class InputMovementFragment extends Fragment {
             public void onClick(View v) {
                 clearSelectedA();
                 mQuestion_A_index = ScoringAlgorithms.INPUT_d;
-                mIcon1d.setBackground(getResources().getDrawable(R.drawable.border_image_selected));
+                mIcon1d.setBackground(getResources().getDrawable(R.drawable.ic_wide_border_selected));
             }
         });
 
@@ -148,16 +148,16 @@ public class InputMovementFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 mQuestion_B_index = 1;
-                mIcon2b.setBackground(getResources().getDrawable(R.drawable.border_image));
-                mIcon2a.setBackground(getResources().getDrawable(R.drawable.border_image_selected));
+                mIcon2b.setBackground(getResources().getDrawable(R.drawable.ic_wide_border));
+                mIcon2a.setBackground(getResources().getDrawable(R.drawable.ic_wide_border_selected));
             }
         });
         mIcon2b.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 mQuestion_B_index = 2;
-                mIcon2a.setBackground(getResources().getDrawable(R.drawable.border_image));
-                mIcon2b.setBackground(getResources().getDrawable(R.drawable.border_image_selected));
+                mIcon2a.setBackground(getResources().getDrawable(R.drawable.ic_wide_border));
+                mIcon2b.setBackground(getResources().getDrawable(R.drawable.ic_wide_border_selected));
             }
         });
 
@@ -167,7 +167,7 @@ public class InputMovementFragment extends Fragment {
             public void onClick(View v) {
                 clearSelectedB();
                 mQuestion_C_index = ScoringAlgorithms.INPUT_a;
-                mIcon3a.setBackground(getResources().getDrawable(R.drawable.border_image_selected));
+                mIcon3a.setBackground(getResources().getDrawable(R.drawable.ic_wide_border_selected));
             }
         });
 
@@ -176,7 +176,7 @@ public class InputMovementFragment extends Fragment {
             public void onClick(View v) {
                 clearSelectedB();
                 mQuestion_C_index = ScoringAlgorithms.INPUT_b;
-                mIcon3b.setBackground(getResources().getDrawable(R.drawable.border_image_selected));
+                mIcon3b.setBackground(getResources().getDrawable(R.drawable.ic_wide_border_selected));
             }
         });
 
@@ -185,7 +185,7 @@ public class InputMovementFragment extends Fragment {
             public void onClick(View v) {
                 clearSelectedB();
                 mQuestion_C_index = ScoringAlgorithms.INPUT_c;
-                mIcon3c.setBackground(getResources().getDrawable(R.drawable.border_image_selected));
+                mIcon3c.setBackground(getResources().getDrawable(R.drawable.ic_wide_border_selected));
             }
         });
 
@@ -194,7 +194,7 @@ public class InputMovementFragment extends Fragment {
             public void onClick(View v) {
                 clearSelectedB();
                 mQuestion_C_index = ScoringAlgorithms.INPUT_d;
-                mIcon3d.setBackground(getResources().getDrawable(R.drawable.border_image_selected));
+                mIcon3d.setBackground(getResources().getDrawable(R.drawable.ic_wide_border_selected));
             }
         });
 
@@ -220,19 +220,19 @@ public class InputMovementFragment extends Fragment {
 
                         case ScoringAlgorithms.SCORE_OVER:
                             scoreStringID = R.string.score_high;
-         //                   mIconFeedback.setBackground(getResources().getDrawable(R.drawable.border_image_high));
+         //                   mIconFeedback.setBackground(getResources().getDrawable(R.drawable.ic_wide_border_high));
                             break;
                         case ScoringAlgorithms.SCORE_UNDER:
                             scoreStringID = R.string.score_low;
-          //                  mIconFeedback.setBackground(getResources().getDrawable(R.drawable.border_image_low));
+          //                  mIconFeedback.setBackground(getResources().getDrawable(R.drawable.ic_wide_border_low));
                             break;
                         case ScoringAlgorithms.SCORE_BALANCED:
                             scoreStringID = R.string.score_balanced;
-           //                 mIconFeedback.setBackground(getResources().getDrawable(R.drawable.border_image_balanced));
+           //                 mIconFeedback.setBackground(getResources().getDrawable(R.drawable.ic_wide_border_balanced));
                             break;
                         case ScoringAlgorithms.SCORE_UNBALANCED:
                             scoreStringID = R.string.score_unbalanced;
-          //                  mIconFeedback.setBackground(getResources().getDrawable(R.drawable.border_image_unbalanced));
+          //                  mIconFeedback.setBackground(getResources().getDrawable(R.drawable.ic_wide_border_unbalanced));
                             break;
                         case ScoringAlgorithms.SCORE_ERROR:
                             scoreStringID = R.string.score_error;
@@ -303,16 +303,16 @@ public class InputMovementFragment extends Fragment {
                 mQuestion_A_index = mRaw.getMovement1();
                 switch (mQuestion_A_index) {
                     case ScoringAlgorithms.INPUT_a:
-                        mIcon1a.setBackground(getResources().getDrawable(R.drawable.ic_single_border_selected));
+                        mIcon1a.setBackground(getResources().getDrawable(R.drawable.ic_wide_border_selected));
                         break;
                     case ScoringAlgorithms.INPUT_b:
-                        mIcon1b.setBackground(getResources().getDrawable(R.drawable.ic_single_border_selected));
+                        mIcon1b.setBackground(getResources().getDrawable(R.drawable.ic_wide_border_selected));
                         break;
                     case ScoringAlgorithms.INPUT_c:
-                        mIcon1c.setBackground(getResources().getDrawable(R.drawable.ic_single_border_selected));
+                        mIcon1c.setBackground(getResources().getDrawable(R.drawable.ic_wide_border_selected));
                         break;
                     case ScoringAlgorithms.INPUT_d:
-                        mIcon1d.setBackground(getResources().getDrawable(R.drawable.ic_single_border_selected));
+                        mIcon1d.setBackground(getResources().getDrawable(R.drawable.ic_wide_border_selected));
                         break;
                 }
             }
@@ -322,13 +322,13 @@ public class InputMovementFragment extends Fragment {
             if (mRaw.isMovement2()) { // switch this to a get when the variable type is int
 
                 if (mRaw.isMovement2()) {
-                    mIcon2a.setBackground(getResources().getDrawable(R.drawable.border_image_selected));
-                    mIcon2b.setBackground(getResources().getDrawable(R.drawable.border_image));
+                    mIcon2a.setBackground(getResources().getDrawable(R.drawable.ic_wide_border_selected));
+                    mIcon2b.setBackground(getResources().getDrawable(R.drawable.ic_wide_border));
                     mQuestion_B_index = 1;
                 } else {
 
-                    mIcon2a.setBackground(getResources().getDrawable(R.drawable.border_image));
-                    mIcon2b.setBackground(getResources().getDrawable(R.drawable.border_image_selected));
+                    mIcon2a.setBackground(getResources().getDrawable(R.drawable.ic_wide_border));
+                    mIcon2b.setBackground(getResources().getDrawable(R.drawable.ic_wide_border_selected));
                     mQuestion_B_index = 2;
                 }
             }
@@ -336,16 +336,16 @@ public class InputMovementFragment extends Fragment {
                 mQuestion_B_index = mRaw.getMovement3();
                 switch (mQuestion_B_index) {
                     case ScoringAlgorithms.INPUT_a:
-                        mIcon3a.setBackground(getResources().getDrawable(R.drawable.ic_single_border_selected));
+                        mIcon3a.setBackground(getResources().getDrawable(R.drawable.ic_wide_border_selected));
                         break;
                     case ScoringAlgorithms.INPUT_b:
-                        mIcon3b.setBackground(getResources().getDrawable(R.drawable.ic_single_border_selected));
+                        mIcon3b.setBackground(getResources().getDrawable(R.drawable.ic_wide_border_selected));
                         break;
                     case ScoringAlgorithms.INPUT_c:
-                        mIcon3c.setBackground(getResources().getDrawable(R.drawable.ic_single_border_selected));
+                        mIcon3c.setBackground(getResources().getDrawable(R.drawable.ic_wide_border_selected));
                         break;
                     case ScoringAlgorithms.INPUT_d:
-                        mIcon3d.setBackground(getResources().getDrawable(R.drawable.ic_single_border_selected));
+                        mIcon3d.setBackground(getResources().getDrawable(R.drawable.ic_wide_border_selected));
                         break;
                 }
             }
@@ -390,17 +390,17 @@ public class InputMovementFragment extends Fragment {
      * ideally the icon being selected wouldn't need to be cleared, if its id was passed in here              // refactor potential
      */
     private void clearSelectedA(){
-        mIcon1a.setBackground(getResources().getDrawable(R.drawable.border_image));
-        mIcon1b.setBackground(getResources().getDrawable(R.drawable.border_image));
-        mIcon1c.setBackground(getResources().getDrawable(R.drawable.border_image));
-        mIcon1d.setBackground(getResources().getDrawable(R.drawable.border_image));
+        mIcon1a.setBackground(getResources().getDrawable(R.drawable.ic_wide_border));
+        mIcon1b.setBackground(getResources().getDrawable(R.drawable.ic_wide_border));
+        mIcon1c.setBackground(getResources().getDrawable(R.drawable.ic_wide_border));
+        mIcon1d.setBackground(getResources().getDrawable(R.drawable.ic_wide_border));
     }
 
     private void clearSelectedB(){
-        mIcon3a.setBackground(getResources().getDrawable(R.drawable.border_image));
-        mIcon3b.setBackground(getResources().getDrawable(R.drawable.border_image));
-        mIcon3c.setBackground(getResources().getDrawable(R.drawable.border_image));
-        mIcon3d.setBackground(getResources().getDrawable(R.drawable.border_image));
+        mIcon3a.setBackground(getResources().getDrawable(R.drawable.ic_wide_border));
+        mIcon3b.setBackground(getResources().getDrawable(R.drawable.ic_wide_border));
+        mIcon3c.setBackground(getResources().getDrawable(R.drawable.ic_wide_border));
+        mIcon3d.setBackground(getResources().getDrawable(R.drawable.ic_wide_border));
     }
 
 };

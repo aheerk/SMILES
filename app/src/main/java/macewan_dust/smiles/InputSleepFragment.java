@@ -20,14 +20,14 @@ public class InputSleepFragment extends Fragment {
     private static final String TAG = "InputSleepFragment";
     private static final int NO_SELECTION = 100000;
 
-    ImageView mIcon1a;
-    ImageView mIcon1b;
-    ImageView mIcon1c;
-    ImageView mIcon1d;
-    ImageView mIcon2a;
-    ImageView mIcon2b;
-    ImageView mIcon2c;
-    ImageView mIcon2d;
+    TextView mIcon1a;
+    TextView mIcon1b;
+    TextView mIcon1c;
+    TextView mIcon1d;
+    TextView mIcon2a;
+    TextView mIcon2b;
+    TextView mIcon2c;
+    TextView mIcon2d;
 
     Button mButton;
     TextView mResults;
@@ -101,7 +101,7 @@ public class InputSleepFragment extends Fragment {
             public void onClick(View v) {
                 clearSelectedA();
                 mQuestion_A_index = ScoringAlgorithms.INPUT_a;
-                mIcon1a.setBackground(getResources().getDrawable(R.drawable.border_image_selected));
+                mIcon1a.setBackground(getResources().getDrawable(R.drawable.ic_wide_border_selected));
             }
         });
 
@@ -110,7 +110,7 @@ public class InputSleepFragment extends Fragment {
             public void onClick(View v) {
                 clearSelectedA();
                 mQuestion_A_index = ScoringAlgorithms.INPUT_b;
-                mIcon1b.setBackground(getResources().getDrawable(R.drawable.border_image_selected));
+                mIcon1b.setBackground(getResources().getDrawable(R.drawable.ic_wide_border_selected));
             }
         });
 
@@ -119,7 +119,7 @@ public class InputSleepFragment extends Fragment {
             public void onClick(View v) {
                 clearSelectedA();
                 mQuestion_A_index = ScoringAlgorithms.INPUT_c;;
-                mIcon1c.setBackground(getResources().getDrawable(R.drawable.border_image_selected));
+                mIcon1c.setBackground(getResources().getDrawable(R.drawable.ic_wide_border_selected));
             }
         });
 
@@ -128,7 +128,7 @@ public class InputSleepFragment extends Fragment {
             public void onClick(View v) {
                 clearSelectedA();
                 mQuestion_A_index = ScoringAlgorithms.INPUT_d;
-                mIcon1d.setBackground(getResources().getDrawable(R.drawable.border_image_selected));
+                mIcon1d.setBackground(getResources().getDrawable(R.drawable.ic_wide_border_selected));
             }
         });
 
@@ -137,7 +137,7 @@ public class InputSleepFragment extends Fragment {
             public void onClick(View v) {
                 clearSelectedB();
                 mQuestion_B_index = ScoringAlgorithms.INPUT_a;
-                mIcon2a.setBackground(getResources().getDrawable(R.drawable.border_image_selected));
+                mIcon2a.setBackground(getResources().getDrawable(R.drawable.ic_wide_border_selected));
             }
         });
 
@@ -146,7 +146,7 @@ public class InputSleepFragment extends Fragment {
             public void onClick(View v) {
                 clearSelectedB();
                 mQuestion_B_index = ScoringAlgorithms.INPUT_b;
-                mIcon2b.setBackground(getResources().getDrawable(R.drawable.border_image_selected));
+                mIcon2b.setBackground(getResources().getDrawable(R.drawable.ic_wide_border_selected));
             }
         });
 
@@ -155,7 +155,7 @@ public class InputSleepFragment extends Fragment {
             public void onClick(View v) {
                 clearSelectedB();
                 mQuestion_B_index = ScoringAlgorithms.INPUT_c;
-                mIcon2c.setBackground(getResources().getDrawable(R.drawable.border_image_selected));
+                mIcon2c.setBackground(getResources().getDrawable(R.drawable.ic_wide_border_selected));
             }
         });
 
@@ -164,7 +164,7 @@ public class InputSleepFragment extends Fragment {
             public void onClick(View v) {
                 clearSelectedB();
                 mQuestion_B_index = ScoringAlgorithms.INPUT_d;
-                mIcon2d.setBackground(getResources().getDrawable(R.drawable.border_image_selected));
+                mIcon2d.setBackground(getResources().getDrawable(R.drawable.ic_wide_border_selected));
             }
         });
 
@@ -262,16 +262,16 @@ public class InputSleepFragment extends Fragment {
                 mQuestion_A_index = mRaw.getSleep1();
                 switch (mQuestion_A_index) {
                     case ScoringAlgorithms.INPUT_a:
-                        mIcon1a.setBackground(getResources().getDrawable(R.drawable.ic_single_border_selected));
+                        mIcon1a.setBackground(getResources().getDrawable(R.drawable.ic_wide_border_selected));
                         break;
                     case ScoringAlgorithms.INPUT_b:
-                        mIcon1b.setBackground(getResources().getDrawable(R.drawable.ic_single_border_selected));
+                        mIcon1b.setBackground(getResources().getDrawable(R.drawable.ic_wide_border_selected));
                         break;
                     case ScoringAlgorithms.INPUT_c:
-                        mIcon1c.setBackground(getResources().getDrawable(R.drawable.ic_single_border_selected));
+                        mIcon1c.setBackground(getResources().getDrawable(R.drawable.ic_wide_border_selected));
                         break;
                     case ScoringAlgorithms.INPUT_d:
-                        mIcon1d.setBackground(getResources().getDrawable(R.drawable.ic_single_border_selected));
+                        mIcon1d.setBackground(getResources().getDrawable(R.drawable.ic_wide_border_selected));
                         break;
 
                 }
@@ -280,16 +280,16 @@ public class InputSleepFragment extends Fragment {
                 mQuestion_B_index = mRaw.getSleep2();
                 switch (mQuestion_B_index) {
                     case ScoringAlgorithms.INPUT_a:
-                        mIcon2a.setBackground(getResources().getDrawable(R.drawable.ic_single_border_selected));
+                        mIcon2a.setBackground(getResources().getDrawable(R.drawable.ic_wide_border_selected));
                         break;
                     case ScoringAlgorithms.INPUT_b:
-                        mIcon2b.setBackground(getResources().getDrawable(R.drawable.ic_single_border_selected));
+                        mIcon2b.setBackground(getResources().getDrawable(R.drawable.ic_wide_border_selected));
                         break;
                     case ScoringAlgorithms.INPUT_c:
-                        mIcon2c.setBackground(getResources().getDrawable(R.drawable.ic_single_border_selected));
+                        mIcon2c.setBackground(getResources().getDrawable(R.drawable.ic_wide_border_selected));
                         break;
                     case ScoringAlgorithms.INPUT_d:
-                        mIcon2d.setBackground(getResources().getDrawable(R.drawable.ic_single_border_selected));
+                        mIcon2d.setBackground(getResources().getDrawable(R.drawable.ic_wide_border_selected));
                         break;
                 }
             }
@@ -334,17 +334,17 @@ public class InputSleepFragment extends Fragment {
      * ideally the icon being selected woudnt need to be cleared, if its id was passed in here              // refactor potential
      */
     private void clearSelectedA() {
-        mIcon1a.setBackground(getResources().getDrawable(R.drawable.border_image));
-        mIcon1b.setBackground(getResources().getDrawable(R.drawable.border_image));
-        mIcon1c.setBackground(getResources().getDrawable(R.drawable.border_image));
-        mIcon1d.setBackground(getResources().getDrawable(R.drawable.border_image));
+        mIcon1a.setBackground(getResources().getDrawable(R.drawable.ic_wide_border));
+        mIcon1b.setBackground(getResources().getDrawable(R.drawable.ic_wide_border));
+        mIcon1c.setBackground(getResources().getDrawable(R.drawable.ic_wide_border));
+        mIcon1d.setBackground(getResources().getDrawable(R.drawable.ic_wide_border));
     }
 
     private void clearSelectedB() {
-        mIcon2a.setBackground(getResources().getDrawable(R.drawable.border_image));
-        mIcon2b.setBackground(getResources().getDrawable(R.drawable.border_image));
-        mIcon2c.setBackground(getResources().getDrawable(R.drawable.border_image));
-        mIcon2d.setBackground(getResources().getDrawable(R.drawable.border_image));
+        mIcon2a.setBackground(getResources().getDrawable(R.drawable.ic_wide_border));
+        mIcon2b.setBackground(getResources().getDrawable(R.drawable.ic_wide_border));
+        mIcon2c.setBackground(getResources().getDrawable(R.drawable.ic_wide_border));
+        mIcon2d.setBackground(getResources().getDrawable(R.drawable.ic_wide_border));
     }
 
 };

@@ -22,17 +22,17 @@ public class InputEatingFragment extends Fragment {
     private static final String TAG = "InputEatingFragment";
     private static final int NO_SELECTION = 100000;
 
-    ImageView mIcon1a;
-    ImageView mIcon1b;
-    ImageView mIcon1c;
+    TextView mIcon1a;
+    TextView mIcon1b;
+    TextView mIcon1c;
 
-    ImageView mIcon2a;
-    ImageView mIcon2b;
-    ImageView mIcon2c;
+    TextView mIcon2a;
+    TextView mIcon2b;
+    TextView mIcon2c;
 
-    ImageView mIcon3a;
-    ImageView mIcon3b;
-    ImageView mIcon3c;
+    TextView mIcon3a;
+    TextView mIcon3b;
+    TextView mIcon3c;
 
     CheckBox mSodiumCheck;
     CheckBox mSugarCheck;
@@ -130,7 +130,7 @@ public class InputEatingFragment extends Fragment {
             public void onClick(View v) {
                 clearSelectedA();
                 mQuestion_A_index = ScoringAlgorithms.INPUT_a;
-                mIcon1a.setBackground(getResources().getDrawable(R.drawable.border_image_selected));
+                mIcon1a.setBackground(getResources().getDrawable(R.drawable.ic_wide_border_selected));
                 mVegAmount = 0;
             }
         });
@@ -140,7 +140,7 @@ public class InputEatingFragment extends Fragment {
             public void onClick(View v) {
                 clearSelectedA();
                 mQuestion_A_index = ScoringAlgorithms.INPUT_b;
-                mIcon1b.setBackground(getResources().getDrawable(R.drawable.border_image_selected));
+                mIcon1b.setBackground(getResources().getDrawable(R.drawable.ic_wide_border_selected));
                 mVegAmount = 50;
             }
         });
@@ -150,7 +150,7 @@ public class InputEatingFragment extends Fragment {
             public void onClick(View v) {
                 clearSelectedA();
                 mQuestion_A_index = ScoringAlgorithms.INPUT_c;
-                mIcon1c.setBackground(getResources().getDrawable(R.drawable.border_image_selected));
+                mIcon1c.setBackground(getResources().getDrawable(R.drawable.ic_wide_border_selected));
                 mVegAmount = 51;
             }
         });
@@ -160,7 +160,7 @@ public class InputEatingFragment extends Fragment {
             public void onClick(View v) {
                 clearSelectedB();
                 mQuestion_B_index = ScoringAlgorithms.INPUT_a;
-                mIcon2a.setBackground(getResources().getDrawable(R.drawable.border_image_selected));
+                mIcon2a.setBackground(getResources().getDrawable(R.drawable.ic_wide_border_selected));
                 mGraAmount = 0;
             }
         });
@@ -170,7 +170,7 @@ public class InputEatingFragment extends Fragment {
             public void onClick(View v) {
                 clearSelectedB();
                 mQuestion_B_index = ScoringAlgorithms.INPUT_b;
-                mIcon2b.setBackground(getResources().getDrawable(R.drawable.border_image_selected));
+                mIcon2b.setBackground(getResources().getDrawable(R.drawable.ic_wide_border_selected));
                 mGraAmount = 25;
 
             }
@@ -181,7 +181,7 @@ public class InputEatingFragment extends Fragment {
             public void onClick(View v) {
                 clearSelectedB();
                 mQuestion_B_index = ScoringAlgorithms.INPUT_c;
-                mIcon2c.setBackground(getResources().getDrawable(R.drawable.border_image_selected));
+                mIcon2c.setBackground(getResources().getDrawable(R.drawable.ic_wide_border_selected));
                 mGraAmount = 26;
 
             }
@@ -192,7 +192,7 @@ public class InputEatingFragment extends Fragment {
             public void onClick(View v) {
                 clearSelectedC();
                 mQuestion_C_index = ScoringAlgorithms.INPUT_a;
-                mIcon3a.setBackground(getResources().getDrawable(R.drawable.border_image_selected));
+                mIcon3a.setBackground(getResources().getDrawable(R.drawable.ic_wide_border_selected));
                 mProAmount = 0;
             }
         });
@@ -202,7 +202,7 @@ public class InputEatingFragment extends Fragment {
             public void onClick(View v) {
                 clearSelectedC();
                 mQuestion_C_index = ScoringAlgorithms.INPUT_b;
-                mIcon3b.setBackground(getResources().getDrawable(R.drawable.border_image_selected));
+                mIcon3b.setBackground(getResources().getDrawable(R.drawable.ic_wide_border_selected));
                 mProAmount = 25;
             }
         });
@@ -212,7 +212,7 @@ public class InputEatingFragment extends Fragment {
             public void onClick(View v) {
                 clearSelectedC();
                 mQuestion_C_index = ScoringAlgorithms.INPUT_c;
-                mIcon3c.setBackground(getResources().getDrawable(R.drawable.border_image_selected));
+                mIcon3c.setBackground(getResources().getDrawable(R.drawable.ic_wide_border_selected));
                 mProAmount = 26;
             }
         });
@@ -333,13 +333,13 @@ public class InputEatingFragment extends Fragment {
                 mQuestion_A_index = mRaw.getEating1();
                 switch (mQuestion_A_index) {
                     case ScoringAlgorithms.INPUT_a:
-                        mIcon1a.setBackground(getResources().getDrawable(R.drawable.ic_single_border_selected));
+                        mIcon1a.setBackground(getResources().getDrawable(R.drawable.ic_wide_border_selected));
                         break;
                     case ScoringAlgorithms.INPUT_b:
-                        mIcon1b.setBackground(getResources().getDrawable(R.drawable.ic_single_border_selected));
+                        mIcon1b.setBackground(getResources().getDrawable(R.drawable.ic_wide_border_selected));
                         break;
                     case ScoringAlgorithms.INPUT_c:
-                        mIcon1c.setBackground(getResources().getDrawable(R.drawable.ic_single_border_selected));
+                        mIcon1c.setBackground(getResources().getDrawable(R.drawable.ic_wide_border_selected));
                         break;
                 }
             }
@@ -347,13 +347,13 @@ public class InputEatingFragment extends Fragment {
                 mQuestion_B_index = mRaw.getEating2();
                 switch (mQuestion_B_index) {
                     case ScoringAlgorithms.INPUT_a:
-                        mIcon2a.setBackground(getResources().getDrawable(R.drawable.ic_single_border_selected));
+                        mIcon2a.setBackground(getResources().getDrawable(R.drawable.ic_wide_border_selected));
                         break;
                     case ScoringAlgorithms.INPUT_b:
-                        mIcon2b.setBackground(getResources().getDrawable(R.drawable.ic_single_border_selected));
+                        mIcon2b.setBackground(getResources().getDrawable(R.drawable.ic_wide_border_selected));
                         break;
                     case ScoringAlgorithms.INPUT_c:
-                        mIcon2c.setBackground(getResources().getDrawable(R.drawable.ic_single_border_selected));
+                        mIcon2c.setBackground(getResources().getDrawable(R.drawable.ic_wide_border_selected));
                         break;
                 }
             }
@@ -361,13 +361,13 @@ public class InputEatingFragment extends Fragment {
                 mQuestion_C_index = mRaw.getEating3();
                 switch (mQuestion_C_index) {
                     case ScoringAlgorithms.INPUT_a:
-                        mIcon3a.setBackground(getResources().getDrawable(R.drawable.ic_single_border_selected));
+                        mIcon3a.setBackground(getResources().getDrawable(R.drawable.ic_wide_border_selected));
                         break;
                     case ScoringAlgorithms.INPUT_b:
-                        mIcon3b.setBackground(getResources().getDrawable(R.drawable.ic_single_border_selected));
+                        mIcon3b.setBackground(getResources().getDrawable(R.drawable.ic_wide_border_selected));
                         break;
                     case ScoringAlgorithms.INPUT_c:
-                        mIcon3c.setBackground(getResources().getDrawable(R.drawable.ic_single_border_selected));
+                        mIcon3c.setBackground(getResources().getDrawable(R.drawable.ic_wide_border_selected));
                         break;
                 }
             }
@@ -419,21 +419,21 @@ public class InputEatingFragment extends Fragment {
      * ideally the icon being selected woudnt need to be cleared, if its id was passed in here              // refactor potential
      */
     private void clearSelectedA() {
-        mIcon1a.setBackground(getResources().getDrawable(R.drawable.border_image));
-        mIcon1b.setBackground(getResources().getDrawable(R.drawable.border_image));
-        mIcon1c.setBackground(getResources().getDrawable(R.drawable.border_image));
+        mIcon1a.setBackground(getResources().getDrawable(R.drawable.ic_wide_border));
+        mIcon1b.setBackground(getResources().getDrawable(R.drawable.ic_wide_border));
+        mIcon1c.setBackground(getResources().getDrawable(R.drawable.ic_wide_border));
     }
 
     public void clearSelectedB() {
-        mIcon2a.setBackground(getResources().getDrawable(R.drawable.border_image));
-        mIcon2b.setBackground(getResources().getDrawable(R.drawable.border_image));
-        mIcon2c.setBackground(getResources().getDrawable(R.drawable.border_image));
+        mIcon2a.setBackground(getResources().getDrawable(R.drawable.ic_wide_border));
+        mIcon2b.setBackground(getResources().getDrawable(R.drawable.ic_wide_border));
+        mIcon2c.setBackground(getResources().getDrawable(R.drawable.ic_wide_border));
     }
 
     public void clearSelectedC() {
-        mIcon3a.setBackground(getResources().getDrawable(R.drawable.border_image));
-        mIcon3b.setBackground(getResources().getDrawable(R.drawable.border_image));
-        mIcon3c.setBackground(getResources().getDrawable(R.drawable.border_image));
+        mIcon3a.setBackground(getResources().getDrawable(R.drawable.ic_wide_border));
+        mIcon3b.setBackground(getResources().getDrawable(R.drawable.ic_wide_border));
+        mIcon3c.setBackground(getResources().getDrawable(R.drawable.ic_wide_border));
     }
 
 };
