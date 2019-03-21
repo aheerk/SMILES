@@ -24,8 +24,6 @@ public class NewUserFragment extends Fragment {
     TextView mSubtitle;
     ImageView mImageView;
     TextView mBodyText;
-    Button mNextButton;
-    Button mBackButton;
     int i; // screen index
 
     public static NewUserFragment newInstance() {
@@ -47,33 +45,9 @@ public class NewUserFragment extends Fragment {
         mSubtitle = v.findViewById(R.id.introduction_subtitle);
         mImageView = v.findViewById(R.id.introduction_image);
         mBodyText = v.findViewById(R.id.introduction_explanation);
-        mNextButton = v.findViewById(R.id.button_introduction_next);
-        mBackButton = v.findViewById(R.id.button_introduction_back);
-        mBackButton.setVisibility(View.GONE);
         updateScreen ();
 
         i = 0;
-
-        // button code
-        mNextButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if (i<12){
-                    i++;
-                }
-                updateScreen();
-            }
-        });
-
-        mBackButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if (i>0){
-                    i--;
-                }
-                updateScreen();
-            }
-        });
 
         // swipe code
         v.setOnTouchListener(new OnSwipeTouchListener(getContext()) {
@@ -107,15 +81,12 @@ public class NewUserFragment extends Fragment {
                 mSubtitle.setVisibility(View.VISIBLE);
                 mImageView.setImageResource(R.drawable.photo_intro1);
                 mBodyText.setText(R.string.introduction_explanation_smiles);
-                mBackButton.setVisibility(View.GONE);
                 break;
             case 1:
                 mTitle.setText(R.string.introduction_title_stress1);
                 mBodyText.setText(R.string.introduction_explanation_stress1);
                 mImageView.setImageResource(R.drawable.photo_intro2);
                 mSubtitle.setVisibility(View.GONE);
-                mBackButton.setVisibility(View.VISIBLE);
-
                 break;
             case 2:
                 mTitle.setText(R.string.introduction_title_stress1);
