@@ -32,6 +32,8 @@ public class ScoringAlgorithms {
     public static final int INPUT_b = 2;
     public static final int INPUT_c = 3;
     public static final int INPUT_d = 4;
+    public static final int INPUT_e = 5;
+
 
     /**
      * Question A
@@ -50,16 +52,16 @@ public class ScoringAlgorithms {
         // range checking. Note: hinderanceCount should be a max of 5 but could be increased
         // // without changing the scoring behavior, so has a higher range check
         if (sleepInput < INPUT_a || sleepInput > INPUT_d
-                || hinderanceCount < 0 || hinderanceCount > 10){
+                || hinderanceCount < INPUT_a || hinderanceCount > INPUT_d){
 //            Log.e(TAG, "Error: invalid input, sleepInput: " + sleepInput +
   //                  " and hinderanceCount: " + hinderanceCount);
             return SCORE_ERROR;
         }
 
         // scoring
-        if (sleepInput < INPUT_c || (sleepInput < INPUT_d && hinderanceCount > 1)) {
+        if (sleepInput < INPUT_c || (sleepInput < INPUT_d && hinderanceCount > INPUT_b)) {
             return SCORE_UNDER;
-        } else if (sleepInput == INPUT_c && hinderanceCount <= 1) {
+        } else if (sleepInput == INPUT_c && hinderanceCount <= INPUT_b) {
             return SCORE_BALANCED;
         } else if (sleepInput > INPUT_c) {
             return SCORE_OVER;
@@ -200,14 +202,14 @@ public class ScoringAlgorithms {
     public static int scoreLaughter(int laughterInput) {
 
         // range checking
-        if (laughterInput <= 0 || laughterInput > 5){
+        if (laughterInput < INPUT_a || laughterInput > INPUT_e){
 //            Log.e(TAG, "Error: invalid input, laughterInput: " + laughterInput);
             return SCORE_ERROR;
         }
 
-        if (laughterInput < 5) {
+        if (laughterInput < INPUT_e) {
             return SCORE_UNDER;
-        } else if (laughterInput == 5) {
+        } else if (laughterInput == INPUT_e) {
             return SCORE_BALANCED;
         } else {
   //          Log.e(TAG, "Error: score for laughterInput: " + laughterInput + "  has no rule");
@@ -325,13 +327,13 @@ public class ScoringAlgorithms {
         int lowCounter = 0;
 
         // range checking
-        if (speakingRating < 1 || speakingRating > 5){
+        if (speakingRating < INPUT_a || speakingRating > INPUT_e){
 //            Log.e(TAG, "Error: invalid input, speakingRating: " + speakingRating);
             return SCORE_ERROR;
         }
 
         // counting
-        if (speakingRating == 5)
+        if (speakingRating == INPUT_e)
             balancedCounter++;
         else
             lowCounter++;

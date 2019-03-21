@@ -23,11 +23,11 @@ public class InputSpeakingFragment extends Fragment {
 
     // 5 Questions total
 
-    ImageView mIcon1a;
-    ImageView mIcon1b;
-    ImageView mIcon1c;
-    ImageView mIcon1d;
-    ImageView mIcon1e;
+    TextView mIcon1a;
+    TextView mIcon1b;
+    TextView mIcon1c;
+    TextView mIcon1d;
+    TextView mIcon1e;
 
     CheckBox mDebriefCheck;
     CheckBox mShareCheck;
@@ -109,7 +109,7 @@ public class InputSpeakingFragment extends Fragment {
             public void onClick(View v) {
                 clearSelected();
                 mQuestion_A_index = 1;
-                mIcon1a.setBackground(getResources().getDrawable(R.drawable.border_image_selected));
+                mIcon1a.setBackground(getResources().getDrawable(R.drawable.ic_single_border_selected));
             }
         });
 
@@ -118,7 +118,7 @@ public class InputSpeakingFragment extends Fragment {
             public void onClick(View v) {
                 clearSelected();
                 mQuestion_A_index = 2;
-                mIcon1b.setBackground(getResources().getDrawable(R.drawable.border_image_selected));
+                mIcon1b.setBackground(getResources().getDrawable(R.drawable.ic_single_border_selected));
             }
         });
 
@@ -127,7 +127,7 @@ public class InputSpeakingFragment extends Fragment {
             public void onClick(View v) {
                 clearSelected();
                 mQuestion_A_index = 3;
-                mIcon1c.setBackground(getResources().getDrawable(R.drawable.border_image_selected));
+                mIcon1c.setBackground(getResources().getDrawable(R.drawable.ic_single_border_selected));
             }
         });
 
@@ -136,7 +136,7 @@ public class InputSpeakingFragment extends Fragment {
             public void onClick(View v) {
                 clearSelected();
                 mQuestion_A_index = 4;
-                mIcon1d.setBackground(getResources().getDrawable(R.drawable.border_image_selected));
+                mIcon1d.setBackground(getResources().getDrawable(R.drawable.ic_single_border_selected));
             }
         });
 
@@ -145,7 +145,7 @@ public class InputSpeakingFragment extends Fragment {
             public void onClick(View v) {
                 clearSelected();
                 mQuestion_A_index = 5;
-                mIcon1e.setBackground(getResources().getDrawable(R.drawable.border_image_selected));
+                mIcon1e.setBackground(getResources().getDrawable(R.drawable.ic_single_border_selected));
             }
         });
 
@@ -238,7 +238,45 @@ public class InputSpeakingFragment extends Fragment {
         mResults = v.findViewById(R.id.text_score); // note this object is invisible
         mResults.setVisibility(View.VISIBLE);
 
+        setButtonsFromDatabase();
         return v;
+    }
+
+    /**
+     * if there is saved raw data for this date, sets the selected buttons to match
+     */
+    private void setButtonsFromDatabase(){
+        if (mScoringLab.isRaw(mScoreDate)) {
+            mRaw = mScoringLab.getRaw(mScoreDate);
+
+            clearSelected();
+
+            if (mRaw.getSpeaking1() != 0) {
+                mQuestion_A_index = mRaw.getSpeaking1();
+                switch (mQuestion_A_index) {
+                    case ScoringAlgorithms.INPUT_a:
+                        mIcon1a.setBackground(getResources().getDrawable(R.drawable.ic_single_border_selected));
+                        break;
+                    case ScoringAlgorithms.INPUT_b:
+                        mIcon1b.setBackground(getResources().getDrawable(R.drawable.ic_single_border_selected));
+                        break;
+                    case ScoringAlgorithms.INPUT_c:
+                        mIcon1c.setBackground(getResources().getDrawable(R.drawable.ic_single_border_selected));
+                        break;
+                    case ScoringAlgorithms.INPUT_d:
+                        mIcon1d.setBackground(getResources().getDrawable(R.drawable.ic_single_border_selected));
+                        break;
+                    case ScoringAlgorithms.INPUT_e:
+                        mIcon1e.setBackground(getResources().getDrawable(R.drawable.ic_single_border_selected));
+                        break;
+                }
+            }
+
+            mDebriefCheck.setChecked(mRaw.isSpeaking2());
+            mShareCheck.setChecked(mRaw.isSpeaking3());
+            mSocialMediaCheck.setChecked(mRaw.isSpeaking4());
+            mSocialBalanceCheck.setChecked(mRaw.isSpeaking5());
+        }
     }
 
     /**
@@ -281,11 +319,11 @@ public class InputSpeakingFragment extends Fragment {
      * ideally the icon being selected woudnt need to be cleared, if its id was passed in here              // refactor potential
      */
     private void clearSelected() {
-        mIcon1a.setBackground(getResources().getDrawable(R.drawable.border_image));
-        mIcon1b.setBackground(getResources().getDrawable(R.drawable.border_image));
-        mIcon1c.setBackground(getResources().getDrawable(R.drawable.border_image));
-        mIcon1d.setBackground(getResources().getDrawable(R.drawable.border_image));
-        mIcon1e.setBackground(getResources().getDrawable(R.drawable.border_image));
+        mIcon1a.setBackground(getResources().getDrawable(R.drawable.ic_single_border));
+        mIcon1b.setBackground(getResources().getDrawable(R.drawable.ic_single_border));
+        mIcon1c.setBackground(getResources().getDrawable(R.drawable.ic_single_border));
+        mIcon1d.setBackground(getResources().getDrawable(R.drawable.ic_single_border));
+        mIcon1e.setBackground(getResources().getDrawable(R.drawable.ic_single_border));
     }
 
 }
