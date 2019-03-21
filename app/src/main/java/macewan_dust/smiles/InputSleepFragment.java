@@ -136,7 +136,7 @@ public class InputSleepFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 clearSelectedB();
-                mQuestion_B_index = 0;
+                mQuestion_B_index = ScoringAlgorithms.INPUT_a;
                 mIcon2a.setBackground(getResources().getDrawable(R.drawable.border_image_selected));
             }
         });
@@ -145,7 +145,7 @@ public class InputSleepFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 clearSelectedB();
-                mQuestion_B_index = 1;
+                mQuestion_B_index = ScoringAlgorithms.INPUT_b;
                 mIcon2b.setBackground(getResources().getDrawable(R.drawable.border_image_selected));
             }
         });
@@ -154,7 +154,7 @@ public class InputSleepFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 clearSelectedB();
-                mQuestion_B_index = 2;
+                mQuestion_B_index = ScoringAlgorithms.INPUT_c;
                 mIcon2c.setBackground(getResources().getDrawable(R.drawable.border_image_selected));
             }
         });
@@ -163,7 +163,7 @@ public class InputSleepFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 clearSelectedB();
-                mQuestion_B_index = 3;
+                mQuestion_B_index = ScoringAlgorithms.INPUT_d;
                 mIcon2d.setBackground(getResources().getDrawable(R.drawable.border_image_selected));
             }
         });
@@ -223,13 +223,13 @@ public class InputSleepFragment extends Fragment {
                         mScoringLab.addScore(mScore);
                     }
 
-                    // update
+                    // update raw
                     if (mScoringLab.isRaw(mScoreDate)){
                         mRaw = mScoringLab.getRaw(mScoreDate);
                         mRaw.setSleep(mQuestion_A_index, mQuestion_B_index);
                         mScoringLab.updateRaw(mRaw);
 
-                    }else { // add
+                    }else { // add raw
                         mRaw = new Raw(mScoreDate);
                         mRaw.setSleep(mQuestion_A_index, mQuestion_B_index);
                         mScoringLab.addRaw(mRaw);
