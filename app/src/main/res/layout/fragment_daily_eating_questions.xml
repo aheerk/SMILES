@@ -29,23 +29,24 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal">
 
-            <ImageView
+            <TextView
+                android:text="@string/less"
                 android:id="@+id/icon_1a"
-                style="@style/InputIcons"
-                android:background="@drawable/border_image"
-                app:srcCompat="@drawable/ic_less" />
+                style="@style/ButtonText"
+                android:background="@drawable/ic_wide_border"
+                />
 
-            <ImageView
+            <TextView
+                android:text="@string/percent_50"
                 android:id="@+id/icon_1b"
-                style="@style/InputIcons"
-                android:background="@drawable/border_image"
-                app:srcCompat="@drawable/ic_50_percent" />
+                style="@style/ButtonText"
+                android:background="@drawable/ic_wide_border"/>
 
-            <ImageView
+            <TextView
+                android:text="@string/more"
                 android:id="@+id/icon_1c"
-                style="@style/InputIcons"
-                android:background="@drawable/border_image"
-                app:srcCompat="@drawable/ic_more" />
+                style="@style/ButtonText"
+                android:background="@drawable/ic_wide_border"/>
 
         </LinearLayout>
 
@@ -63,23 +64,23 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal">
 
-            <ImageView
+            <TextView
+                android:text="@string/less"
                 android:id="@+id/icon_2a"
-                style="@style/InputIcons"
-                android:background="@drawable/border_image"
-                app:srcCompat="@drawable/ic_less" />
+                style="@style/ButtonText"
+                android:background="@drawable/ic_wide_border"/>
 
-            <ImageView
+            <TextView
+                android:text="@string/percent_25"
                 android:id="@+id/icon_2b"
-                style="@style/InputIcons"
-                android:background="@drawable/border_image"
-                app:srcCompat="@drawable/ic_25_percent" />
+                style="@style/ButtonText"
+                android:background="@drawable/ic_wide_border"/>
 
-            <ImageView
+            <TextView
+                android:text="@string/more"
                 android:id="@+id/icon_2c"
-                style="@style/InputIcons"
-                android:background="@drawable/border_image"
-                app:srcCompat="@drawable/ic_more" />
+                style="@style/ButtonText"
+                android:background="@drawable/ic_wide_border"/>
 
         </LinearLayout>
 
@@ -97,23 +98,23 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal">
 
-            <ImageView
+            <TextView
+                android:text="@string/less"
                 android:id="@+id/icon_3a"
-                style="@style/InputIcons"
-                android:background="@drawable/border_image"
-                app:srcCompat="@drawable/ic_less" />
+                style="@style/ButtonText"
+                android:background="@drawable/ic_wide_border" />
 
-            <ImageView
+            <TextView
+                android:text="@string/percent_25"
                 android:id="@+id/icon_3b"
-                style="@style/InputIcons"
-                android:background="@drawable/border_image"
-                app:srcCompat="@drawable/ic_25_percent" />
+                style="@style/ButtonText"
+                android:background="@drawable/ic_wide_border" />
 
-            <ImageView
+            <TextView
+                android:text="@string/more"
                 android:id="@+id/icon_3c"
-                style="@style/InputIcons"
-                android:background="@drawable/border_image"
-                app:srcCompat="@drawable/ic_more" />
+                style="@style/ButtonText"
+                android:background="@drawable/ic_wide_border" />
 
         </LinearLayout>
 

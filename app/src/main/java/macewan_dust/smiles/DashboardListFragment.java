@@ -36,6 +36,7 @@ public class DashboardListFragment extends Fragment {
     private List<Score> mDashboardData = new LinkedList<>();
     private Button mButtonStartQuestions;
     private Context mContext;
+    private ScoringLab mScoringLab;
 
     /**
      * new instance constructor
@@ -52,9 +53,9 @@ public class DashboardListFragment extends Fragment {
         mContext = getContext();
 
         ((AppCompatActivity)getActivity()).getSupportActionBar().setDisplayHomeAsUpEnabled(false);
-
+        mScoringLab = ScoringLab.get(getContext());
         // scores from database
-        mDashboardData = ScoringLab.get(getContext()).getScores();
+        mDashboardData = mScoringLab.getScores();
 /*
         // generating some items for testing
         Score temp = new Score();
@@ -78,7 +79,7 @@ public class DashboardListFragment extends Fragment {
         Log.d(TAG, "resuming dashboard");
 
         // redraw the screen when coming back from a question page
-        mDashboardData = ScoringLab.get(getContext()).getScores(); // refresh list on resume
+        mDashboardData = mScoringLab.getScores(); // refresh list on resume
 
         ((DashboardAdapter)mDashboardRecyclerViewAdapter).setDashboardListData(mDashboardData);
         mDashboardRecyclerViewAdapter.notifyDataSetChanged();
@@ -153,7 +154,8 @@ public class DashboardListFragment extends Fragment {
 
         // variables for swipe delete
         int mDeletedItemPosition;
-        Score mDeletedItem;
+        Score mDeletedScore;
+        Raw mDeletedRaw;
 
         /**
          * Reference for views for each data item.
@@ -277,10 +279,18 @@ public class DashboardListFragment extends Fragment {
          * @param position
          */
         public void deleteItem(int position) {
-            mDeletedItem = mDashboardListData.get(position); // saved for undo
+            mDeletedScore = mDashboardListData.get(position); // saved for undo
             mDeletedItemPosition = position;
             mDashboardListData.remove(position);
-            ScoringLab.get(getContext()).deleteScore(mDeletedItem); // delete from database
+            mScoringLab.deleteScore(mDeletedScore); // delete from database
+
+            // if a raw object exists with the same date as the score
+            if (mScoringLab.isRaw(mDeletedScore.getDate())) {
+                // save that raw item here.
+                mDeletedRaw = mScoringLab.getRaw(mDeletedScore.getDate());
+                // then delete it from the database and list.
+                mScoringLab.deleteRaw(mDeletedRaw);
+            }
             notifyItemRemoved(position);
             showUndoSnackbar();
 
@@ -300,10 +310,10 @@ public class DashboardListFragment extends Fragment {
         }
 
         private void undoDelete() {
-
-
-            ScoringLab.get(getContext()).addScore(mDeletedItem);
-            mDashboardListData = ScoringLab.get(getContext()).getScores();
+            // add everything back to the database, list and view
+            mScoringLab.addScore(mDeletedScore);
+            mScoringLab.addRaw(mDeletedRaw);
+            mDashboardListData = mScoringLab.getScores();
             //notifyItemInserted(mDeletedItemPosition);
             notifyDataSetChanged();
         }
@@ -402,7 +412,5 @@ public class DashboardListFragment extends Fragment {
             int position = viewHolder.getAdapterPosition();
             mAdapter.deleteItem(position);
         }
-
-
     }
 }

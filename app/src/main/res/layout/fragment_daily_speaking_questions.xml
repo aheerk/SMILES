@@ -45,41 +45,41 @@
             android:layout_margin="8dp"
             android:orientation="horizontal">
 
-            <ImageView
+            <TextView
                 android:id="@+id/icon_1a"
-                style="@style/InputIcons"
+                style="@style/ButtonText"
                 android:layout_weight="1"
-                android:background="@drawable/border_image"
-                app:srcCompat="@drawable/icon_one" />
+                android:background="@drawable/ic_single_border"
+                android:text="@string/string_1"/>
 
 
-            <ImageView
+            <TextView
                 android:id="@+id/icon_1b"
-                style="@style/InputIcons"
+                style="@style/ButtonText"
                 android:layout_weight="1"
-                android:background="@drawable/border_image"
-                app:srcCompat="@drawable/icon_two" />
+                android:background="@drawable/ic_single_border"
+                android:text="@string/string_2"/>
 
-            <ImageView
+            <TextView
                 android:id="@+id/icon_1c"
-                style="@style/InputIcons"
+                style="@style/ButtonText"
                 android:layout_weight="1"
-                android:background="@drawable/border_image"
-                app:srcCompat="@drawable/icon_three" />
+                android:background="@drawable/ic_single_border"
+                android:text="@string/string_3"/>
 
-            <ImageView
+            <TextView
                 android:id="@+id/icon_1d"
-                style="@style/InputIcons"
+                style="@style/ButtonText"
                 android:layout_weight="1"
-                android:background="@drawable/border_image"
-                app:srcCompat="@drawable/icon_four" />
+                android:background="@drawable/ic_single_border"
+                android:text="@string/string_4"/>
 
-            <ImageView
+            <TextView
                 android:id="@+id/icon_1e"
-                style="@style/InputIcons"
+                style="@style/ButtonText"
                 android:layout_weight="1"
-                android:background="@drawable/border_image"
-                app:srcCompat="@drawable/icon_five" />
+                android:background="@drawable/ic_single_border"
+                android:text="@string/string_5"/>
 
         </LinearLayout>
 

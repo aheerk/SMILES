@@ -1,16 +1,11 @@
 package macewan_dust.smiles;
 
 
-import android.app.Activity;
-import android.content.Intent;
-import android.graphics.Color;
-import android.graphics.Paint;
-import android.icu.util.GregorianCalendar;
-
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -21,10 +16,13 @@ import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.TextView;
 
-import com.jjoe64.graphview.GraphView;
-import com.jjoe64.graphview.ValueDependentColor;
-import com.jjoe64.graphview.series.BarGraphSeries;
-import com.jjoe64.graphview.series.DataPoint;
+
+import java.util.ArrayList;
+
+import com.github.mikephil.charting.charts.BarChart;
+import com.github.mikephil.charting.data.BarData;
+import com.github.mikephil.charting.data.BarDataSet;
+import com.github.mikephil.charting.data.BarEntry;
 
 import java.util.Calendar;
 import java.util.Date;
@@ -45,7 +43,6 @@ public class MonthlyGraphFragment extends Fragment {
     private CheckBox mLaughterCheckbox;
     private CheckBox mEatingCheckbox;
     private CheckBox mSpeakingCheckbox;
-    private GraphView mGraph;
 
     // aggragate data for the month
     private int mBalanced;
@@ -55,10 +52,18 @@ public class MonthlyGraphFragment extends Fragment {
    // private int mNoData;  // if no data is done, days with no score must be determined as well
 
     private List<Score> mMonthData;
-    private String[] mMonths;
+    private String[] mMonthStrings;
     int monthIndex;
 
     private int mYear;
+
+    BarChart mGraph ;
+    ArrayList<BarEntry> mBarEntry ;
+    ArrayList<String> mBarEntryLabels;
+    BarDataSet mBarDataSet;
+    BarData mBarData;
+    int[] mColorSet;
+
 
     /**
      * new instance constructor
@@ -74,8 +79,15 @@ public class MonthlyGraphFragment extends Fragment {
         super.onCreate(savedInstanceState);
         ((AppCompatActivity) getActivity()).getSupportActionBar().setDisplayHomeAsUpEnabled(false);
         mScoringLab = ScoringLab.get(getContext());
+        mMonthStrings = getContext().getResources().getStringArray(R.array.month_array);
 
-        mMonths = getContext().getResources().getStringArray(R.array.month_array);
+        // colors
+        // ref: https://stackoverflow.com/questions/29888850/mpandroidchart-set-different-color-to-bar-in-a-bar-chart-based-on-y-axis-values
+        mColorSet = new int[]{ContextCompat.getColor(getContext(), R.color.colorBalanced),
+                ContextCompat.getColor(getContext(), R.color.colorUnbalanced),
+                ContextCompat.getColor(getContext(), R.color.colorOver),
+                ContextCompat.getColor(getContext(), R.color.colorUnder)
+        };
     }
 
     @Override
@@ -89,17 +101,6 @@ public class MonthlyGraphFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_monthly_graph, null);
-
-
-        //Resource #1: https://www.loginworks.com/blogs/how-to-create-graphs-in-android-application/
-        //Resource #2: http://www.android-graphview.org/bar-chart/
-        //initialize the bar graph
-        mGraph = v.findViewById(R.id.bar_graph);
-
-
-
-
-
 
         getActivity().setTitle(R.string.title_monthly_graph);
 
@@ -124,6 +125,11 @@ public class MonthlyGraphFragment extends Fragment {
         mYear = calendar.get(Calendar.YEAR);
         monthIndex = calendar.get(Calendar.MONTH) - 1; // month - 1 to make an index
      //   Log.d(TAG, "Month Index: " + monthIndex);
+
+        mGraph = v.findViewById(R.id.bar_graph);
+       // mGraph.animateY(300);
+        mGraph.setDescription("");
+
         updateMonthlyGraph();
 
         mSleepCheckbox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
@@ -163,7 +169,6 @@ public class MonthlyGraphFragment extends Fragment {
             }
         });
 
-
         // note that 11 is December. 0 is January
         mLastMonthButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -189,44 +194,67 @@ public class MonthlyGraphFragment extends Fragment {
             }
         });
 
-
-
-
-
         return v;
     }
+
+
+    public void AddValuesToBarEntryLabels(){
+        mBarEntryLabels.add("Balanced");
+        mBarEntryLabels.add("Unbalanced");
+        mBarEntryLabels.add("Over");
+        mBarEntryLabels.add("Under");
+
+    }
+
+
 
     /**
      * refresh data in graph
      */
     private void updateMonthlyGraph() {
-        mCurrentMonthText.setText(mMonths[monthIndex] + ", " + mYear);
-        Log.d(TAG, "month: " + mMonths[monthIndex] + "\n year: " + String.valueOf(mYear));
-        mMonthData = mScoringLab.monthScores(mMonths[monthIndex], String.valueOf(mYear));
+        mMonthData = mScoringLab.monthScores(mMonthStrings[monthIndex], String.valueOf(mYear));
+        Log.d(TAG, "month: " + mMonthStrings[monthIndex] + "\n year: " + String.valueOf(mYear));
         countScores();
 
+        // reset values
+        mBarEntry = new ArrayList<>();
+        mBarEntryLabels = new ArrayList<String>();
 
-        //Setting data to the bar graph
-        BarGraphSeries<DataPoint> mGraphData = new BarGraphSeries<>(new DataPoint[] {
-                new DataPoint(0, 0 ),
-                new DataPoint(1, mBalanced),
-                new DataPoint(2, mUnbalanced),
-                new DataPoint(3, mOver),
-                new DataPoint(4, mUnder),
-                new DataPoint(5, 0 ),
-        });
 
-        Paint colors = new Paint();
-        colors.setColor(getResources().getColor(R.color.colorLow));
-        colors.setColor(getResources().getColor(R.color.colorHigh));
-        mGraphData.setCustomPaint(colors);
 
-        mGraphData.setDataWidth(0.7);
+        mBarEntry.add(new BarEntry(mBalanced, 0));
+        mBarEntry.add(new BarEntry(mUnbalanced, 1));
+        mBarEntry.add(new BarEntry(mOver, 2));
+        mBarEntry.add(new BarEntry(mUnder, 3));
+
+
+        mBarDataSet = new BarDataSet(mBarEntry, "");
+        mBarDataSet.setColors(mColorSet);
+        AddValuesToBarEntryLabels();
+        mBarData = new BarData(mBarEntryLabels, mBarDataSet);
+
+
+
+
+
+      //  mGraph.notifyDataSetChanged();
+
+        if (mGraph.getBarData() != null) {
+            mGraph.clearValues(); // also invalidates
+        }
+        mGraph.setData(mBarData);
+
+        /*
+
+
+
         mGraph.removeAllSeries();
         mGraph.addSeries(mGraphData);
 
 
         mGraph.onDataChanged(false, true);
+
+*/
     }
 
     private void countScores(){

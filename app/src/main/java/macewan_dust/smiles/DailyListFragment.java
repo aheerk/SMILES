@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
@@ -46,10 +47,16 @@ public class DailyListFragment extends Fragment {
     private Button mDatePicker;
     private Button mDeleteButton;
     private Date mScoreDate;
+    private ScoringLab mScoringLab;
+
+    Score mDeletedScore;
+    Raw mDeletedRaw;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        mScoringLab = ScoringLab.get(getContext());
 
         // generating category items. items will be updated based on input later
         mDailyData.add(new DailyItem(R.drawable.icon_sleep,
@@ -108,10 +115,10 @@ public class DailyListFragment extends Fragment {
         mDeleteButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (ScoringLab.get(getContext()).isScore(mScoreDate)) {
+                if (mScoringLab.isScore(mScoreDate)) {
 
-                    ScoringLab.get(getContext()).deleteScore(mScoreDate);
-
+                  //  mScoringLab.deleteScore(mScoreDate);
+                    deleteItem(mScoreDate);
                     updateUI();
                 }
 
@@ -134,7 +141,7 @@ public class DailyListFragment extends Fragment {
         setBorders();
         mDailyAdapter.notifyDataSetChanged();
 
-        if (ScoringLab.get(getContext()).isScore(mScoreDate)){
+        if (mScoringLab.isScore(mScoreDate)){
             mDeleteButton.setEnabled(true);
         } else {
             mDeleteButton.setEnabled(false);
@@ -296,6 +303,42 @@ public class DailyListFragment extends Fragment {
         transaction.addToBackStack("dailyList");
         transaction.commit();
         Log.d(TAG, "replacing fragment");
+    }
+
+
+    public void deleteItem(Date date) {
+        mDeletedScore = mScoringLab.getScore(mScoreDate);
+        mScoringLab.deleteScore(mDeletedScore); // delete from database
+
+        // if a raw object exists with the same date as the score
+        if (mScoringLab.isRaw(mDeletedScore.getDate())) {
+            // save that raw item here.
+            mDeletedRaw = mScoringLab.getRaw(mDeletedScore.getDate());
+            // then delete it from the database and list.
+            mScoringLab.deleteRaw(mDeletedRaw);
+        }
+        showUndoSnackbar();
+    }
+
+    public void showUndoSnackbar() {
+        View view = getActivity().findViewById(R.id.daily_recycler_view);
+        Snackbar snackbar = Snackbar.make(view, R.string.undo_text, 5000 ); // 5 seconds
+
+        snackbar.setAction(R.string.undo_confirm, new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                undoDelete();
+            }
+        });
+        snackbar.show();
+    }
+
+    private void undoDelete() {
+        // add everything back to the database, list and view
+        mScoringLab.addScore(mDeletedScore);
+        mScoringLab.addRaw(mDeletedRaw);
+        updateUI();
+
     }
 }
 
