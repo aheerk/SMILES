@@ -60,6 +60,7 @@ public class MonthlyGraphFragment extends Fragment {
 
     //   BarChart mGraph;
     PieChart mPieChart;
+    TextView mNoPieTextView;
     // ArrayList<BarEntry> mBarEntry ;
     //  ArrayList<String> mBarEntryLabels;
     // BarDataSet mBarDataSet;
@@ -147,6 +148,8 @@ public class MonthlyGraphFragment extends Fragment {
         mPieChart.setTransparentCircleRadius(25f);
         mPieChart.getLegend().setEnabled(false); // disables useless color squares
 
+        mNoPieTextView = v.findViewById(R.id.textbox_no_pie);
+
         updateMonthlyGraph();
 
 
@@ -215,16 +218,38 @@ public class MonthlyGraphFragment extends Fragment {
     }
 
     /**
+     * helper used to hide graph for no-data
+     * @return
+     */
+    private boolean allUnchecked(){
+        if (mSleepCheckbox.isChecked() || mMovementCheckbox.isChecked() ||
+                mImaginationCheckbox.isChecked() || mLaughterCheckbox.isChecked() ||
+                mEatingCheckbox.isChecked() || mSpeakingCheckbox.isChecked()) {
+            return false;
+        }
+        return true;
+    }
+
+    /**
      * refresh data in graph
      */
     private void updateMonthlyGraph() {
         mCurrentMonthText.setText(mMonthStrings[monthIndex] + ", " + mYear);
 
         mMonthData = mScoringLab.monthScores(mMonthStrings[monthIndex], String.valueOf(mYear));
-        Log.d(TAG, "month: " + mMonthStrings[monthIndex] + "\n year: " + String.valueOf(mYear));
-        countScores();
+        // Log.d(TAG, "month: " + mMonthStrings[monthIndex] + "\n year: " + String.valueOf(mYear));
 
-        // reset values
+        // hide graph if it has no data and show text message, and vice versa.
+        if (mMonthData.isEmpty() || allUnchecked()) {
+            mPieChart.setVisibility(View.GONE);
+            mNoPieTextView.setVisibility(View.VISIBLE);
+        } else {
+            mPieChart.setVisibility(View.VISIBLE);
+            mNoPieTextView.setVisibility(View.GONE);
+
+            countScores();
+
+            // reset values
 //        mBarEntry = new ArrayList<>();
 //        mBarEntryLabels = new ArrayList<String>();
 //
@@ -258,59 +283,59 @@ public class MonthlyGraphFragment extends Fragment {
 
         */
 
-        // setting values only if they are not zero to avoid having 0.0% on the graph
-        ArrayList<Entry> pieDataSlices = new ArrayList<>();
-        if (mBalanced > 0)
-            pieDataSlices.add(new Entry(mBalanced, 0));
-        if (mUnbalanced > 0)
-            pieDataSlices.add(new Entry(mUnbalanced, 1));
-        if (mOver > 0)
-            pieDataSlices.add(new Entry(mOver, 2));
-        if (mUnder > 0)
-            pieDataSlices.add(new Entry(mUnder, 3));
+            // setting values only if they are not zero to avoid having 0.0% on the graph
+            ArrayList<Entry> pieDataSlices = new ArrayList<>();
+            if (mBalanced > 0)
+                pieDataSlices.add(new Entry(mBalanced, 0));
+            if (mUnbalanced > 0)
+                pieDataSlices.add(new Entry(mUnbalanced, 1));
+            if (mOver > 0)
+                pieDataSlices.add(new Entry(mOver, 2));
+            if (mUnder > 0)
+                pieDataSlices.add(new Entry(mUnder, 3));
 
-        PieDataSet dataSet = new PieDataSet(pieDataSlices, "");
-        ArrayList<String> xVals = new ArrayList<String>();
+            PieDataSet dataSet = new PieDataSet(pieDataSlices, "");
+            ArrayList<String> xVals = new ArrayList<String>();
 
-        // data labels are not wanted but required. the list size must match the data size.
-        if (mBalanced > 0)
-            xVals.add("");
-        if (mUnbalanced > 0)
-            xVals.add("");
-        if (mOver > 0)
-            xVals.add("");
-        if (mUnder > 0)
-            xVals.add("");
+            // data labels are not wanted but required. the list size must match the data size.
+            if (mBalanced > 0)
+                xVals.add("");
+            if (mUnbalanced > 0)
+                xVals.add("");
+            if (mOver > 0)
+                xVals.add("");
+            if (mUnder > 0)
+                xVals.add("");
 
-        // must specify the colors for the included data types
-        List<Integer> pieColors = new LinkedList<Integer>();
-        if (mBalanced > 0)
-            pieColors.add(getResources().getColor(R.color.colorBalanced));
-        if (mUnbalanced > 0)
-            pieColors.add(getResources().getColor(R.color.colorUnbalanced));
-        if (mOver > 0)
-            pieColors.add(getResources().getColor(R.color.colorOver));
-        if (mUnder > 0)
-            pieColors.add(getResources().getColor(R.color.colorUnder));
+            // must specify the colors for the included data types
+            List<Integer> pieColors = new LinkedList<Integer>();
+            if (mBalanced > 0)
+                pieColors.add(getResources().getColor(R.color.colorBalanced));
+            if (mUnbalanced > 0)
+                pieColors.add(getResources().getColor(R.color.colorUnbalanced));
+            if (mOver > 0)
+                pieColors.add(getResources().getColor(R.color.colorOver));
+            if (mUnder > 0)
+                pieColors.add(getResources().getColor(R.color.colorUnder));
 
-        dataSet.setColors(pieColors);
+            dataSet.setColors(pieColors);
 
-        PieData data = new PieData(xVals, dataSet);
-        data.setValueFormatter(new PercentFormatter());
-        data.setValueTextSize(24f);
+            PieData data = new PieData(xVals, dataSet);
+            data.setValueFormatter(new PercentFormatter());
+            data.setValueTextSize(24f);
 
-        if (mPieChart.getData() != null) {
-            mPieChart.clearValues(); // also invalidates
+            if (mPieChart.getData() != null) {
+                mPieChart.clearValues(); // also invalidates
+            }
+
+            mPieChart.setData(data);
+
+
+            mPieChart.setNoDataText("No Data Available");
+            //   val paint:Paint =  mPieChart.getPaint(Chart.PAINT_INFO);
+            //  paint.textSize = 40f;
+            mPieChart.invalidate();
         }
-
-        mPieChart.setData(data);
-
-
-
-        mPieChart.setNoDataText("No Data Available");
-     //   val paint:Paint =  mPieChart.getPaint(Chart.PAINT_INFO);
-      //  paint.textSize = 40f;
-        mPieChart.invalidate();
     }
 
     private void countScores() {

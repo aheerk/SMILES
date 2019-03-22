@@ -22,6 +22,18 @@
             android:layout_marginRight="16dp"
             />
 -->
+        <TextView
+            android:id="@+id/textbox_no_pie"
+            android:layout_width="match_parent"
+            android:layout_height="250dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:paddingTop="100dp"
+            android:text="@string/no_data"
+            android:textAlignment="center"
+            android:textColor="@color/colorBodyText"
+            android:textSize="26sp" />
+
         <com.github.mikephil.charting.charts.PieChart
             android:id="@+id/pie_graph"
             android:layout_width="match_parent"
