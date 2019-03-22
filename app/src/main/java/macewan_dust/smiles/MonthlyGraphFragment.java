@@ -1,11 +1,11 @@
 package macewan_dust.smiles;
 
 
+import android.graphics.Paint;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -16,16 +16,17 @@ import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.TextView;
 
+import com.github.mikephil.charting.charts.Chart;
+import com.github.mikephil.charting.charts.PieChart;
+import com.github.mikephil.charting.data.Entry;
+import com.github.mikephil.charting.data.PieData;
+import com.github.mikephil.charting.data.PieDataSet;
+import com.github.mikephil.charting.formatter.PercentFormatter;
 
 import java.util.ArrayList;
-
-import com.github.mikephil.charting.charts.BarChart;
-import com.github.mikephil.charting.data.BarData;
-import com.github.mikephil.charting.data.BarDataSet;
-import com.github.mikephil.charting.data.BarEntry;
-
 import java.util.Calendar;
 import java.util.Date;
+import java.util.LinkedList;
 import java.util.List;
 
 public class MonthlyGraphFragment extends Fragment {
@@ -49,7 +50,7 @@ public class MonthlyGraphFragment extends Fragment {
     private int mUnbalanced;
     private int mOver;
     private int mUnder;
-   // private int mNoData;  // if no data is done, days with no score must be determined as well
+    // private int mNoData;  // if no data is done, days with no score must be determined as well
 
     private List<Score> mMonthData;
     private String[] mMonthStrings;
@@ -57,12 +58,13 @@ public class MonthlyGraphFragment extends Fragment {
 
     private int mYear;
 
-    BarChart mGraph ;
-    ArrayList<BarEntry> mBarEntry ;
-    ArrayList<String> mBarEntryLabels;
-    BarDataSet mBarDataSet;
-    BarData mBarData;
-    int[] mColorSet;
+    //   BarChart mGraph;
+    PieChart mPieChart;
+    // ArrayList<BarEntry> mBarEntry ;
+    //  ArrayList<String> mBarEntryLabels;
+    // BarDataSet mBarDataSet;
+    // BarData mBarData;
+    // int[] mColorSet;
 
 
     /**
@@ -83,11 +85,14 @@ public class MonthlyGraphFragment extends Fragment {
 
         // colors
         // ref: https://stackoverflow.com/questions/29888850/mpandroidchart-set-different-color-to-bar-in-a-bar-chart-based-on-y-axis-values
-        mColorSet = new int[]{ContextCompat.getColor(getContext(), R.color.colorBalanced),
-                ContextCompat.getColor(getContext(), R.color.colorUnbalanced),
-                ContextCompat.getColor(getContext(), R.color.colorOver),
-                ContextCompat.getColor(getContext(), R.color.colorUnder)
-        };
+//        mColorSet = new int[]{ContextCompat.getColor(getContext(), R.color.colorBalanced),
+//                ContextCompat.getColor(getContext(), R.color.colorUnbalanced),
+//                ContextCompat.getColor(getContext(), R.color.colorOver),
+//                ContextCompat.getColor(getContext(), R.color.colorUnder)
+//        };
+
+        List<Integer> temp = new LinkedList<>();
+
     }
 
     @Override
@@ -124,13 +129,26 @@ public class MonthlyGraphFragment extends Fragment {
         calendar.roll(Calendar.MONTH, true);
         mYear = calendar.get(Calendar.YEAR);
         monthIndex = calendar.get(Calendar.MONTH) - 1; // month - 1 to make an index
-     //   Log.d(TAG, "Month Index: " + monthIndex);
+        //   Log.d(TAG, "Month Index: " + monthIndex);
 
-        mGraph = v.findViewById(R.id.bar_graph);
-       // mGraph.animateY(300);
-        mGraph.setDescription("");
+        //   mGraph = v.findViewById(R.id.bar_graph);
+        // mGraph.animateY(300);
+        //   mGraph.setDescription("");
+
+
+// Ref: https://www.studytutorial.in/android-pie-chart-using-mpandroid-library-tutorial
+        mPieChart = v.findViewById(R.id.pie_graph);
+        mPieChart.setNoDataText(getString(R.string.pie_chart_no_data));
+
+        mPieChart.setUsePercentValues(true);
+        mPieChart.setDescription("");
+        mPieChart.setDrawSlicesUnderHole(true);
+        mPieChart.setHoleRadius(20f);
+        mPieChart.setTransparentCircleRadius(25f);
+        mPieChart.getLegend().setEnabled(false); // disables useless color squares
 
         updateMonthlyGraph();
+
 
         mSleepCheckbox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
@@ -175,8 +193,7 @@ public class MonthlyGraphFragment extends Fragment {
             public void onClick(View v) {
                 if (monthIndex > 0) {
                     monthIndex = (monthIndex - 1) % 12;
-                }
-                else {
+                } else {
                     monthIndex = 11;
                     mYear--;
                 }
@@ -187,7 +204,7 @@ public class MonthlyGraphFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 if (monthIndex == 11) {
-                    mYear ++;
+                    mYear++;
                 }
                 monthIndex = (monthIndex + 1) % 12;
                 updateMonthlyGraph();
@@ -197,52 +214,39 @@ public class MonthlyGraphFragment extends Fragment {
         return v;
     }
 
-
-    public void AddValuesToBarEntryLabels(){
-        mBarEntryLabels.add("Balanced");
-        mBarEntryLabels.add("Unbalanced");
-        mBarEntryLabels.add("Over");
-        mBarEntryLabels.add("Under");
-
-    }
-
-
-
     /**
      * refresh data in graph
      */
     private void updateMonthlyGraph() {
+        mCurrentMonthText.setText(mMonthStrings[monthIndex] + ", " + mYear);
+
         mMonthData = mScoringLab.monthScores(mMonthStrings[monthIndex], String.valueOf(mYear));
         Log.d(TAG, "month: " + mMonthStrings[monthIndex] + "\n year: " + String.valueOf(mYear));
         countScores();
 
         // reset values
-        mBarEntry = new ArrayList<>();
-        mBarEntryLabels = new ArrayList<String>();
-
-
-
-        mBarEntry.add(new BarEntry(mBalanced, 0));
-        mBarEntry.add(new BarEntry(mUnbalanced, 1));
-        mBarEntry.add(new BarEntry(mOver, 2));
-        mBarEntry.add(new BarEntry(mUnder, 3));
-
-
-        mBarDataSet = new BarDataSet(mBarEntry, "");
-        mBarDataSet.setColors(mColorSet);
-        AddValuesToBarEntryLabels();
-        mBarData = new BarData(mBarEntryLabels, mBarDataSet);
-
-
-
-
-
-      //  mGraph.notifyDataSetChanged();
-
-        if (mGraph.getBarData() != null) {
-            mGraph.clearValues(); // also invalidates
-        }
-        mGraph.setData(mBarData);
+//        mBarEntry = new ArrayList<>();
+//        mBarEntryLabels = new ArrayList<String>();
+//
+//
+//        mBarEntry.add(new BarEntry(mBalanced, 0));
+//        mBarEntry.add(new BarEntry(mUnbalanced, 1));
+//        mBarEntry.add(new BarEntry(mOver, 2));
+//        mBarEntry.add(new BarEntry(mUnder, 3));
+//
+//
+//        mBarDataSet = new BarDataSet(mBarEntry, "");
+//        mBarDataSet.setColors(mColorSet);
+//        AddValuesToBarEntryLabels();
+//        mBarData = new BarData(mBarEntryLabels, mBarDataSet);
+//
+//
+//        //  mGraph.notifyDataSetChanged();
+//
+//        if (mGraph.getBarData() != null) {
+//            mGraph.clearValues(); // also invalidates
+//        }
+//        mGraph.setData(mBarData);
 
         /*
 
@@ -250,21 +254,73 @@ public class MonthlyGraphFragment extends Fragment {
 
         mGraph.removeAllSeries();
         mGraph.addSeries(mGraphData);
-
-
         mGraph.onDataChanged(false, true);
 
-*/
+        */
+
+        // setting values only if they are not zero to avoid having 0.0% on the graph
+        ArrayList<Entry> pieDataSlices = new ArrayList<>();
+        if (mBalanced > 0)
+            pieDataSlices.add(new Entry(mBalanced, 0));
+        if (mUnbalanced > 0)
+            pieDataSlices.add(new Entry(mUnbalanced, 1));
+        if (mOver > 0)
+            pieDataSlices.add(new Entry(mOver, 2));
+        if (mUnder > 0)
+            pieDataSlices.add(new Entry(mUnder, 3));
+
+        PieDataSet dataSet = new PieDataSet(pieDataSlices, "");
+        ArrayList<String> xVals = new ArrayList<String>();
+
+        // data labels are not wanted but required. the list size must match the data size.
+        if (mBalanced > 0)
+            xVals.add("");
+        if (mUnbalanced > 0)
+            xVals.add("");
+        if (mOver > 0)
+            xVals.add("");
+        if (mUnder > 0)
+            xVals.add("");
+
+        // must specify the colors for the included data types
+        List<Integer> pieColors = new LinkedList<Integer>();
+        if (mBalanced > 0)
+            pieColors.add(getResources().getColor(R.color.colorBalanced));
+        if (mUnbalanced > 0)
+            pieColors.add(getResources().getColor(R.color.colorUnbalanced));
+        if (mOver > 0)
+            pieColors.add(getResources().getColor(R.color.colorOver));
+        if (mUnder > 0)
+            pieColors.add(getResources().getColor(R.color.colorUnder));
+
+        dataSet.setColors(pieColors);
+
+        PieData data = new PieData(xVals, dataSet);
+        data.setValueFormatter(new PercentFormatter());
+        data.setValueTextSize(24f);
+
+        if (mPieChart.getData() != null) {
+            mPieChart.clearValues(); // also invalidates
+        }
+
+        mPieChart.setData(data);
+
+
+
+        mPieChart.setNoDataText("No Data Available");
+     //   val paint:Paint =  mPieChart.getPaint(Chart.PAINT_INFO);
+      //  paint.textSize = 40f;
+        mPieChart.invalidate();
     }
 
-    private void countScores(){
+    private void countScores() {
 
         mBalanced = 0;
         mUnbalanced = 0;
         mOver = 0;
         mUnder = 0;
 
-        for (Score s : mMonthData){
+        for (Score s : mMonthData) {
 
             if (mSleepCheckbox.isChecked()) {
                 switch (s.getSleepScore()) {
@@ -382,9 +438,6 @@ public class MonthlyGraphFragment extends Fragment {
             }
         }
         Log.d(TAG, "Aggragate scores\nBalanced: " + mBalanced + "\nOver: " + mOver + "\nUnder: " + mUnder +
-                "\nUnbalanced: "+ mUnbalanced);
-
+                "\nUnbalanced: " + mUnbalanced);
     }
-
-
 }

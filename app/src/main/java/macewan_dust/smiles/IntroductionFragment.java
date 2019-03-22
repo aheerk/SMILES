@@ -20,7 +20,6 @@ public class IntroductionFragment extends Fragment {
 
     int i;
 
-
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -29,8 +28,6 @@ public class IntroductionFragment extends Fragment {
         ((AppCompatActivity)getActivity()).getSupportActionBar();
         ((AppCompatActivity)getActivity()).getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         ((AppCompatActivity)getActivity()).getSupportActionBar().setDisplayShowHomeEnabled(true);
-
-
     }
 
     @Override

@@ -255,6 +255,7 @@
         <item>Nov</item>
         <item>Dec</item>
     </string-array>
+    <string name="pie_chart_no_data">No data found</string>
 
 
     <!-- button text-->
