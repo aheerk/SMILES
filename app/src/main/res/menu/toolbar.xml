@@ -6,8 +6,13 @@
     tools:context=".activity.MainActivity">
 
     <item
-        android:id="@+id/overflow_export"
-        android:title="@string/overflow_export"
+        android:id="@+id/overflow_export_responses"
+        android:title="@string/overflow_export_responses"
+        app:showAsAction="never"/>
+
+    <item
+        android:id="@+id/overflow_export_scores"
+        android:title="@string/overflow_export_scores"
         app:showAsAction="never"/>
 
     <item

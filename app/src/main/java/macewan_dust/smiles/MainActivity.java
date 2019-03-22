@@ -2,7 +2,6 @@ package macewan_dust.smiles;
 
 import android.Manifest;
 import android.app.Activity;
-import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.net.Uri;
@@ -27,8 +26,16 @@ public class MainActivity extends SingleFragmentActivity implements BottomNaviga
 
     private static final String TAG = "MainActivity";
     private int minBackstack; // this is the fix for the visual back button bug.
-    private static final int WRITE_REQUEST_CODE = 43;
+    private int mOperation;
+
+    private static final int OPERATION_OVERFLOW_EXPORT_RESPONSES = 88;
+    private static final int OPERATION_OVERFLOW_EXPORT_SCORES = 89;
+
+    private static final int WRITE_RESPONSES_REQUEST_CODE = 42;
+    private static final int WRITE_SCORES_REQUEST_CODE = 43;
+
     private static final int READ_REQUEST_CODE = 44;
+
     private static final int REQUEST_WRITE_EXTERNAL_STORAGE = 222;
     private static final int REQUEST_READ_EXTERNAL_STORAGE = 111;
 
@@ -42,6 +49,8 @@ public class MainActivity extends SingleFragmentActivity implements BottomNaviga
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_fragment);
+
+        mOperation = 0;
 
         // bottom navigation
         BottomNavigationView navigation = findViewById(R.id.navigation);
@@ -78,7 +87,7 @@ public class MainActivity extends SingleFragmentActivity implements BottomNaviga
      * This method handles when the user selects an item on the overflow menu and the back button
      * @param item
      * @return
-*/
+    */
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch(item.getItemId()) {
@@ -93,12 +102,23 @@ public class MainActivity extends SingleFragmentActivity implements BottomNaviga
                 loadFragment(new SettingsListFragment());
                 break;
             }
-            case R.id.overflow_export: {
-                checkPermissionsAndWriteFile();
+            case R.id.overflow_export_responses: {
+                mOperation = OPERATION_OVERFLOW_EXPORT_RESPONSES;
+                checkPermissions("");
+                createFile("responses" + CsvFileManager.getFilename(),
+                        WRITE_RESPONSES_REQUEST_CODE);
+                break;
+            }
+
+            case R.id.overflow_export_scores: {
+                mOperation = OPERATION_OVERFLOW_EXPORT_SCORES;
+                checkPermissions("");
+                createFile("scores" + CsvFileManager.getFilename(),
+                        WRITE_SCORES_REQUEST_CODE);
                 break;
             }
             case R.id.overflow_import: {
-                checkPermissionsAndReadFiles();
+                //heckPermissionsAndReadFiles();
                 break;
             }
             case R.id.overflow_information: {
@@ -181,21 +201,19 @@ public class MainActivity extends SingleFragmentActivity implements BottomNaviga
     }
 
     /*--- IMPORT & EXPORT -----------------------------------------------------------------------*/
-
-    /**
-     * This method checks if the app has permissions to write to external storage. If so,
-     * it writes the new CSV file.
-     */
-    public void checkPermissionsAndWriteFile () {
-        checkWriteExternalPermissions("");
-    }
-
     /**
      * createFile launches an intent that asks the user where to store a new file. The results
      * will be provided in the onActivityResult method
      * Adapted from: https://developer.android.com/guide/topics/providers/document-provider#create
      */
-    public void createFile() {
+    public void createFile(String filename, int requestCode) {
+        // Return if we don't have permissions
+        if (ContextCompat.checkSelfPermission(getApplicationContext(),
+                Manifest.permission.WRITE_EXTERNAL_STORAGE)  != PackageManager.PERMISSION_GRANTED) {
+            Log.d(TAG, "No permissions in createFile!");
+            return;
+        }
+
         Intent intent = new Intent(Intent.ACTION_CREATE_DOCUMENT);
 
         // Filter to only show results that can be "opened", such as
@@ -204,8 +222,8 @@ public class MainActivity extends SingleFragmentActivity implements BottomNaviga
 
         // Create a csv file type.
         intent.setType("text/csv");
-        intent.putExtra(Intent.EXTRA_TITLE, CsvFileManager.getFilename());
-        startActivityForResult(intent, WRITE_REQUEST_CODE);
+        intent.putExtra(Intent.EXTRA_TITLE, filename);
+        startActivityForResult(intent, requestCode);
     }
 
     /**
@@ -229,7 +247,7 @@ public class MainActivity extends SingleFragmentActivity implements BottomNaviga
 
     /**
      * onActivityResult is called by Android after an intent is created such as the one initiated
-     * in createFile.
+     * in createScoreFile.
      * SOURCE: https://developer.android.com/guide/topics/providers/document-provider#create
      * @param requestCode
      * @param resultCode
@@ -238,32 +256,28 @@ public class MainActivity extends SingleFragmentActivity implements BottomNaviga
     @Override
     public void onActivityResult(int requestCode, int resultCode,
                                  Intent resultData) {
+        if (resultCode != Activity.RESULT_OK || resultData == null) {
+            return;
+        }
 
-        if (requestCode == WRITE_REQUEST_CODE && resultCode == Activity.RESULT_OK) {
-            // Retrieve the file stored as a URI
-            Uri uri = null;
-            if (resultData != null) {
-                uri = resultData.getData();
-                CsvFileManager.writeCSVFile(MainActivity.this, getApplicationContext(), uri);
-                Log.i(TAG, "Write Uri: " + uri.toString());
+        Uri uri = null;
+        uri = resultData.getData();
+        Log.i(TAG, "Write Uri: " + uri.toString());
+
+        switch(requestCode) {
+            case WRITE_SCORES_REQUEST_CODE : {
+                CsvFileManager.writeScoresFile(MainActivity.this, getApplicationContext(), uri);
+                break;
             }
-        } else if (requestCode == READ_REQUEST_CODE && resultCode == Activity.RESULT_OK) {
-            // Retrieve uri
-            Uri uri = null;
-            if (resultData != null) {
-                uri = resultData.getData();
+            case WRITE_RESPONSES_REQUEST_CODE: {
+                CsvFileManager.writeResponsesFile(MainActivity.this, getApplicationContext(), uri);
+                break;
+            }
+            case READ_REQUEST_CODE: {
                 CsvFileManager.importCSVFile(MainActivity.this, getApplicationContext(), uri);
-                Log.i(TAG, "Read Uri: " + uri.toString());
+                break;
             }
         }
-    }
-
-    /**
-     * checkPermissionsAndReadFiles checks that the app has read permisisons and reads files for
-     * import if it does.
-     */
-    public void checkPermissionsAndReadFiles () {
-        checkReadExternalPermissions("");
     }
 
     /*--------- PERMISSIONs ----------------------------------------------------------------*/
@@ -275,7 +289,7 @@ public class MainActivity extends SingleFragmentActivity implements BottomNaviga
      * @param rationale
      * @return
      */
-    private void checkWriteExternalPermissions(String rationale)  {
+    private void checkPermissions(String rationale)  {
         // Check if we have permission to export
         if (ContextCompat.checkSelfPermission(getApplicationContext(),
                 Manifest.permission.WRITE_EXTERNAL_STORAGE)  != PackageManager.PERMISSION_GRANTED) {
@@ -296,37 +310,6 @@ public class MainActivity extends SingleFragmentActivity implements BottomNaviga
             }
         } else {
             Log.d(TAG, "Write permissions granted from previous use.");
-            createFile();
-        }
-    }
-
-    /**
-     * checkReadExternalPermissions checks if the app has permissions to read external storage
-     * If they already have permission, the user is prompted to import a csv file.
-     * @param rationale
-     */
-    public void checkReadExternalPermissions(String rationale) {
-        // Check if we have permission to export
-        if (ContextCompat.checkSelfPermission(getApplicationContext(),
-                Manifest.permission.READ_EXTERNAL_STORAGE)  != PackageManager.PERMISSION_GRANTED) {
-            Log.d(TAG, "No permission to read to external storage");
-
-            // Show the dialog box to request permissions
-            if (ActivityCompat.shouldShowRequestPermissionRationale(MainActivity.this,
-                    Manifest.permission.READ_EXTERNAL_STORAGE)){
-                Log.d(TAG, "Show the rationale!");
-
-                // Show explanation?
-
-            } else {
-                Log.d(TAG, "Need to ask for permissions to write external storage.");
-                String[] permissions = new String[] {Manifest.permission.READ_EXTERNAL_STORAGE};
-                ActivityCompat.requestPermissions(MainActivity.this, permissions,
-                        REQUEST_READ_EXTERNAL_STORAGE);
-            }
-        } else {
-            Log.d(TAG, "Read permissions granted from previous use.");
-            readFiles();
         }
     }
 
@@ -347,8 +330,9 @@ public class MainActivity extends SingleFragmentActivity implements BottomNaviga
 
                 if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                     Log.d(TAG, "Write External Storage permission granted.");
-                    // Write to csv
-                    createFile();
+
+                    performWrite();
+
                 } else {
                     Log.d(TAG, "No permissions given to write external storage.");
                     Toast.makeText(getApplicationContext(), R.string.csv_no_write_permission, Toast.LENGTH_SHORT).show();
@@ -358,8 +342,6 @@ public class MainActivity extends SingleFragmentActivity implements BottomNaviga
             case REQUEST_READ_EXTERNAL_STORAGE: {
                 if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                     Log.d(TAG, "Read External Storage permission granted.");
-                    // Read Files
-                    readFiles();
                 } else {
                     Log.d(TAG, "No permissions given to read external storage.");
                     Toast.makeText(getApplicationContext(), R.string.csv_no_read_permission, Toast.LENGTH_SHORT).show();
@@ -367,6 +349,25 @@ public class MainActivity extends SingleFragmentActivity implements BottomNaviga
             }
         }
 
+    }
+
+    /**
+     * performWrite opens up the create file dialog for the user according to the
+     * current operation code
+     */
+    public void performWrite() {
+        switch(mOperation) {
+            case OPERATION_OVERFLOW_EXPORT_RESPONSES: {
+                createFile("responses" + CsvFileManager.getFilename(),
+                        WRITE_RESPONSES_REQUEST_CODE);
+                break;
+            }
+            case OPERATION_OVERFLOW_EXPORT_SCORES: {
+                createFile("scores" + CsvFileManager.getFilename(),
+                        WRITE_SCORES_REQUEST_CODE);
+                break;
+            }
+        }
     }
 
 }
