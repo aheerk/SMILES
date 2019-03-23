@@ -190,6 +190,57 @@ public class Raw {
         return mSpeaking5;
     }
 
+    public String rawCSVFormat() {
+        StringBuilder sb = new StringBuilder();
+
+        sb.append("\"");
+        sb.append(Score.timelessDate(mDate));
+        sb.append("\",");
+        sb.append(mSleep1);
+        sb.append(",");
+        sb.append(mSleep2);
+        sb.append(",");
+        sb.append(mMovement1);
+        sb.append(",");
+        sb.append(mMovement2);
+        sb.append(",");
+        sb.append(mMovement3);
+        sb.append(",");
+        sb.append(mImagination1);
+        sb.append(",");
+        sb.append(mImagination2);
+        sb.append(",");
+        sb.append(mImagination3);
+        sb.append(",");
+        sb.append(mLaughter1);
+        sb.append(",");
+        sb.append(mEating1);
+        sb.append(",");
+        sb.append(mEating2);
+        sb.append(",");
+        sb.append(mEating3);
+        sb.append(",");
+        sb.append(mEating4);
+        sb.append(",");
+        sb.append(mEating5);
+        sb.append(",");
+        sb.append(mEating6);
+        sb.append(",");
+        sb.append(mEating7);
+        sb.append(",");
+        sb.append(mSpeaking1);
+        sb.append(",");
+        sb.append(mSpeaking2);
+        sb.append(",");
+        sb.append(mSpeaking3);
+        sb.append(",");
+        sb.append(mSpeaking4);
+        sb.append(",");
+        sb.append(mSpeaking5);
+
+        return sb.toString();
+    }
+
     @Override
     public String toString() {
         return  "mRawID=" + mRawID +
