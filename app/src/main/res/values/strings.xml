@@ -307,4 +307,27 @@
     <string name="yes">Yes</string>
     <string name="no">No</string>
 
+
+    <!-- Credit strings -->
+    <string name="credit_photo_heading">Photos</string>
+    <string name="credit_photo_body">Photographs were provided by Pexels</string>
+
+
+    <!-- Daily challenge -->
+    <string-array name="daily_challenge">
+        <item>Sleep between 6 and 9 hours.</item>
+        <item>Perform 10-20 minutes of intense aerobic exercise.</item>
+        <item>Perform bone and muscle strengthening exercises.</item>
+        <item>Spend 10- 45 minutes practicing relaxation techniques.</item>
+        <item>Spend 10-30 minutes practicing mindfulness techniques.</item>
+        <item>Spend 10-30 minutes practicing meditation.</item>
+        <item>Practice creativity or imagination for 10-30.</item>
+        <item></item>
+        <item></item>
+        <item></item>
+        <item></item>
+        <item></item>
+    </string-array>
+
+
 </resources>
