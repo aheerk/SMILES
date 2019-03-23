@@ -32,6 +32,8 @@ import java.util.Observer;
 public class CsvFileManager {
 
     public static final String TAG = "CsvFileManager";
+    public static final int WRITE_SCORES = 1;
+    public static final int WRITE_RESPONSES = 1;
 
     /* Checks if external storage is available for read and write
      * Source: https://developer.android.com/training/data-storage/files#java
@@ -54,27 +56,92 @@ public class CsvFileManager {
     public static String getFilename() {
         Date today = new Date();
         String formatted = DateFormat.getDateInstance(DateFormat.MEDIUM).format(today);
-        return "scores_" + formatted + ".csv";
+        return formatted + ".csv";
     }
 
     /**
-     * writeCSVFile creates a new file with the specified file name
-     * that includes all the user's scores stored on the device.
+     * This makes the file available for viewing for the user ASAP. Taken from android site
+     * @param context
+     * @param filepath
+     */
+    private static void runMediaScanner(Context context, String filepath) {
+        MediaScannerConnection.scanFile(context,
+                new String[]{filepath}, null,
+                new MediaScannerConnection.OnScanCompletedListener() {
+                    @Override
+                    public void onScanCompleted(String path, Uri uri) {
+                        Log.i(TAG, "Scanned " + path + ":");
+                        Log.i(TAG, "-> uri=" + uri);
+                    }
+                }
+        );
+    }
+
+    /**
+     * writeResponsesFile writes raw inputs to the file pointed to by the provided uri
+     * @param activity
+     * @param context
+     * @param uri
+     */
+    public static void writeResponsesFile(Activity activity, Context context, Uri uri) {
+        // referenced: https://www.techotopia.com/index.php/An_Android_Storage_Access_Framework_Example
+        if (!isExternalStorageWritable()) {
+            Toast.makeText(context, R.string.csv_export_failure, Toast.LENGTH_SHORT).show();
+            Log.i(TAG, "External storage is not writable, cannot export.");
+        }
+        try {
+            ParcelFileDescriptor pfd = context.getContentResolver()
+                    .openFileDescriptor(uri, "w");
+            OutputStreamWriter fileWriter = new OutputStreamWriter(
+                    new FileOutputStream(pfd.getFileDescriptor()), StandardCharsets.UTF_8);
+
+            ScoringLab lab = new ScoringLab(context);
+            List<Raw> responses = lab.getRaws();
+
+            // add column titles
+            fileWriter.append("date, sleep1_time, sleep2_interruptions, movement1_aerobic, " +
+                    "movement2_bone_and_muscle, movement3_relaxation, imagination1_mindfulness, " +
+                    "imagination2_meditation, imagination3_creativity, laughter1_rating, " +
+                    "eating1_vegetables, eating2_grains, eating3_protein, eating4_sodium," +
+                    "eating5_sugar, eating6_fat, eating7_water, speaking1_rating, " +
+                    "speaking2_debrief, speaking3_prevented, speaking4_social_media," +
+                    "speaking5_negative_impact \n");
+
+            // Write every score
+            for (Raw r : responses) {
+                Log.d(TAG, "Writing a line");
+                fileWriter.append(r.rawCSVFormat() + "\n");
+            }
+
+            runMediaScanner(context, uri.toString());
+
+            Toast.makeText(context, R.string.csv_export_success, Toast.LENGTH_SHORT).show();
+
+            fileWriter.close();
+            pfd.close();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+            Log.w(TAG, "Error writing " + uri, e);
+            Toast.makeText(context, R.string.csv_export_failure, Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    /**
+     * writeScoresFile writes scores to the file pointed to by the provided uri
      *
      * Referenced https://stackoverflow.com/questions/31063216/filenotfoundexception-storage-emulated-0-android
      * https://stackoverflow.com/questions/35132693/set-encoding-as-utf-8-for-a-filewriter
      */
-    public static void writeCSVFile(Activity activity, Context context, Uri uri) {
+    public static void writeScoresFile(Activity activity, Context context, Uri uri) {
         // referenced: https://www.techotopia.com/index.php/An_Android_Storage_Access_Framework_Example
          if (!isExternalStorageWritable()) {
              Toast.makeText(context, R.string.csv_export_failure, Toast.LENGTH_SHORT).show();
              Log.i(TAG, "External storage is not writable, cannot export.");
          }
-
         try {
             ParcelFileDescriptor pfd = context.getContentResolver()
                     .openFileDescriptor(uri, "w");
-
             OutputStreamWriter fileWriter = new OutputStreamWriter(
                     new FileOutputStream(pfd.getFileDescriptor()), StandardCharsets.UTF_8);
 
@@ -91,18 +158,7 @@ public class CsvFileManager {
                 fileWriter.append(s.scoreCSVFormat() + "\n");
             }
 
-            // This makes the file available for viewing for the user ASAP
-            // Taken from android site
-            MediaScannerConnection.scanFile(context,
-                    new String[]{uri.toString()}, null,
-                    new MediaScannerConnection.OnScanCompletedListener() {
-                        @Override
-                        public void onScanCompleted(String path, Uri uri) {
-                            Log.i(TAG, "Scanned " + path + ":");
-                            Log.i(TAG, "-> uri=" + uri);
-                        }
-                    }
-            );
+            runMediaScanner(context, uri.toString());
 
             Toast.makeText(context, R.string.csv_export_success, Toast.LENGTH_SHORT).show();
 
@@ -116,6 +172,7 @@ public class CsvFileManager {
         }
     }
 
+    /*----IMPORT FUNCTIONALITY------------------------------------------------------------------------*/
     /**
      * importCSVFile reads data from the user's chosen CSV file and imports it into the database
      * @param activity
@@ -131,9 +188,6 @@ public class CsvFileManager {
             e.printStackTrace();
         }
     }
-
-    /*----IMPORT FUNCTIONALITY------------------------------------------------------------------------*/
-
     /**
      * readTextFromUri retrieves the string contents of the file pointed to by the provided URI
      * source: https://developer.android.com/guide/topics/providers/document-provider#java
