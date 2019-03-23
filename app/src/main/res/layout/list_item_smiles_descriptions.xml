@@ -8,46 +8,12 @@
     android:paddingLeft="8dp"
     android:paddingRight="8dp">
 
-    <LinearLayout
-        android:layout_width="wrap_content"
+    <TextView
+        android:id="@+id/text_smiles_category_heading"
+        style="@style/Heading1Text"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="center_vertical"
-        android:orientation="horizontal">
-
-        <ImageView
-            android:id="@+id/icon_smiles_list"
-            style="@style/InputIcons"
-            android:padding="0dp"
-            app:srcCompat="@drawable/icon_laughter" />
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <TextView
-                android:id="@+id/text_smiles_capital_letter"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="8dp"
-                android:layout_marginTop="0dp"
-                android:layout_marginBottom="0dp"
-                android:text="L"
-                android:textColor="@color/colorAccent"
-                android:textSize="26dp"
-                android:textStyle="bold" />
-
-            <TextView
-                android:id="@+id/text_smiles_lower_case_letter"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="0dp"
-                android:layout_marginTop="0dp"
-                android:layout_marginBottom="0dp"
-                android:text="aughter"
-                android:textSize="26dp" />
-        </LinearLayout>
-
-    </LinearLayout>
+        android:text="Laughter"
+        android:textAlignment="viewStart" />
 
 </LinearLayout>

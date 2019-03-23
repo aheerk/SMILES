@@ -37,12 +37,12 @@ public class SmilesListFragment extends Fragment {
         ((AppCompatActivity)getActivity()).getSupportActionBar().setDisplayShowHomeEnabled(true);
 
         mSmilesData = new LinkedList<>();
-        SmilesItem temp1 = new SmilesItem(R.drawable.icon_sleep,"S","leep");
-        SmilesItem temp2 = new SmilesItem(R.drawable.icon_movement,"M","ovement");
-        SmilesItem temp3 = new SmilesItem(R.drawable.icon_imagination,"I","magination");
-        SmilesItem temp4 = new SmilesItem(R.drawable.icon_laughter,"L","aughter");
-        SmilesItem temp5 = new SmilesItem(R.drawable.icon_eating,"E","ating");
-        SmilesItem temp6 = new SmilesItem(R.drawable.icon_speaking,"S","peaking");
+        SmilesItem temp1 = new SmilesItem(getString(R.string.title_sleep));
+        SmilesItem temp2 = new SmilesItem(getString(R.string.title_movement));
+        SmilesItem temp3 = new SmilesItem(getString(R.string.title_imagination));
+        SmilesItem temp4 = new SmilesItem(getString(R.string.title_laughter));
+        SmilesItem temp5 = new SmilesItem(getString(R.string.title_eating));
+        SmilesItem temp6 = new SmilesItem(getString(R.string.title_speaking));
 
         mSmilesData.add(temp1);
         mSmilesData.add(temp2);
@@ -97,9 +97,7 @@ public class SmilesListFragment extends Fragment {
             public SmilesViewHolder(View itemView) {
                 super(itemView);
 
-                mIcon = itemView.findViewById(R.id.icon_smiles_list);
-                mTitle = itemView.findViewById(R.id.text_smiles_lower_case_letter);
-                mTitleCapitalLetter = itemView.findViewById(R.id.text_smiles_capital_letter);
+                mTitle = itemView.findViewById(R.id.text_smiles_category_heading);
 
                 itemView.setOnClickListener(this);
             }
@@ -153,8 +151,6 @@ public class SmilesListFragment extends Fragment {
          */
         @Override
         public void onBindViewHolder(@NonNull SmilesListFragment.SmilesAdapter.SmilesViewHolder holder, int position) {
-            holder.mIcon.setImageResource(mSmilesListData.get(position).getIconID());
-            holder.mTitleCapitalLetter.setText(mSmilesListData.get(position).getTitleCapitalLetter());
             holder.mTitle.setText(mSmilesListData.get(position).getTitle());
             holder.mSmilesItem = mSmilesListData.get(position);
         }
