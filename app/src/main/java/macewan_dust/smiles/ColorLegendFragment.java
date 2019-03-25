@@ -12,7 +12,7 @@ import android.widget.TextView;
 
 public class ColorLegendFragment extends Fragment {
 
-    private static final String TAG = "NewUserFragment";
+    private static final String TAG = "ColorLegendFragment";
 
     TextView mTitle;
 
