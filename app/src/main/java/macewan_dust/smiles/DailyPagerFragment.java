@@ -61,18 +61,6 @@ public class DailyPagerFragment extends Fragment {
         return v;
     }
 
-/*
-    @Override
-    public void onBackPressed() {
-        int currentItem = mViewPager.getCurrentItem();
-        if (currentItem != 0) {
-            mViewPager.setCurrentItem(currentItem - 1, true);
-        } else {
-            super.onBackPressed();
-        }
-    }
-    */
-
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);

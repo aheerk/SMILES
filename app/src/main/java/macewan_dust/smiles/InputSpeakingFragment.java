@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.ImageView;
 import android.widget.ScrollView;
 import android.widget.TextView;
@@ -37,7 +38,7 @@ public class InputSpeakingFragment extends Fragment {
     // Score Button
     Button mButton;
 
-   // ImageView mIconFeedback;
+    // ImageView mIconFeedback;
     TextView mResults;
 
     int mQuestion_A_index;
@@ -104,6 +105,32 @@ public class InputSpeakingFragment extends Fragment {
 
         mQuestion_A_index = NO_SELECTION;
 
+
+        mShareCheck.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+                                                   @Override
+                                                   public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                                                       mScrollView.smoothScrollTo(0, mScrollView.getMaxScrollAmount());
+                                                   }
+                                               }
+        );
+
+        mSocialMediaCheck.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+                                                   @Override
+                                                   public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                                                       mScrollView.smoothScrollTo(0, mScrollView.getMaxScrollAmount());
+                                                   }
+                                               }
+        );
+
+        mSocialBalanceCheck.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+                                                         @Override
+                                                         public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                                                             mScrollView.smoothScrollTo(0, mScrollView.getMaxScrollAmount());
+                                                         }
+                                                     }
+        );
+
+
         mIcon1a.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -148,7 +175,6 @@ public class InputSpeakingFragment extends Fragment {
                 mIcon1e.setBackground(getResources().getDrawable(R.drawable.ic_single_border_selected));
             }
         });
-
 
         mButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -195,7 +221,7 @@ public class InputSpeakingFragment extends Fragment {
                     }
 
                     // if score exists, update it, else make a new one and save it
-                    if (mScoringLab.isScore(mScoreDate)){
+                    if (mScoringLab.isScore(mScoreDate)) {
                         // get score object to use its data
                         mScore = mScoringLab.getScore(mScoreDate);
                         // set new score for this category
@@ -210,7 +236,7 @@ public class InputSpeakingFragment extends Fragment {
                     }
 
                     // update
-                    if (mScoringLab.isRaw(mScoreDate)){
+                    if (mScoringLab.isRaw(mScoreDate)) {
                         mRaw = mScoringLab.getRaw(mScoreDate);
                         mRaw.setSpeaking(mQuestion_A_index,
                                 mDebriefCheck.isChecked(),
@@ -218,7 +244,7 @@ public class InputSpeakingFragment extends Fragment {
                                 mSocialMediaCheck.isChecked(),
                                 mSocialBalanceCheck.isChecked());
 
-                    }else { // add
+                    } else { // add
                         mRaw = new Raw(mScoreDate);
                         mRaw.setSpeaking(mQuestion_A_index,
                                 mDebriefCheck.isChecked(),
@@ -245,7 +271,7 @@ public class InputSpeakingFragment extends Fragment {
     /**
      * if there is saved raw data for this date, sets the selected buttons to match
      */
-    private void setButtonsFromDatabase(){
+    private void setButtonsFromDatabase() {
         if (mScoringLab.isRaw(mScoreDate)) {
             mRaw = mScoringLab.getRaw(mScoreDate);
 
@@ -281,11 +307,11 @@ public class InputSpeakingFragment extends Fragment {
 
     /**
      * exits out of the question fragment if all questions have been answered.
-     *
+     * <p>
      * Timer Ref: https://developer.android.com/reference/android/os/CountDownTimer
      */
-    private void exitOnLastScore(){
-        if (mScoringLab.getScore(mScoreDate).isAllScored() && Score.isToday(mScoreDate)){
+    private void exitOnLastScore() {
+        if (mScoringLab.getScore(mScoreDate).isAllScored() && Score.isToday(mScoreDate)) {
             Log.d(TAG, "all questions answered. popping out");
 
             mExitCountDownTimer = new CountDownTimer(DailyPagerFragment.EXIT_TIMER_MILLISECONDS, DailyPagerFragment.EXIT_TIMER_MILLISECONDS) {

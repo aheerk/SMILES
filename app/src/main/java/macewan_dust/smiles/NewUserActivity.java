@@ -32,12 +32,20 @@ public class NewUserActivity extends AppCompatActivity  {
         setContentView(R.layout.activity_new_user_fragment);
 
         FragmentManager fm = getSupportFragmentManager();
-        Fragment fragment = fm.findFragmentById(R.id.fragment_new_user_container);
+        Fragment tempFrag = fm.findFragmentById(R.id.fragment_new_user_container);
 
-        if (fragment == null) {
-            fragment = createFragment();
+       // Fragment tempFrag = new NewUserFragment();
+
+
+        // the op bundle could be removed if i found a way to check if a bundle exists in the fragment.
+        // this first_index prevents the null object crash. the value of interest comes fomr color legend fragment.
+        if (tempFrag == null) {
+            tempFrag = createFragment();
+            Bundle opBundle = new Bundle();
+            opBundle.putInt(NewUserFragment.INDEX, NewUserFragment.FIRST_INDEX);
+            tempFrag.setArguments(opBundle);
             fm.beginTransaction()
-                    .add(R.id.fragment_new_user_container, fragment)
+                    .add(R.id.fragment_new_user_container, tempFrag)
                     .commit();
         }
     }
