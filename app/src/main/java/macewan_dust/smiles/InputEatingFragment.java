@@ -194,6 +194,8 @@ public class InputEatingFragment extends Fragment {
                 mQuestion_C_index = ScoringAlgorithms.INPUT_a;
                 mIcon3a.setBackground(getResources().getDrawable(R.drawable.ic_wide_border_selected));
                 mProAmount = 0;
+                mScrollView.smoothScrollTo(0, mScrollView.getMaxScrollAmount());
+
             }
         });
 
@@ -204,6 +206,8 @@ public class InputEatingFragment extends Fragment {
                 mQuestion_C_index = ScoringAlgorithms.INPUT_b;
                 mIcon3b.setBackground(getResources().getDrawable(R.drawable.ic_wide_border_selected));
                 mProAmount = 25;
+                mScrollView.smoothScrollTo(0, mScrollView.getMaxScrollAmount());
+
             }
         });
 
@@ -214,6 +218,8 @@ public class InputEatingFragment extends Fragment {
                 mQuestion_C_index = ScoringAlgorithms.INPUT_c;
                 mIcon3c.setBackground(getResources().getDrawable(R.drawable.ic_wide_border_selected));
                 mProAmount = 26;
+                mScrollView.smoothScrollTo(0, mScrollView.getMaxScrollAmount());
+
             }
         });
 
