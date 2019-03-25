@@ -261,6 +261,7 @@ public class CsvFileManager {
                         Boolean.parseBoolean(row[20]),
                         Boolean.parseBoolean(row[21]));
 
+                lab.deleteRaw(date);
                 lab.addRaw(responseSet);
             }
 
@@ -308,6 +309,8 @@ public class CsvFileManager {
                 scoreSet.setSpeakingScore(Integer.parseInt(row[6]));
 
                 Log.d(TAG, scoreSet.toString());
+                // Delete any existing scores with the same date and override them
+                lab.deleteScore(date);
                 lab.addScore(scoreSet);
             }
             Toast.makeText(context, R.string.csv_import_success, Toast.LENGTH_SHORT).show();
