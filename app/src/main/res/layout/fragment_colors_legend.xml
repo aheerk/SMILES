@@ -13,8 +13,19 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
+        android:padding="8dp"
         tools:layout_editor_absoluteX="8dp"
         tools:layout_editor_absoluteY="8dp">
+
+
+        <TextView
+            android:id="@+id/colors_title"
+            style="@style/TitleText"
+            android:layout_width="match_parent"
+            android:layout_height="57dp"
+            android:layout_marginTop="8dp"
+            android:text="@string/information_introduction_colors_title" />
+
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -23,8 +34,9 @@
 
             <ImageView
                 android:id="@+id/introduction_balanced_image"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_margin="8dp"
                 app:srcCompat="@drawable/ic_box_balanced" />
 
             <LinearLayout
@@ -34,10 +46,11 @@
 
                 <TextView
                     android:id="@+id/introduction_balanced_heading"
-                    style="@style/TitleText"
-                    android:layout_width="315dp"
+                    style="@style/Heading1Text"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@string/information_introduction_balanced_heading" />
+                    android:text="@string/information_introduction_balanced_heading"
+                    android:textAlignment="textStart" />
 
 
                 <TextView
@@ -58,8 +71,9 @@
 
             <ImageView
                 android:id="@+id/introduction_over_image"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_margin="8dp"
                 app:srcCompat="@drawable/ic_box_over" />
 
             <LinearLayout
@@ -69,10 +83,11 @@
 
                 <TextView
                     android:id="@+id/introduction_over_heading"
-                    style="@style/TitleText"
-                    android:layout_width="226dp"
+                    style="@style/Heading1Text"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@string/information_introduction_over_heading" />
+                    android:text="@string/information_introduction_over_heading"
+                    android:textAlignment="textStart" />
 
 
                 <TextView
@@ -93,8 +108,9 @@
 
             <ImageView
                 android:id="@+id/introduction_under_image"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_margin="8dp"
                 app:srcCompat="@drawable/ic_box_under" />
 
             <LinearLayout
@@ -104,10 +120,11 @@
 
                 <TextView
                     android:id="@+id/introduction_under_heading"
-                    style="@style/TitleText"
-                    android:layout_width="285dp"
+                    style="@style/Heading1Text"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@string/information_introduction_under_heading" />
+                    android:text="@string/information_introduction_under_heading"
+                    android:textAlignment="textStart" />
 
 
                 <TextView
@@ -128,8 +145,9 @@
 
             <ImageView
                 android:id="@+id/introduction_unbalanced_image"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_margin="8dp"
                 app:srcCompat="@drawable/ic_box_unbalanced" />
 
             <LinearLayout
@@ -139,10 +157,11 @@
 
                 <TextView
                     android:id="@+id/introduction_unbalanced_heading"
-                    style="@style/TitleText"
-                    android:layout_width="wrap_content"
+                    style="@style/Heading1Text"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@string/information_introduction_unbalanced_heading" />
+                    android:text="@string/information_introduction_unbalanced_heading"
+                    android:textAlignment="textStart" />
 
 
                 <TextView
@@ -163,8 +182,9 @@
 
             <ImageView
                 android:id="@+id/introduction_no_data_image"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_margin="8dp"
                 app:srcCompat="@drawable/ic_box_no_data" />
 
             <LinearLayout
@@ -174,10 +194,11 @@
 
                 <TextView
                     android:id="@+id/introduction_no_data_heading"
-                    style="@style/TitleText"
-                    android:layout_width="305dp"
+                    style="@style/Heading1Text"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@string/information_introduction_no_data_heading" />
+                    android:text="@string/information_introduction_no_data_heading"
+                    android:textAlignment="textStart" />
 
 
                 <TextView
@@ -190,9 +211,6 @@
             </LinearLayout>
 
         </LinearLayout>
-
-
-
 
 
     </LinearLayout>

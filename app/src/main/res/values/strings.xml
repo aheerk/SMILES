@@ -291,6 +291,8 @@
     <string name="information_introduction_no_data_body_text">This score indicates that you have not
                                         inputed any data.</string>
 
+    <string name="information_introduction_colors_title">Achieving Balance</string>
+
 
     <string name="string_0">0</string>
     <string name="string_1">1</string>
