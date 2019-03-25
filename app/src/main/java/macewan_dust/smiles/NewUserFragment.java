@@ -18,6 +18,9 @@ import android.widget.TextView;
 
 public class NewUserFragment extends Fragment {
 
+    public static final String INDEX = "index number";
+    public static final int LAST_INDEX = 11;
+    public static final int FIRST_INDEX = 0;
     private static final String TAG = "NewUserFragment";
 
     TextView mTitle;
@@ -35,6 +38,10 @@ public class NewUserFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setRetainInstance(true); // prevents instance of the fragment from being destroyed on rotation.
+        i = 0;
+        if (this.getArguments().getInt(INDEX) != 0){
+            i = this.getArguments().getInt(INDEX) - 1; // -1 to move back one fragment
+        }
     }
 
     @Override
@@ -47,7 +54,6 @@ public class NewUserFragment extends Fragment {
         mBodyText = v.findViewById(R.id.introduction_explanation);
         updateScreen ();
 
-        i = 0;
 
         // swipe code
         v.setOnTouchListener(new OnSwipeTouchListener(getContext()) {
@@ -61,7 +67,7 @@ public class NewUserFragment extends Fragment {
 
             @Override
             public void onSwipeRight() {
-                if (i>0){
+                if (i>FIRST_INDEX){
                     i--;
                 }
                 updateScreen();
@@ -75,7 +81,7 @@ public class NewUserFragment extends Fragment {
 
     private void updateScreen (){
         switch(i){
-            case 0:
+            case FIRST_INDEX:
                 mTitle.setText(R.string.introduction_title_smiles);
                 mSubtitle.setText(R.string.introduction_subtitle_smiles);
                 mSubtitle.setVisibility(View.VISIBLE);
@@ -132,8 +138,10 @@ public class NewUserFragment extends Fragment {
                 mTitle.setText(R.string.introduction_title_goals);
                 mBodyText.setText(R.string.introduction_explanation_goals);
                 mImageView.setImageResource(R.drawable.photo_goals);
-
+                mSubtitle.setVisibility(View.GONE); // must hide this again when creating the fragment from the end
                 break;
+            case LAST_INDEX:
+                replaceFragment(new ColorLegendFragment());
             default:
                 mTitle.setText(R.string.no_data);
                 mBodyText.setText(R.string.no_data);
@@ -146,7 +154,7 @@ public class NewUserFragment extends Fragment {
      */
     private void replaceFragment(Fragment newFragment) {
         FragmentTransaction transaction = getFragmentManager().beginTransaction();
-        transaction.replace(R.id.fragment_container, newFragment);
+        transaction.replace(R.id.fragment_new_user_container, newFragment);
         transaction.addToBackStack("dashboard");
         transaction.commit();
         Log.d(TAG, "replacing fragment");
