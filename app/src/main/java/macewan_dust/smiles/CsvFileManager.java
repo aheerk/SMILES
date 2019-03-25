@@ -40,6 +40,7 @@ public class CsvFileManager {
 
     private static final int READ_SCORE_CODE = 1;
     private static final int READ_RESPONSE_CODE = 2;
+    private static ScoringLab mScoringLab;
 
     /* Checks if external storage is available for read and write
      * Source: https://developer.android.com/training/data-storage/files#java
@@ -100,8 +101,9 @@ public class CsvFileManager {
             OutputStreamWriter fileWriter = new OutputStreamWriter(
                     new FileOutputStream(pfd.getFileDescriptor()), StandardCharsets.UTF_8);
 
-            ScoringLab lab = new ScoringLab(context);
-            List<Raw> responses = lab.getRaws();
+            mScoringLab = ScoringLab.get(context);
+            //ScoringLab lab = new ScoringLab(context);
+            List<Raw> responses = mScoringLab.getRaws();
 
             // add column titles
             fileWriter.append(RAW_COLUMNS + "\n");
@@ -144,8 +146,9 @@ public class CsvFileManager {
             OutputStreamWriter fileWriter = new OutputStreamWriter(
                     new FileOutputStream(pfd.getFileDescriptor()), StandardCharsets.UTF_8);
 
-            ScoringLab lab = new ScoringLab(context);
-            List<Score> scores = lab.getScores();
+            mScoringLab = ScoringLab.get(context);
+            //ScoringLab lab = new ScoringLab(context);
+            List<Score> scores = mScoringLab.getScores();
 
             // add column titles
             fileWriter.append(SCORE_COLUMNS + "\n");
@@ -268,12 +271,13 @@ public class CsvFileManager {
             }
 
             // Don't add raw scores unless we're certain we were given good data
-            ScoringLab lab = new ScoringLab(context);
+            mScoringLab = ScoringLab.get(context);
+            //ScoringLab lab = new ScoringLab(context);
             Iterator iterator = raws.iterator();
             while (iterator.hasNext()) {
                 Raw raw = (Raw)iterator.next();
-                lab.deleteRaw(raw.getDate());
-                lab.addRaw(raw);
+                mScoringLab.deleteRaw(raw.getDate());
+                mScoringLab.addRaw(raw);
             }
 
             Toast.makeText(context, R.string.csv_import_success, Toast.LENGTH_SHORT).show();
@@ -317,13 +321,13 @@ public class CsvFileManager {
                 scores.add(scoreSet);
                 Log.d(TAG, scoreSet.toString());
             }
-
-            ScoringLab lab = new ScoringLab(context);
+            mScoringLab = ScoringLab.get(context);
+            //ScoringLab lab = new ScoringLab(context);
             Iterator iterator = scores.iterator();
             while (iterator.hasNext()) {
                 Score score = (Score)iterator.next();
-                lab.deleteScore(score.getDate());
-                lab.addScore(score);
+                mScoringLab.deleteScore(score.getDate());
+                mScoringLab.addScore(score);
             }
 
             Toast.makeText(context, R.string.csv_import_success, Toast.LENGTH_SHORT).show();

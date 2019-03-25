@@ -229,6 +229,7 @@ public class ScoringLab {
         mScoresList.add(score);
         sortScoresList();
         Log.i(TAG, "number of rows inserted to score: " + temp);
+        Log.i(TAG, "score list size: " + mScoresList.size());
     }
 
     /**
