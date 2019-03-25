@@ -240,7 +240,7 @@
 
     <string name="csv_no_read_permission">Please accept permissions to import data.</string>
     <string name="csv_import_success">Your data was successfully imported. Restart the app to see your data.</string>
-    <string name="csv_import_failure_system_error">Import unsuccessful. A system error has occurred</string>
+    <string name="csv_import_failure_system_error">Import unsuccessful. A system error has occurred.</string>
     <string name="csv_import_failure_file_error">Import unsuccessful: Invalid file format.</string>
 
 
