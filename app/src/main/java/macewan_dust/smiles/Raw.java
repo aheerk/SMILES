@@ -1,5 +1,6 @@
 package macewan_dust.smiles;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.UUID;
 
@@ -192,9 +193,9 @@ public class Raw {
 
     public String rawCSVFormat() {
         StringBuilder sb = new StringBuilder();
-
+        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-dd-MM");
         sb.append("\"");
-        sb.append(Score.timelessDate(mDate));
+        sb.append(formatter.format(mDate));
         sb.append("\",");
         sb.append(mSleep1);
         sb.append(",");

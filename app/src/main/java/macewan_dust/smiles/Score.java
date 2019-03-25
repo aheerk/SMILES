@@ -3,6 +3,7 @@ package macewan_dust.smiles;
 import android.util.Log;
 
 import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.TimeZone;
 import java.util.UUID;
@@ -210,9 +211,9 @@ public class Score {
      */
     public String scoreCSVFormat() {
         StringBuilder sb = new StringBuilder();
-
+        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-dd-MM");
         sb.append("\"");
-        sb.append(timelessDate(mDate));
+        sb.append(formatter.format(mDate));
         sb.append("\",");
         sb.append(mSleepScore);
         sb.append(",");
