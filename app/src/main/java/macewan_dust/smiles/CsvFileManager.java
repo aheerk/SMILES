@@ -23,6 +23,8 @@ import java.io.OutputStreamWriter;
 import java.net.URI;
 import java.nio.charset.StandardCharsets;
 import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
@@ -79,11 +81,10 @@ public class CsvFileManager {
 
     /**
      * writeResponsesFile writes raw inputs to the file pointed to by the provided uri
-     * @param activity
      * @param context
      * @param uri
      */
-    public static void writeResponsesFile(Activity activity, Context context, Uri uri) {
+    public static void writeResponsesFile(Context context, Uri uri) {
         // referenced: https://www.techotopia.com/index.php/An_Android_Storage_Access_Framework_Example
         if (!isExternalStorageWritable()) {
             Toast.makeText(context, R.string.csv_export_failure, Toast.LENGTH_SHORT).show();
@@ -133,7 +134,7 @@ public class CsvFileManager {
      * Referenced https://stackoverflow.com/questions/31063216/filenotfoundexception-storage-emulated-0-android
      * https://stackoverflow.com/questions/35132693/set-encoding-as-utf-8-for-a-filewriter
      */
-    public static void writeScoresFile(Activity activity, Context context, Uri uri) {
+    public static void writeScoresFile(Context context, Uri uri) {
         // referenced: https://www.techotopia.com/index.php/An_Android_Storage_Access_Framework_Example
          if (!isExternalStorageWritable()) {
              Toast.makeText(context, R.string.csv_export_failure, Toast.LENGTH_SHORT).show();
@@ -173,42 +174,148 @@ public class CsvFileManager {
     }
 
     /*----IMPORT FUNCTIONALITY------------------------------------------------------------------------*/
-    /**
-     * importCSVFile reads data from the user's chosen CSV file and imports it into the database
-     * @param activity
-     * @param context
-     * @param uri
-     */
-    public static void importCSVFile(MainActivity activity, Context context, Uri uri) {
 
-        try {
-            String fileText = readTextFromUri(context, uri);
-            Log.d(TAG, "READY FOR IMPORT! " + fileText);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
     /**
      * readTextFromUri retrieves the string contents of the file pointed to by the provided URI
      * source: https://developer.android.com/guide/topics/providers/document-provider#java
      * @param context
      * @param uri
-     * @return
+     * @return Row List
      * @throws IOException
      */
-    private static String readTextFromUri(Context context, Uri uri) throws IOException {
+    private static List<String[]> readTextFromUri(Context context, Uri uri, int desiredLength) throws IOException {
         InputStream inputStream = context.getContentResolver().openInputStream(uri);
         BufferedReader reader = new BufferedReader(new InputStreamReader(
                 inputStream));
-        StringBuilder stringBuilder = new StringBuilder();
-        String line;
+        List<String[]> rows = new LinkedList<>();
+
+        String line = reader.readLine(); // Skipping the first line on purpose
         while ((line = reader.readLine()) != null) {
-            stringBuilder.append(line);
+            String[] row = line.split(",");
+
+            // Check if the row has the right number of columns
+            if (row.length != desiredLength) {
+                //throw new IOException("Invalid number of columns");
+                Log.d(TAG, String.valueOf(row.length));
+
+            }
+            Log.d(TAG, line);
+            rows.add(row);
         }
 
         reader.close();
         inputStream.close();
-        return stringBuilder.toString();
+        return rows;
     }
 
+    /**
+     * referenced: https://developer.android.com/guide/topics/providers/document-provider#java
+     * @param context
+     * @param uri
+     */
+    public static void importResponsesFile(Context context, Uri uri) {
+        List<String[]> rows;
+        try {
+            rows = readTextFromUri(context, uri, 23);
+        } catch (IOException e){
+            e.printStackTrace();
+            Log.d(TAG, "Error importing.");
+            Toast.makeText(context, R.string.csv_import_failure_system_error, Toast.LENGTH_SHORT).show();
+            return;
+        }
+        try {
+            SimpleDateFormat formatter = new SimpleDateFormat("yyyy-dd-MM");
+            ScoringLab lab = new ScoringLab(context);
+
+            for(String[] row: rows) {
+                // Create a raw object
+                Log.d(TAG, row[0]);
+                Date date = formatter.parse((row[0]).replace("\"", ""));
+                Raw responseSet = new Raw(date);
+
+                responseSet.setSleep(
+                        Integer.parseInt(row[1]),
+                        Integer.parseInt(row[2]));
+                responseSet.setMovement(
+                        Integer.parseInt(row[3]),
+                        Boolean.parseBoolean(row[4]),
+                        Integer.parseInt(row[5]));
+                responseSet.setImagination(
+                        Integer.parseInt(row[6]),
+                        Integer.parseInt(row[7]),
+                        Integer.parseInt(row[8]));
+                responseSet.setLaughter(
+                        Integer.parseInt(row[9]));
+                responseSet.setEating(
+                        Integer.parseInt(row[10]),
+                        Integer.parseInt(row[11]),
+                        Integer.parseInt(row[12]),
+                        Boolean.parseBoolean(row[13]),
+                        Boolean.parseBoolean(row[14]),
+                        Boolean.parseBoolean(row[15]),
+                        Boolean.parseBoolean(row[16]));
+                responseSet.setSpeaking(
+                        Integer.parseInt(row[17]),
+                        Boolean.parseBoolean(row[18]),
+                        Boolean.parseBoolean(row[19]),
+                        Boolean.parseBoolean(row[20]),
+                        Boolean.parseBoolean(row[21]));
+
+                lab.addRaw(responseSet);
+            }
+
+            Toast.makeText(context, R.string.csv_import_success, Toast.LENGTH_SHORT).show();
+
+        } catch (ParseException e) {
+            Log.d(TAG, "Cannot parse date");
+            Toast.makeText(context, R.string.csv_import_failure_file_error, Toast.LENGTH_SHORT).show();
+            return;
+        }
+    }
+
+    /**
+     * importScoresFile imports the scores data included in the file pointed to by the uri
+     * @param context
+     * @param uri
+     */
+    public static void importScoresFile(Context context, Uri uri) {
+        List<String[]> rows;
+        try {
+            rows = readTextFromUri(context, uri, 8);
+        } catch (IOException e){
+            e.printStackTrace();
+            Log.d(TAG, "Error importing.");
+            Toast.makeText(context, R.string.csv_import_failure_system_error, Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        try {
+            SimpleDateFormat formatter = new SimpleDateFormat("yyyy-dd-MM");
+            ScoringLab lab = new ScoringLab(context);
+            for (String[] row : rows) {
+                // Create a raw object
+                Log.d(TAG, row[0] );
+
+                Date date = formatter.parse((row[0]).replace("\"", ""));
+                Score scoreSet = new Score(date);
+                Log.d(TAG, row[0] );
+
+                scoreSet.setSleepScore(Integer.parseInt(row[1]));
+                scoreSet.setMovementScore(Integer.parseInt(row[2]));
+                scoreSet.setImaginationScore(Integer.parseInt(row[3]));
+                scoreSet.setLaughterScore(Integer.parseInt(row[4]));
+                scoreSet.setEatingScore(Integer.parseInt(row[5]));
+                scoreSet.setSpeakingScore(Integer.parseInt(row[6]));
+
+                Log.d(TAG, scoreSet.toString());
+                lab.addScore(scoreSet);
+            }
+            Toast.makeText(context, R.string.csv_import_success, Toast.LENGTH_SHORT).show();
+        } catch (ParseException e) {
+            Log.d(TAG, "Cannot parse date");
+            Toast.makeText(context, R.string.csv_import_failure_file_error, Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+    }
 }
