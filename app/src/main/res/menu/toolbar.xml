@@ -16,6 +16,11 @@
         app:showAsAction="never"/>
 
     <item
+        android:id="@+id/overflow_color_legend"
+        android:title="@string/overflow_color_legend"
+        app:showAsAction="never"/>
+
+    <item
         android:id="@+id/overflow_information"
         android:title="Information"
         app:showAsAction="never"/>

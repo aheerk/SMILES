@@ -116,6 +116,11 @@ public class MainActivity extends SingleFragmentActivity implements BottomNaviga
                 break;
             }
 
+            case R.id.overflow_color_legend: {
+                loadFragment(new ColorLegendFragment());
+                break;
+            }
+
             case R.id.overflow_information: {
                 loadFragment(new InformationListFragment());
                 break;
