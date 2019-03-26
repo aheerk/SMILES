@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_height="match_parent"
+    android:layout_width="match_parent">
+
+<android.support.constraint.ConstraintLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="top|center">
+
+
+    <LinearLayout
+        android:id="@+id/linearLayout4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        android:gravity="center_horizontal"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toTopOf="@+id/introduction_scroll_view"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/introduction_title"
+            style="@style/TitleText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="@string/introduction_title_smiles" />
+
+        <TextView
+            android:id="@+id/introduction_subtitle"
+            style="@style/Heading2Text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="-8dp"
+            android:text="subtitle" />
+
+        <ImageView
+            android:id="@+id/introduction_image"
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginRight="8dp"
+            android:background="@drawable/trim"
+            android:cropToPadding="true"
+            android:padding="1dp" />
+
+    </LinearLayout>
+
+    <ScrollView
+        android:id="@+id/introduction_scroll_view"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout2"
+        tools:layout_editor_absoluteX="0dp">
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+        <TextView
+            android:id="@+id/introduction_explanation"
+            style="@style/BodyText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:padding="8dp"
+            android:text="@string/introduction_explanation_smiles" />
+</LinearLayout>
+    </ScrollView>
+
+    <LinearLayout
+        android:id="@+id/linearLayout2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        android:gravity="bottom|center_horizontal"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <ImageView
+            android:id="@+id/pager_dot_1"
+            android:layout_width="10dp"
+            android:layout_height="10dp"
+            android:layout_margin="2dp"
+            app:srcCompat="@drawable/dot_image_other_page" />
+
+        <ImageView
+            android:id="@+id/pager_dot_2"
+            android:layout_width="10dp"
+            android:layout_height="10dp"
+            android:layout_margin="2dp"
+            app:srcCompat="@drawable/dot_image_other_page" />
+
+        <ImageView
+            android:id="@+id/pager_dot_3"
+            android:layout_width="10dp"
+            android:layout_height="10dp"
+            android:layout_margin="2dp"
+            app:srcCompat="@drawable/dot_image_other_page" />
+
+        <ImageView
+            android:id="@+id/pager_dot_4"
+            android:layout_width="10dp"
+            android:layout_height="10dp"
+            android:layout_margin="2dp"
+            app:srcCompat="@drawable/dot_image_other_page" />
+
+        <ImageView
+            android:id="@+id/pager_dot_5"
+            android:layout_width="10dp"
+            android:layout_height="10dp"
+            android:layout_margin="2dp"
+            app:srcCompat="@drawable/dot_image_other_page" />
+
+        <ImageView
+            android:id="@+id/pager_dot_6"
+            android:layout_width="10dp"
+            android:layout_height="10dp"
+            android:layout_margin="2dp"
+            app:srcCompat="@drawable/dot_image_other_page" />
+
+    </LinearLayout>
+
+
+</android.support.constraint.ConstraintLayout>
+</LinearLayout>
