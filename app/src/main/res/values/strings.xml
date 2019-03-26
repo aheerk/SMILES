@@ -229,17 +229,16 @@
     <string name="weekly_checkbox_description">Show days without scores</string>
 
     <string name="overflow_settings">Settings</string>
-    <string name="overflow_export_scores">Export Scores</string>
-    <string name="overflow_export_responses">Export Responses</string>
-    <string name="overflow_import_responses">Import Responses</string>
-    <string name="overflow_import_scores">Import Scores</string>
+    <string name="overflow_export">Export</string>
+    <string name="overflow_import">Import</string>
+    <string name="overflow_color_legend">Score Legend</string>
 
     <string name="csv_no_write_permission">Please accept permissions to export data.</string>
     <string name="csv_export_success">Your data was successfully exported.</string>
     <string name="csv_export_failure">Export unsuccessful.</string>
 
     <string name="csv_no_read_permission">Please accept permissions to import data.</string>
-    <string name="csv_import_success">Your data was successfully imported. Restart the app to see your data.</string>
+    <string name="csv_import_success">Your data was successfully imported.</string>
     <string name="csv_import_failure_system_error">Import unsuccessful. A system error has occurred.</string>
     <string name="csv_import_failure_file_error">Import unsuccessful: Invalid file format.</string>
 

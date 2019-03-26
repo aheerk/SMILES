@@ -6,23 +6,18 @@
     tools:context=".activity.MainActivity">
 
     <item
-        android:id="@+id/overflow_export_responses"
-        android:title="@string/overflow_export_responses"
+        android:id="@+id/overflow_export"
+        android:title="@string/overflow_export"
         app:showAsAction="never"/>
 
     <item
-        android:id="@+id/overflow_export_scores"
-        android:title="@string/overflow_export_scores"
+        android:id="@+id/overflow_import"
+        android:title="@string/overflow_import"
         app:showAsAction="never"/>
 
     <item
-        android:id="@+id/overflow_import_responses"
-        android:title="@string/overflow_import_responses"
-        app:showAsAction="never"/>
-
-    <item
-        android:id="@+id/overflow_import_scores"
-        android:title="@string/overflow_import_scores"
+        android:id="@+id/overflow_color_legend"
+        android:title="@string/overflow_color_legend"
         app:showAsAction="never"/>
 
     <item

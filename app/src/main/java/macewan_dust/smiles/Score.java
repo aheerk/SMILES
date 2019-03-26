@@ -1,5 +1,6 @@
 package macewan_dust.smiles;
 
+import android.support.annotation.NonNull;
 import android.util.Log;
 
 import java.text.DateFormat;
@@ -13,7 +14,7 @@ import static macewan_dust.smiles.ScoringAlgorithms.*;
 /**
  * Note there is no setter for RAW_ID
  */
-public class Score {
+public class Score implements Comparable{
 
 //    private String mDateString; // using a string date due to all the date issues. deprecated, etc.
     private static final String TAG = "Score";
@@ -286,5 +287,16 @@ public class Score {
      */
     public static String timelessDate(Date dateIn) {
         return DateFormat.getDateInstance(DateFormat.MEDIUM).format(dateIn);
+    }
+
+    /**
+     * Allows for scores to be compared for sorting purposes
+     * @param o
+     * @return
+     */
+    @Override
+    public int compareTo(@NonNull Object o) {
+        Score other = (Score)o;
+        return (other.getDate()).compareTo(mDate);
     }
 }

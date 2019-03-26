@@ -30,16 +30,11 @@ public class MainActivity extends SingleFragmentActivity implements BottomNaviga
     private int minBackstack; // this is the fix for the visual back button bug.
     private int mOperation;
 
-    private static final int OPERATION_OVERFLOW_EXPORT_RESPONSES = 88;
-    private static final int OPERATION_OVERFLOW_EXPORT_SCORES = 89;
-    private static final int OPERATION_OVERFLOW_IMPORT_RESPONSES = 87;
-    private static final int OPERATION_OVERFLOW_IMPORT_SCORES = 86;
+    private static final int OPERATION_OVERFLOW_EXPORT = 88;
+    private static final int OPERATION_OVERFLOW_IMPORT = 86;
 
-    private static final int WRITE_RESPONSES_REQUEST_CODE = 42;
-    private static final int WRITE_SCORES_REQUEST_CODE = 43;
-
-    private static final int READ_RESPONSES_REQUEST_CODE = 44;
-    private static final int READ_SCORES_REQUEST_CODE = 45;
+    private static final int WRITE_REQUEST_CODE = 42;
+    private static final int READ_REQUEST_CODE = 45;
 
     private static final int REQUEST_WRITE_EXTERNAL_STORAGE = 222;
     private static final int REQUEST_READ_EXTERNAL_STORAGE = 111;
@@ -107,32 +102,22 @@ public class MainActivity extends SingleFragmentActivity implements BottomNaviga
                 loadFragment(new SettingsListFragment());
                 break;
             }
-            case R.id.overflow_export_responses: {
-                mOperation = OPERATION_OVERFLOW_EXPORT_RESPONSES;
-                checkPermissions("");
-                createFile("responses" + CsvFileManager.getFilename(),
-                        WRITE_RESPONSES_REQUEST_CODE);
+            case R.id.overflow_export: {
+                Log.d(TAG, "Exporting....");
+                mOperation = OPERATION_OVERFLOW_EXPORT;
+                checkPermissions("", WRITE_REQUEST_CODE);
+                createFile();
+                break;
+            }
+            case R.id.overflow_import: {
+                mOperation = OPERATION_OVERFLOW_IMPORT;
+                checkPermissions("", READ_REQUEST_CODE);
+                readFiles();
                 break;
             }
 
-            case R.id.overflow_export_scores: {
-                mOperation = OPERATION_OVERFLOW_EXPORT_SCORES;
-                checkPermissions("");
-                createFile("scores" + CsvFileManager.getFilename(),
-                        WRITE_SCORES_REQUEST_CODE);
-                break;
-            }
-            case R.id.overflow_import_responses: {
-                mOperation = OPERATION_OVERFLOW_IMPORT_RESPONSES;
-                checkPermissions("");
-                readFiles(READ_RESPONSES_REQUEST_CODE);
-                break;
-            }
-
-            case R.id.overflow_import_scores: {
-                mOperation = OPERATION_OVERFLOW_IMPORT_SCORES;
-                checkPermissions("");
-                readFiles(READ_SCORES_REQUEST_CODE);
+            case R.id.overflow_color_legend: {
+                loadFragment(new ColorLegendFragment());
                 break;
             }
 
@@ -221,7 +206,7 @@ public class MainActivity extends SingleFragmentActivity implements BottomNaviga
      * will be provided in the onActivityResult method
      * Adapted from: https://developer.android.com/guide/topics/providers/document-provider#create
      */
-    public void createFile(String filename, int requestCode) {
+    public void createFile() {
         // Return if we don't have permissions
         if (ContextCompat.checkSelfPermission(getApplicationContext(),
                 Manifest.permission.WRITE_EXTERNAL_STORAGE)  != PackageManager.PERMISSION_GRANTED) {
@@ -237,18 +222,16 @@ public class MainActivity extends SingleFragmentActivity implements BottomNaviga
 
         // Create a csv file type.
         intent.setType("text/csv");
-        intent.putExtra(Intent.EXTRA_TITLE, filename);
-        startActivityForResult(intent, requestCode);
+        intent.putExtra(Intent.EXTRA_TITLE, CsvFileManager.getFilename());
+        startActivityForResult(intent, WRITE_REQUEST_CODE);
     }
 
     /**
      * readFiles launches an intent that asks the which file they'd like to import. The results
      * will be provided in the onActivityResult method
      * Source: https://developer.android.com/guide/topics/providers/document-provider#java
-     *
-     * @param requestCode
      */
-    private void readFiles(int requestCode) {
+    private void readFiles() {
         // Return if we don't have permissions
         if (ContextCompat.checkSelfPermission(getApplicationContext(),
                 Manifest.permission.READ_EXTERNAL_STORAGE)  != PackageManager.PERMISSION_GRANTED) {
@@ -266,7 +249,7 @@ public class MainActivity extends SingleFragmentActivity implements BottomNaviga
 
         // Filter to show only CSV files
         intent.setType("text/*"); // need to fix this so it's text/csv
-        startActivityForResult(intent, requestCode);
+        startActivityForResult(intent, READ_REQUEST_CODE);
     }
 
     /**
@@ -278,31 +261,21 @@ public class MainActivity extends SingleFragmentActivity implements BottomNaviga
      * @param resultData
      */
     @Override
-    public void onActivityResult(int requestCode, int resultCode,
-                                 Intent resultData) {
+    public void onActivityResult(int requestCode, int resultCode, Intent resultData) {
         if (resultCode != Activity.RESULT_OK || resultData == null) {
             return;
         }
 
-        Uri uri = null;
-        uri = resultData.getData();
+        Uri uri = resultData.getData();
         Log.i(TAG, "Write Uri: " + uri.toString());
 
         switch(requestCode) {
-            case WRITE_SCORES_REQUEST_CODE : {
-                CsvFileManager.writeScoresFile(getApplicationContext(), uri);
+            case WRITE_REQUEST_CODE : {
+                CsvFileManager.exportData(getApplicationContext(), uri);
                 break;
             }
-            case WRITE_RESPONSES_REQUEST_CODE: {
-                CsvFileManager.writeResponsesFile(getApplicationContext(), uri);
-                break;
-            }
-            case READ_RESPONSES_REQUEST_CODE: {
-                CsvFileManager.importResponsesFile(getApplicationContext(), uri);
-                break;
-            }
-            case READ_SCORES_REQUEST_CODE: {
-                CsvFileManager.importScoresFile(getApplicationContext(), uri);
+            case READ_REQUEST_CODE: {
+                CsvFileManager.importData(getApplicationContext(), uri);
                 break;
             }
         }
@@ -317,15 +290,20 @@ public class MainActivity extends SingleFragmentActivity implements BottomNaviga
      * @param rationale
      * @return
      */
-    private void checkPermissions(String rationale)  {
+    private void checkPermissions(String rationale, int requestCode)  {
+        String permissionCode = Manifest.permission.READ_EXTERNAL_STORAGE;
+        if (requestCode == REQUEST_WRITE_EXTERNAL_STORAGE) {
+            permissionCode = Manifest.permission.WRITE_EXTERNAL_STORAGE;
+        }
+
         // Check if we have permission to export
         if (ContextCompat.checkSelfPermission(getApplicationContext(),
-                Manifest.permission.WRITE_EXTERNAL_STORAGE)  != PackageManager.PERMISSION_GRANTED) {
+                permissionCode)  != PackageManager.PERMISSION_GRANTED) {
             Log.d(TAG, "No permission to write to external storage");
 
             // Show the dialog box to request permissions
             if (ActivityCompat.shouldShowRequestPermissionRationale(MainActivity.this,
-                    Manifest.permission.WRITE_EXTERNAL_STORAGE)){
+                    permissionCode)){
 
                 Log.d(TAG, "Show the rationale!");
 
@@ -335,9 +313,9 @@ public class MainActivity extends SingleFragmentActivity implements BottomNaviga
                 Log.d(TAG, "Need to ask for permissions to write external storage.");
             }
 
-            String[] permissions = new String[] {Manifest.permission.WRITE_EXTERNAL_STORAGE};
+            String[] permissions = new String[] {permissionCode};
             ActivityCompat.requestPermissions(MainActivity.this, permissions,
-                    REQUEST_WRITE_EXTERNAL_STORAGE);
+                    requestCode);
 
         } else {
             Log.d(TAG, "Write permissions granted from previous use.");
@@ -388,22 +366,12 @@ public class MainActivity extends SingleFragmentActivity implements BottomNaviga
      */
     public void performOperation() {
         switch(mOperation) {
-            case OPERATION_OVERFLOW_EXPORT_RESPONSES: {
-                createFile("responses" + CsvFileManager.getFilename(),
-                        WRITE_RESPONSES_REQUEST_CODE);
+            case OPERATION_OVERFLOW_EXPORT: {
+                createFile();
                 break;
             }
-            case OPERATION_OVERFLOW_EXPORT_SCORES: {
-                createFile("scores" + CsvFileManager.getFilename(),
-                        WRITE_SCORES_REQUEST_CODE);
-                break;
-            }
-            case OPERATION_OVERFLOW_IMPORT_RESPONSES: {
-                readFiles(READ_RESPONSES_REQUEST_CODE);
-                break;
-            }
-            case OPERATION_OVERFLOW_IMPORT_SCORES: {
-                readFiles(READ_SCORES_REQUEST_CODE);
+            case OPERATION_OVERFLOW_IMPORT: {
+                readFiles();
                 break;
             }
         }
