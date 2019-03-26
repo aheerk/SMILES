@@ -34,6 +34,32 @@ public class SmilesInformationFragment extends Fragment {
         mIconSmilesInfo = v.findViewById(R.id.icon_smiles_info);
         mTextSmilesList = v.findViewById(R.id.text_smiles_info);
 
+        // swipe code
+        v.setOnTouchListener(new OnSwipeTouchListener(getContext()) {
+            @Override
+            public void onSwipeLeft() {
+                if (mAdapterIndex<6){
+                    mAdapterIndex++;
+                }
+                updateScreen();
+            }
+
+            @Override
+            public void onSwipeRight() {
+                if (mAdapterIndex>0){
+                    mAdapterIndex--;
+                }
+                updateScreen();
+            }
+        });
+
+        updateScreen();
+        v.invalidate();
+        return v;
+    }
+
+    private void updateScreen() {
+
 
         switch(mAdapterIndex){
             case 0:
@@ -69,8 +95,5 @@ public class SmilesInformationFragment extends Fragment {
             default:
                 Log.d("TAG", "error");
         }
-
-        return v;
     }
-
 }
