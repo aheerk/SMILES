@@ -1,10 +1,12 @@
 package macewan_dust.smiles;
 
+import android.support.annotation.NonNull;
+
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.UUID;
 
-public class Raw {
+public class Raw implements Comparable {
 
     private UUID mRawID;
     private Date mDate;
@@ -193,10 +195,7 @@ public class Raw {
 
     public String rawCSVFormat() {
         StringBuilder sb = new StringBuilder();
-        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-dd-MM");
-        sb.append("\"");
-        sb.append(formatter.format(mDate));
-        sb.append("\",");
+        sb.append(",");
         sb.append(mSleep1);
         sb.append(",");
         sb.append(mSleep2);
@@ -267,5 +266,16 @@ public class Raw {
                 ", mSpeaking3=" + mSpeaking3 +
                 ", mSpeaking4=" + mSpeaking4 +
                 ", mSpeaking5=" + mSpeaking5 + "\n";
+    }
+
+    /**
+     * Allows for raw objects to be compared for sorting purposes
+     * @param o
+     * @return
+     */
+    @Override
+    public int compareTo(@NonNull Object o) {
+        Raw other = (Raw)o;
+        return (other.getDate()).compareTo(mDate);
     }
 }
