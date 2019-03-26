@@ -141,7 +141,7 @@ public class NewUserFragment extends Fragment {
                 mSubtitle.setVisibility(View.GONE); // must hide this again when creating the fragment from the end
                 break;
             case LAST_INDEX:
-                replaceFragment(new ColorLegendFragment());
+                replaceFragment(new NewUserColorLegendFragment());
             default:
                 mTitle.setText(R.string.no_data);
                 mBodyText.setText(R.string.no_data);
