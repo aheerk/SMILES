@@ -19,10 +19,15 @@
     <string name="title_web_links">Web Links</string>
     <string name="title_smiles">SMILES</string>
     <string name="daily_challenge">Daily Challenge</string>
+    <string name="title_color_legend">Score and Color</string>
+    <string name="title_settings">Settings</string>
 
     <string name="daily_web_title">Daily Weblink</string>
 
+
+
     <string name="title_credits">Credits</string>
+    <string name="subtitle_credits">Special thanks</string>
 
     <string name="button_start_daily">Daily Questions</string>
 

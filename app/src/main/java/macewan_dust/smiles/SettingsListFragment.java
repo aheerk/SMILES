@@ -14,5 +14,8 @@ public class SettingsListFragment extends Fragment {
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         ((AppCompatActivity)getActivity()).getSupportActionBar().setDisplayHomeAsUpEnabled(false);
+
+        getActivity().setTitle(R.string.title_settings);
+
     }
 }

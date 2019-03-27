@@ -41,7 +41,7 @@ public class InformationListFragment extends Fragment {
         InformationItem temp4 = new InformationItem(getString(R.string.title_introduction), "Getting started information", new IntroductionFragment());
         InformationItem temp1 = new InformationItem(getString(R.string.title_smiles), "Categories", new SmilesListFragment());
         InformationItem temp2 = new InformationItem(getString(R.string.title_web_links), "Useful information", new WebListFragment());
-        InformationItem temp3 = new InformationItem(getString(R.string.title_credits), "subtitle", new CreditInfoFragment());
+        InformationItem temp3 = new InformationItem(getString(R.string.title_credits), getString(R.string.subtitle_credits), new CreditInfoFragment());
 
         mInfoData.add(temp4);
         mInfoData.add(temp1);
