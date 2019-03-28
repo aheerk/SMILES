@@ -1,6 +1,7 @@
 package macewan_dust.smiles;
 
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.graphics.Canvas;
 import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
@@ -21,7 +22,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
+
 import java.util.LinkedList;
 import java.util.List;
 
@@ -38,6 +41,11 @@ public class DashboardListFragment extends Fragment {
     private Context mContext;
     private ScoringLab mScoringLab;
 
+    private LinearLayout mDailyChallengeLayout;
+    private LinearLayout mDailyWebLayout;
+    private SharedPreferences mPref;
+
+
     /**
      * new instance constructor
      *
@@ -52,10 +60,14 @@ public class DashboardListFragment extends Fragment {
         super.onCreate(savedInstanceState);
         mContext = getContext();
 
-        ((AppCompatActivity)getActivity()).getSupportActionBar().setDisplayHomeAsUpEnabled(false);
+        ((AppCompatActivity) getActivity()).getSupportActionBar().setDisplayHomeAsUpEnabled(false);
         mScoringLab = ScoringLab.get(getContext());
         // scores from database
         mDashboardData = mScoringLab.getScores();
+
+        mPref = getActivity().getApplicationContext().getSharedPreferences(SettingsFragment.SETTINGS, 0);
+
+
 /*
         // generating some items for testing
         Score temp = new Score();
@@ -81,10 +93,10 @@ public class DashboardListFragment extends Fragment {
         // redraw the screen when coming back from a question page
         mDashboardData = mScoringLab.getScores(); // refresh list on resume
 
-        ((DashboardAdapter)mDashboardRecyclerViewAdapter).setDashboardListData(mDashboardData);
+        ((DashboardAdapter) mDashboardRecyclerViewAdapter).setDashboardListData(mDashboardData);
         mDashboardRecyclerViewAdapter.notifyDataSetChanged();
 
-        ((AppCompatActivity)getActivity()).getSupportActionBar().setDisplayHomeAsUpEnabled(false);
+        ((AppCompatActivity) getActivity()).getSupportActionBar().setDisplayHomeAsUpEnabled(false);
     }
 
 
@@ -101,6 +113,15 @@ public class DashboardListFragment extends Fragment {
         mDashboardRecyclerViewAdapter = new DashboardAdapter(mDashboardData);
         mRecyclerView.setAdapter(mDashboardRecyclerViewAdapter);
         mRecyclerView.setHasFixedSize(false);
+
+        mDailyChallengeLayout = v.findViewById(R.id.daily_challenge_layout);
+        mDailyWebLayout = v.findViewById(R.id.daily_web_layout);
+
+
+        dailyWeb();
+
+        dailyChallenge();
+
 
         // setup for delete on swipe
         ItemTouchHelper itemTouchHelper = new ItemTouchHelper(new SwipeToDeleteCallback((DashboardAdapter) mDashboardRecyclerViewAdapter));
@@ -132,6 +153,42 @@ public class DashboardListFragment extends Fragment {
         return v;
     }
 
+    private void dailyChallenge() {
+
+
+        if (mPref.getBoolean(SettingsFragment.PREF_DAILY_CHALLENGE, true)) {
+
+            mDailyChallengeLayout.setVisibility(View.VISIBLE);
+
+
+/*
+implement challenge code
+ */
+
+
+        } else {
+            mDailyChallengeLayout.setVisibility(View.GONE);
+        }
+
+
+    }
+
+    private void dailyWeb() {
+        if (mPref.getBoolean(SettingsFragment.PREF_DAILY_WEB, true)) {
+            mDailyWebLayout.setVisibility(View.VISIBLE);
+
+
+            /*
+            implement challenge code
+            */
+
+
+        } else {
+            mDailyWebLayout.setVisibility(View.GONE);
+
+        }
+
+    }
 
 
     /**
@@ -298,7 +355,7 @@ public class DashboardListFragment extends Fragment {
 
         public void showUndoSnackbar() {
             View view = getActivity().findViewById(R.id.dashboard_recycler_view);
-            Snackbar snackbar = Snackbar.make(view, R.string.undo_text, 5000 ); // 5 seconds
+            Snackbar snackbar = Snackbar.make(view, R.string.undo_text, 5000); // 5 seconds
 
             snackbar.setAction(R.string.undo_confirm, new View.OnClickListener() {
                 @Override

@@ -18,8 +18,6 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
 
-import java.nio.file.ReadOnlyFileSystemException;
-
 
 /**
  * This activity exists to hold a fragment.
@@ -99,7 +97,7 @@ public class MainActivity extends SingleFragmentActivity implements BottomNaviga
                 
             case R.id.overflow_settings: {
                 Log.d(TAG, "Clicked settings.");
-                loadFragment(new SettingsListFragment());
+                loadFragment(new SettingsFragment());
                 break;
             }
             case R.id.overflow_export: {

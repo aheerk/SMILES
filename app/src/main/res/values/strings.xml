@@ -341,4 +341,10 @@
     </string-array>
 
 
+
+    <!-- settings -->
+    <string name="show_challenge">Show daily challenge</string>
+    <string name="show_web">Show daily web link</string>
+
+
 </resources>
