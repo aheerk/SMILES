@@ -1,5 +1,6 @@
 package macewan_dust.smiles;
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
@@ -15,6 +16,9 @@ public class NewUserColorLegendFragment extends Fragment {
 
     TextView mTitle;
 
+    private SharedPreferences mPref;
+    private SharedPreferences.Editor mEditor;
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -29,6 +33,12 @@ public class NewUserColorLegendFragment extends Fragment {
         v.setOnTouchListener(new OnSwipeTouchListener(getContext()) {
             @Override
             public void onSwipeLeft() {
+                // saving value. user is no longer a new user
+                mPref = getActivity().getApplicationContext().getSharedPreferences(SettingsFragment.SETTINGS, 0);
+                mEditor = mPref.edit();
+                mEditor.putBoolean(NewUserFragment.NEW_USER, false);
+                mEditor.commit();
+
                   getActivity().finish();
              //   Intent newActivity = new Intent(getContext(), MainActivity.class);
               //  getContext().startActivity(newActivity);

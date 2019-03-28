@@ -21,6 +21,7 @@ public class NewUserFragment extends Fragment {
     public static final String INDEX = "index number";
     public static final int LAST_INDEX = 11;
     public static final int FIRST_INDEX = 0;
+    public static final String NEW_USER = "new_user";
     private static final String TAG = "NewUserFragment";
 
     TextView mTitle;

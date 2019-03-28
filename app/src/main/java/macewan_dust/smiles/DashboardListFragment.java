@@ -1,6 +1,7 @@
 package macewan_dust.smiles;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Canvas;
 import android.graphics.drawable.ColorDrawable;
@@ -67,7 +68,7 @@ public class DashboardListFragment extends Fragment {
 
         mPref = getActivity().getApplicationContext().getSharedPreferences(SettingsFragment.SETTINGS, 0);
 
-
+        newUserStart();
 /*
         // generating some items for testing
         Score temp = new Score();
@@ -127,16 +128,7 @@ public class DashboardListFragment extends Fragment {
         ItemTouchHelper itemTouchHelper = new ItemTouchHelper(new SwipeToDeleteCallback((DashboardAdapter) mDashboardRecyclerViewAdapter));
         itemTouchHelper.attachToRecyclerView(mRecyclerView);
 
-        /*
-        mFloatingButtonStartDailyQuestions = v.findViewById(R.id.button_start_daily_questions);
-        mFloatingButtonStartDailyQuestions.setOnClickListener(new View.OnClickListener() {
 
-            @Override
-            public void onClick(View v){
-                DailyListFragment fragment = new DailyListFragment();
-                replaceFragment(fragment);
-            }
-        });*/
 
         mButtonStartQuestions = v.findViewById(R.id.button_start_daily_questions);
         mButtonStartQuestions.setOnClickListener(new View.OnClickListener() {
@@ -151,6 +143,16 @@ public class DashboardListFragment extends Fragment {
         getActivity().setTitle(R.string.title_dashboard);
 
         return v;
+    }
+
+    /**
+     * starts the new user info once.
+     */
+    private void newUserStart(){
+        if (mPref.getBoolean(NewUserFragment.NEW_USER, true)) {
+            Intent newActivity = new Intent(getContext(), NewUserActivity.class);
+            getContext().startActivity(newActivity);
+        }
     }
 
     private void dailyChallenge() {
