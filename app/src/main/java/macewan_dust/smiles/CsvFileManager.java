@@ -225,7 +225,7 @@ public class CsvFileManager {
                         Integer.parseInt(row[8]));
                 responseSet.setMovement(
                         Integer.parseInt(row[9]),
-                        Boolean.parseBoolean(row[10]),
+                        Integer.parseInt(row[10]),
                         Integer.parseInt(row[11]));
                 responseSet.setImagination(
                         Integer.parseInt(row[12]),

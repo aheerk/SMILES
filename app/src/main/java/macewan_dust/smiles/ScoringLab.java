@@ -448,7 +448,7 @@ public class ScoringLab {
         values.put(SMILES_DatabaseSchema.RawTable.Columns.SLEEP1, raw.getSleep1());
         values.put(SMILES_DatabaseSchema.RawTable.Columns.SLEEP2, raw.getSleep2());
         values.put(SMILES_DatabaseSchema.RawTable.Columns.MOVEMENT1, raw.getMovement1());
-        values.put(SMILES_DatabaseSchema.RawTable.Columns.MOVEMENT2, raw.isMovement2() ? 1 : 0);        // convert boolean to 1 or 0
+        values.put(SMILES_DatabaseSchema.RawTable.Columns.MOVEMENT2, raw.getMovement2());
         values.put(SMILES_DatabaseSchema.RawTable.Columns.MOVEMENT3, raw.getMovement3());
         values.put(SMILES_DatabaseSchema.RawTable.Columns.IMAGINATION1, raw.getImagination1());
         values.put(SMILES_DatabaseSchema.RawTable.Columns.IMAGINATION2, raw.getImagination2());
@@ -457,7 +457,7 @@ public class ScoringLab {
         values.put(SMILES_DatabaseSchema.RawTable.Columns.EATING1, raw.getEating1());
         values.put(SMILES_DatabaseSchema.RawTable.Columns.EATING2, raw.getEating2());
         values.put(SMILES_DatabaseSchema.RawTable.Columns.EATING3, raw.getEating3());
-        values.put(SMILES_DatabaseSchema.RawTable.Columns.EATING4, raw.isEating4() ? 1 : 0);
+        values.put(SMILES_DatabaseSchema.RawTable.Columns.EATING4, raw.isEating4() ? 1 : 0);   // convert boolean to 1 or 0
         values.put(SMILES_DatabaseSchema.RawTable.Columns.EATING5, raw.isEating5() ? 1 : 0);
         values.put(SMILES_DatabaseSchema.RawTable.Columns.EATING6, raw.isEating6() ? 1 : 0);
         values.put(SMILES_DatabaseSchema.RawTable.Columns.EATING7, raw.isEating7() ? 1 : 0);

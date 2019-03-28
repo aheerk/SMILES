@@ -15,7 +15,7 @@ public class Raw implements Comparable {
     private int mSleep2;
 
     private int mMovement1;
-    private boolean mMovement2;
+    private int mMovement2;
     private int mMovement3;
 
     private int mImagination1;
@@ -63,7 +63,7 @@ public class Raw implements Comparable {
         mSleep2 = q2;
     }
 
-    public void setMovement(int q1, boolean q2, int q3) {
+    public void setMovement(int q1, int q2, int q3) {
         mMovement1 = q1;
         mMovement2 = q2;
         mMovement3 = q3;
@@ -121,7 +121,7 @@ public class Raw implements Comparable {
         return mMovement1;
     }
 
-    public boolean isMovement2() {
+    public int getMovement2() {
         return mMovement2;
     }
 

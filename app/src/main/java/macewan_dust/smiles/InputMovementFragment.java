@@ -147,7 +147,7 @@ public class InputMovementFragment extends Fragment {
         mIcon2a.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mQuestion_B_index = 1;
+                mQuestion_B_index = ScoringAlgorithms.INPUT_a;
                 mIcon2b.setBackground(getResources().getDrawable(R.drawable.ic_wide_border));
                 mIcon2a.setBackground(getResources().getDrawable(R.drawable.ic_wide_border_selected));
             }
@@ -155,7 +155,7 @@ public class InputMovementFragment extends Fragment {
         mIcon2b.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mQuestion_B_index = 2;
+                mQuestion_B_index = ScoringAlgorithms.INPUT_b;
                 mIcon2a.setBackground(getResources().getDrawable(R.drawable.ic_wide_border));
                 mIcon2b.setBackground(getResources().getDrawable(R.drawable.ic_wide_border_selected));
             }
@@ -263,14 +263,14 @@ public class InputMovementFragment extends Fragment {
                     if (mScoringLab.isRaw(mScoreDate)){
                         mRaw = mScoringLab.getRaw(mScoreDate);
                         mRaw.setMovement(mQuestion_A_index,
-                                mQuestion_B_index == 1,
+                                mQuestion_B_index,
                                 mQuestion_C_index);
                         mScoringLab.updateRaw(mRaw);
 
                     }else { // add
                         mRaw = new Raw(mScoreDate);
                         mRaw.setMovement(mQuestion_A_index,
-                                mQuestion_B_index == 1,
+                                mQuestion_B_index,
                                 mQuestion_C_index);
                         mScoringLab.addRaw(mRaw);
                     }
@@ -317,24 +317,20 @@ public class InputMovementFragment extends Fragment {
                 }
             }
 
-            /// --------------------------------- refactor yes no --------------------------------------------------------------------
-
-            if (mRaw.isMovement2()) { // switch this to a get when the variable type is int
-
-                if (mRaw.isMovement2()) {
+            if (mRaw.getMovement2() != 0) {
+                mQuestion_B_index = mRaw.getMovement2();
+                if (mQuestion_B_index == 1) {
                     mIcon2a.setBackground(getResources().getDrawable(R.drawable.ic_wide_border_selected));
                     mIcon2b.setBackground(getResources().getDrawable(R.drawable.ic_wide_border));
-                    mQuestion_B_index = 1;
                 } else {
-
                     mIcon2a.setBackground(getResources().getDrawable(R.drawable.ic_wide_border));
                     mIcon2b.setBackground(getResources().getDrawable(R.drawable.ic_wide_border_selected));
-                    mQuestion_B_index = 2;
                 }
             }
+
             if (mRaw.getMovement3() != 0) {
-                mQuestion_B_index = mRaw.getMovement3();
-                switch (mQuestion_B_index) {
+                mQuestion_C_index = mRaw.getMovement3();
+                switch (mQuestion_C_index) {
                     case ScoringAlgorithms.INPUT_a:
                         mIcon3a.setBackground(getResources().getDrawable(R.drawable.ic_wide_border_selected));
                         break;

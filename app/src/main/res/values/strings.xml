@@ -322,25 +322,27 @@
     <!-- Credit strings -->
     <string name="credit_photo_heading">Photos</string>
     <string name="credit_photo_body">Photographs were provided by Pexels</string>
-
-
+    
     <!-- Daily challenge -->
     <string-array name="daily_challenge">
-        <item>Sleep between 6 and 9 hours.</item>
-        <item>Perform 10-20 minutes of intense aerobic exercise.</item>
-        <item>Perform bone and muscle strengthening exercises.</item>
-        <item>Spend 10- 45 minutes practicing relaxation techniques.</item>
-        <item>Spend 10-30 minutes practicing mindfulness techniques.</item>
-        <item>Spend 10-30 minutes practicing meditation.</item>
-        <item>Practice creativity or imagination for 10-30.</item>
-        <item></item>
-        <item></item>
-        <item></item>
-        <item></item>
-        <item></item>
+        <item>Go to sleep with time for 6-9 hours of sleep.</item>
+        <item>Play a sport today.</item>
+        <item>Do bone and muscle strengthening exercises.</item>
+        <item>Take time to relax.</item>
+        <item>Practicing mindfulness techniques.</item>
+        <item>Practicing meditation.</item>
+        <item>Make time to express your creativity.</item>
+        <item>Do activities that makes you laugh.</item>
+        <item>Add fruit and vegetables to your meal.</item>
+        <item>Avoid high sodium foods.</item>
+        <item>Go a day without sugar.</item>
+        <item>Avoid foods that are high in saturated fat.</item>
+        <item>Only drink water today.</item>
+        <item>Make time to speak with people.</item>
+        <item>Ask for help when you need it.</item>
+        <item>Remove social obstacles.</item>
+        <item>Socialize in person.</item>
     </string-array>
-
-
 
     <!-- settings -->
     <string name="show_challenge">Show daily challenge</string>

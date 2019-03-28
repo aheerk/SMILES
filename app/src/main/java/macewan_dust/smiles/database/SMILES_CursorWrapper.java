@@ -85,7 +85,7 @@ public class SMILES_CursorWrapper extends CursorWrapper {
 
         //  != 0 converts the boolean into to a boolean
         rawFromDB.setSleep(sleep1, sleep2);
-        rawFromDB.setMovement(movement1, movement2  != 0, movement3);
+        rawFromDB.setMovement(movement1, movement2, movement3);
         rawFromDB.setImagination(imagination1, imagination2, imagination3);
         rawFromDB.setLaughter(laughter1);
         rawFromDB.setEating(eating1, eating2, eating3, eating4 != 0, eating5 != 0, eating6 != 0,eating7 != 0);

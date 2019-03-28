@@ -34,12 +34,13 @@
         android:id="@+id/daily_web_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="16dp"
-        android:layout_marginRight="16dp"
+        android:layout_marginLeft="9dp"
+        android:layout_marginRight="9dp"
         android:layout_marginBottom="8dp"
-        android:background="@drawable/trim"
         android:orientation="vertical"
         app:layout_constraintBottom_toTopOf="@+id/daily_challenge_layout"
+        android:background="@color/colorPrimary"
+
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent">
 
@@ -49,25 +50,35 @@
             style="@style/Heading1Text"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:textColor="@color/colorWhite"
             android:text="@string/daily_web_title" />
 
-        <TextView
-            android:id="@+id/daily_web_body"
-            style="@style/BodyText"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text=".. load web item here .."
-            android:textAlignment="center" />
+            android:layout_height="match_parent"
+            android:layout_margin="8dp"
+            android:background="@color/colorWhite"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/daily_web_body"
+                style="@style/BodyText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text=".. load web item here .."
+                android:textAlignment="center" />
+        </LinearLayout>
+
     </LinearLayout>
 
     <LinearLayout
         android:id="@+id/daily_challenge_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="16dp"
-        android:layout_marginRight="16dp"
+        android:layout_marginLeft="9dp"
+        android:layout_marginRight="9dp"
         android:layout_marginBottom="8dp"
-        android:background="@drawable/trim"
+        android:background="@color/colorPrimary"
         android:orientation="vertical"
         app:layout_constraintBottom_toTopOf="@+id/button_start_daily_questions"
         app:layout_constraintEnd_toEndOf="parent"
@@ -79,15 +90,26 @@
             style="@style/Heading1Text"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/daily_challenge" />
+            android:background="@color/colorPrimary"
+            android:text="@string/daily_challenge"
+            android:textColor="@color/colorWhite" />
 
-        <TextView
-            android:id="@+id/daily_challenge_body"
-            style="@style/BodyText"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Make water your beverage of choice."
-            android:textAlignment="center" />
+            android:layout_height="match_parent"
+            android:layout_margin="8dp"
+            android:background="@color/colorWhite"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/daily_challenge_body"
+                style="@style/BodyText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Make water your beverage of choice."
+                android:textAlignment="center" />
+        </LinearLayout>
+
     </LinearLayout>
 
 
