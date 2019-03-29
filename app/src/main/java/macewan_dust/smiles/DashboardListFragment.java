@@ -181,13 +181,12 @@ implement challenge code
 
 
             /*
-            implement challenge code
+            implement web code
             */
 
 
         } else {
             mDailyWebLayout.setVisibility(View.GONE);
-
         }
 
     }

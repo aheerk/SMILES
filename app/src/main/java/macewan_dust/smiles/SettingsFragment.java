@@ -9,6 +9,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.Switch;
 
 public class SettingsFragment extends Fragment {
@@ -17,6 +18,7 @@ public class SettingsFragment extends Fragment {
     public static final String SETTINGS = "smilesSettings";
     public static final String PREF_DAILY_CHALLENGE = "dailyChallengeSettings";
     public static final String PREF_DAILY_WEB = "dailyWebSettings";
+    public static final String PREF_NEVER_PERMISSIONS = "neverPermissions";
 
 
     private SharedPreferences mPref;
@@ -25,6 +27,10 @@ public class SettingsFragment extends Fragment {
 
     Switch mDailyChallengeSwitch;
     Switch mDailyWebSwitch;
+    //Switch mNeverPermissionSwitch;
+
+    Button mResetPermissions;
+
 
 
     @Override
@@ -46,6 +52,7 @@ public class SettingsFragment extends Fragment {
 
         mDailyChallengeSwitch = v.findViewById(R.id.setting_switch_daily_challenge);
         mDailyWebSwitch = v.findViewById(R.id.setting_switch_daily_web);
+      //  mNeverPermissionSwitch = v.findViewById(R.id.setting_switch_no_permission);
 
         mDailyChallengeSwitch.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -64,6 +71,17 @@ public class SettingsFragment extends Fragment {
                 Log.d(TAG, "switched");
                 mEditor.putBoolean(PREF_DAILY_WEB, mDailyWebSwitch.isChecked());
                 mEditor.commit();
+
+            }
+        });
+
+        mResetPermissions = v.findViewById(R.id.button_reset_permissions);
+
+
+        mResetPermissions.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
 
             }
         });
@@ -99,6 +117,12 @@ public class SettingsFragment extends Fragment {
             mDailyWebSwitch.setChecked(temp);
         }
 
+      /*  if (mPref.contains(PREF_NEVER_PERMISSIONS)) {
+            temp = mPref.getBoolean(PREF_DAILY_WEB, false);
+            mNeverPermissionSwitch.setChecked(temp);
+
+        }
+*/
 
         }
 

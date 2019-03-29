@@ -322,7 +322,7 @@
     <!-- Credit strings -->
     <string name="credit_photo_heading">Photos</string>
     <string name="credit_photo_body">Photographs were provided by Pexels</string>
-    
+
     <!-- Daily challenge -->
     <string-array name="daily_challenge">
         <item>Go to sleep with time for 6-9 hours of sleep.</item>
@@ -347,6 +347,7 @@
     <!-- settings -->
     <string name="show_challenge">Show daily challenge</string>
     <string name="show_web">Show daily web link</string>
+    <string name="reset_permissions">Reset permissions</string>
 
 
 </resources>
