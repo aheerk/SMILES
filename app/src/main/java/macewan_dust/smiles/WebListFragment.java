@@ -27,6 +27,7 @@ public class WebListFragment extends Fragment {
     private RecyclerView mWebRecyclerView;
     private RecyclerView.Adapter mWebRecyclerViewAdapter;
     private RecyclerView.LayoutManager mWebRecyclerViewLayoutManager;
+    private WebLab mWebLab;
     private List<WebItem> mWebItems;
 
     @Override
@@ -34,7 +35,8 @@ public class WebListFragment extends Fragment {
         super.onCreate(savedInstanceState);
         setRetainInstance(true); // prevents instance of the fragment from being destroyed on rotation.
 
-        mWebItems = WebLab.getWebList(this.getContext());
+        mWebLab = WebLab.getWebLab(getContext());
+        mWebItems = mWebLab.getWebList(this.getContext());
 
         ((AppCompatActivity)getActivity()).getSupportActionBar();
         ((AppCompatActivity)getActivity()).getSupportActionBar().setDisplayHomeAsUpEnabled(true);

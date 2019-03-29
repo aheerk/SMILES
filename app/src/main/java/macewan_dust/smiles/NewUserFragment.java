@@ -14,6 +14,7 @@ import android.view.View.OnTouchListener;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 public class NewUserFragment extends Fragment {
@@ -28,6 +29,7 @@ public class NewUserFragment extends Fragment {
     TextView mSubtitle;
     ImageView mImageView;
     TextView mBodyText;
+    LinearLayout mSwipeLayout;
     int i; // screen index
 
     public static NewUserFragment newInstance() {
@@ -53,6 +55,8 @@ public class NewUserFragment extends Fragment {
         mSubtitle = v.findViewById(R.id.introduction_subtitle);
         mImageView = v.findViewById(R.id.introduction_image);
         mBodyText = v.findViewById(R.id.introduction_explanation);
+        mSwipeLayout = v.findViewById(R.id.swipe_layout);
+
         updateScreen ();
 
 
@@ -86,6 +90,7 @@ public class NewUserFragment extends Fragment {
                 mTitle.setText(R.string.introduction_title_smiles);
                 mSubtitle.setText(R.string.introduction_subtitle_smiles);
                 mSubtitle.setVisibility(View.VISIBLE);
+                mSwipeLayout.setVisibility(View.VISIBLE);
                 mImageView.setImageResource(R.drawable.photo_intro1);
                 mBodyText.setText(R.string.introduction_explanation_smiles);
                 break;
@@ -94,6 +99,7 @@ public class NewUserFragment extends Fragment {
                 mBodyText.setText(R.string.introduction_explanation_stress1);
                 mImageView.setImageResource(R.drawable.photo_intro2);
                 mSubtitle.setVisibility(View.GONE);
+                mSwipeLayout.setVisibility(View.GONE);
                 break;
             case 2:
                 mTitle.setText(R.string.introduction_title_stress1);
@@ -140,6 +146,7 @@ public class NewUserFragment extends Fragment {
                 mBodyText.setText(R.string.introduction_explanation_goals);
                 mImageView.setImageResource(R.drawable.photo_goals);
                 mSubtitle.setVisibility(View.GONE); // must hide this again when creating the fragment from the end
+                mSwipeLayout.setVisibility(View.GONE);
                 break;
             case LAST_INDEX:
                 replaceFragment(new NewUserColorLegendFragment());

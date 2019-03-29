@@ -1,33 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     tools:context=".activity.MainActivity">
-
-    <item
-        android:id="@+id/overflow_export"
-        android:title="@string/overflow_export"
-        app:showAsAction="never"/>
-
-    <item
-        android:id="@+id/overflow_import"
-        android:title="@string/overflow_import"
-        app:showAsAction="never"/>
-
     <item
         android:id="@+id/overflow_color_legend"
         android:title="@string/overflow_color_legend"
-        app:showAsAction="never"/>
+        app:showAsAction="never" />
 
     <item
         android:id="@+id/overflow_information"
         android:title="Information"
-        app:showAsAction="never"/>
-
+        app:showAsAction="never" />
     <item
         android:id="@+id/overflow_settings"
         android:title="@string/overflow_settings"
-        app:showAsAction="never"/>
+        app:showAsAction="never" />
 
+    <item
+        android:id="@+id/overflow_export"
+        android:title="@string/overflow_export"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/overflow_import"
+        android:title="@string/overflow_import"
+        app:showAsAction="never" />
 </menu>
