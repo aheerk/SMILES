@@ -142,6 +142,9 @@
     <string name="introduction_title_goals">SMILES Goals</string>
     <string name="introduction_explanation_goals">Implementing the SMILES framework provides encouragement and guidance to create a pattern of behaviour in supporting self care in hopes to reduce caregiver burnout, absenteeism along with enhancing workplace morale, personal health and improvement in workplace and client safety.</string>
 
+    <string name="swipe">Swipe to continue</string>
+
+
     <!-- Web Links -->
     <!-- Note, the links are in order of appearance in Sherri's slides. -->
     <!-- Doesn't work: http://creativityinhealthcare.com/2010/01/20/art-by-nurses-by-lynda-mcleod/ -->

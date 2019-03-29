@@ -36,15 +36,20 @@ public class WebLab {
         }
     }
 
+
+    public LinkedList<WebItem> getWebList(Context context) {
+        return mWebItems;
+    }
+
     /**
      * This method allows for the retrieval of the list of WebItems
      * @param context
      * @return Populated linked List of web items
      */
-    public static LinkedList<WebItem> getWebList(Context context) {
+    public static WebLab getWebLab(Context context) {
         if (instance == null)
             instance = new WebLab(context);
-        return instance.retrieveList();
+        return instance;
     }
 
     /**
@@ -53,5 +58,10 @@ public class WebLab {
      */
     private LinkedList<WebItem> retrieveList() {
         return new LinkedList<WebItem>(mWebItems);
+    }
+
+    public WebItem getOneLink(int index){
+        int i = index % mWebItems.size();
+        return mWebItems.get(i);
     }
 }

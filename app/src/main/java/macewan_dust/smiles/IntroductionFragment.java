@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 public class IntroductionFragment extends Fragment {
@@ -17,6 +18,7 @@ public class IntroductionFragment extends Fragment {
     TextView mSubtitle;
     TextView mBodyText;
     ImageView mImageView;
+    LinearLayout mSwipeLayout;
 
     int i;
 
@@ -40,6 +42,7 @@ public class IntroductionFragment extends Fragment {
         mBodyText = v.findViewById(R.id.introduction_explanation);
         mSubtitle = v.findViewById(R.id.introduction_subtitle);
         mImageView = v.findViewById(R.id.introduction_image);
+        mSwipeLayout = v.findViewById(R.id.swipe_layout);
         updateScreen ();
         i = 0;
 
@@ -72,6 +75,7 @@ public class IntroductionFragment extends Fragment {
                 mTitle.setText(R.string.introduction_title_smiles);
                 mSubtitle.setText(R.string.introduction_subtitle_smiles);
                 mSubtitle.setVisibility(View.VISIBLE);
+                mSwipeLayout.setVisibility(View.VISIBLE);
                 mImageView.setImageResource(R.drawable.photo_intro1);
                 mBodyText.setText(R.string.introduction_explanation_smiles);
                 break;
@@ -80,6 +84,7 @@ public class IntroductionFragment extends Fragment {
                 mImageView.setImageResource(R.drawable.photo_intro2);
                 mBodyText.setText(R.string.introduction_explanation_stress1);
                 mSubtitle.setVisibility(View.GONE);
+                mSwipeLayout.setVisibility(View.GONE);
                 break;
             case 2:
                 mImageView.setImageResource(R.drawable.photo_intro3);

@@ -6,6 +6,7 @@ import android.content.SharedPreferences;
 import android.graphics.Canvas;
 import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -26,6 +27,8 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import java.util.Calendar;
+import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -46,6 +49,12 @@ public class DashboardListFragment extends Fragment {
     private LinearLayout mDailyWebLayout;
     private SharedPreferences mPref;
 
+    private String[] mChallenges;
+    private TextView mChallengeText;
+    private TextView mWebTextView;
+    private WebLab mWebLab;
+    private WebItem mTodaysWebItem;
+
 
     /**
      * new instance constructor
@@ -63,6 +72,7 @@ public class DashboardListFragment extends Fragment {
 
         ((AppCompatActivity) getActivity()).getSupportActionBar().setDisplayHomeAsUpEnabled(false);
         mScoringLab = ScoringLab.get(getContext());
+        mWebLab = WebLab.getWebLab(getContext());
         // scores from database
         mDashboardData = mScoringLab.getScores();
 
@@ -117,6 +127,8 @@ public class DashboardListFragment extends Fragment {
 
         mDailyChallengeLayout = v.findViewById(R.id.daily_challenge_layout);
         mDailyWebLayout = v.findViewById(R.id.daily_web_layout);
+        mChallengeText = v.findViewById(R.id.daily_challenge_body);
+        mWebTextView = v.findViewById(R.id.daily_web_body);
 
 
         dailyWeb();
@@ -159,15 +171,16 @@ public class DashboardListFragment extends Fragment {
 
 
         if (mPref.getBoolean(SettingsFragment.PREF_DAILY_CHALLENGE, true)) {
-
             mDailyChallengeLayout.setVisibility(View.VISIBLE);
 
-
-/*
-implement challenge code
- */
-
-
+            Calendar calendar = Calendar.getInstance();
+            calendar.setTime(new Date());
+            // moves the month up by one in the calendar to have the correct starting month
+            calendar.roll(Calendar.MONTH, true);
+            int day = calendar.get(Calendar.DAY_OF_MONTH);
+            mChallenges = getContext().getResources().getStringArray(R.array.daily_challenge);
+            String temp = mChallenges[day % mChallenges.length];
+            mChallengeText.setText(temp);
         } else {
             mDailyChallengeLayout.setVisibility(View.GONE);
         }
@@ -178,6 +191,25 @@ implement challenge code
     private void dailyWeb() {
         if (mPref.getBoolean(SettingsFragment.PREF_DAILY_WEB, true)) {
             mDailyWebLayout.setVisibility(View.VISIBLE);
+            Calendar calendar = Calendar.getInstance();
+            calendar.setTime(new Date());
+            // moves the month up by one in the calendar to have the correct starting month
+            calendar.roll(Calendar.MONTH, true);
+            int day = calendar.get(Calendar.DAY_OF_MONTH);
+
+            mTodaysWebItem = mWebLab.getOneLink(day);
+            mWebTextView.setText(mTodaysWebItem.getTitle());
+            mDailyWebLayout.setOnClickListener(new View.OnClickListener() {
+
+                @Override
+                public void onClick(View v) {
+
+
+                    String uri = mTodaysWebItem.getUri();
+                    Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(uri));
+                    startActivity(browserIntent);
+                }
+            });
 
 
             /*
