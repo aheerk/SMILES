@@ -2,6 +2,7 @@ package macewan_dust.smiles;
 
 import android.Manifest;
 import android.app.Activity;
+import android.app.Dialog;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.net.Uri;
@@ -10,6 +11,7 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.ActivityCompat;
+import android.support.v4.app.DialogFragment;
 import android.support.v4.app.Fragment;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.Toolbar;
@@ -103,13 +105,13 @@ public class MainActivity extends SingleFragmentActivity implements BottomNaviga
             case R.id.overflow_export: {
                 Log.d(TAG, "Exporting....");
                 mOperation = OPERATION_OVERFLOW_EXPORT;
-                checkPermissions("", WRITE_REQUEST_CODE);
+                checkPermissions(REQUEST_WRITE_EXTERNAL_STORAGE);
                 createFile();
                 break;
             }
             case R.id.overflow_import: {
                 mOperation = OPERATION_OVERFLOW_IMPORT;
-                checkPermissions("", READ_REQUEST_CODE);
+                checkPermissions(REQUEST_READ_EXTERNAL_STORAGE);
                 readFiles();
                 break;
             }
@@ -279,16 +281,33 @@ public class MainActivity extends SingleFragmentActivity implements BottomNaviga
         }
     }
 
+    /**
+     * performOperation opens up the create file dialog for the user according to the
+     * current operation code
+     */
+    public void performOperation() {
+        switch(mOperation) {
+            case OPERATION_OVERFLOW_EXPORT: {
+                createFile();
+                break;
+            }
+            case OPERATION_OVERFLOW_IMPORT: {
+                readFiles();
+                break;
+            }
+        }
+    }
+
     /*--------- PERMISSIONs ----------------------------------------------------------------*/
 
     /**
      * checkWriteExternalPermissions checks if the app has permissions to write to external storage
      * If they already have permission, the user is prompted to create a new csv file.
      *
-     * @param rationale
      * @return
      */
-    private void checkPermissions(String rationale, int requestCode)  {
+    private void checkPermissions(int requestCode)  {
+        // Determine the correct permission code based on the provided request code
         String permissionCode = Manifest.permission.READ_EXTERNAL_STORAGE;
         if (requestCode == REQUEST_WRITE_EXTERNAL_STORAGE) {
             permissionCode = Manifest.permission.WRITE_EXTERNAL_STORAGE;
@@ -297,27 +316,36 @@ public class MainActivity extends SingleFragmentActivity implements BottomNaviga
         // Check if we have permission to export
         if (ContextCompat.checkSelfPermission(getApplicationContext(),
                 permissionCode)  != PackageManager.PERMISSION_GRANTED) {
-            Log.d(TAG, "No permission to write to external storage");
 
-            // Show the dialog box to request permissions
+            // Show the dialog box to request permissions if the user previously denied
+            // permissions
             if (ActivityCompat.shouldShowRequestPermissionRationale(MainActivity.this,
                     permissionCode)){
 
-                Log.d(TAG, "Show the rationale!");
-
-                // Show explanation?
+                // Display a rationale using a dialog. If the user hits yes on the dialog
+                // they will adjust their permissions.
+                DialogFragment dialog = RationaleDialog.newInstance(permissionCode, requestCode);
+                dialog.show(getSupportFragmentManager(), "dialog");
 
             } else {
-                Log.d(TAG, "Need to ask for permissions to write external storage.");
+                initiatePermissions(permissionCode, requestCode);
             }
 
-            String[] permissions = new String[] {permissionCode};
-            ActivityCompat.requestPermissions(MainActivity.this, permissions,
-                    requestCode);
-
         } else {
-            Log.d(TAG, "Write permissions granted from previous use.");
+            Log.d(TAG, "permissions granted from previous use.");
         }
+    }
+
+    /**
+     * initiatePermissions starts up the permissions dialog
+     * Note, the results of that dialog are taken care of in onRequestPermissionsResult
+     * @param permissionCode
+     * @param requestCode
+     */
+    public void initiatePermissions(String permissionCode, int requestCode) {
+        String[] permissions = new String[] {permissionCode};
+        ActivityCompat.requestPermissions(MainActivity.this, permissions,
+                requestCode);
     }
 
     /**
@@ -332,9 +360,7 @@ public class MainActivity extends SingleFragmentActivity implements BottomNaviga
     @Override
     public void onRequestPermissionsResult(int requestCode, String permissions[], int[] grantResults) {
         switch (requestCode) {
-
             case REQUEST_WRITE_EXTERNAL_STORAGE: {
-
                 if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                     Log.d(TAG, "Write External Storage permission granted.");
 
@@ -357,24 +383,4 @@ public class MainActivity extends SingleFragmentActivity implements BottomNaviga
         }
 
     }
-
-    /**
-     * performOperation opens up the create file dialog for the user according to the
-     * current operation code
-     */
-    public void performOperation() {
-        switch(mOperation) {
-            case OPERATION_OVERFLOW_EXPORT: {
-                createFile();
-                break;
-            }
-            case OPERATION_OVERFLOW_IMPORT: {
-                readFiles();
-                break;
-            }
-        }
-    }
-
-
-
 }

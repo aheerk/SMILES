@@ -241,6 +241,11 @@
     <string name="overflow_import">Import</string>
     <string name="overflow_color_legend">Score Legend</string>
 
+    <string name="rationale">
+        We require permissions to export and import csv files using external storage. Would you like to adjust your permissions?
+    </string>
+    <string name="rationale_title">Permission Denied</string>
+
     <string name="csv_no_write_permission">Please accept permissions to export data.</string>
     <string name="csv_export_success">Your data was successfully exported.</string>
     <string name="csv_export_failure">Export unsuccessful.</string>
