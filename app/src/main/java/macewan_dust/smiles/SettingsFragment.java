@@ -27,9 +27,6 @@ public class SettingsFragment extends Fragment {
 
     Switch mDailyChallengeSwitch;
     Switch mDailyWebSwitch;
-    //Switch mNeverPermissionSwitch;
-
-    Button mResetPermissions;
 
 
 
@@ -52,7 +49,6 @@ public class SettingsFragment extends Fragment {
 
         mDailyChallengeSwitch = v.findViewById(R.id.setting_switch_daily_challenge);
         mDailyWebSwitch = v.findViewById(R.id.setting_switch_daily_web);
-      //  mNeverPermissionSwitch = v.findViewById(R.id.setting_switch_no_permission);
 
         mDailyChallengeSwitch.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -71,17 +67,6 @@ public class SettingsFragment extends Fragment {
                 Log.d(TAG, "switched");
                 mEditor.putBoolean(PREF_DAILY_WEB, mDailyWebSwitch.isChecked());
                 mEditor.commit();
-
-            }
-        });
-
-        mResetPermissions = v.findViewById(R.id.button_reset_permissions);
-
-
-        mResetPermissions.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
 
             }
         });

@@ -330,6 +330,8 @@
     <!-- Credit strings -->
     <string name="credit_photo_heading">Photos</string>
     <string name="credit_photo_body">Photographs were provided by Pexels</string>
+    <string name="credit_icon_heading">Icons</string>
+    <string name="credit_icon_body">Photographs were provided by Freepik</string>
 
     <!-- Daily challenge -->
     <string-array name="daily_challenge">
