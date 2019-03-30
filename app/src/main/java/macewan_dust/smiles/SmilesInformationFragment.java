@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 public class SmilesInformationFragment extends Fragment {
@@ -16,6 +17,7 @@ public class SmilesInformationFragment extends Fragment {
     int mAdapterIndex;
     ImageView mIconSmilesInfo;
     TextView mTextSmilesList;
+    LinearLayout mSwipeLayout;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -33,6 +35,7 @@ public class SmilesInformationFragment extends Fragment {
 
         mIconSmilesInfo = v.findViewById(R.id.icon_smiles_info);
         mTextSmilesList = v.findViewById(R.id.text_smiles_info);
+        mSwipeLayout = v.findViewById(R.id.swipe_layout);
 
         // swipe code
         v.setOnTouchListener(new OnSwipeTouchListener(getContext()) {
@@ -65,11 +68,13 @@ public class SmilesInformationFragment extends Fragment {
             case 0:
                 getActivity().setTitle(R.string.title_sleep);
                 mIconSmilesInfo.setImageResource(R.drawable.photo_sleep);
+                mSwipeLayout.setVisibility(View.VISIBLE);
                 mTextSmilesList.setText(R.string.introduction_explanation_sleep);
                 break;
             case 1:
                 getActivity().setTitle(R.string.title_movement);
                 mIconSmilesInfo.setImageResource(R.drawable.photo_movement);
+                mSwipeLayout.setVisibility(View.GONE);
                 mTextSmilesList.setText(R.string.introduction_explanation_movement);
                 break;
             case 2:

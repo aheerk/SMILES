@@ -62,6 +62,7 @@ public class InformationListFragment extends Fragment {
         mInfoRecyclerView.setAdapter(mInfoRecyclerViewAdapter);
         mInfoRecyclerView.setHasFixedSize(true);
 
+
 // temp
         mButtonNewUserTest = v.findViewById(R.id.button_new_user_test);
         mButtonNewUserTest.setOnClickListener(new View.OnClickListener() {
@@ -81,6 +82,7 @@ public class InformationListFragment extends Fragment {
         });
 
         getActivity().setTitle(R.string.title_information);
+        mButtonNewUserTest.setVisibility(View.GONE);
 
         return v;
     }

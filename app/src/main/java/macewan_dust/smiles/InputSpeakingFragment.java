@@ -110,6 +110,11 @@ public class InputSpeakingFragment extends Fragment {
                                                    @Override
                                                    public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                                                        mScrollView.smoothScrollTo(0, mScrollView.getMaxScrollAmount());
+//                                                       if (mShareCheck.isChecked()){
+//                                                           mShareCheck.setHighlightColor(getResources().getColor(R.color.colorBalanced));
+//                                                       } else {
+//                                                           mShareCheck.setBackgroundColor(getResources().getColor(R.color.colorUnder));
+//                                                       }
                                                    }
                                                }
         );
@@ -118,6 +123,11 @@ public class InputSpeakingFragment extends Fragment {
                                                    @Override
                                                    public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                                                        mScrollView.smoothScrollTo(0, mScrollView.getMaxScrollAmount());
+//                                                       if (mSocialMediaCheck.isChecked()){
+//                                                           mSocialMediaCheck.setBackground(getResources().getDrawable(R.drawable.ic_box_over));
+//                                                       } else {
+//                                                           //mSocialMediaCheck.setBackgroundColor(getResources().getColor(R.color.colorBalanced));
+//                                                       }
                                                    }
                                                }
         );

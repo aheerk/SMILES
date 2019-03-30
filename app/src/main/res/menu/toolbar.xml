@@ -10,7 +10,7 @@
 
     <item
         android:id="@+id/overflow_information"
-        android:title="Information"
+        android:title="@string/title_information"
         app:showAsAction="never" />
     <item
         android:id="@+id/overflow_settings"

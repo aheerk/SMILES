@@ -36,7 +36,11 @@ public class WebLab {
         }
     }
 
-
+    /**
+     * returns the complete list of web items
+     * @param context
+     * @return
+     */
     public LinkedList<WebItem> getWebList(Context context) {
         return mWebItems;
     }
@@ -50,14 +54,6 @@ public class WebLab {
         if (instance == null)
             instance = new WebLab(context);
         return instance;
-    }
-
-    /**
-     * This method returns a copy of the linked list of web items
-     * @return A Linked List of web items
-     */
-    private LinkedList<WebItem> retrieveList() {
-        return new LinkedList<WebItem>(mWebItems);
     }
 
     public WebItem getOneLink(int index){
