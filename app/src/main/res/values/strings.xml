@@ -150,47 +150,52 @@
     <!-- Doesn't work: http://creativityinhealthcare.com/2010/01/20/art-by-nurses-by-lynda-mcleod/ -->
     <string-array name="weblinks_array">
 
-        <!-- Link 1 -->
+        <!-- Link 0 - Included on Sleep Page -->
         <item>Normal Sleep</item>
         <item>Article</item>
         <item>https://css-scs.ca/resources/brochures/normal-sleep</item>
 
-        <!-- Link 2 -->
+        <!-- Link 1 -->
         <item>Self-Help Tips</item>
         <item>Article</item>
         <item>https://www.albertahealthservices.ca/news/Page13125.aspx</item>
 
-        <!-- Link 3 -->
+        <!-- Link 2 - Included on Movement Page -->
         <item>Physical Activity Tips for Adults</item>
         <item>Article</item>
         <item>https://www.canada.ca/en/public-health/services/publications/healthy-living/physical-activity-tips-adults-18-64-years.html</item>
 
-        <!-- Link 4 -->
+        <!-- Link 3 - Included on Movement Page -->
         <item>Progressive Muscle Relaxation</item>
         <item>Article</item>
         <item>https://myhealth.alberta.ca/health/pages/conditions.aspx?Hwid=ta4146</item>
 
-        <!-- Link 5 -->
+        <!-- Link 4 - Included on Movement Page -->
         <item>Progressive Muscle Relaxation Audio Track</item>
         <item>Media</item>
         <item>https://myhealth.alberta.ca/Alberta/Pages/Progressive-Muscle-Relaxation-Audio-Track.aspx</item>
 
-        <!-- Link 6 -->
+        <!-- Link 5 -->
         <item>Stress Relief &amp; Relaxation</item>
         <item>Article</item>
         <item>https://myhealth.alberta.ca/health/pages/conditions.aspx?Hwid=af1003spec</item>
 
-        <!-- Link 7 -->
+        <!-- Link 6 - Included on imagination Page -->
+        <item>Mindfulness Institute Site</item>
+        <item>Website</item>
+        <item>http://www.mindfulnessinstitute.ca/</item>
+
+        <!-- Link 7 - Included on imagination Page -->
         <item>Guided Meditation</item>
         <item>Media</item>
-        <item>http://mindfulnessforhealth.ca/mindfulness-for-health-meditations/</item>
+        <item>http://mindfulnessforhealth.ca/mindfulness-for-health-meditations</item>
 
-        <!-- Link 8 -->
+        <!-- Link 8 - Included on imagination Page  -->
         <item>Breathing Exercises</item>
         <item>Article</item>
         <item>https://myhealth.alberta.ca/health/pages/conditions.aspx?Hwid=ug1812</item>
 
-        <!-- Link 9 -->
+        <!-- Link 9 - Included on imagination Page -->
         <item>Ten Benefits of Expressing Your Creativity</item>
         <item>Article</item>
         <item>http://www.selfgrowth.com/articles/Morris4.html</item>
@@ -215,17 +220,17 @@
         <item>Article</item>
         <item>https://myhealth.alberta.ca/health/pages/conditions.aspx?hwid=abl0225&amp;#abl0226</item>
 
-        <!-- Link 14 -->
+        <!-- Link 14 - Included on laughter Page -->
         <item>Humor an Antidote for Stress</item>
         <item>Article</item>
         <item>http://pattywooten.com/images/HumorStressAntidote.pdf</item>
 
-        <!-- Link 15 -->
+        <!-- Link 15 - Included on eating Page -->
         <item>Canadian Food Guide</item>
         <item>Article</item>
         <item>https://food-guide.canada.ca/en/</item>
 
-        <!-- Link 16 -->
+        <!-- Link 16 - Included on speaking Page -->
         <item>Social Connections</item>
         <item>Article</item>
         <item>https://myhealth.alberta.ca/health/pages/conditions.aspx?Hwid=abl0295</item>
@@ -330,6 +335,8 @@
     <!-- Credit strings -->
     <string name="credit_photo_heading">Photos</string>
     <string name="credit_photo_body">Photographs were provided by Pexels</string>
+    <string name="credit_icon_heading">Icons</string>
+    <string name="credit_icon_body">Photographs were provided by Freepik</string>
 
     <!-- Daily challenge -->
     <string-array name="daily_challenge">

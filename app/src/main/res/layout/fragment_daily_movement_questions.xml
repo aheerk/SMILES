@@ -24,18 +24,22 @@
             <TextView
                 android:id="@+id/question_text_1"
                 style="@style/BodyText"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_weight="@dimen/question_single_weblink_weight"
                 android:text="@string/quest_movement_a"
                 tools:layout_editor_absoluteX="107dp"
                 tools:layout_editor_absoluteY="61dp" />
 
             <!-- Info Icon -->
             <ImageView
-                android:id="@+id/icon_info_1"
-                android:layout_width="match_parent"
+                android:id="@+id/icon_movement_weblink_1"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                app:srcCompat="@android:drawable/ic_menu_info_details" />
+                android:layout_gravity="center_vertical"
+                android:layout_weight="@dimen/single_weblink_weight"
+                android:cropToPadding="false"
+                app:srcCompat="@drawable/icon_external_link" />
 
         </LinearLayout>
 
@@ -92,12 +96,6 @@
                 tools:layout_editor_absoluteX="107dp"
                 tools:layout_editor_absoluteY="61dp" />
 
-            <!-- Info Icon -->
-            <ImageView
-                android:id="@+id/icon_info_2"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:srcCompat="@android:drawable/ic_menu_info_details" />
         </LinearLayout>
 
         <!-- Input Buttons -->
@@ -136,16 +134,32 @@
                 style="@style/BodyText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_weight="@dimen/question_double_weblink_weight"
                 android:text="@string/quest_movement_c"
                 tools:layout_editor_absoluteX="107dp"
                 tools:layout_editor_absoluteY="61dp" />
 
             <!-- Info Icon -->
             <ImageView
-                android:id="@+id/icon_info_3"
-                android:layout_width="match_parent"
+                android:id="@+id/icon_movement_weblink_2"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                app:srcCompat="@android:drawable/ic_menu_info_details" />
+                android:layout_gravity="center_vertical"
+                android:layout_weight="@dimen/double_weblink_weight"
+                android:paddingRight="@dimen/double_weblink_padding_right"
+                android:cropToPadding="false"
+                app:srcCompat="@drawable/icon_external_link" />
+
+            <!-- Info Icon -->
+            <ImageView
+                android:id="@+id/icon_movement_weblink_3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_weight="@dimen/double_weblink_weight"
+                android:cropToPadding="false"
+                app:srcCompat="@drawable/icon_external_link" />
+
         </LinearLayout>
 
         <!-- Input Buttons -->

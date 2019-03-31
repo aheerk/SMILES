@@ -22,6 +22,9 @@ public class InputEatingFragment extends Fragment {
     private static final String TAG = "InputEatingFragment";
     private static final int NO_SELECTION = 100000;
 
+    ImageView mWebLink1;
+    WebLab mWebLab;
+
     TextView mIcon1a;
     TextView mIcon1b;
     TextView mIcon1c;
@@ -80,6 +83,7 @@ public class InputEatingFragment extends Fragment {
         setRetainInstance(true); // prevents instance of the fragment from being destroyed on rotation.
         mScoreDate = new Date(this.getArguments().getLong(DailyListFragment.DAILY_DATE));
         mScoringLab = ScoringLab.get(getContext());
+        mWebLab = WebLab.getWebLab(getContext());
     }
 
     /**
@@ -95,6 +99,15 @@ public class InputEatingFragment extends Fragment {
     public View onCreateView(final LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
         View v = inflater.inflate(R.layout.fragment_daily_eating_questions, container, false);
+
+        mWebLink1 = v.findViewById(R.id.icon_eating_weblink_1);
+        mWebLink1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                MainActivity activity = (MainActivity) getActivity();
+                activity.openLink(mWebLab.getOneLink(15).getUri());
+            }
+        });
 
         mButton = v.findViewById(R.id.score_button);
 

@@ -15,7 +15,6 @@
         android:orientation="vertical">
 
         <!-- First Question -->
-
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -28,10 +27,19 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/quest_imagination_a"
+                android:layout_weight="@dimen/question_single_weblink_weight"
                 tools:layout_editor_absoluteX="107dp"
                 tools:layout_editor_absoluteY="61dp" />
 
             <!-- Info Icon -->
+            <ImageView
+                android:id="@+id/icon_imagination_weblink_1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_weight="@dimen/single_weblink_weight"
+                android:cropToPadding="false"
+                app:srcCompat="@drawable/icon_external_link" />
 
         </LinearLayout>
 
@@ -76,9 +84,30 @@
                 android:layout_height="wrap_content"
                 android:text="@string/quest_imagination_b"
                 tools:layout_editor_absoluteX="107dp"
+                android:layout_weight="@dimen/question_double_weblink_weight"
                 tools:layout_editor_absoluteY="61dp" />
 
             <!-- Info Icon -->
+            <ImageView
+                android:id="@+id/icon_imagination_weblink_2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_weight="@dimen/double_weblink_weight"
+                android:paddingRight="@dimen/double_weblink_padding_right"
+                android:cropToPadding="false"
+                app:srcCompat="@drawable/icon_external_link" />
+
+            <!-- Info Icon -->
+            <ImageView
+                android:id="@+id/icon_imagination_weblink_3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_weight="@dimen/double_weblink_weight"
+                android:cropToPadding="false"
+                app:srcCompat="@drawable/icon_external_link" />
+
         </LinearLayout>
 
         <!-- Input Buttons -->
@@ -122,15 +151,19 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/quest_imagination_c"
+                android:layout_weight="@dimen/question_single_weblink_weight"
                 tools:layout_editor_absoluteX="107dp"
                 tools:layout_editor_absoluteY="61dp" />
 
             <!-- Info Icon -->
             <ImageView
-                android:id="@+id/icon_info_3"
-                android:layout_width="match_parent"
+                android:id="@+id/icon_imagination_weblink_4"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                app:srcCompat="@android:drawable/ic_menu_info_details" />
+                android:layout_gravity="center_vertical"
+                android:layout_weight="@dimen/single_weblink_weight"
+                android:cropToPadding="false"
+                app:srcCompat="@drawable/icon_external_link" />
         </LinearLayout>
 
         <!-- Input Buttons -->

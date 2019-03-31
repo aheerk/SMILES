@@ -22,8 +22,10 @@ public class InputSpeakingFragment extends Fragment {
     private static final String TAG = "InputSpeakingFragment";
     private static final int NO_SELECTION = 100000;
 
-    // 5 Questions total
+    ImageView mWebLink1;
+    WebLab mWebLab;
 
+    // 5 Questions total
     TextView mIcon1a;
     TextView mIcon1b;
     TextView mIcon1c;
@@ -72,6 +74,7 @@ public class InputSpeakingFragment extends Fragment {
         setRetainInstance(true); // prevents instance of the fragment from being destroyed on rotation.
         mScoreDate = new Date(this.getArguments().getLong(DailyListFragment.DAILY_DATE));
         mScoringLab = ScoringLab.get(getContext());
+        mWebLab = WebLab.getWebLab(getContext());
     }
 
     /**
@@ -87,6 +90,15 @@ public class InputSpeakingFragment extends Fragment {
     public View onCreateView(final LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
         View v = inflater.inflate(R.layout.fragment_daily_speaking_questions, container, false);
+
+        mWebLink1 = v.findViewById(R.id.icon_speaking_weblink_1);
+        mWebLink1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                MainActivity activity = (MainActivity) getActivity();
+                activity.openLink(mWebLab.getOneLink(16).getUri());
+            }
+        });
 
         mScrollView = v.findViewById(R.id.speaking_scroll_view);
 

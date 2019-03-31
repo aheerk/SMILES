@@ -32,8 +32,14 @@ public class InputMovementFragment extends Fragment {
     TextView mIcon3c;
     TextView mIcon3d;
 
+    ImageView mWebLink1;
+    ImageView mWebLink2;
+    ImageView mWebLink3;
+
+    MainActivity mMainActivity;
+    WebLab mWebLab;
+
     Button mButton;
-  //  ImageView mIconFeedback;
     TextView mResults;
 
     int mQuestion_A_index;
@@ -69,6 +75,8 @@ public class InputMovementFragment extends Fragment {
         setRetainInstance(true); // prevents instance of the fragment from being destroyed on rotation.
         mScoreDate = new Date(this.getArguments().getLong(DailyListFragment.DAILY_DATE));
         mScoringLab = ScoringLab.get(getContext());
+        mWebLab = WebLab.getWebLab(getContext());
+        mMainActivity = (MainActivity) getActivity();
     }
 
     /**
@@ -84,6 +92,30 @@ public class InputMovementFragment extends Fragment {
 
         View v = inflater.inflate(R.layout.fragment_daily_movement_questions, container, false);
 
+        // Open weblink when someone clicks the link icon
+        mWebLink1 = v.findViewById(R.id.icon_movement_weblink_1);
+        mWebLink1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+               mMainActivity.openLink(mWebLab.getOneLink(2).getUri());
+            }
+        });
+
+        mWebLink2 = v.findViewById(R.id.icon_movement_weblink_2);
+        mWebLink2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mMainActivity.openLink(mWebLab.getOneLink(3).getUri());
+            }
+        });
+
+        mWebLink3 = v.findViewById(R.id.icon_movement_weblink_3);
+        mWebLink3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mMainActivity.openLink(mWebLab.getOneLink(4).getUri());
+            }
+        });
 
         mButton = v.findViewById(R.id.score_button);
 

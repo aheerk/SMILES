@@ -13,7 +13,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.Date;
-import java.util.UUID;
 
 public class InputSleepFragment extends Fragment {
 
@@ -28,6 +27,9 @@ public class InputSleepFragment extends Fragment {
     TextView mIcon2b;
     TextView mIcon2c;
     TextView mIcon2d;
+
+    ImageView mWeblink1;
+    WebLab mWebLab;
 
     Button mButton;
     TextView mResults;
@@ -64,6 +66,7 @@ public class InputSleepFragment extends Fragment {
         mScoreDate = new Date(this.getArguments().getLong(DailyListFragment.DAILY_DATE));
         Log.d(TAG, "date passed in is: " + Score.timelessDate(mScoreDate));
         mScoringLab = ScoringLab.get(getContext());
+        mWebLab = WebLab.getWebLab(getContext());
     }
 
     /**
@@ -245,9 +248,20 @@ public class InputSleepFragment extends Fragment {
         mResults = v.findViewById(R.id.text_score); // note this object is invisible
         mResults.setVisibility(View.VISIBLE);
 
+        // Open weblink when someone clicks the link icon
+        mWeblink1 = v.findViewById(R.id.icon_sleep_weblink_1);
+        mWeblink1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                MainActivity activity = (MainActivity) getActivity();
+                activity.openLink(mWebLab.getOneLink(0).getUri());
+            }
+        });
+
         setButtonsFromDatabase();
         return v;
     }
+
 
     /**
      * if there is saved raw data for this date, sets the selected buttons to match

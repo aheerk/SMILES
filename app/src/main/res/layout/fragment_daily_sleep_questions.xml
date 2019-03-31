@@ -27,10 +27,11 @@
 
         <!-- Info Icon -->
         <ImageView
-            android:id="@+id/icon_info_1"
-            android:layout_width="match_parent"
+            android:id="@+id/icon_sleep_weblink_1"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:srcCompat="@android:drawable/ic_menu_info_details" />
+            android:layout_gravity="center_vertical"
+            app:srcCompat="@drawable/icon_external_link" />
     </LinearLayout>
 
     <!-- Input Buttons -->
