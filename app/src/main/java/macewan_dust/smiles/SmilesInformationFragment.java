@@ -81,21 +81,25 @@ public class SmilesInformationFragment extends Fragment {
                 getActivity().setTitle(R.string.title_imagination);
                 mIconSmilesInfo.setImageResource(R.drawable.photo_imagination);
                 mTextSmilesList.setText(R.string.introduction_explanation_imagination);
+                mSwipeLayout.setVisibility(View.GONE);
                 break;
             case 3:
                 getActivity().setTitle(R.string.title_laughter);
                 mIconSmilesInfo.setImageResource(R.drawable.photo_laughter);
                 mTextSmilesList.setText(R.string.introduction_explanation_laughter);
+                mSwipeLayout.setVisibility(View.GONE);
                 break;
             case 4:
                 getActivity().setTitle(R.string.title_eating);
                 mIconSmilesInfo.setImageResource(R.drawable.photo_eating);
                 mTextSmilesList.setText(R.string.introduction_explanation_eating);
+                mSwipeLayout.setVisibility(View.GONE);
                 break;
             case 5:
                 getActivity().setTitle(R.string.title_speaking);
                 mIconSmilesInfo.setImageResource(R.drawable.photo_speaking);
                 mTextSmilesList.setText(R.string.introduction_explanation_speaking);
+                mSwipeLayout.setVisibility(View.GONE);
                 break;
             default:
                 Log.d("TAG", "error");
