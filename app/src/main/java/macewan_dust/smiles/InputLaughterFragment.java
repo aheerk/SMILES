@@ -12,7 +12,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 import java.util.Date;
-import java.util.UUID;
 
 public class InputLaughterFragment extends Fragment {
 
@@ -26,6 +25,9 @@ public class InputLaughterFragment extends Fragment {
     TextView mIcon5;
     Button mButton;
     TextView mResults;
+
+    ImageView mWebLink1;
+    WebLab mWebLab;
 
     int mQuestion_A_value;  // 1-5
 
@@ -58,6 +60,7 @@ public class InputLaughterFragment extends Fragment {
         setRetainInstance(true); // prevents instance of the fragment from being destroyed on rotation.
         mScoreDate = new Date(this.getArguments().getLong(DailyListFragment.DAILY_DATE));
         mScoringLab = ScoringLab.get(getContext());
+        mWebLab = WebLab.getWebLab(getContext());
     }
 
     /**
@@ -74,7 +77,14 @@ public class InputLaughterFragment extends Fragment {
 
         View v = inflater.inflate(R.layout.fragment_daily_laughter_questions, container, false);
 
-    //    getActivity().setTitle(R.string.title_quest_laughter);
+        mWebLink1 = v.findViewById(R.id.icon_laughter_weblink_1);
+        mWebLink1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                MainActivity activity = (MainActivity) getActivity();
+                activity.openLink(mWebLab.getOneLink(14).getUri());
+            }
+        });
 
         mButton = v.findViewById(R.id.score_button);
 

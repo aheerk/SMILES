@@ -200,6 +200,17 @@ public class MainActivity extends SingleFragmentActivity implements BottomNaviga
         return loadFragment(fragment);
     }
 
+    /**
+     * openLink opens the provided link in a web browser
+     * Note: This method was placed here to avoid duplicated code in areas
+     * that use web links
+     * @param uri
+     */
+    public void openLink(String uri) {
+        Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(uri));
+        startActivity(browserIntent);
+    }
+
     /*--- IMPORT & EXPORT -----------------------------------------------------------------------*/
     /**
      * createFile launches an intent that asks the user where to store a new file. The results

@@ -31,8 +31,13 @@ public class InputImaginationFragment extends Fragment {
     TextView mIcon3b;
     TextView mIcon3c;
 
+    ImageView mWebLink1;
+    ImageView mWebLink2;
+    ImageView mWebLink3;
+    ImageView mWebLink4;
+    WebLab mWebLab;
+
     Button mButton;
- //   ImageView mIconFeedback;
     TextView mResults;
 
     int mQuestion_A_index;
@@ -45,6 +50,7 @@ public class InputImaginationFragment extends Fragment {
     Date mScoreDate;
     ScoringLab mScoringLab;
     Raw mRaw;
+    MainActivity mMainActivity;
 
 
     /**
@@ -66,6 +72,8 @@ public class InputImaginationFragment extends Fragment {
         setRetainInstance(true); // prevents instance of the fragment from being destroyed on rotation.
         mScoreDate = new Date(this.getArguments().getLong(DailyListFragment.DAILY_DATE));
         mScoringLab = ScoringLab.get(getContext());
+        mWebLab = WebLab.getWebLab(getContext());
+        mMainActivity = (MainActivity) getActivity();
     }
 
     /**
@@ -81,8 +89,37 @@ public class InputImaginationFragment extends Fragment {
 
         View v = inflater.inflate(R.layout.fragment_daily_imagination_questions, container, false);
 
-   //     getActivity().setTitle(R.string.title_quest_imagination);
+        mWebLink1 = v.findViewById(R.id.icon_imagination_weblink_1);
+        mWebLink1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mMainActivity.openLink(mWebLab.getOneLink(6).getUri());
+            }
+        });
 
+        mWebLink2 = v.findViewById(R.id.icon_imagination_weblink_2);
+        mWebLink2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mMainActivity.openLink(mWebLab.getOneLink(7).getUri());
+            }
+        });
+
+        mWebLink3 = v.findViewById(R.id.icon_imagination_weblink_3);
+        mWebLink3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mMainActivity.openLink(mWebLab.getOneLink(8).getUri());
+            }
+        });
+
+        mWebLink4 = v.findViewById(R.id.icon_imagination_weblink_4);
+        mWebLink4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mMainActivity.openLink(mWebLab.getOneLink(9).getUri());
+            }
+        });
 
         mButton = v.findViewById(R.id.score_button);
 

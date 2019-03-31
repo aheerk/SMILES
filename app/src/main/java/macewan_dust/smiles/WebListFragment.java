@@ -95,9 +95,8 @@ public class WebListFragment extends Fragment {
 
                 // Open the link of the selected item
                 int position = getAdapterPosition();
-                String uri = mWebListData.get(position).getUri();
-                Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(uri));
-                startActivity(browserIntent);
+                MainActivity activity = (MainActivity) getActivity();
+                activity.openLink(mWebListData.get(position).getUri());
             }
         }
 
