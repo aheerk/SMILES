@@ -36,7 +36,6 @@
                 android:layout_gravity="center_vertical|left"
                 android:layout_marginLeft="2dp"
                 android:layout_marginTop="2dp"
-                android:layout_marginRight="12dp"
                 android:layout_marginBottom="2dp"
                 android:layout_weight="1"
                 android:text="" />
@@ -59,7 +58,7 @@
                     android:text="S"
                     android:textAlignment="center"
                     android:textColor="@color/colorPrimaryDark"
-                    android:textSize="18sp" />
+                    android:textSize="18dp" />
 
                 <TextView
                     android:id="@+id/graph_weekly_score_M"
@@ -68,7 +67,7 @@
                     android:text="M"
                     android:textAlignment="center"
                     android:textColor="@color/colorPrimaryDark"
-                    android:textSize="18sp" />
+                    android:textSize="18dp" />
 
                 <TextView
                     android:id="@+id/graph_weekly_score_I"
@@ -77,7 +76,7 @@
                     android:text="I"
                     android:textAlignment="center"
                     android:textColor="@color/colorPrimaryDark"
-                    android:textSize="18sp" />
+                    android:textSize="18dp" />
 
                 <TextView
                     android:id="@+id/graph_weekly_score_L"
@@ -86,7 +85,7 @@
                     android:text="L"
                     android:textAlignment="center"
                     android:textColor="@color/colorPrimaryDark"
-                    android:textSize="18sp" />
+                    android:textSize="18dp" />
 
                 <TextView
                     android:id="@+id/graph_weekly_score_E"
@@ -95,7 +94,7 @@
                     android:text="E"
                     android:textAlignment="center"
                     android:textColor="@color/colorPrimaryDark"
-                    android:textSize="18sp" />
+                    android:textSize="18dp" />
 
                 <TextView
                     android:id="@+id/graph_weekly_score_S2"
@@ -104,7 +103,7 @@
                     android:text="S"
                     android:textAlignment="center"
                     android:textColor="@color/colorPrimaryDark"
-                    android:textSize="18sp" />
+                    android:textSize="18dp" />
             </LinearLayout>
         </LinearLayout>
 
