@@ -1,11 +1,14 @@
 package macewan_dust.smiles;
 
 import android.Manifest;
+import android.app.ActionBar;
 import android.app.Activity;
 import android.app.Dialog;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -18,6 +21,7 @@ import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.Window;
 import android.widget.Toast;
 
 
@@ -73,6 +77,13 @@ public class MainActivity extends SingleFragmentActivity implements BottomNaviga
                 finish();
             }
         });*/
+
+        // Referenced https://stackoverflow.com/questions/11930587/change-action-bar-color-in-android
+        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            Window window = getWindow();
+            window.setStatusBarColor(getResources().getColor(R.color.colorPrimaryDark));
+        }
+
 
         minBackstack = 0;
     }
