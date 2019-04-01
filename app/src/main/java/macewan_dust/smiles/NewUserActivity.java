@@ -1,9 +1,11 @@
 package macewan_dust.smiles;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
+import android.support.v4.content.IntentCompat;
 import android.support.v7.app.AppCompatActivity;
 
 /**
@@ -48,6 +50,15 @@ public class NewUserActivity extends AppCompatActivity  {
                     .add(R.id.fragment_new_user_container, tempFrag)
                     .commit();
         }
+    }
+
+    /**
+     * disabled on back to prevent skipping the introduction
+     */
+    @Override
+    public void onBackPressed() {
+        finishAffinity(); // finishes all activities
+            //finish();
     }
 
 }
