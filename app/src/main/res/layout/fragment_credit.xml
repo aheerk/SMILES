@@ -33,6 +33,28 @@
         style="@style/BodyText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/credit_icon_body" />
+        android:text="@string/credit_icon_body1" />
+
+    <TextView
+        android:id="@+id/textView6"
+        style="@style/BodyText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/credit_icon_body2" />
+
+    <TextView
+        android:id="@+id/textView7"
+        style="@style/BodyText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/credit_icon_body3" />
+
+    <TextView
+        android:id="@+id/textView8"
+        style="@style/BodyText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/credit_icon_body4" />
+
 
 </LinearLayout>

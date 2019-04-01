@@ -50,7 +50,7 @@ public class IntroductionFragment extends Fragment {
         v.setOnTouchListener(new OnSwipeTouchListener(getContext()) {
             @Override
             public void onSwipeLeft() {
-                if (i<4){
+                if (i<5){
                     i++;
                 }
                 updateScreen();
@@ -100,6 +100,11 @@ public class IntroductionFragment extends Fragment {
                 mTitle.setText(R.string.introduction_title_goals);
                 mImageView.setImageResource(R.drawable.photo_goals);
                 mBodyText.setText(R.string.introduction_explanation_goals);
+                break;
+            case 5:
+                mTitle.setText(R.string.introduction_title_goals);
+                mBodyText.setText(R.string.introduction_explanation_goals);
+                mImageView.setImageResource(R.drawable.photo_goals);
                 break;
         }
     }
