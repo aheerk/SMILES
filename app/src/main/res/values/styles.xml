@@ -1,12 +1,8 @@
 <resources>
 
-
     <style name="AppBar" parent="ThemeOverlay.AppCompat.Dark.ActionBar">
         <!-- Customize your theme here. -->
-
         <item name="android:textColor">@color/colorWhite</item>
-
-
     </style>
 
     <!-- Base application theme. -->
@@ -16,6 +12,11 @@
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+    <!-- Source: https://www.bignerdranch.com/blog/splash-screens-the-right-way/ -->
+    <style name="SplashTheme" parent="Theme.AppCompat.NoActionBar">
+        <item name="android:windowBackground">@drawable/background_splash</item>
     </style>
 
     <style name="BodyText" parent="TextAppearance.AppCompat">
