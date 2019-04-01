@@ -53,6 +53,7 @@ public class InputEatingFragment extends Fragment {
     int mGraAmount;
 
     TextView mResults;
+    TextView mFeedback;
 
     ScrollView mScrollView;
 
@@ -137,6 +138,9 @@ public class InputEatingFragment extends Fragment {
         mVegAmount = 0;
         mProAmount = 0;;
         mGraAmount = 0;
+
+        mFeedback = v.findViewById(R.id.text_eating_feedback);
+
 
         mIcon1a.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -321,6 +325,12 @@ public class InputEatingFragment extends Fragment {
                     }
                     Log.d(TAG, "raw object: " + mRaw);
 
+                    if (score != ScoringAlgorithms.SCORE_BALANCED){
+                        mFeedback.setVisibility(View.VISIBLE);
+                    } else {
+                        mFeedback.setVisibility(View.INVISIBLE);
+
+                    }
 
                     mResults.setText(getString(R.string.quest_results, getString(scoreStringID)));
                     exitOnLastScore();

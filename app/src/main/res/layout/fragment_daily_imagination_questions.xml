@@ -214,6 +214,14 @@
             android:text=""
             android:visibility="invisible" />
 
+        <TextView
+            android:id="@+id/text_imagination_feedback"
+            style="@style/BodyText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/daily_imagination_feedback"
+            android:visibility="invisible" />
+
 
     </LinearLayout>
 

@@ -33,6 +33,7 @@ public class InputSleepFragment extends Fragment {
 
     Button mButton;
     TextView mResults;
+    TextView mFeedback;
 
     int mQuestion_A_index;
     int mQuestion_B_index;
@@ -98,6 +99,8 @@ public class InputSleepFragment extends Fragment {
 
         mQuestion_A_index = NO_SELECTION;
         mQuestion_B_index = NO_SELECTION;
+
+        mFeedback = v.findViewById(R.id.text_sleep_feedback);
 
         mIcon1a.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -238,6 +241,12 @@ public class InputSleepFragment extends Fragment {
                         mScoringLab.addRaw(mRaw);
                     }
                     Log.d(TAG, "raw object: " + mRaw);
+
+                    if (score != ScoringAlgorithms.SCORE_BALANCED){
+                        mFeedback.setVisibility(View.VISIBLE);
+                    } else {
+                        mFeedback.setVisibility(View.INVISIBLE);
+                    }
 
                     mResults.setText(getString(R.string.quest_results, getString(scoreStringID)));
                     exitOnLastScore();

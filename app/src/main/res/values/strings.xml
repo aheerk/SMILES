@@ -21,12 +21,9 @@
     <string name="daily_challenge">Daily Challenge</string>
     <string name="title_color_legend">Score and Color</string>
     <string name="title_settings">Settings</string>
-
     <string name="daily_web_title">Daily Weblink</string>
-
-
-
     <string name="title_credits">Credits</string>
+
     <string name="subtitle_credits">Special thanks</string>
 
     <string name="button_start_daily">Daily Questions</string>
@@ -85,6 +82,13 @@
 
     <string name="quest_results">Your score is %s!</string>
     <string name="quest_button">Score</string>
+
+    <string name="daily_sleep_feedback">To achieve a balanced score, sleep for 6–9 hours and reduce potential interruptions.</string>
+    <string name="daily_movement_feedback">To achieve a balanced score, practice vigorous aerobic exercise for 10–45 minutes, do bone and muscle strengthening activities, and practice relaxation techniques for 10–45 minutes.</string>
+    <string name="daily_imagination_feedback">To achieve a balanced score, practicing mindfulness, meditation, and imagination for 10–30 minutes each.</string>
+    <string name="daily_laughter_feedback">To achieve a balanced score, laugh more.</string>
+    <string name="daily_eating_feedback">To achieve a balanced score, eat 50% fruits and vegetables, 25% whole grain foods, 25% protein foods, avoid too much sodium, free sugar, and saturated fat, and make water your beverage of choice.</string>
+    <string name="daily_speaking_feedback">To achieve a balanced score, speak often, ask for help when needed, share your thoughts, socialize face to face, and avoid negativity.</string>
 
     <string name="score_high">over</string>
     <string name="score_low">under</string>

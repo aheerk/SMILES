@@ -40,8 +40,8 @@ public class InputSpeakingFragment extends Fragment {
     // Score Button
     Button mButton;
 
-    // ImageView mIconFeedback;
     TextView mResults;
+    TextView mFeedback;
 
     int mQuestion_A_index;
 
@@ -116,6 +116,8 @@ public class InputSpeakingFragment extends Fragment {
         mSocialBalanceCheck = v.findViewById(R.id.social_balance_checkbox);
 
         mQuestion_A_index = NO_SELECTION;
+
+        mFeedback = v.findViewById(R.id.text_speaking_feedback);
 
 
         mShareCheck.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
@@ -278,6 +280,13 @@ public class InputSpeakingFragment extends Fragment {
 
                     mResults.setText(getString(R.string.quest_results, getString(scoreStringID)));
                     exitOnLastScore();
+
+                    if (score != ScoringAlgorithms.SCORE_BALANCED){
+                        mFeedback.setVisibility(View.VISIBLE);
+                    } else {
+                        mFeedback.setVisibility(View.INVISIBLE);
+
+                    }
                 }
                 mScrollView.smoothScrollTo(0, mScrollView.getMaxScrollAmount());
             }

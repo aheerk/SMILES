@@ -234,6 +234,14 @@
             android:layout_height="wrap_content"
             android:text=""
             android:visibility="invisible" />
+        <!-- Score Display -->
+        <TextView
+            android:id="@+id/text_speaking_feedback"
+            style="@style/BodyText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/daily_speaking_feedback"
+            android:visibility="invisible" />
 
 
     </LinearLayout>

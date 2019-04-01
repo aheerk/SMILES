@@ -41,6 +41,7 @@ public class InputMovementFragment extends Fragment {
 
     Button mButton;
     TextView mResults;
+    TextView mFeedback;
 
     int mQuestion_A_index;
     // The Question B index is an integer and not a boolean because we need a way to indicate
@@ -136,7 +137,9 @@ public class InputMovementFragment extends Fragment {
         mQuestion_B_index = NO_SELECTION;
         mQuestion_C_index = NO_SELECTION;
 
-   //     mIconFeedback = v.findViewById(R.id.icon_feedback);
+        mFeedback = v.findViewById(R.id.text_movement_feedback);
+
+        //     mIconFeedback = v.findViewById(R.id.icon_feedback);
 
         // QUESTION 1 Listeners
         mIcon1a.setOnClickListener(new View.OnClickListener() {
@@ -307,6 +310,12 @@ public class InputMovementFragment extends Fragment {
                         mScoringLab.addRaw(mRaw);
                     }
                     Log.d(TAG, "raw object: " + mRaw);
+
+                    if (score != ScoringAlgorithms.SCORE_BALANCED){
+                        mFeedback.setVisibility(View.VISIBLE);
+                    } else {
+                        mFeedback.setVisibility(View.INVISIBLE);
+                    }
 
                     mResults.setText(getString(R.string.quest_results, getString(scoreStringID)));
                     exitOnLastScore();

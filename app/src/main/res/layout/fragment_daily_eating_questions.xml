@@ -269,6 +269,14 @@
             android:text=""
             android:visibility="invisible" />
 
+        <TextView
+            android:id="@+id/text_eating_feedback"
+            style="@style/BodyText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/daily_eating_feedback"
+            android:visibility="invisible" />
+
 
     </LinearLayout>
 

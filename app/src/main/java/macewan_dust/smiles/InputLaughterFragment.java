@@ -25,6 +25,7 @@ public class InputLaughterFragment extends Fragment {
     TextView mIcon5;
     Button mButton;
     TextView mResults;
+    TextView mFeedback;
 
     ImageView mWebLink1;
     WebLab mWebLab;
@@ -95,6 +96,8 @@ public class InputLaughterFragment extends Fragment {
         mIcon5 = v.findViewById(R.id.icon_1e);
 
         mQuestion_A_value = NO_SELECTION;
+
+        mFeedback = v.findViewById(R.id.text_laughter_feedback);
 
         mIcon1.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -206,6 +209,12 @@ public class InputLaughterFragment extends Fragment {
                         mScoringLab.addRaw(mRaw);
                     }
                     Log.d(TAG, "raw object: " + mRaw);
+
+                    if (score != ScoringAlgorithms.SCORE_BALANCED){
+                        mFeedback.setVisibility(View.VISIBLE);
+                    } else {
+                        mFeedback.setVisibility(View.INVISIBLE);
+                    }
 
                     mResults.setText(getString(R.string.quest_results, getString(scoreStringID)));
                     exitOnLastScore();

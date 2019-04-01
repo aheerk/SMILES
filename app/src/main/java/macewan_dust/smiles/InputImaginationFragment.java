@@ -39,6 +39,7 @@ public class InputImaginationFragment extends Fragment {
 
     Button mButton;
     TextView mResults;
+    TextView mFeedback;
 
     int mQuestion_A_index;
     int mQuestion_B_index;
@@ -139,7 +140,10 @@ public class InputImaginationFragment extends Fragment {
         mQuestion_B_index = NO_SELECTION;
         mQuestion_C_index = NO_SELECTION;
 
-   //     mIconFeedback = v.findViewById(R.id.icon_feedback);
+        mFeedback = v.findViewById(R.id.text_imagination_feedback);
+
+
+        //     mIconFeedback = v.findViewById(R.id.icon_feedback);
 
         // QUESTION 1 Listeners
         mIcon1a.setOnClickListener(new View.OnClickListener() {
@@ -297,6 +301,12 @@ public class InputImaginationFragment extends Fragment {
                     }
                     Log.d(TAG, "raw object: " + mRaw);
 
+                    if (score != ScoringAlgorithms.SCORE_BALANCED){
+                        mFeedback.setVisibility(View.VISIBLE);
+                    } else {
+                        mFeedback.setVisibility(View.INVISIBLE);
+
+                    }
                     mResults.setText(getString(R.string.quest_results, getString(scoreStringID)));
                     exitOnLastScore();
 

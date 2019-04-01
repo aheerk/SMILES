@@ -32,7 +32,7 @@ public class DailyPagerFragment extends Fragment {
     ImageView mDot5;
     ImageView mDot6;
 
-    public static final int EXIT_TIMER_MILLISECONDS = 3000;
+    public static final int EXIT_TIMER_MILLISECONDS = 7000;
 
     int mStartPage;
     Date mScoreDate;
