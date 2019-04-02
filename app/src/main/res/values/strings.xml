@@ -73,7 +73,7 @@
     <string name="quest_eating_g">You make water your beverage of choice</string>
 
     <string name="quest_speaking_a">Rate the amount of time spent socializing in person or over social media from a low of 1 to a high of 5.</string>
-    <string name="quest_speaking_b">You seeked assistance and/or debriefed when needed.</string>
+    <string name="quest_speaking_b">You sought assistance and/or debriefed when needed.</string>
     <string name="quest_speaking_c">Nothing prevented your ability to share your thoughts.</string>
     <string name="quest_speaking_d">You engaged in more social media than face-to-face socializing.</string>
     <string name="quest_speaking_e">Your socializing negatively impacted your health or took away from your life balance.</string>
@@ -85,7 +85,7 @@
 
     <string name="daily_sleep_feedback">To achieve a balanced score, sleep for 6–9 hours and reduce potential interruptions.</string>
     <string name="daily_movement_feedback">To achieve a balanced score, practice vigorous aerobic exercise for 10–45 minutes, do bone and muscle strengthening activities, and practice relaxation techniques for 10–45 minutes.</string>
-    <string name="daily_imagination_feedback">To achieve a balanced score, practicing mindfulness, meditation, and imagination for 10–30 minutes each.</string>
+    <string name="daily_imagination_feedback">To achieve a balanced score, spend 10–30 minutes in each category.</string>
     <string name="daily_laughter_feedback">To achieve a balanced score, laugh more.</string>
     <string name="daily_eating_feedback">To achieve a balanced score, eat 50% fruits and vegetables, 25% whole grain foods, 25% protein foods, avoid too much sodium, free sugar, and saturated fat, and make water your beverage of choice.</string>
     <string name="daily_speaking_feedback">To achieve a balanced score, speak often, ask for help when needed, share your thoughts, socialize face to face, and avoid negativity.</string>
@@ -327,11 +327,11 @@
     <string name="percent_25">25%</string>
     <string name="percent_50">50%</string>
 
-    <string name="string_4_5">4-5</string>
-    <string name="string_6_9">6-9</string>
-    <string name="string_10_30">10-30</string>
-    <string name="string_10_20">10-20</string>
-    <string name="string_20_45">20-45</string>
+    <string name="string_4_5">4–5</string>
+    <string name="string_6_9">6–9</string>
+    <string name="string_10_30">10–30</string>
+    <string name="string_10_20">10–20</string>
+    <string name="string_20_45">20–45</string>
     <string name="yes">Yes</string>
     <string name="no">No</string>
 
@@ -348,7 +348,7 @@
 
     <!-- Daily challenge -->
     <string-array name="daily_challenge">
-        <item>Go to sleep with time for 6-9 hours of sleep</item>
+        <item>Go to sleep with time for 6–9 hours of sleep</item>
         <item>Play a sport today</item>
         <item>Do bone and muscle strengthening exercises</item>
         <item>Take time to relax</item>
@@ -371,6 +371,7 @@
     <string name="show_challenge">Show daily challenge</string>
     <string name="show_web">Show daily web link</string>
     <string name="reset_permissions">Reset permissions</string>
+    <string name="delete_all">Delete all data</string>
 
 
 </resources>

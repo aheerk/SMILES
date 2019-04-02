@@ -59,6 +59,18 @@ public class ScoringLab {
         Collections.sort(mScoresList, new SortScoresByDate());
     }
 
+    /**
+     * deletes all raw and score data from scoring lab and the database
+     */
+    public void deleteAll() {
+        while (!mRawList.isEmpty()){
+            deleteRaw(mRawList.get(0));
+        }
+        while (!mScoresList.isEmpty()){
+            deleteScore(mScoresList.get(0));
+        }
+    }
+
     class SortScoresByDate implements Comparator<Score> {
 
         @Override

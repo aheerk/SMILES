@@ -28,7 +28,7 @@ public class InformationListFragment extends Fragment {
     private List<InformationItem> mInfoData = new LinkedList<>();
 
     // temp
-    private Button mButtonNewUserTest;
+    //private Button mButtonNewUserTest;
 
 
     @Override
@@ -64,8 +64,8 @@ public class InformationListFragment extends Fragment {
 
 
 // temp
-        mButtonNewUserTest = v.findViewById(R.id.button_new_user_test);
-        mButtonNewUserTest.setOnClickListener(new View.OnClickListener() {
+        //mButtonNewUserTest = v.findViewById(R.id.button_new_user_test);
+       /* mButtonNewUserTest.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v){
@@ -80,9 +80,10 @@ public class InformationListFragment extends Fragment {
                 //  replaceFragment(fragment);
             }
         });
+        */
 
         getActivity().setTitle(R.string.title_information);
-        mButtonNewUserTest.setVisibility(View.GONE);
+       // mButtonNewUserTest.setVisibility(View.GONE);
 
         return v;
     }

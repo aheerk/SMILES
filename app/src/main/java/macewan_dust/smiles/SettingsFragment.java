@@ -27,6 +27,7 @@ public class SettingsFragment extends Fragment {
 
     Switch mDailyChallengeSwitch;
     Switch mDailyWebSwitch;
+    Button mDeleteAllButton;
 
 
 
@@ -67,6 +68,16 @@ public class SettingsFragment extends Fragment {
                 Log.d(TAG, "switched");
                 mEditor.putBoolean(PREF_DAILY_WEB, mDailyWebSwitch.isChecked());
                 mEditor.commit();
+
+            }
+        });
+
+        mDeleteAllButton = v.findViewById(R.id.delete_all_button);
+        mDeleteAllButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+            ScoringLab.get(getContext()).deleteAll();
+
 
             }
         });
