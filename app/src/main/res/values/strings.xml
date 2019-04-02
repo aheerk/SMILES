@@ -341,7 +341,7 @@
     <string name="credit_photo_body">Photographs were provided by Pexels</string>
     <string name="credit_icon_heading">Icons</string>
     <string name="credit_icon_body1">Sleep icon made by Good Ware from www.flaticon.com</string>
-    <string name="credit_icon_body2">Movement, imagination, and eating icons made by Freepik from www.flaticon.com</string>
+    <string name="credit_icon_body2">Launcher icon, Movement, imagination, and eating icons made by Freepik from www.flaticon.com</string>
     <string name="credit_icon_body3">Laughter icon made by Smashicons from www.flaticon.com</string>
     <string name="credit_icon_body4">Speaking icon made by Icomoon from www.flaticon.com</string>
 
@@ -373,5 +373,9 @@
     <string name="reset_permissions">Reset permissions</string>
     <string name="delete_all">Delete all data</string>
 
+    <!-- Delete Confirmation -->
+    <string name="delete_confirm_message">Are you sure you want to delete all of your SMILES data? This action cannot be undone.</string>
+    <string name="delete_confirm_title">Delete SMILES data</string>
+    <string name="delete_success">Your SMILES data was successfully deleted.</string>
 
 </resources>

@@ -23,7 +23,7 @@ public class RationaleDialog extends DialogFragment {
     private static final String TAG = "DialogFragment";
 
     /**
-     * RationaleDialog returns a new instance of a Rationale Dialog with its
+     * newInstance returns a new instance of a Rationale Dialog with its
      * arguments set to the provided arguments.
      * @param permissionCode
      * @param requestCode
