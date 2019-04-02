@@ -3,6 +3,7 @@ package macewan_dust.smiles;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v4.app.DialogFragment;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -76,9 +77,10 @@ public class SettingsFragment extends Fragment {
         mDeleteAllButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-            ScoringLab.get(getContext()).deleteAll();
-
-
+                // Display a delete confirmation dialog. If the user hits yes on the dialog
+                // they will delete their data.
+                DialogFragment dialog = DeleteConfirmDialog.newInstance();
+                dialog.show(getActivity().getSupportFragmentManager(), "dialog");
             }
         });
 
