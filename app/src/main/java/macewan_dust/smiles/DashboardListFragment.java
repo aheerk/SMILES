@@ -69,6 +69,8 @@ public class DashboardListFragment extends Fragment {
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         mContext = getContext();
+        setRetainInstance(true); // prevents instance of the fragment from being destroyed on rotation.
+
 
         ((AppCompatActivity) getActivity()).getSupportActionBar().setDisplayHomeAsUpEnabled(false);
         mScoringLab = ScoringLab.get(getContext());
