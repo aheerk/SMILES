@@ -10,7 +10,6 @@
 
     <dimen name="single_weblink_weight">1</dimen>
     <dimen name="double_weblink_weight">1</dimen>
-    <dimen name="double_weblink_padding_right">10dp</dimen>
     <dimen name="question_single_weblink_weight">8</dimen>
     <dimen name="question_double_weblink_weight">8</dimen>
 

@@ -147,7 +147,6 @@
                 android:layout_gravity="center_vertical"
                 android:layout_weight="@dimen/double_weblink_weight"
                 android:cropToPadding="false"
-                android:paddingRight="@dimen/double_weblink_padding_right"
                 app:srcCompat="@drawable/icon_external_link" />
 
             <!-- Info Icon -->
