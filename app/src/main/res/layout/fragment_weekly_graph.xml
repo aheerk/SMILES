@@ -58,7 +58,7 @@
                     android:text="S"
                     android:textAlignment="center"
                     android:textColor="@color/colorPrimaryDark"
-                    android:textSize="18dp" />
+                    android:textSize="14dp" />
 
                 <TextView
                     android:id="@+id/graph_weekly_score_M"
@@ -67,7 +67,7 @@
                     android:text="M"
                     android:textAlignment="center"
                     android:textColor="@color/colorPrimaryDark"
-                    android:textSize="18dp" />
+                    android:textSize="14dp" />
 
                 <TextView
                     android:id="@+id/graph_weekly_score_I"
@@ -76,7 +76,7 @@
                     android:text="I"
                     android:textAlignment="center"
                     android:textColor="@color/colorPrimaryDark"
-                    android:textSize="18dp" />
+                    android:textSize="14dp" />
 
                 <TextView
                     android:id="@+id/graph_weekly_score_L"
@@ -85,7 +85,7 @@
                     android:text="L"
                     android:textAlignment="center"
                     android:textColor="@color/colorPrimaryDark"
-                    android:textSize="18dp" />
+                    android:textSize="14dp" />
 
                 <TextView
                     android:id="@+id/graph_weekly_score_E"
@@ -94,7 +94,7 @@
                     android:text="E"
                     android:textAlignment="center"
                     android:textColor="@color/colorPrimaryDark"
-                    android:textSize="18dp" />
+                    android:textSize="14dp" />
 
                 <TextView
                     android:id="@+id/graph_weekly_score_S2"
@@ -103,7 +103,7 @@
                     android:text="S"
                     android:textAlignment="center"
                     android:textColor="@color/colorPrimaryDark"
-                    android:textSize="18dp" />
+                    android:textSize="14dp" />
             </LinearLayout>
         </LinearLayout>
 

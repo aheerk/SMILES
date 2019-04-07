@@ -78,7 +78,7 @@
     </style>
 
     <style name="ButtonText">
-        <item name="android:textSize">22dp</item> <!-- dp to ensure buttons fit in borders -->
+        <item name="android:textSize">18dp</item> <!-- dp to ensure buttons fit in borders -->
         <item name="android:textColor">@color/colorTitleText</item>
         <item name="android:layout_margin">8dp</item>
         <item name="android:textAlignment">center</item>

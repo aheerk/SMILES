@@ -9,63 +9,62 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="8dp"
         android:gravity="top|center"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:padding="8dp">
 
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-
-        <!-- First Question -->
-        <TextView
-            android:id="@+id/question_text_1"
-            style="@style/BodyText"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/quest_eating_a"
-            android:layout_weight="@dimen/question_single_weblink_weight"
-            tools:layout_editor_absoluteX="107dp"
-            tools:layout_editor_absoluteY="61dp" />
+            android:orientation="horizontal">
 
-        <!-- Info Icon -->
-        <ImageView
-            android:id="@+id/icon_eating_weblink_1"
+            <!-- First Question -->
+            <TextView
+                android:id="@+id/question_text_1"
+                style="@style/BodyText"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="8"
+                android:text="@string/quest_eating_a"
+                tools:layout_editor_absoluteX="107dp"
+                tools:layout_editor_absoluteY="61dp" />
+
+            <!-- Info Icon -->
+            <ImageView
+                android:id="@+id/icon_eating_weblink_1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_weight="1"
+                android:cropToPadding="false"
+                app:srcCompat="@drawable/icon_external_link" />
+        </LinearLayout>
+
+        <!-- Input Buttons -->
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
-            android:cropToPadding="false"
-            android:layout_weight="@dimen/single_weblink_weight"
-            app:srcCompat="@drawable/icon_external_link" />
-    </LinearLayout>
-
-    <!-- Input Buttons -->
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
+            android:orientation="horizontal">
 
             <TextView
-                android:text="@string/less"
                 android:id="@+id/icon_1a"
                 style="@style/ButtonText"
                 android:background="@drawable/ic_wide_border"
-                />
+                android:text="@string/less" />
 
             <TextView
-                android:text="@string/percent_50"
                 android:id="@+id/icon_1b"
                 style="@style/ButtonText"
-                android:background="@drawable/ic_wide_border"/>
+                android:background="@drawable/ic_wide_border"
+                android:text="@string/percent_50" />
 
             <TextView
-                android:text="@string/more"
                 android:id="@+id/icon_1c"
                 style="@style/ButtonText"
-                android:background="@drawable/ic_wide_border"/>
+                android:background="@drawable/ic_wide_border"
+                android:text="@string/more" />
 
-    </LinearLayout>
+        </LinearLayout>
 
         <TextView
             android:id="@+id/question_text_2"
@@ -83,22 +82,22 @@
             android:orientation="horizontal">
 
             <TextView
-                android:text="@string/less"
                 android:id="@+id/icon_2a"
                 style="@style/ButtonText"
-                android:background="@drawable/ic_wide_border"/>
+                android:background="@drawable/ic_wide_border"
+                android:text="@string/less" />
 
             <TextView
-                android:text="@string/percent_25"
                 android:id="@+id/icon_2b"
                 style="@style/ButtonText"
-                android:background="@drawable/ic_wide_border"/>
+                android:background="@drawable/ic_wide_border"
+                android:text="@string/percent_25" />
 
             <TextView
-                android:text="@string/more"
                 android:id="@+id/icon_2c"
                 style="@style/ButtonText"
-                android:background="@drawable/ic_wide_border"/>
+                android:background="@drawable/ic_wide_border"
+                android:text="@string/more" />
 
         </LinearLayout>
 
@@ -118,40 +117,40 @@
             android:orientation="horizontal">
 
             <TextView
-                android:text="@string/less"
                 android:id="@+id/icon_3a"
                 style="@style/ButtonText"
-                android:background="@drawable/ic_wide_border" />
+                android:background="@drawable/ic_wide_border"
+                android:text="@string/less" />
 
             <TextView
-                android:text="@string/percent_25"
                 android:id="@+id/icon_3b"
                 style="@style/ButtonText"
-                android:background="@drawable/ic_wide_border" />
+                android:background="@drawable/ic_wide_border"
+                android:text="@string/percent_25" />
 
             <TextView
-                android:text="@string/more"
                 android:id="@+id/icon_3c"
                 style="@style/ButtonText"
-                android:background="@drawable/ic_wide_border" />
+                android:background="@drawable/ic_wide_border"
+                android:text="@string/more" />
 
         </LinearLayout>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center_vertical"
-        android:orientation="horizontal">
-
-        <TextView
-            android:id="@+id/question_eating_check"
-            style="@style/BodyText"
-            android:layout_width="0dp"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="8"
-            android:text="@string/quest_check_app" />
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
 
-    </LinearLayout>
+            <TextView
+                android:id="@+id/question_eating_check"
+                style="@style/BodyText"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="8"
+                android:text="@string/quest_check_app" />
+
+        </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"

@@ -11,20 +11,20 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:gravity="top|center"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:padding="8dp">
 
         <!-- First Question -->
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
             android:orientation="horizontal">
 
             <!-- Question -->
             <TextView
                 android:id="@+id/question_text_1"
                 style="@style/BodyText"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="@dimen/question_single_weblink_weight"
                 android:text="@string/quest_movement_a"
@@ -34,7 +34,7 @@
             <!-- Info Icon -->
             <ImageView
                 android:id="@+id/icon_movement_weblink_1"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
                 android:layout_weight="@dimen/single_weblink_weight"
@@ -54,7 +54,7 @@
                 style="@style/ButtonText"
                 android:layout_weight="1"
                 android:background="@drawable/ic_wide_border"
-                android:text="@string/less"/>
+                android:text="@string/less" />
 
 
             <TextView
@@ -62,21 +62,21 @@
                 style="@style/ButtonText"
                 android:layout_weight="1"
                 android:background="@drawable/ic_wide_border"
-                android:text="@string/string_10_20"/>
+                android:text="@string/string_10_20" />
 
             <TextView
                 android:id="@+id/icon_1c"
                 style="@style/ButtonText"
                 android:layout_weight="1"
                 android:background="@drawable/ic_wide_border"
-                android:text="@string/string_20_45"/>
+                android:text="@string/string_20_45" />
 
             <TextView
                 android:id="@+id/icon_1d"
                 style="@style/ButtonText"
                 android:layout_weight="1"
                 android:background="@drawable/ic_wide_border"
-                android:text="@string/more"/>
+                android:text="@string/more" />
 
         </LinearLayout>
 
@@ -109,7 +109,7 @@
                 style="@style/ButtonText"
                 android:layout_weight="1"
                 android:background="@drawable/ic_wide_border"
-                android:text="@string/yes"/>
+                android:text="@string/yes" />
 
 
             <TextView
@@ -117,7 +117,7 @@
                 style="@style/ButtonText"
                 android:layout_weight="1"
                 android:background="@drawable/ic_wide_border"
-                android:text="@string/no"/>
+                android:text="@string/no" />
 
 
         </LinearLayout>
@@ -132,7 +132,7 @@
             <TextView
                 android:id="@+id/question_text_3"
                 style="@style/BodyText"
-                android:layout_width="match_parent"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="@dimen/question_double_weblink_weight"
                 android:text="@string/quest_movement_c"
@@ -142,18 +142,18 @@
             <!-- Info Icon -->
             <ImageView
                 android:id="@+id/icon_movement_weblink_2"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
                 android:layout_weight="@dimen/double_weblink_weight"
-                android:paddingRight="@dimen/double_weblink_padding_right"
                 android:cropToPadding="false"
+                android:paddingRight="@dimen/double_weblink_padding_right"
                 app:srcCompat="@drawable/icon_external_link" />
 
             <!-- Info Icon -->
             <ImageView
                 android:id="@+id/icon_movement_weblink_3"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
                 android:layout_weight="@dimen/double_weblink_weight"
@@ -173,28 +173,28 @@
                 style="@style/ButtonText"
                 android:layout_weight="1"
                 android:background="@drawable/ic_wide_border"
-                android:text="@string/less"/>
+                android:text="@string/less" />
 
             <TextView
                 android:id="@+id/icon_3b"
                 style="@style/ButtonText"
                 android:layout_weight="1"
                 android:background="@drawable/ic_wide_border"
-                android:text="@string/string_10_20"/>
+                android:text="@string/string_10_20" />
 
             <TextView
                 android:id="@+id/icon_3c"
                 style="@style/ButtonText"
                 android:layout_weight="1"
                 android:background="@drawable/ic_wide_border"
-                android:text="@string/string_20_45"/>
+                android:text="@string/string_20_45" />
 
             <TextView
                 android:id="@+id/icon_3d"
                 style="@style/ButtonText"
                 android:layout_weight="1"
                 android:background="@drawable/ic_wide_border"
-                android:text="@string/more"/>
+                android:text="@string/more" />
 
         </LinearLayout>
 

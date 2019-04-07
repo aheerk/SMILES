@@ -10,9 +10,9 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="8dp"
         android:gravity="center"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:padding="8dp">
 
         <!-- First Question -->
         <LinearLayout
@@ -44,7 +44,7 @@
                 style="@style/ButtonText"
                 android:layout_weight="1"
                 android:background="@drawable/ic_single_border"
-                android:text="@string/string_1"/>
+                android:text="@string/string_1" />
 
 
             <TextView
@@ -52,28 +52,28 @@
                 style="@style/ButtonText"
                 android:layout_weight="1"
                 android:background="@drawable/ic_single_border"
-                android:text="@string/string_2"/>
+                android:text="@string/string_2" />
 
             <TextView
                 android:id="@+id/icon_1c"
                 style="@style/ButtonText"
                 android:layout_weight="1"
                 android:background="@drawable/ic_single_border"
-                android:text="@string/string_3"/>
+                android:text="@string/string_3" />
 
             <TextView
                 android:id="@+id/icon_1d"
                 style="@style/ButtonText"
                 android:layout_weight="1"
                 android:background="@drawable/ic_single_border"
-                android:text="@string/string_4"/>
+                android:text="@string/string_4" />
 
             <TextView
                 android:id="@+id/icon_1e"
                 style="@style/ButtonText"
                 android:layout_weight="1"
                 android:background="@drawable/ic_single_border"
-                android:text="@string/string_5"/>
+                android:text="@string/string_5" />
 
         </LinearLayout>
 
@@ -105,8 +105,6 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="@dimen/quest_padding"
-            android:layout_marginRight="@dimen/quest_padding"
             android:gravity="center_vertical"
             android:orientation="horizontal">
 
@@ -114,7 +112,7 @@
             <TextView
                 android:id="@+id/question_text_2"
                 style="@style/BodyText"
-                android:layout_width="330dp"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="8"
                 android:text="@string/quest_speaking_b"
@@ -123,7 +121,7 @@
 
             <CheckBox
                 android:id="@+id/assistance_checkBox"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1" />
 
@@ -132,8 +130,6 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="@dimen/quest_padding"
-            android:layout_marginRight="@dimen/quest_padding"
             android:gravity="center_vertical"
             android:orientation="horizontal">
 
@@ -141,7 +137,7 @@
             <TextView
                 android:id="@+id/question_text_3"
                 style="@style/BodyText"
-                android:layout_width="330dp"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="8"
                 android:text="@string/quest_speaking_c"
@@ -150,7 +146,7 @@
 
             <CheckBox
                 android:id="@+id/share_checkbox"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1" />
 
@@ -160,8 +156,6 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="@dimen/quest_padding"
-            android:layout_marginRight="@dimen/quest_padding"
             android:gravity="center_vertical"
             android:orientation="horizontal">
 
@@ -169,7 +163,7 @@
             <TextView
                 android:id="@+id/question_text_4"
                 style="@style/BodyText"
-                android:layout_width="330dp"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="8"
                 android:text="@string/quest_speaking_d"
@@ -179,7 +173,7 @@
             <!-- Input Buttons -->
             <CheckBox
                 android:id="@+id/social_media_checkbox"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1" />
 
@@ -189,8 +183,6 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="@dimen/quest_padding"
-            android:layout_marginRight="@dimen/quest_padding"
             android:gravity="center_vertical"
             android:orientation="horizontal">
 
@@ -198,7 +190,7 @@
             <TextView
                 android:id="@+id/question_text_5"
                 style="@style/BodyText"
-                android:layout_width="330dp"
+                android:layout_width="0dp"
 
                 android:layout_height="wrap_content"
                 android:layout_weight="8"
@@ -208,7 +200,7 @@
 
             <CheckBox
                 android:id="@+id/social_balance_checkbox"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1" />
 

@@ -10,9 +10,9 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="8dp"
         android:gravity="top|center"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:padding="8dp">
 
         <!-- First Question -->
         <LinearLayout
@@ -24,17 +24,17 @@
             <TextView
                 android:id="@+id/question_text_1"
                 style="@style/BodyText"
-                android:layout_width="match_parent"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:text="@string/quest_imagination_a"
                 android:layout_weight="@dimen/question_single_weblink_weight"
+                android:text="@string/quest_imagination_a"
                 tools:layout_editor_absoluteX="107dp"
                 tools:layout_editor_absoluteY="61dp" />
 
             <!-- Info Icon -->
             <ImageView
                 android:id="@+id/icon_imagination_weblink_1"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
                 android:layout_weight="@dimen/single_weblink_weight"
@@ -53,20 +53,20 @@
                 android:id="@+id/icon_1a"
                 style="@style/ButtonText"
                 android:background="@drawable/ic_wide_border"
-                android:text="@string/less"/>
+                android:text="@string/less" />
 
 
             <TextView
                 android:id="@+id/icon_1b"
                 style="@style/ButtonText"
                 android:background="@drawable/ic_wide_border"
-                android:text="@string/string_10_30"/>
+                android:text="@string/string_10_30" />
 
             <TextView
                 android:id="@+id/icon_1c"
                 style="@style/ButtonText"
                 android:background="@drawable/ic_wide_border"
-                android:text="@string/more"/>
+                android:text="@string/more" />
 
         </LinearLayout>
 
@@ -80,28 +80,28 @@
             <TextView
                 android:id="@+id/question_text_2"
                 style="@style/BodyText"
-                android:layout_width="match_parent"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_weight="@dimen/question_double_weblink_weight"
                 android:text="@string/quest_imagination_b"
                 tools:layout_editor_absoluteX="107dp"
-                android:layout_weight="@dimen/question_double_weblink_weight"
                 tools:layout_editor_absoluteY="61dp" />
 
             <!-- Info Icon -->
             <ImageView
                 android:id="@+id/icon_imagination_weblink_2"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
                 android:layout_weight="@dimen/double_weblink_weight"
-                android:paddingRight="@dimen/double_weblink_padding_right"
                 android:cropToPadding="false"
+                android:paddingRight="@dimen/double_weblink_padding_right"
                 app:srcCompat="@drawable/icon_external_link" />
 
             <!-- Info Icon -->
             <ImageView
                 android:id="@+id/icon_imagination_weblink_3"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
                 android:layout_weight="@dimen/double_weblink_weight"
@@ -120,20 +120,20 @@
                 android:id="@+id/icon_2a"
                 style="@style/ButtonText"
                 android:background="@drawable/ic_wide_border"
-                android:text="@string/less"/>
+                android:text="@string/less" />
 
 
             <TextView
                 android:id="@+id/icon_2b"
                 style="@style/ButtonText"
                 android:background="@drawable/ic_wide_border"
-                android:text="@string/string_10_30"/>
+                android:text="@string/string_10_30" />
 
             <TextView
                 android:id="@+id/icon_2c"
                 style="@style/ButtonText"
                 android:background="@drawable/ic_wide_border"
-                android:text="@string/more"/>
+                android:text="@string/more" />
 
 
         </LinearLayout>
@@ -148,17 +148,17 @@
             <TextView
                 android:id="@+id/question_text_3"
                 style="@style/BodyText"
-                android:layout_width="match_parent"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:text="@string/quest_imagination_c"
                 android:layout_weight="@dimen/question_single_weblink_weight"
+                android:text="@string/quest_imagination_c"
                 tools:layout_editor_absoluteX="107dp"
                 tools:layout_editor_absoluteY="61dp" />
 
             <!-- Info Icon -->
             <ImageView
                 android:id="@+id/icon_imagination_weblink_4"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
                 android:layout_weight="@dimen/single_weblink_weight"
@@ -176,20 +176,20 @@
                 android:id="@+id/icon_3a"
                 style="@style/ButtonText"
                 android:background="@drawable/ic_wide_border"
-                android:text="@string/less"/>
+                android:text="@string/less" />
 
 
             <TextView
                 android:id="@+id/icon_3b"
                 style="@style/ButtonText"
                 android:background="@drawable/ic_wide_border"
-                android:text="@string/string_10_30"/>
+                android:text="@string/string_10_30" />
 
             <TextView
                 android:id="@+id/icon_3c"
                 style="@style/ButtonText"
                 android:background="@drawable/ic_wide_border"
-                android:text="@string/more"/>
+                android:text="@string/more" />
 
 
         </LinearLayout>

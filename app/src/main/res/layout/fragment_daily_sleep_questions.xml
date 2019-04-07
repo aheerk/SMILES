@@ -1,18 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:gravity="top"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:padding="8dp">
 
     <!-- First Question -->
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
         android:orientation="horizontal">
 
         <!-- Question -->
@@ -88,10 +87,10 @@
         <!-- Question -->
         <TextView
             android:id="@+id/question_text_2"
+            style="@style/BodyText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/quest_sleep_b"
-            style="@style/BodyText"
             tools:layout_editor_absoluteX="107dp"
             tools:layout_editor_absoluteY="61dp" />
 
