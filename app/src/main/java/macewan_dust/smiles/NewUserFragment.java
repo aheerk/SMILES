@@ -105,41 +105,57 @@ public class NewUserFragment extends Fragment {
                 mTitle.setText(R.string.introduction_title_stress1);
                 mImageView.setImageResource(R.drawable.photo_intro3);
                 mBodyText.setText(R.string.introduction_explanation_stress2);
+                mSubtitle.setVisibility(View.GONE);
+                mSwipeLayout.setVisibility(View.GONE);
                 break;
             case 3:
                 mTitle.setText(R.string.introduction_title_balance);
                 mImageView.setImageResource(R.drawable.photo_intro4);
                 mBodyText.setText(R.string.introduction_explanation_balance);
+                mSubtitle.setVisibility(View.GONE);
+                mSwipeLayout.setVisibility(View.GONE);
                 break;
             case 4:
                 mTitle.setText(R.string.title_sleep);
                 mImageView.setImageResource(R.drawable.photo_sleep);
                 mBodyText.setText(R.string.introduction_explanation_sleep);
+                mSubtitle.setVisibility(View.GONE);
+                mSwipeLayout.setVisibility(View.GONE);
                 break;
             case 5:
                 mTitle.setText(R.string.title_movement);
                 mImageView.setImageResource(R.drawable.photo_movement);
                 mBodyText.setText(R.string.introduction_explanation_movement);
+                mSubtitle.setVisibility(View.GONE);
+                mSwipeLayout.setVisibility(View.GONE);
                 break;
             case 6:
                 mTitle.setText(R.string.title_imagination);
                 mImageView.setImageResource(R.drawable.photo_imagination);
                 mBodyText.setText(R.string.introduction_explanation_imagination);
+                mSubtitle.setVisibility(View.GONE);
+                mSwipeLayout.setVisibility(View.GONE);
                 break;
             case 7:
                 mTitle.setText(R.string.title_laughter);
                 mImageView.setImageResource(R.drawable.photo_laughter);
                 mBodyText.setText(R.string.introduction_explanation_laughter);
+                mSubtitle.setVisibility(View.GONE);
+                mSwipeLayout.setVisibility(View.GONE);
                 break;
             case 8:
                 mTitle.setText(R.string.title_eating);
                 mImageView.setImageResource(R.drawable.photo_eating);
                 mBodyText.setText(R.string.introduction_explanation_eating);
+                mSubtitle.setVisibility(View.GONE);
+                mSwipeLayout.setVisibility(View.GONE);
                 break;
             case 9:
                 mTitle.setText(R.string.title_speaking);
                 mImageView.setImageResource(R.drawable.photo_speaking);
                 mBodyText.setText(R.string.introduction_explanation_speaking);
+                mSubtitle.setVisibility(View.GONE);
+                mSwipeLayout.setVisibility(View.GONE);
                 break;
             case 10:
                 mTitle.setText(R.string.introduction_title_goals);
