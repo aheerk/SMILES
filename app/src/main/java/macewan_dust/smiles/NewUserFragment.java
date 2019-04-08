@@ -166,9 +166,7 @@ public class NewUserFragment extends Fragment {
                 break;
             case LAST_INDEX:
                 replaceFragment(new NewUserColorLegendFragment());
-            default:
-                mTitle.setText(R.string.no_data);
-                mBodyText.setText(R.string.no_data);
+
         }
     }
 
