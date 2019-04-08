@@ -387,9 +387,7 @@ public class MainActivity extends SingleFragmentActivity implements BottomNaviga
             case REQUEST_WRITE_EXTERNAL_STORAGE: {
                 if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                     Log.d(TAG, "Write External Storage permission granted.");
-
                     performOperation();
-
                 } else {
                     Log.d(TAG, "No permissions given to write external storage.");
                     Toast.makeText(getApplicationContext(), R.string.csv_no_write_permission, Toast.LENGTH_SHORT).show();
@@ -399,6 +397,7 @@ public class MainActivity extends SingleFragmentActivity implements BottomNaviga
             case REQUEST_READ_EXTERNAL_STORAGE: {
                 if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                     Log.d(TAG, "Read External Storage permission granted.");
+                    performOperation();
                 } else {
                     Log.d(TAG, "No permissions given to read external storage.");
                     Toast.makeText(getApplicationContext(), R.string.csv_no_read_permission, Toast.LENGTH_SHORT).show();
