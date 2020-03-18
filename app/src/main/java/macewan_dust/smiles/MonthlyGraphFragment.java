@@ -128,9 +128,19 @@ public class MonthlyGraphFragment extends Fragment {
         calendar.setTime(mGraphDate);
         // moves the month up by one in the calendar to have the correct starting month
         calendar.roll(Calendar.MONTH, true);
+
         mYear = calendar.get(Calendar.YEAR);
-        monthIndex = calendar.get(Calendar.MONTH) - 1; // month - 1 to make an index
-        //   Log.d(TAG, "Month Index: " + monthIndex);
+
+        monthIndex = calendar.get(Calendar.MONTH); // month - 1 to make an index
+        if (monthIndex == 0) {
+            monthIndex = 11;
+        } else {
+            monthIndex--;
+        }
+
+//        Log.d(TAG, "Calander month: " + calendar.get(Calendar.MONTH));
+//
+//        Log.d(TAG, "Month Index: " + monthIndex);
 
         //   mGraph = v.findViewById(R.id.bar_graph);
         // mGraph.animateY(300);
@@ -195,7 +205,7 @@ public class MonthlyGraphFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 if (monthIndex > 0) {
-                    monthIndex = (monthIndex - 1) % 12;
+                    monthIndex--;
                 } else {
                     monthIndex = 11;
                     mYear--;
@@ -207,9 +217,11 @@ public class MonthlyGraphFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 if (monthIndex == 11) {
+                    monthIndex = 0;
                     mYear++;
+                } else {
+                    monthIndex ++;
                 }
-                monthIndex = (monthIndex + 1) % 12;
                 updateMonthlyGraph();
             }
         });
@@ -462,7 +474,7 @@ public class MonthlyGraphFragment extends Fragment {
                 }
             }
         }
-        Log.d(TAG, "Aggragate scores\nBalanced: " + mBalanced + "\nOver: " + mOver + "\nUnder: " + mUnder +
-                "\nUnbalanced: " + mUnbalanced);
+//        Log.d(TAG, "Aggragate scores\nBalanced: " + mBalanced + "\nOver: " + mOver + "\nUnder: " + mUnder +
+//                "\nUnbalanced: " + mUnbalanced);
     }
 }

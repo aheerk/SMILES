@@ -344,7 +344,8 @@
     <string name="credit_icon_body2">Launcher icon, Movement, imagination, and eating icons made by Freepik from www.flaticon.com</string>
     <string name="credit_icon_body3">Laughter icon made by Smashicons from www.flaticon.com</string>
     <string name="credit_icon_body4">Speaking icon made by Icomoon from www.flaticon.com</string>
-
+    <string name="credit_developers_heading">Developers</string>
+    <string name="credit_developers_body">Komal Aheer, Terry Youngman, and Wamaitha Gitaka</string>
 
     <!-- Daily challenge -->
     <string-array name="daily_challenge">
