@@ -2,6 +2,8 @@ package macewan_dust.smiles;
 
 import android.util.Log;
 
+import java.util.ArrayList;
+
 /**
  * ScoringAlgorithms class includes all methods for converting user input values into score values
  *
@@ -214,6 +216,55 @@ public class ScoringAlgorithms {
         } else {
   //          Log.e(TAG, "Error: score for laughterInput: " + laughterInput + "  has no rule");
             return SCORE_ERROR;
+        }
+    }
+
+//    TODO(TY) delete scoreLaughter once it is replaced.
+
+
+
+    /**
+     * Scores the life satisfaction questions. Note the the only possible scores are
+     * balanced and under. All questions are scored on a 4 point scale. 4 is balanced and
+     * any other input is under.
+     *
+     * @param partA an array giving the answers for part A questions
+     * @param partB an array giving the answers for part B questions
+     * @param partC an array giving the answers for part C questions
+     * @return an integer score
+     */
+    public static int scoreLife(int[] partA, int[] partB, int[] partC) {
+
+        int scoreA = score_part(partA, 4);
+        int scoreB = score_part(partB, 4);
+        int scoreC = score_part(partC, 4);
+
+
+        if (scoreA == SCORE_BALANCED && scoreB == SCORE_BALANCED && scoreC == SCORE_BALANCED) {
+            return SCORE_BALANCED;
+        } else {
+            return SCORE_UNDER;
+        }
+    }
+
+    /**
+     * Scores an array of integer answers compared. For example, scoring `part` of [1,3,4,2]
+     * with `balance` of 4 will return SCORE_UNDER because the average of the scores is less than 4.
+     * @param part an array of integers
+     * @param balanced the value required to be balenced
+     * @return an integer score
+     */
+    private static int score_part(int[] part, int balanced) {
+        int sum = 0;
+
+        for (int i = 0; i < part.length; i++) {
+            sum = sum + part[i];
+        }
+
+        if (sum >= part.length * balanced) {
+            return SCORE_BALANCED;
+        } else {
+            return SCORE_UNDER;
         }
     }
 
