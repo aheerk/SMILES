@@ -17,7 +17,7 @@ public class SMILES_DatabaseSchema {
             public static final String SLEEP = "sleep";
             public static final String MOVEMENT = "movement";
             public static final String IMAGINATION = "imagination";
-            public static final String LAUGHTER = "laughter";
+            public static final String LIFE_SATISFACTION = "life_satisfaction";
             public static final String EATING = "eating";
             public static final String SPEAKING = "speaking";
         }
@@ -47,7 +47,17 @@ public class SMILES_DatabaseSchema {
             public static final String IMAGINATION2 = "imagination2_meditation";
             public static final String IMAGINATION3 = "imagination3_creativity";
 
-            public static final String LAUGHTER1 = "laughter1_rating";
+            public static final String LIFE_SATISFACTION1 = "life_satisfaction_1_rating";
+            public static final String LIFE_SATISFACTION2 = "life_satisfaction_2_rating";
+            public static final String LIFE_SATISFACTION3 = "life_satisfaction_3_rating";
+            public static final String LIFE_SATISFACTION4 = "life_satisfaction_4_rating";
+            public static final String LIFE_SATISFACTION5 = "life_satisfaction_5_rating";
+            public static final String LIFE_SATISFACTION6 = "life_satisfaction_6_rating";
+            public static final String LIFE_SATISFACTION7 = "life_satisfaction_7_rating";
+            public static final String LIFE_SATISFACTION8 = "life_satisfaction_8_rating";
+            public static final String LIFE_SATISFACTION9 = "life_satisfaction_9_rating";
+            public static final String LIFE_SATISFACTION10 = "life_satisfaction_10_rating";
+            public static final String LIFE_SATISFACTION11 = "life_satisfaction_11_rating";
 
             public static final String EATING1 = "eating1_vegetables";
             public static final String EATING2 = "eating2_grains";

@@ -417,7 +417,7 @@ public class MonthlyGraphFragment extends Fragment {
                 }
             }
             if (mLaughterCheckbox.isChecked()) {
-                switch (s.getLaughterScore()) {
+                switch (s.getLifeSatisfactionScore()) {
                     case (ScoringAlgorithms.SCORE_BALANCED):
                         mBalanced++;
                         break;

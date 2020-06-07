@@ -12,7 +12,7 @@
     <string name="title_movement">Movement</string>
     <string name="title_sleep">Sleep</string>
     <string name="title_imagination">Imagination</string>
-    <string name="title_laughter">Laughter</string>
+    <string name="title_life_satisfaction">Life Satisfaction</string>
     <string name="title_eating">Eating</string>
     <string name="title_speaking">Speaking</string>
     <string name="title_introduction">Introduction</string>
@@ -103,7 +103,7 @@
     <string name="daily_sleep_feedback">To achieve a balanced score, sleep for 6–9 hours and reduce potential interruptions.</string>
     <string name="daily_movement_feedback">To achieve a balanced score, practice vigorous aerobic exercise for 10–45 minutes, do bone and muscle strengthening activities, and practice relaxation techniques for 10–45 minutes.</string>
     <string name="daily_imagination_feedback">To achieve a balanced score, spend 10–30 minutes in each category.</string>
-    <string name="daily_laughter_feedback">To achieve a balanced score, laugh more.</string>
+    <string name="daily_life_satisfaction_feedback">To achieve a balanced score, do well for each life question.</string>
     <string name="daily_eating_feedback">To achieve a balanced score, eat 50% fruits and vegetables, 25% whole grain foods, 25% protein foods, avoid too much sodium, free sugar, and saturated fat, and make water your beverage of choice.</string>
     <string name="daily_speaking_feedback">To achieve a balanced score, speak often, ask for help when needed, share your thoughts, socialize face to face, and avoid negativity.</string>
 

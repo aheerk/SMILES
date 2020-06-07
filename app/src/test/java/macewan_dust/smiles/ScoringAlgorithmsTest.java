@@ -156,6 +156,21 @@ public class ScoringAlgorithmsTest {
         assertEquals(ScoringAlgorithms.SCORE_ERROR, ScoringAlgorithms.scoreLaughter(0));
     }
 
+//    TODO(ty) remove scoreLaughter when it is replaced
+
+    @Test
+    public void scoreLife() {
+        int[] balanced5 = {3,3,3,3,3};
+        int[] balanced1 = {3};
+        int[] under5 = {1,2,3,2,0};
+        int[] under1 = {0};
+
+        assertEquals(ScoringAlgorithms.SCORE_BALANCED, ScoringAlgorithms.scoreLife(balanced5, balanced1, balanced5));
+        assertEquals(ScoringAlgorithms.SCORE_UNDER, ScoringAlgorithms.scoreLife(under5, balanced1, balanced5));
+        assertEquals(ScoringAlgorithms.SCORE_UNDER, ScoringAlgorithms.scoreLife(under5, under1, under5));
+        assertEquals(ScoringAlgorithms.SCORE_UNDER, ScoringAlgorithms.scoreLife(balanced5, balanced1, under5));
+    }
+
     @Test
     public void scoreEating() {
 

@@ -22,7 +22,17 @@ public class Raw implements Comparable {
     private int mImagination2;
     private int mImagination3;
 
-    private int mLaughter1;
+    private int mLifeSatisfaction1;
+    private int mLifeSatisfaction2;
+    private int mLifeSatisfaction3;
+    private int mLifeSatisfaction4;
+    private int mLifeSatisfaction5;
+    private int mLifeSatisfaction6;
+    private int mLifeSatisfaction7;
+    private int mLifeSatisfaction8;
+    private int mLifeSatisfaction9;
+    private int mLifeSatisfaction10;
+    private int mLifeSatisfaction11;
 
     private int mEating1;
     private int mEating2;
@@ -75,8 +85,18 @@ public class Raw implements Comparable {
         mImagination3 = q3;
     }
 
-    public void setLaughter(int q1) {
-        mLaughter1 = q1;
+    public void setLifeSatisfaction(int q1, int q2, int q3, int q4, int q5, int q6, int q7, int q8, int q9, int q10, int q11) {
+        mLifeSatisfaction1 = q1;
+        mLifeSatisfaction2 = q2;
+        mLifeSatisfaction3 = q3;
+        mLifeSatisfaction4 = q4;
+        mLifeSatisfaction5 = q5;
+        mLifeSatisfaction6 = q6;
+        mLifeSatisfaction7 = q7;
+        mLifeSatisfaction8 = q8;
+        mLifeSatisfaction9 = q9;
+        mLifeSatisfaction10 = q10;
+        mLifeSatisfaction11 = q11;
     }
 
     public void setEating(int q1, int q2, int q3, boolean q4, boolean q5, boolean q6, boolean q7) {
@@ -141,8 +161,38 @@ public class Raw implements Comparable {
         return mImagination3;
     }
 
-    public int getLaughter1() {
-        return mLaughter1;
+    public int getLifeSatisfaction1() {
+        return mLifeSatisfaction1;
+    }
+    public int getLifeSatisfaction2() {
+        return mLifeSatisfaction2;
+    }
+    public int getLifeSatisfaction3() {
+        return mLifeSatisfaction3;
+    }
+    public int getLifeSatisfaction4() {
+        return mLifeSatisfaction4;
+    }
+    public int getLifeSatisfaction5() {
+        return mLifeSatisfaction5;
+    }
+    public int getLifeSatisfaction6() {
+        return mLifeSatisfaction6;
+    }
+    public int getLifeSatisfaction7() {
+        return mLifeSatisfaction7;
+    }
+    public int getLifeSatisfaction8() {
+        return mLifeSatisfaction8;
+    }
+    public int getLifeSatisfaction9() {
+        return mLifeSatisfaction9;
+    }
+    public int getLifeSatisfaction10() {
+        return mLifeSatisfaction10;
+    }
+    public int getLifeSatisfaction11() {
+        return mLifeSatisfaction11;
     }
 
     public int getEating1() {
@@ -212,7 +262,27 @@ public class Raw implements Comparable {
         sb.append(",");
         sb.append(mImagination3);
         sb.append(",");
-        sb.append(mLaughter1);
+        sb.append(mLifeSatisfaction1);
+        sb.append(",");
+        sb.append(mLifeSatisfaction2);
+        sb.append(",");
+        sb.append(mLifeSatisfaction3);
+        sb.append(",");
+        sb.append(mLifeSatisfaction4);
+        sb.append(",");
+        sb.append(mLifeSatisfaction5);
+        sb.append(",");
+        sb.append(mLifeSatisfaction6);
+        sb.append(",");
+        sb.append(mLifeSatisfaction7);
+        sb.append(",");
+        sb.append(mLifeSatisfaction8);
+        sb.append(",");
+        sb.append(mLifeSatisfaction9);
+        sb.append(",");
+        sb.append(mLifeSatisfaction10);
+        sb.append(",");
+        sb.append(mLifeSatisfaction11);
         sb.append(",");
         sb.append(mEating1);
         sb.append(",");
@@ -253,7 +323,17 @@ public class Raw implements Comparable {
                 " mImagination1=" + mImagination1 +
                 ", mImagination2=" + mImagination2 +
                 ", mImagination3=" + mImagination3 + "\n" +
-                " mLaughter1=" + mLaughter1 + "\n" +
+                " mLifeSatisfaction1=" + mLifeSatisfaction1 + "\n" +
+                " mLifeSatisfaction2=" + mLifeSatisfaction2 + "\n" +
+                " mLifeSatisfaction3=" + mLifeSatisfaction3 + "\n" +
+                " mLifeSatisfaction4=" + mLifeSatisfaction4 + "\n" +
+                " mLifeSatisfaction5=" + mLifeSatisfaction5 + "\n" +
+                " mLifeSatisfaction6=" + mLifeSatisfaction6 + "\n" +
+                " mLifeSatisfaction7=" + mLifeSatisfaction7 + "\n" +
+                " mLifeSatisfaction8=" + mLifeSatisfaction8 + "\n" +
+                " mLifeSatisfaction9=" + mLifeSatisfaction9 + "\n" +
+                " mLifeSatisfaction10=" + mLifeSatisfaction10 + "\n" +
+                " mLifeSatisfaction11=" + mLifeSatisfaction11 + "\n" +
                 " mEating1=" + mEating1 +
                 ", mEating2=" + mEating2 +
                 ", mEating3=" + mEating3 +
