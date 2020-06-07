@@ -61,7 +61,24 @@
     <string name="quest_imagination_b">How many minutes did you engage in meditation today?</string>
     <string name="quest_imagination_c">How many minutes did you practice imagination or creativity today?</string>
 
-    <string name="quest_laughter_a">Rate your laughter out of 5:</string>
+    <string name="quest_laughter_a">Rate your laughter out of 5:</string> <!-- TODO: Remove this! -->
+
+    <!-- Life Satisfaction Questions -->
+    <string name="quest_rank">Rate how much you agree with the following statements:</string>
+    <!-- Part A - Modified OCEAN scale-->
+    <string name="quest_life_satisfaction_a">You openly shared ideas and thoughts.</string>
+    <string name="quest_life_satisfaction_b">You completed tasks and was organized.</string>
+    <string name="quest_life_satisfaction_c">You made effort and time to socialize with others.</string>
+    <string name="quest_life_satisfaction_d">You listened and supported others.</string>
+    <string name="quest_life_satisfaction_e">You were able to stay calm and relaxed today.</string>
+    <!-- Part B - Modified OCEAN scale -->
+    <string name="quest_life_satisfaction_f">You took time to be thankful and gracious for what you have.</string>
+    <!-- Part C - Modified The Satisfaction with Life Scale (SWLS) -->
+    <string name="quest_life_satisfaction_g">Your life today was ideal.</string>
+    <string name="quest_life_satisfaction_h">All that is involved in your life today is excellent.</string>
+    <string name="quest_life_satisfaction_i">You feel satisfied with my day.</string>
+    <string name="quest_life_satisfaction_j">You feel that I accomplished important things today.</string>
+    <string name="quest_life_satisfaction_k">You feel today was a success.</string>
 
     <!-- Eating Questions -->
     <string name="quest_eating_a">Select your percentage of vegetable &amp; fruit intake:</string>
@@ -314,7 +331,7 @@
 
     <string name="information_introduction_colors_title">Achieving Balance</string>
 
-
+    <!-- Responses -->
     <string name="string_0">0</string>
     <string name="string_1">1</string>
     <string name="string_2">2</string>
@@ -335,6 +352,9 @@
     <string name="yes">Yes</string>
     <string name="no">No</string>
 
+    <string name="agree">Agree</string>
+    <string name="neutral">Neutral</string>
+    <string name="disagree">Disagree</string>
 
     <!-- Credit strings -->
     <string name="credit_photo_heading">Photos</string>
