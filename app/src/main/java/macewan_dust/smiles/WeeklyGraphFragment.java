@@ -292,7 +292,7 @@ public class WeeklyGraphFragment extends Fragment {
             holder.mIconA.setImageDrawable(getResources().getDrawable(Score.getDotID(mAdapterData.get(position).getSleepScore())));
             holder.mIconB.setImageDrawable(getResources().getDrawable(Score.getDotID(mAdapterData.get(position).getMovementScore())));
             holder.mIconC.setImageDrawable(getResources().getDrawable(Score.getDotID(mAdapterData.get(position).getImaginationScore())));
-            holder.mIconD.setImageDrawable(getResources().getDrawable(Score.getDotID(mAdapterData.get(position).getLaughterScore())));
+            holder.mIconD.setImageDrawable(getResources().getDrawable(Score.getDotID(mAdapterData.get(position).getLifeSatisfactionScore())));
             holder.mIconE.setImageDrawable(getResources().getDrawable(Score.getDotID(mAdapterData.get(position).getEatingScore())));
             holder.mIconF.setImageDrawable(getResources().getDrawable(Score.getDotID(mAdapterData.get(position).getSpeakingScore())));
             holder.mTextDate.setText(mAdapterData.get(position).getDateString());

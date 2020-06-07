@@ -25,7 +25,7 @@ public class Score implements Comparable{
     private int mSleepScore;
     private int mMovementScore;
     private int mImaginationScore;
-    private int mLaughterScore;
+    private int mLifeSatisfactionScore;
     private int mEatingScore;
     private int mSpeakingScore;
 
@@ -39,7 +39,7 @@ public class Score implements Comparable{
         mSleepScore = SCORE_NO_DATA;
         mMovementScore = SCORE_NO_DATA;
         mImaginationScore = SCORE_NO_DATA;
-        mLaughterScore = SCORE_NO_DATA;
+        mLifeSatisfactionScore = SCORE_NO_DATA;
         mEatingScore = SCORE_NO_DATA;
         mSpeakingScore = SCORE_NO_DATA;
 
@@ -56,7 +56,7 @@ public class Score implements Comparable{
         mSleepScore = SCORE_NO_DATA;
         mMovementScore = SCORE_NO_DATA;
         mImaginationScore = SCORE_NO_DATA;
-        mLaughterScore = SCORE_NO_DATA;
+        mLifeSatisfactionScore = SCORE_NO_DATA;
         mEatingScore = SCORE_NO_DATA;
         mSpeakingScore = SCORE_NO_DATA;
 
@@ -74,7 +74,7 @@ public class Score implements Comparable{
         mSleepScore = SCORE_NO_DATA;
         mMovementScore = SCORE_NO_DATA;
         mImaginationScore = SCORE_NO_DATA;
-        mLaughterScore = SCORE_NO_DATA;
+        mLifeSatisfactionScore = SCORE_NO_DATA;
         mEatingScore = SCORE_NO_DATA;
         mSpeakingScore = SCORE_NO_DATA;
 
@@ -103,7 +103,7 @@ public class Score implements Comparable{
             return false;
         if (mImaginationScore == SCORE_NO_DATA)
             return false;
-        if (mLaughterScore == SCORE_NO_DATA)
+        if (mLifeSatisfactionScore == SCORE_NO_DATA)
             return false;
         if (mEatingScore == SCORE_NO_DATA)
             return false;
@@ -144,12 +144,12 @@ public class Score implements Comparable{
         this.mImaginationScore = imaginationScore;
     }
 
-    public int getLaughterScore() {
-        return mLaughterScore;
+    public int getLifeSatisfactionScore() {
+        return mLifeSatisfactionScore;
     }
 
-    public void setLaughterScore(int laughterScore) {
-        this.mLaughterScore = laughterScore;
+    public void setLifeSatisfactionScore(int lifeSatisfactionScore) {
+        this.mLifeSatisfactionScore = lifeSatisfactionScore;
     }
 
     public int getEatingScore() {
@@ -196,7 +196,7 @@ public class Score implements Comparable{
         sb.append("\n");
         sb.append("Imagination: " + mImaginationScore);
         sb.append("\n");
-        sb.append("Laughter: " + mLaughterScore);
+        sb.append("Life Satisfaction: " + mLifeSatisfactionScore);
         sb.append("\n");
         sb.append("Eating: " + mEatingScore);
         sb.append("\n");
@@ -222,7 +222,7 @@ public class Score implements Comparable{
         sb.append(",");
         sb.append(mImaginationScore);
         sb.append(",");
-        sb.append(mLaughterScore);
+        sb.append(mLifeSatisfactionScore);
         sb.append(",");
         sb.append(mEatingScore);
         sb.append(",");

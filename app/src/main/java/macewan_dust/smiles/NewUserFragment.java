@@ -137,7 +137,7 @@ public class NewUserFragment extends Fragment {
                 mSwipeLayout.setVisibility(View.GONE);
                 break;
             case 7:
-                mTitle.setText(R.string.title_laughter);
+                mTitle.setText(R.string.title_life_satisfaction);
                 mImageView.setImageResource(R.drawable.photo_laughter);
                 mBodyText.setText(R.string.introduction_explanation_laughter);
                 mSubtitle.setVisibility(View.GONE);

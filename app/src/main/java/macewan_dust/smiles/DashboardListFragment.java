@@ -335,7 +335,7 @@ public class DashboardListFragment extends Fragment {
             holder.mIconImagination.setBackground(getResources().getDrawable(
                     Score.getBackgroundID(mDashboardListData.get(position).getImaginationScore())));
             holder.mIconLaughter.setBackground(getResources().getDrawable(
-                    Score.getBackgroundID(mDashboardListData.get(position).getLaughterScore())));
+                    Score.getBackgroundID(mDashboardListData.get(position).getLifeSatisfactionScore())));
             holder.mIconEating.setBackground(getResources().getDrawable(
                     Score.getBackgroundID(mDashboardListData.get(position).getEatingScore())));
             holder.mIconSpeaking.setBackground(getResources().getDrawable(

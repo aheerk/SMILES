@@ -31,7 +31,7 @@ public class SMILES_DatabaseHelper extends SQLiteOpenHelper {
                 ScoreTable.Columns.SLEEP + ", " +
                 ScoreTable.Columns.MOVEMENT + ", " +
                 ScoreTable.Columns.IMAGINATION + ", " +
-                ScoreTable.Columns.LAUGHTER + ", " +
+                ScoreTable.Columns.LIFE_SATISFACTION + ", " +
                 ScoreTable.Columns.EATING + ", " +
                 ScoreTable.Columns.SPEAKING +
                 " )"
@@ -49,7 +49,17 @@ public class SMILES_DatabaseHelper extends SQLiteOpenHelper {
                 RawTable.Columns.IMAGINATION1 + ", " +
                 RawTable.Columns.IMAGINATION2 + ", " +
                 RawTable.Columns.IMAGINATION3 + ", " +
-                RawTable.Columns.LAUGHTER1 + ", " +
+                RawTable.Columns.LIFE_SATISFACTION1 + ", " +
+                RawTable.Columns.LIFE_SATISFACTION2 + ", " +
+                RawTable.Columns.LIFE_SATISFACTION3 + ", " +
+                RawTable.Columns.LIFE_SATISFACTION4 + ", " +
+                RawTable.Columns.LIFE_SATISFACTION5 + ", " +
+                RawTable.Columns.LIFE_SATISFACTION6 + ", " +
+                RawTable.Columns.LIFE_SATISFACTION7 + ", " +
+                RawTable.Columns.LIFE_SATISFACTION8 + ", " +
+                RawTable.Columns.LIFE_SATISFACTION9 + ", " +
+                RawTable.Columns.LIFE_SATISFACTION10 + ", " +
+                RawTable.Columns.LIFE_SATISFACTION11 + ", " +
                 RawTable.Columns.EATING1 + ", " +
                 RawTable.Columns.EATING2 + ", " +
                 RawTable.Columns.EATING3 + ", " +

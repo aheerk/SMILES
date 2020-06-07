@@ -58,6 +58,7 @@ public class CsvFileManager {
     /**
      * getFilename retrieves an appropriate filename for an exported
      * CSV file based on today's date
+     *
      * @return A string filename
      */
     public static String getFilename() {
@@ -68,6 +69,7 @@ public class CsvFileManager {
 
     /**
      * This makes the file available for viewing for the user ASAP. Taken from android site
+     *
      * @param context
      * @param filepath
      */
@@ -86,6 +88,7 @@ public class CsvFileManager {
 
     /**
      * writeResponsesFile writes raw inputs to the file pointed to by the provided uri
+     *
      * @param context
      * @param uri
      */
@@ -122,7 +125,7 @@ public class CsvFileManager {
             fileWriter.append(SCORE_COLUMNS + RAW_COLUMNS + "\n");
 
             // Write the data to the file
-            for (int i = 0; i < raws.size(); i ++) {
+            for (int i = 0; i < raws.size(); i++) {
                 Score score = scores.get(i);
                 Raw raw = raws.get(i);  // *
                 String line = score.scoreCSVFormat() + raw.rawCSVFormat();
@@ -153,6 +156,7 @@ public class CsvFileManager {
     /**
      * readTextFromUri retrieves the string contents of the file pointed to by the provided URI
      * source: https://developer.android.com/guide/topics/providers/document-provider#java
+     *
      * @param context
      * @param uri
      * @return Row List
@@ -185,6 +189,7 @@ public class CsvFileManager {
 
     /**
      * referenced: https://developer.android.com/guide/topics/providers/document-provider#java
+     *
      * @param context
      * @param uri
      */
@@ -192,7 +197,7 @@ public class CsvFileManager {
         List<String[]> rows;
         try {
             rows = readTextFromUri(context, uri, READ_RESPONSE_CODE);
-        } catch (IOException e){
+        } catch (IOException e) {
             e.printStackTrace();
             Log.d(TAG, "Error importing.");
             Toast.makeText(context, R.string.csv_import_failure_file_error, Toast.LENGTH_SHORT).show();
@@ -206,7 +211,7 @@ public class CsvFileManager {
             List<Raw> raws = new LinkedList<>();
 
             // Parse CSV data into score and raw objects
-            for(String[] row: rows) {
+            for (String[] row : rows) {
                 // Create a raw object
                 Log.d(TAG, row[0]);
                 Date date = formatter.parse((row[0]).replace("\"", ""));
@@ -216,7 +221,7 @@ public class CsvFileManager {
                 scoreSet.setSleepScore(Integer.parseInt(row[1]));
                 scoreSet.setMovementScore(Integer.parseInt(row[2]));
                 scoreSet.setImaginationScore(Integer.parseInt(row[3]));
-                scoreSet.setLaughterScore(Integer.parseInt(row[4]));
+                scoreSet.setLifeSatisfactionScore(Integer.parseInt(row[4]));
                 scoreSet.setEatingScore(Integer.parseInt(row[5]));
                 scoreSet.setSpeakingScore(Integer.parseInt(row[6]));
 
@@ -231,22 +236,33 @@ public class CsvFileManager {
                         Integer.parseInt(row[12]),
                         Integer.parseInt(row[13]),
                         Integer.parseInt(row[14]));
-                responseSet.setLaughter(
-                        Integer.parseInt(row[15]));
-                responseSet.setEating(
+                responseSet.setLifeSatisfaction(
+                        Integer.parseInt(row[15]),
                         Integer.parseInt(row[16]),
                         Integer.parseInt(row[17]),
                         Integer.parseInt(row[18]),
-                        Boolean.parseBoolean(row[19]),
-                        Boolean.parseBoolean(row[20]),
-                        Boolean.parseBoolean(row[21]),
-                        Boolean.parseBoolean(row[22]));
-                responseSet.setSpeaking(
+                        Integer.parseInt(row[19]),
+                        Integer.parseInt(row[20]),
+                        Integer.parseInt(row[21]),
+                        Integer.parseInt(row[22]),
                         Integer.parseInt(row[23]),
-                        Boolean.parseBoolean(row[24]),
-                        Boolean.parseBoolean(row[25]),
-                        Boolean.parseBoolean(row[26]),
-                        Boolean.parseBoolean(row[27]));
+                        Integer.parseInt(row[24]),
+                        Integer.parseInt(row[25]));
+
+                responseSet.setEating(
+                        Integer.parseInt(row[26]),
+                        Integer.parseInt(row[27]),
+                        Integer.parseInt(row[28]),
+                        Boolean.parseBoolean(row[29]),
+                        Boolean.parseBoolean(row[30]),
+                        Boolean.parseBoolean(row[31]),
+                        Boolean.parseBoolean(row[32]));
+                responseSet.setSpeaking(
+                        Integer.parseInt(row[33]),
+                        Boolean.parseBoolean(row[34]),
+                        Boolean.parseBoolean(row[35]),
+                        Boolean.parseBoolean(row[36]),
+                        Boolean.parseBoolean(row[37]));
 
                 scores.add(scoreSet);
                 raws.add(responseSet);
@@ -256,14 +272,14 @@ public class CsvFileManager {
             mScoringLab = ScoringLab.get(context);
             Iterator rawIterator = raws.iterator();
             while (rawIterator.hasNext()) {
-                Raw raw = (Raw)rawIterator.next();
+                Raw raw = (Raw) rawIterator.next();
                 mScoringLab.deleteRaw(raw.getDate());
                 mScoringLab.addRaw(raw);
             }
 
             Iterator scoreIterator = scores.iterator();
-            while(scoreIterator.hasNext()) {
-                Score score = (Score)scoreIterator.next();
+            while (scoreIterator.hasNext()) {
+                Score score = (Score) scoreIterator.next();
                 mScoringLab.deleteScore(score.getDate());
                 mScoringLab.addScore(score);
             }

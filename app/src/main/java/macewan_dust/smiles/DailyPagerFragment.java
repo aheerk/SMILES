@@ -135,7 +135,7 @@ public class DailyPagerFragment extends Fragment {
         Fragment temp3 = new InputImaginationFragment();
         temp3.setArguments(opBundle);
 
-        Fragment temp4 = new InputLaughterFragment();
+        Fragment temp4 = new InputLifeSatisfactionFragment();
         temp4.setArguments(opBundle);
 
         Fragment temp5 = new InputEatingFragment();
@@ -147,7 +147,7 @@ public class DailyPagerFragment extends Fragment {
         adapter.addFragment(temp1, getString(R.string.title_sleep));
         adapter.addFragment(temp2,getString(R.string.title_movement));
         adapter.addFragment(temp3,getString(R.string.title_imagination));
-        adapter.addFragment(temp4,getString(R.string.title_laughter));
+        adapter.addFragment(temp4,getString(R.string.title_life_satisfaction));
         adapter.addFragment(temp5,getString(R.string.title_eating));
         adapter.addFragment(temp6,getString(R.string.title_speaking));
 

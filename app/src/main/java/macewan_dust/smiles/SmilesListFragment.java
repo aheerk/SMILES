@@ -40,7 +40,7 @@ public class SmilesListFragment extends Fragment {
         SmilesItem temp1 = new SmilesItem(getString(R.string.title_sleep));
         SmilesItem temp2 = new SmilesItem(getString(R.string.title_movement));
         SmilesItem temp3 = new SmilesItem(getString(R.string.title_imagination));
-        SmilesItem temp4 = new SmilesItem(getString(R.string.title_laughter));
+        SmilesItem temp4 = new SmilesItem(getString(R.string.title_life_satisfaction));
         SmilesItem temp5 = new SmilesItem(getString(R.string.title_eating));
         SmilesItem temp6 = new SmilesItem(getString(R.string.title_speaking));
 

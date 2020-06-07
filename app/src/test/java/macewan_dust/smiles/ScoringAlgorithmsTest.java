@@ -160,10 +160,10 @@ public class ScoringAlgorithmsTest {
 
     @Test
     public void scoreLife() {
-        int[] balanced5 = {4,4,4,4,4};
-        int[] balanced1 = {4};
-        int[] under5 = {4,3,4,4,4};
-        int[] under1 = {3};
+        int[] balanced5 = {3,3,3,3,3};
+        int[] balanced1 = {3};
+        int[] under5 = {1,2,3,2,0};
+        int[] under1 = {0};
 
         assertEquals(ScoringAlgorithms.SCORE_BALANCED, ScoringAlgorithms.scoreLife(balanced5, balanced1, balanced5));
         assertEquals(ScoringAlgorithms.SCORE_UNDER, ScoringAlgorithms.scoreLife(under5, balanced1, balanced5));

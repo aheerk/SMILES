@@ -223,7 +223,7 @@ public class ScoringLab {
         values.put(SMILES_DatabaseSchema.ScoreTable.Columns.SLEEP, score.getSleepScore());
         values.put(SMILES_DatabaseSchema.ScoreTable.Columns.MOVEMENT, score.getMovementScore());
         values.put(SMILES_DatabaseSchema.ScoreTable.Columns.IMAGINATION, score.getImaginationScore());
-        values.put(SMILES_DatabaseSchema.ScoreTable.Columns.LAUGHTER, score.getLaughterScore());
+        values.put(SMILES_DatabaseSchema.ScoreTable.Columns.LIFE_SATISFACTION, score.getLifeSatisfactionScore());
         values.put(SMILES_DatabaseSchema.ScoreTable.Columns.EATING, score.getEatingScore());
         values.put(SMILES_DatabaseSchema.ScoreTable.Columns.SPEAKING, score.getSpeakingScore());
         Log.d(TAG, "getContentValues put score: " + score);
@@ -465,7 +465,18 @@ public class ScoringLab {
         values.put(SMILES_DatabaseSchema.RawTable.Columns.IMAGINATION1, raw.getImagination1());
         values.put(SMILES_DatabaseSchema.RawTable.Columns.IMAGINATION2, raw.getImagination2());
         values.put(SMILES_DatabaseSchema.RawTable.Columns.IMAGINATION3, raw.getImagination3());
-        values.put(SMILES_DatabaseSchema.RawTable.Columns.LAUGHTER1, raw.getLaughter1());
+        values.put(SMILES_DatabaseSchema.RawTable.Columns.LIFE_SATISFACTION1, raw.getLifeSatisfaction1());
+        values.put(SMILES_DatabaseSchema.RawTable.Columns.LIFE_SATISFACTION2, raw.getLifeSatisfaction2());
+        values.put(SMILES_DatabaseSchema.RawTable.Columns.LIFE_SATISFACTION3, raw.getLifeSatisfaction3());
+        values.put(SMILES_DatabaseSchema.RawTable.Columns.LIFE_SATISFACTION4, raw.getLifeSatisfaction4());
+        values.put(SMILES_DatabaseSchema.RawTable.Columns.LIFE_SATISFACTION5, raw.getLifeSatisfaction5());
+        values.put(SMILES_DatabaseSchema.RawTable.Columns.LIFE_SATISFACTION6, raw.getLifeSatisfaction6());
+        values.put(SMILES_DatabaseSchema.RawTable.Columns.LIFE_SATISFACTION7, raw.getLifeSatisfaction7());
+        values.put(SMILES_DatabaseSchema.RawTable.Columns.LIFE_SATISFACTION8, raw.getLifeSatisfaction8());
+        values.put(SMILES_DatabaseSchema.RawTable.Columns.LIFE_SATISFACTION9, raw.getLifeSatisfaction9());
+        values.put(SMILES_DatabaseSchema.RawTable.Columns.LIFE_SATISFACTION10, raw.getLifeSatisfaction10());
+        values.put(SMILES_DatabaseSchema.RawTable.Columns.LIFE_SATISFACTION11, raw.getLifeSatisfaction11());
+
         values.put(SMILES_DatabaseSchema.RawTable.Columns.EATING1, raw.getEating1());
         values.put(SMILES_DatabaseSchema.RawTable.Columns.EATING2, raw.getEating2());
         values.put(SMILES_DatabaseSchema.RawTable.Columns.EATING3, raw.getEating3());

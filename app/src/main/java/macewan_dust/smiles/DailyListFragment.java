@@ -66,7 +66,7 @@ public class DailyListFragment extends Fragment {
         mDailyData.add(new DailyItem(R.drawable.icon_imagination,
                 getString(R.string.title_imagination), new InputImaginationFragment()));
         mDailyData.add(new DailyItem(R.drawable.icon_laughter,
-                getString(R.string.title_laughter), new InputLaughterFragment()));
+                getString(R.string.title_life_satisfaction), new InputLifeSatisfactionFragment()));
         mDailyData.add(new DailyItem(R.drawable.icon_eating,
                 getString(R.string.title_eating), new InputEatingFragment()));
         mDailyData.add(new DailyItem(R.drawable.icon_speaking,
@@ -189,7 +189,7 @@ public class DailyListFragment extends Fragment {
             mDailyData.get(0).setBackgroundID(Score.getBackgroundID(tempScore.getSleepScore()));
             mDailyData.get(1).setBackgroundID(Score.getBackgroundID(tempScore.getMovementScore()));
             mDailyData.get(2).setBackgroundID(Score.getBackgroundID(tempScore.getImaginationScore()));
-            mDailyData.get(3).setBackgroundID(Score.getBackgroundID(tempScore.getLaughterScore()));
+            mDailyData.get(3).setBackgroundID(Score.getBackgroundID(tempScore.getLifeSatisfactionScore()));
             mDailyData.get(4).setBackgroundID(Score.getBackgroundID(tempScore.getEatingScore()));
             mDailyData.get(5).setBackgroundID(Score.getBackgroundID(tempScore.getSpeakingScore()));
         } else {
