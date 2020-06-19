@@ -4,14 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:gravity="top|center"
-    android:orientation="vertical"
-    android:padding="8dp">
+    android:orientation="vertical">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:gravity="top|center"
+        android:orientation="vertical"
+        android:padding="8dp">
 
     <!-- Title -->
     <LinearLayout
@@ -279,7 +279,7 @@
             style="@style/BodyText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/quest_life_satisfaction_f"
+            android:text="@string/quest_life_satisfaction_g"
             tools:layout_editor_absoluteX="106dp"
             tools:layout_editor_absoluteY="61dp" />
     </LinearLayout>
@@ -319,7 +319,7 @@
             style="@style/BodyText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/quest_life_satisfaction_g"
+            android:text="@string/quest_life_satisfaction_h"
             tools:layout_editor_absoluteX="106dp"
             tools:layout_editor_absoluteY="61dp" />
     </LinearLayout>
@@ -359,7 +359,7 @@
             style="@style/BodyText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/quest_life_satisfaction_h"
+            android:text="@string/quest_life_satisfaction_i"
             tools:layout_editor_absoluteX="106dp"
             tools:layout_editor_absoluteY="61dp" />
     </LinearLayout>
@@ -399,7 +399,7 @@
             style="@style/BodyText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/quest_life_satisfaction_i"
+            android:text="@string/quest_life_satisfaction_j"
             tools:layout_editor_absoluteX="106dp"
             tools:layout_editor_absoluteY="61dp" />
     </LinearLayout>
@@ -439,7 +439,7 @@
             style="@style/BodyText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/quest_life_satisfaction_j"
+            android:text="@string/quest_life_satisfaction_k"
             tools:layout_editor_absoluteX="106dp"
             tools:layout_editor_absoluteY="61dp" />
     </LinearLayout>
@@ -464,46 +464,6 @@
 
         <TextView
             android:id="@+id/icon_11c"
-            style="@style/ButtonText"
-            android:background="@drawable/ic_wide_border"
-            android:text="@string/agree" />
-    </LinearLayout>
-
-    <!-- Question 12 -->
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-
-        <TextView
-            style="@style/BodyText"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/quest_life_satisfaction_k"
-            tools:layout_editor_absoluteX="106dp"
-            tools:layout_editor_absoluteY="61dp" />
-    </LinearLayout>
-
-    <!-- Question 12 Input Buttons -->
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-
-        <TextView
-            android:id="@+id/icon_12a"
-            style="@style/ButtonText"
-            android:background="@drawable/ic_wide_border"
-            android:text="@string/disagree" />
-
-        <TextView
-            android:id="@+id/icon_12b"
-            style="@style/ButtonText"
-            android:background="@drawable/ic_wide_border"
-            android:text="@string/neutral" />
-
-        <TextView
-            android:id="@+id/icon_12c"
             style="@style/ButtonText"
             android:background="@drawable/ic_wide_border"
             android:text="@string/agree" />
