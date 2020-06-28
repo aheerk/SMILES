@@ -196,30 +196,6 @@ public class ScoringAlgorithms {
     }
 
     /**
-     * @param laughterInput is the same number as the user inputs from 1 - 5
-     * @return balanced or low score constant
-     */
-    public static int scoreLaughter(int laughterInput) {
-
-        // range checking
-        if (laughterInput < INPUT_a || laughterInput > INPUT_e) {
-//            Log.e(TAG, "Error: invalid input, laughterInput: " + laughterInput);
-            return SCORE_ERROR;
-        }
-
-        if (laughterInput < INPUT_e) {
-            return SCORE_UNDER;
-        } else if (laughterInput == INPUT_e) {
-            return SCORE_BALANCED;
-        } else {
-            //          Log.e(TAG, "Error: score for laughterInput: " + laughterInput + "  has no rule");
-            return SCORE_ERROR;
-        }
-    }
-
-//    TODO(TY) delete scoreLaughter once it is replaced.
-
-    /**
      * Scores the life satisfaction questions. Note the the only possible scores are
      * balanced and under. All questions are scored on a 4 point scale. 4 is balanced and
      * any other input is under.
