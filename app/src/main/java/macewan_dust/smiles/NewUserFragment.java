@@ -133,7 +133,7 @@ public class NewUserFragment extends Fragment {
             case 7:
                 mTitle.setText(R.string.title_life_satisfaction);
                 mImageView.setImageResource(R.drawable.photo_life_satisfaction);
-                mBodyText.setText(R.string.introduction_explanation_laughter);
+                mBodyText.setText(R.string.introduction_explanation_life_satisfaction);
                 mSubtitle.setVisibility(View.GONE);
                 mSwipeLayout.setVisibility(View.GONE);
                 break;
