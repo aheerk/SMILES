@@ -1,18 +1,12 @@
 package macewan_dust.smiles;
 
-import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.util.Log;
-import android.view.GestureDetector;
-import android.view.GestureDetector.SimpleOnGestureListener;
 import android.view.LayoutInflater;
-import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnTouchListener;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -139,7 +133,7 @@ public class NewUserFragment extends Fragment {
             case 7:
                 mTitle.setText(R.string.title_life_satisfaction);
                 mImageView.setImageResource(R.drawable.photo_laughter);
-                mBodyText.setText(R.string.introduction_explanation_laughter);
+                mBodyText.setText(R.string.introduction_explanation_life_satisfaction);
                 mSubtitle.setVisibility(View.GONE);
                 mSwipeLayout.setVisibility(View.GONE);
                 break;
