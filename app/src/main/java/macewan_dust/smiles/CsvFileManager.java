@@ -30,14 +30,17 @@ public class CsvFileManager {
 
     private static final String RAW_COLUMNS = ",sleep1_time,sleep2_interruptions,movement1_aerobic," +
             "movement2_bone_and_muscle,movement3_relaxation,imagination1_mindfulness," +
-            "imagination2_meditation,imagination3_creativity,laughter1_rating," +
-            "eating1_vegetables,eating2_grains,eating3_protein,eating4_sodium," +
+            "imagination2_meditation,imagination3_creativity,life_satisfaction1_openness," +
+            "life_satisfaction2_organized,life_satisfaction3_socialize,life_satisfaction4_listen_and_support," +
+            "life_satisfaction5_relaxed,life_satisfaction6_gratitude,life_satisfaction7_ideal_life" +
+            "life_satisfaction8_excellent,life_satisfaction9_satisfied,life_satisfaction10_accomplished," +
+            "life_satisfaction11_success,eating1_vegetables,eating2_grains,eating3_protein,eating4_sodium," +
             "eating5_sugar,eating6_fat,eating7_water,speaking1_rating," +
             "speaking2_debrief,speaking3_prevented,speaking4_social_media," +
             "speaking5_negative_impact";
 
     private static final String SCORE_COLUMNS = "date,sleepScore,movementScore,imaginationScore," +
-            "laughterScore,eatingScore,speakingScore";
+            "lifeSatisfactionScore,eatingScore,speakingScore";
 
     private static final int READ_RESPONSE_CODE = 2;
     private static ScoringLab mScoringLab;
