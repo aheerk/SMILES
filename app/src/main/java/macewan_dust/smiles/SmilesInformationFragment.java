@@ -85,7 +85,7 @@ public class SmilesInformationFragment extends Fragment {
                 break;
             case 3:
                 getActivity().setTitle(R.string.title_life_satisfaction);
-                mIconSmilesInfo.setImageResource(R.drawable.photo_laughter);
+                mIconSmilesInfo.setImageResource(R.drawable.photo_life_satisfaction);
                 mTextSmilesList.setText(R.string.introduction_explanation_life_satisfaction);
                 mSwipeLayout.setVisibility(View.GONE);
                 break;

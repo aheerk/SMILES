@@ -144,21 +144,6 @@ public class ScoringAlgorithmsTest {
     }
 
     @Test
-    public void scoreLaughter() {
-        // note that laughter has no high or off balanced score
-        assertEquals(ScoringAlgorithms.SCORE_UNDER, ScoringAlgorithms.scoreLaughter(1));
-        assertEquals(ScoringAlgorithms.SCORE_UNDER, ScoringAlgorithms.scoreLaughter(2));
-        assertEquals(ScoringAlgorithms.SCORE_UNDER, ScoringAlgorithms.scoreLaughter(3));
-        assertEquals(ScoringAlgorithms.SCORE_UNDER, ScoringAlgorithms.scoreLaughter(4));
-        assertEquals(ScoringAlgorithms.SCORE_BALANCED, ScoringAlgorithms.scoreLaughter(5));
-        assertEquals(ScoringAlgorithms.SCORE_ERROR, ScoringAlgorithms.scoreLaughter(100));
-        assertEquals(ScoringAlgorithms.SCORE_ERROR, ScoringAlgorithms.scoreLaughter(-100));
-        assertEquals(ScoringAlgorithms.SCORE_ERROR, ScoringAlgorithms.scoreLaughter(0));
-    }
-
-//    TODO(ty) remove scoreLaughter when it is replaced
-
-    @Test
     public void scoreLife() {
         int[] balanced5 = {3,3,3,3,3};
         int[] balanced1 = {3};

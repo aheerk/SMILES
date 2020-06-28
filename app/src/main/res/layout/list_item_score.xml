@@ -60,7 +60,7 @@
                 app:srcCompat="@drawable/icon_imagination" />
 
             <ImageView
-                android:id="@+id/list_item_score_laughter"
+                android:id="@+id/list_item_score_life_satisfaction"
                 android:layout_width="@dimen/input_icons_width"
                 android:layout_height="@dimen/input_icons_height"
                 android:layout_gravity="left|top"
@@ -69,7 +69,7 @@
                 android:background="@drawable/border_image_no_data"
                 android:cropToPadding="true"
                 android:padding="@dimen/input_icons_padding"
-                app:srcCompat="@drawable/icon_laughter" />
+                app:srcCompat="@drawable/icon_life_satisfaction" />
 
             <ImageView
                 android:id="@+id/list_item_score_eating"

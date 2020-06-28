@@ -81,20 +81,6 @@ public class DashboardListFragment extends Fragment {
         mPref = getActivity().getApplicationContext().getSharedPreferences(SettingsFragment.SETTINGS, 0);
 
         newUserStart();
-/*
-        // generating some items for testing
-        Score temp = new Score();
-        temp.setSpeakingScore(ScoringAlgorithms.SCORE_BALANCED);
-        temp.setLaughterScore(ScoringAlgorithms.SCORE_BALANCED);
-        mDashboardData.add(temp);
-
-        Score temp2 = new Score();
-        temp2.setSpeakingScore(ScoringAlgorithms.SCORE_UNDER);
-        temp2.setLaughterScore(ScoringAlgorithms.SCORE_UNDER);
-        temp2.setMovementScore(ScoringAlgorithms.SCORE_BALANCED);
-        mDashboardData.add(temp2);
-        */
-
     }
 
     @Override
@@ -259,7 +245,7 @@ public class DashboardListFragment extends Fragment {
             public ImageView mIconSleep;
             public ImageView mIconMovement;
             public ImageView mIconImagination;
-            public ImageView mIconLaughter;
+            public ImageView mIconLifeSatisfaction;
             public ImageView mIconEating;
             public ImageView mIconSpeaking;
             public TextView mDate;
@@ -269,7 +255,7 @@ public class DashboardListFragment extends Fragment {
                 mIconSleep = itemView.findViewById(R.id.list_item_score_sleep);
                 mIconMovement = itemView.findViewById(R.id.list_item_score_movement);
                 mIconImagination = itemView.findViewById(R.id.list_item_score_imagination);
-                mIconLaughter = itemView.findViewById(R.id.list_item_score_laughter);
+                mIconLifeSatisfaction = itemView.findViewById(R.id.list_item_score_life_satisfaction);
                 mIconEating = itemView.findViewById(R.id.list_item_score_eating);
                 mIconSpeaking = itemView.findViewById(R.id.list_item_score_speaking);
                 mDate = itemView.findViewById(R.id.list_item_score_date);
@@ -334,7 +320,7 @@ public class DashboardListFragment extends Fragment {
                     Score.getBackgroundID(mDashboardListData.get(position).getMovementScore())));
             holder.mIconImagination.setBackground(getResources().getDrawable(
                     Score.getBackgroundID(mDashboardListData.get(position).getImaginationScore())));
-            holder.mIconLaughter.setBackground(getResources().getDrawable(
+            holder.mIconLifeSatisfaction.setBackground(getResources().getDrawable(
                     Score.getBackgroundID(mDashboardListData.get(position).getLifeSatisfactionScore())));
             holder.mIconEating.setBackground(getResources().getDrawable(
                     Score.getBackgroundID(mDashboardListData.get(position).getEatingScore())));
@@ -345,7 +331,7 @@ public class DashboardListFragment extends Fragment {
             holder.mIconSleep.setScaleType(ImageView.ScaleType.FIT_CENTER);
             holder.mIconMovement.setScaleType(ImageView.ScaleType.FIT_CENTER);
             holder.mIconImagination.setScaleType(ImageView.ScaleType.FIT_CENTER);
-            holder.mIconLaughter.setScaleType(ImageView.ScaleType.FIT_CENTER);
+            holder.mIconLifeSatisfaction.setScaleType(ImageView.ScaleType.FIT_CENTER);
             holder.mIconEating.setScaleType(ImageView.ScaleType.FIT_CENTER);
             holder.mIconSpeaking.setScaleType(ImageView.ScaleType.FIT_CENTER);
 
