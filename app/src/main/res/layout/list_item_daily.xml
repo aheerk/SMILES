@@ -17,7 +17,7 @@
             android:id="@+id/list_item_daily_category"
             style="@style/InputIcons"
             android:background="@drawable/border_image_no_data"
-            app:srcCompat="@drawable/icon_laughter" />
+            app:srcCompat="@drawable/icon_life_satisfaction" />
 
         <LinearLayout
             android:layout_width="match_parent"

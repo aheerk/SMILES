@@ -1,13 +1,11 @@
 package macewan_dust.smiles;
 
 
-import android.graphics.Paint;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,7 +14,6 @@ import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.TextView;
 
-import com.github.mikephil.charting.charts.Chart;
 import com.github.mikephil.charting.charts.PieChart;
 import com.github.mikephil.charting.data.Entry;
 import com.github.mikephil.charting.data.PieData;
@@ -41,7 +38,7 @@ public class MonthlyGraphFragment extends Fragment {
     private CheckBox mSleepCheckbox;
     private CheckBox mMovementCheckbox;
     private CheckBox mImaginationCheckbox;
-    private CheckBox mLaughterCheckbox;
+    private CheckBox mLifeSatisfactionCheckbox;
     private CheckBox mEatingCheckbox;
     private CheckBox mSpeakingCheckbox;
 
@@ -113,7 +110,7 @@ public class MonthlyGraphFragment extends Fragment {
         mSleepCheckbox = v.findViewById(R.id.monthly_sleep_checkbox);
         mMovementCheckbox = v.findViewById(R.id.monthly_movement_checkbox);
         mImaginationCheckbox = v.findViewById(R.id.monthly_imagination_checkbox);
-        mLaughterCheckbox = v.findViewById(R.id.monthly_laughter_checkbox);
+        mLifeSatisfactionCheckbox = v.findViewById(R.id.monthly_life_satisfaction_checkbox);
         mEatingCheckbox = v.findViewById(R.id.monthly_eating_checkbox);
         mSpeakingCheckbox = v.findViewById(R.id.monthly_speaking_checkbox);
 
@@ -181,7 +178,7 @@ public class MonthlyGraphFragment extends Fragment {
                 updateMonthlyGraph();
             }
         });
-        mLaughterCheckbox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+        mLifeSatisfactionCheckbox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 updateMonthlyGraph();
@@ -235,7 +232,7 @@ public class MonthlyGraphFragment extends Fragment {
      */
     private boolean allUnchecked(){
         if (mSleepCheckbox.isChecked() || mMovementCheckbox.isChecked() ||
-                mImaginationCheckbox.isChecked() || mLaughterCheckbox.isChecked() ||
+                mImaginationCheckbox.isChecked() || mLifeSatisfactionCheckbox.isChecked() ||
                 mEatingCheckbox.isChecked() || mSpeakingCheckbox.isChecked()) {
             return false;
         }
@@ -416,7 +413,7 @@ public class MonthlyGraphFragment extends Fragment {
 //                    break;
                 }
             }
-            if (mLaughterCheckbox.isChecked()) {
+            if (mLifeSatisfactionCheckbox.isChecked()) {
                 switch (s.getLifeSatisfactionScore()) {
                     case (ScoringAlgorithms.SCORE_BALANCED):
                         mBalanced++;

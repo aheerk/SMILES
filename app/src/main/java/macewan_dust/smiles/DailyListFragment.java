@@ -65,7 +65,7 @@ public class DailyListFragment extends Fragment {
                 getString(R.string.title_movement), new InputMovementFragment()));
         mDailyData.add(new DailyItem(R.drawable.icon_imagination,
                 getString(R.string.title_imagination), new InputImaginationFragment()));
-        mDailyData.add(new DailyItem(R.drawable.icon_laughter,
+        mDailyData.add(new DailyItem(R.drawable.icon_life_satisfaction,
                 getString(R.string.title_life_satisfaction), new InputLifeSatisfactionFragment()));
         mDailyData.add(new DailyItem(R.drawable.icon_eating,
                 getString(R.string.title_eating), new InputEatingFragment()));

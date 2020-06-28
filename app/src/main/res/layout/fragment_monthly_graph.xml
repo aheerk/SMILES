@@ -154,7 +154,7 @@
                         android:text="@string/title_movement" />
 
                     <CheckBox
-                        android:id="@+id/monthly_laughter_checkbox"
+                        android:id="@+id/monthly_life_satisfaction_checkbox"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:checked="true"
