@@ -62,11 +62,10 @@
     <string name="quest_imagination_c">How many minutes did you practice imagination or creativity today?</string>
 
     <!-- Life Satisfaction Questions -->
-    <string name="quest_rank">Rate how much you agree with the following statements:</string>
     <!-- Part A - Modified OCEAN scale-->
     <string name="quest_life_satisfaction_a">You openly shared ideas and thoughts.</string>
     <string name="quest_life_satisfaction_b">You completed tasks and were organized.</string>
-    <string name="quest_life_satisfaction_c">You made an effort and time to socialize with others.</string>
+    <string name="quest_life_satisfaction_c">You made time and effort to socialize with others.</string>
     <string name="quest_life_satisfaction_d">You listened to and supported others.</string>
     <string name="quest_life_satisfaction_e">You were able to stay calm and relaxed today.</string>
     <!-- Part B - Modified OCEAN scale -->
@@ -354,7 +353,7 @@
     <string name="credit_photo_body">Photographs were provided by Pexels</string>
     <string name="credit_icon_heading">Icons</string>
     <string name="credit_icon_body1">Sleep icon made by Good Ware from www.flaticon.com</string>
-    <string name="credit_icon_body2">Launcher icon, Movement, imagination, and eating icons made by Freepik from www.flaticon.com</string>
+    <string name="credit_icon_body2">Launcher icon, movement, imagination, and eating icons made by Freepik from www.flaticon.com</string>
     <string name="credit_icon_body3">Life satisfaction icon made by Smashicons from www.flaticon.com</string>
     <string name="credit_icon_body4">Speaking icon made by Icomoon from www.flaticon.com</string>
     <string name="credit_developers_heading">Developers</string>

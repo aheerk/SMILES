@@ -13,22 +13,6 @@
         android:orientation="vertical"
         android:padding="8dp">
 
-    <!-- Title -->
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-
-        <!-- Question -->
-        <TextView
-            style="@style/BodyText"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/quest_rank"
-            tools:layout_editor_absoluteX="106dp"
-            tools:layout_editor_absoluteY="61dp" />
-    </LinearLayout>
-
     <!-- Question 1 -->
     <LinearLayout
         android:layout_width="match_parent"
